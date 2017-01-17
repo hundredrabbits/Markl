@@ -1,6 +1,8 @@
-body { padding:10px; }
+body { padding:10px; font-size:11px; font-family: courier }
 
-#interface { border:2px solid pink; padding:10px; }
-#interface .player { border:2px solid blue; padding:10px; }
+#interface { padding-left:50px; }
+#interface .player { }
 
-.arena { border:2px solid yellow; padding:10px; }
+.arena { position:relative; margin:50px; }
+.arena tile { display:block; width:49px; height:49px;position: absolute; border:1px solid black; border-radius: 6px}
+.arena event { display:block; width:50px; height:50px;position: absolute; background:red; border-radius: 6px}
