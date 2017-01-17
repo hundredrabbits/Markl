@@ -14,12 +14,17 @@ function Battle()
     if(this.turn_id > 10){
       return this.end();
     }
+    if(markle.arena.get_players_alive().length < 2){
+      return this.end();
+    }
 
-    if(markle.arena.get_players_alive().length > 1){
-      setTimeout(function(){ markle.battle.turn(); }, 1000);
+    // Run
+    for (var i = markle.players.length - 1; i >= 0; i--) {
+      markle.players[i].act();
     }
 
     this.turn_id += 1;
+    setTimeout(function(){ markle.battle.turn(); }, 1000);
   }
 
   this.end = function()

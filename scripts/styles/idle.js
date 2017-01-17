@@ -1,4 +1,4 @@
 function Idle()
 {
-  Style.call(this);
+  Style.call(this,"idle");
 }
