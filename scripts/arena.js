@@ -23,6 +23,13 @@ function Arena(name,size)
     this.element.appendChild(event.element);
   }
 
+  this.update = function()
+  {
+    for (var i = this.events.length - 1; i >= 0; i--) {
+      this.events[i].update();
+    }
+  }
+
   this.get_spawn = function()
   {
     for (var i = this.events.length - 1; i >= 0; i--) {
@@ -30,14 +37,17 @@ function Arena(name,size)
         return this.events[i];
       }
     }
-    console.log("failed");
     return null;
   }
 
-  this.update = function()
+  this.get_players_alive = function()
   {
+    var a = [];
     for (var i = this.events.length - 1; i >= 0; i--) {
-      this.events[i].update();
+      if(this.events[i].constructor.name === Player.name && this.events[i].is_alive() === true){
+        a.push(this.events[i]);
+      }
     }
+    return a;
   }
 }

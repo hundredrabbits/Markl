@@ -3,6 +3,8 @@ function Player(name)
   Event.call(this);
   this.name = name;
 
+  this.hp = 3;
+
   // Interface
   
   this.interface = document.createElement("div");
@@ -35,4 +37,8 @@ function Player(name)
     this.update();
   }
 
+  this.is_alive = function()
+  {
+    return this.hp > 0 ? true : false;
+  }
 }

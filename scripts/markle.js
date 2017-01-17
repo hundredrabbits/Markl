@@ -2,6 +2,7 @@ function Markle(element)
 {
   this.element = element;
 
+  this.battle = null;
   this.arena = null;
   this.players = [];
   this.interface = new Interface();
@@ -32,10 +33,12 @@ function Markle(element)
       player.ready(this.arena.get_spawn());
     }
     this.arena.update();
+    this.start();
   }
 
   this.start = function()
   {
-
+    this.battle = new Battle();
+    this.battle.start();
   }
 }
