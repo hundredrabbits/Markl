@@ -5,6 +5,6 @@ function Interface()
 
   this.set_player = function(player)
   {
-    this.element.appendChild(player.element);    
+    this.element.appendChild(player.interface);    
   }
 }

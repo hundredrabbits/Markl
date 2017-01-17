@@ -3,6 +3,6 @@ body { padding:10px; font-size:11px; font-family: courier }
 #interface { padding-left:50px; }
 #interface .player { }
 
-.arena { position:relative; margin:50px; }
+.arena { position:relative; margin:20px 50px; }
 .arena tile { display:block; width:49px; height:49px;position: absolute; border:1px solid black; border-radius: 6px}
-.arena event { display:block; width:50px; height:50px;position: absolute; background:red; border-radius: 6px}
+.arena event { display:block; width:50px; height:50px;position: absolute; }

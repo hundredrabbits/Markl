@@ -2,7 +2,7 @@ function Arena(name,size)
 {
   this.name = name;
   this.size = size;
-  this.spawns = [];
+  this.events = [];
 
   this.element = document.createElement("div");
   this.element.setAttribute("class","arena");
@@ -17,9 +17,27 @@ function Arena(name,size)
     }
   }
 
-  this.add_spawn = function(spawn)
+  this.add_event = function(event)
   {
-    this.spawns.push(spawn);
-    this.element.appendChild(spawn.element);
+    this.events.push(event);
+    this.element.appendChild(event.element);
+  }
+
+  this.get_spawn = function()
+  {
+    for (var i = this.events.length - 1; i >= 0; i--) {
+      if(this.events[i].constructor.name === Spawn.name && this.events[i].player == null){
+        return this.events[i];
+      }
+    }
+    console.log("failed");
+    return null;
+  }
+
+  this.update = function()
+  {
+    for (var i = this.events.length - 1; i >= 0; i--) {
+      this.events[i].update();
+    }
   }
 }

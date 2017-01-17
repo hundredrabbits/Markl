@@ -17,10 +17,21 @@ function Markle(element)
     this.element.appendChild(this.arena.element);
   }
 
-  this.set_player = function(player)
+  this.add_player = function(player)
   {
     this.players.push(player);
     this.interface.set_player(player);
+    this.arena.add_event(player);
+  }
+
+  this.ready = function()
+  {
+    // Set players to spawn points
+    for (var i = this.players.length - 1; i >= 0; i--) {
+      var player = this.players[i];
+      player.ready(this.arena.get_spawn());
+    }
+    this.arena.update();
   }
 
   this.start = function()
