@@ -1,8 +1,6 @@
-function Player(name)
+function Interface_Player()
 {
-  this.name = name;
-
   this.element = document.createElement("div");
   this.element.setAttribute("class","player");
-  this.element.innerHTML = this.name;
+  this.element.innerHTML = "Player";
 }
