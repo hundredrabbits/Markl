@@ -8,12 +8,13 @@ function Markle(element)
 
   this.install = function()
   {
-    this.interface.install();
+    this.element.appendChild(this.interface.element);
   }
 
   this.set_arena = function(arena)
   {
     this.arena = arena;
+    this.element.appendChild(this.arena.element);
   }
 
   this.set_player = function(player)

@@ -1,3 +1,6 @@
+body { padding:10px; }
 
 #interface { border:2px solid pink; padding:10px; }
 #interface .player { border:2px solid blue; padding:10px; }
+
+.arena { border:2px solid yellow; padding:10px; }
