@@ -43,9 +43,9 @@ function Arena(name,size)
   this.get_players_alive = function()
   {
     var a = [];
-    for (var i = markle.players.length - 1; i >= 0; i--) {
-      if(markle.players[i].is_alive() === true){
-        a.push(markle.players[i]);
+    for (var i = markl.players.length - 1; i >= 0; i--) {
+      if(markl.players[i].is_alive() === true){
+        a.push(markl.players[i]);
       }
     }
     return a;

@@ -1,4 +1,4 @@
-function Markle(element)
+function Markl(element)
 {
   this.element = element;
 

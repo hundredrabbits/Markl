@@ -21,14 +21,13 @@ function Player(name,style)
   {
     spawn.player = this;
     this.pos = spawn.pos;
+
+    this.element.setAttribute("style","left:"+this.pos.html().x+"px;top:"+this.pos.html().y+"px");  
     this.update();
   }
 
   this.update = function()
   {
-    if(this.pos){
-      this.element.setAttribute("style","left:"+(this.pos.x*50)+"px;top:"+((50*4)-this.pos.y*50)+"px");  
-    }
     this.interface.innerHTML = this.name+"("+this.hp+"/"+this.stamina+") - "+this.style.name;
   }
 

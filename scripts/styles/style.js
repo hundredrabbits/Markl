@@ -10,12 +10,17 @@ function Style(name)
     if(action){
       this.render(action);
     }
+    else{
+      this.render(WAIT);
+    }
   }
 
   this.render = function(action)
   {
-    console.log(this.host.name+"("+this.name+")."+action.constructor.name);
-    this.host.pos.add(action.move);
+    action.host = this.host;
+
+    console.log("<Style>"+this.host.name+"("+this.name+")."+action.constructor.name);
+    action.play();
     this.host.update();
   }
 
