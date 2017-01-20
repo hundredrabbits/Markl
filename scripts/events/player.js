@@ -1,9 +1,11 @@
 function Player(name,style)
 {
   Event.call(this);
+
   this.name = name;
   this.style = style;
   this.style.host = this;
+  this.is_collider = true;
 
   this.hp = 9;
   this.stamina = 9;
@@ -21,6 +23,8 @@ function Player(name,style)
   {
     spawn.player = this;
     this.pos = spawn.pos;
+    console.log(this.name)
+    console.log(this.pos)
 
     this.element.setAttribute("style","left:"+this.pos.html().x+"px;top:"+this.pos.html().y+"px");  
     this.update();

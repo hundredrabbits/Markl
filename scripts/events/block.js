@@ -2,6 +2,8 @@ function Block(pos)
 {
   Event.call(this,pos);
 
+  this.is_collider = true;
+
   this.element.setAttribute("class","block");
 
   // Sprite

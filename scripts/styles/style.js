@@ -19,9 +19,9 @@ function Style(name)
   {
     action.host = this.host;
 
-    console.log("<Style>"+this.host.name+"("+this.name+")."+action.constructor.name);
     action.play();
     this.host.update();
+    this.host.stamina -= 1;
   }
 
   // Triggers

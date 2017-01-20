@@ -1,6 +1,7 @@
 function Event(pos = null)
 {
   this.pos = pos;
+  this.is_collider = null;
 
   this.element = document.createElement("event");
   this.element.setAttribute("class","");

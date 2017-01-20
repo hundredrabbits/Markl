@@ -50,4 +50,14 @@ function Arena(name,size)
     }
     return a;
   }
+
+  this.collider_at = function(pos)
+  {
+    for (var i = this.events.length - 1; i >= 0; i--) {
+      if(this.events[i].pos.is_equal(pos)){
+        return this.events[i];
+      }
+    }
+    return null;
+  }
 }
