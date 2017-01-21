@@ -5,13 +5,13 @@ function Style(name)
 
   this.act = function()
   {
-    var action = this.on_default();
+    var action = this.on_default(); console.log(action);
 
     if(action){
       this.render(action);
     }
     else{
-      this.render(WAIT);
+      this.render(new WAIT());
     }
   }
 
@@ -36,9 +36,45 @@ function Style(name)
     
   }
 
-  this.on_collision = function()
+  this.on_collision = function(collider)
   {
-    
+    if(collider.pos.y > this.host.pos.y){
+      return this.on_collision_up(collider);
+    }
+    else if(collider.pos.y < this.host.pos.y){
+      return this.on_collision_down(collider);
+    }
+    else if(collider.pos.x > this.host.pos.x){
+      return this.on_collision_right(collider);
+    }
+    else if(collider.pos.x < this.host.pos.x){
+      return this.on_collision_left(collider);
+    }
+    return WAIT();
+  }
+
+  this.on_collision_up = function(collider)
+  {
+    console.log("collide up");
+    return WAIT();
+  }
+
+  this.on_collision_down = function(collider)
+  {
+    console.log("collide down");
+    return WAIT();
+  }
+
+  this.on_collision_left = function(collider)
+  {
+    console.log("collide left");
+    return WAIT();
+  }
+
+  this.on_collision_right = function(collider)
+  {
+    console.log("collide right");
+    return WAIT();
   }
 
   this.on_default = function()

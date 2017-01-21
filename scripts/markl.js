@@ -31,8 +31,6 @@ function Markl(element)
     for (var i = this.players.length - 1; i >= 0; i--) {
       var player = this.players[i];
       player.ready(this.arena.get_spawn());
-      console.log(player.name);
-      console.log(player.pos);
     }
     this.arena.update();
     this.start();

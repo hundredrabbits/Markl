@@ -23,8 +23,6 @@ function Player(name,style)
   {
     spawn.player = this;
     this.pos = spawn.pos;
-    console.log(this.name)
-    console.log(this.pos)
 
     this.element.setAttribute("style","left:"+this.pos.html().x+"px;top:"+this.pos.html().y+"px");  
     this.update();
@@ -37,7 +35,6 @@ function Player(name,style)
 
   this.act = function()
   {
-    console.log("<Player>"+this.name+" Acting..");
     this.style.act();
   }
 

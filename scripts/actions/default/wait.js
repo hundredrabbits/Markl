@@ -1,4 +1,4 @@
-function Wait()
+function WAIT()
 {
   Action.call(this);
 
