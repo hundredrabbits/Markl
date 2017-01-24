@@ -42,4 +42,9 @@ function Player(name,style)
   {
     return this.hp > 0 ? true : false;
   }
+
+  this.find_sights = function()
+  {
+    return markl.arena.get_players_visible_from(this.pos);
+  }
 }

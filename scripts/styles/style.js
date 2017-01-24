@@ -5,8 +5,14 @@ function Style(name)
 
   this.act = function()
   {
-    var action = this.on_default(); console.log(action);
+    var action = this.on_default();
 
+    var sights = this.host.find_sights();
+    
+    if(sights.length > 0){
+      action = this.on_sight(sights);
+    }
+    
     if(action){
       this.render(action);
     }
@@ -26,12 +32,22 @@ function Style(name)
 
   // Triggers
 
-  this.on_sight = function()
+  this.on_sight = function(sights)
+  {
+    console.log(sights.length);
+  }
+
+  this.on_sighted = function(enemy)
   {
     
   }
 
-  this.on_attack = function()
+  this.on_attack = function(target)
+  {
+    
+  }
+
+  this.on_attacked = function(attacker)
   {
     
   }
@@ -56,29 +72,34 @@ function Style(name)
   this.on_collision_up = function(collider)
   {
     console.log("collide up");
-    return WAIT();
+    return new WAIT();
   }
 
   this.on_collision_down = function(collider)
   {
     console.log("collide down");
-    return WAIT();
+    return new WAIT();
   }
 
   this.on_collision_left = function(collider)
   {
     console.log("collide left");
-    return WAIT();
+    return new WAIT();
   }
 
   this.on_collision_right = function(collider)
   {
     console.log("collide right");
-    return WAIT();
+    return new WAIT();
+  }
+
+  this.on_collided = function(collider)
+  {
+    
   }
 
   this.on_default = function()
   {
-    
+    return new WAIT();
   }
 }
