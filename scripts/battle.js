@@ -12,6 +12,8 @@ function Battle()
     }
 
     this.next_player().act();
+    
+    setTimeout(function(){ markl.battle.turn(); }, ACT_SPEED);
   }
 
   this.next_player = function()

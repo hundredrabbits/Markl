@@ -1,9 +1,21 @@
 function Action()
 {
   this.host = null;
+  this.name = null;
 
-  this.play = function()
+  this.play = function(host)
   {
-    setTimeout(function(){ markl.battle.turn(); }, 500);
+    this.host = host;
+    this.run();
+  }
+
+  this.run = function()
+  {
+
+  }
+
+  this.end = function()
+  {
+
   }
 }

@@ -3,29 +3,28 @@ function Style(name)
   this.name = name;
   this.host = null;
 
-  this.act = function()
+  this.act = function(collider = null)
   {
-    var action = this.on_default();
-
+    // Find Trigger, run action
     var sights = this.host.find_sights();
     
-    if(sights.length > 0){
+    if(this.host.collider){
+      action = this.on_collision(this.host.collider);
+      this.host.collider = null;
+    }
+    else if(sights.length > 0){
       action = this.on_sight(sights);
     }
-    
-    if(action){
-      this.render(action);
-    }
     else{
-      this.render(new WAIT());
+      action = this.on_default();
     }
+
+    this.render(action);
   }
 
-  this.render = function(action)
+  this.render = function(action = new WAIT())
   {
-    action.host = this.host;
-
-    action.play();
+    action.play(this.host);
     this.host.update();
     this.host.stamina -= 1;
   }
@@ -34,7 +33,6 @@ function Style(name)
 
   this.on_sight = function(sights)
   {
-    console.log(sights.length);
   }
 
   this.on_sighted = function(enemy)
@@ -54,6 +52,7 @@ function Style(name)
 
   this.on_collision = function(collider)
   {
+    console.log("collide");
     if(collider.pos.y > this.host.pos.y){
       return this.on_collision_up(collider);
     }

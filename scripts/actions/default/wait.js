@@ -2,8 +2,10 @@ function WAIT()
 {
   Action.call(this);
 
-  this.play = function()
+  this.name = "Wait";
+
+  this.run = function()
   {
-    setTimeout(function(){ markl.battle.turn(); }, ACT_SPEED);
+    console.log("waited..");
   }
 }

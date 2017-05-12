@@ -35,6 +35,7 @@ function Player(name,style)
 
   this.act = function()
   {
+    console.info(this.name,"style."+this.style.name)
     this.style.act();
   }
 
@@ -46,5 +47,11 @@ function Player(name,style)
   this.find_sights = function()
   {
     return markl.arena.get_players_visible_from(this.pos);
+  }
+
+  this.end_turn = function()
+  {
+    console.log("End turn");
+    return;
   }
 }
