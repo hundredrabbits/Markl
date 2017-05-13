@@ -35,7 +35,7 @@ function Player(name,style)
 
   this.act = function()
   {
-    console.info(this.name,"style."+this.style.name)
+    console.log(this.name,"style."+this.style.name)
     this.style.act();
   }
 

@@ -9,7 +9,7 @@ function Event(pos = null)
   this.update = function()
   {
     if(this.pos){
-      this.element.setAttribute("style","left:"+(this.pos.x*50)+"px;top:"+((50*4)-this.pos.y*50)+"px");  
+      this.element.setAttribute("style","left:"+(this.pos.x*50)+"px;bottom:"+(this.pos.y*50)+"px");  
     }
   }
 }

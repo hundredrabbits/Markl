@@ -16,6 +16,7 @@ function Markl(element)
   {
     this.arena = arena;
     this.element.appendChild(this.arena.element);
+    this.arena.start();
   }
 
   this.add_player = function(player)

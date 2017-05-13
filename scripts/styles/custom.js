@@ -29,17 +29,17 @@ function Custom()
 
   this.on_collision_up = function(collider)
   {
-    return new MOVE(RIGHT);
+    return new FIRE(UP);
   }
 
   this.on_collision_down = function(collider)
   {
-    return new MOVE(UP);
+    return new FIRE(UP);
   }
 
   this.on_collision_left = function(collider)
   {
-    return new MOVE(RIGHT);
+    return new FIRE(LEFT);
   }
 
   this.on_collision_right = function(collider)
@@ -47,9 +47,35 @@ function Custom()
     return new FIRE(RIGHT);
   }
 
+
+
+
+
+
+
+  this.on_bump_up = function(bumper)
+  {
+    return new MOVE(RIGHT);
+  }
+
+  this.on_bump_down = function(bumper)
+  {
+    return new MOVE(UP);
+  }
+
+  this.on_bump_left = function(bumper)
+  {
+    return new MOVE(RIGHT);
+  }
+
+  this.on_bump_right = function(bumper)
+  {
+    return new MOVE(UP);
+  }
+
   this.on_default = function()
   {
-    // return new WAIT();
+    return new MOVE(RIGHT);
     var items = [new MOVE(RIGHT), new MOVE(LEFT), new MOVE(UP), new MOVE(DOWN)];
     return items[Math.floor(Math.random()*items.length)];
   }

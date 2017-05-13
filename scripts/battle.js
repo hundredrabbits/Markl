@@ -1,5 +1,8 @@
 function Battle()
 {
+  this.counter = 0;
+  this.limit = 30;
+
   this.start = function()
   {
     this.turn();
@@ -7,13 +10,14 @@ function Battle()
 
   this.turn = function()
   {
-    if(markl.arena.get_players_alive().length < 2){
+    this.counter += 1;
+
+    console.info("Turn "+this.counter,"=======================");
+    if(markl.arena.get_players_alive().length < 2 || this.counter > this.limit){
       return this.end();
     }
 
     this.next_player().act();
-    
-    setTimeout(function(){ markl.battle.turn(); }, ACT_SPEED);
   }
 
   this.next_player = function()

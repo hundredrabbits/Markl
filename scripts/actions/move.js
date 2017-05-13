@@ -13,15 +13,16 @@ function MOVE(vector)
     this.destination_tile = markl.arena.collider_at(this.target_position);
 
     if(this.destination_tile && this.destination_tile.is_collider){
-      console.warn(this.name,"Collided with "+this.destination_tile.name);
+      console.log(this.name,"collided on "+this.destination_tile.name+" "+this.target_position);
       this.host.style.react(this.destination_tile);
     }
     else{
-      console.warn(this.name,"to "+this.target_position);
+      console.log(this.name,"to "+this.target_position);
       this.host.pos.update(this.target_position);
-      // $(this.host.element).animate({ top:this.target_position.html().y, left:this.target_position.html().x }, ACT_SPEED);
-      $(this.host.element).css("top",this.target_position.html().y);
-      $(this.host.element).css("left",this.target_position.html().x);
+      $(this.host.element).animate({ top:this.target_position.html().y, left:this.target_position.html().x }, ACT_SPEED,function(){ markl.battle.turn(); });
+      // $(this.host.element).css("top",this.target_position.html().y);
+      // $(this.host.element).css("left",this.target_position.html().x);
+      // setTimeout(function(){ markl.battle.turn(); }, ACT_SPEED/2);
     }
   }
 }

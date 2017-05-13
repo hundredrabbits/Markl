@@ -50,7 +50,32 @@ function Idle()
 
   this.on_collision_right = function(collider)
   {
-    return new FIRE(RIGHT);
+    // Create inifinite loop
+    return new WAIT();
+    // return new MOVE(LEFT);
+  }
+
+
+
+
+  this.on_bump_up = function(bumper)
+  {
+    return new MOVE(RIGHT);
+  }
+
+  this.on_bump_down = function(bumper)
+  {
+    return new MOVE(UP);
+  }
+
+  this.on_bump_left = function(bumper)
+  {
+    return new MOVE(RIGHT);
+  }
+
+  this.on_bump_right = function(bumper)
+  {
+    return new MOVE(UP);
   }
   
 }

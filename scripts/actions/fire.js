@@ -14,7 +14,7 @@ function FIRE(vector)
 
     if(this.target_tile && this.target_tile.is_collider){
       console.warn(this.name,"at "+this.target_tile.name);
-      this.target_tile.style.react(null,null,null,this.host);
+      this.target_tile.style.react(null,this.host);
     }
     else{
       console.warn(this.name,"Nothing.");

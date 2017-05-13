@@ -18,19 +18,24 @@ function Style(name)
     this.render(action);
   }
 
-  this.react = function(collided_onto = null,collided_by = null,attacking_onto = null,attacked_by = null)
+  this.react = function(collided_onto,attacked_by = null)
   {
     if(collided_onto){
-      action = this.on_collision(collided_onto);
+      if(collided_onto.style){
+        action = this.on_collision(collided_onto);  
+      }
+      else{
+        action = this.on_bump(collided_onto);  
+      }
     }
 
     if(attacked_by){
       action = this.on_attacked(attacked_by);
     }
 
-    console.warn(this.host.name,"Reaction(");
+    console.warn(this.host.name,"reaction begin:");
     this.render(action);
-    console.warn(this.host.name,"Reaction)");
+    console.log(this.host.name,"reaction ended.)");
   }
 
   this.render = function(action = new WAIT())
@@ -51,6 +56,10 @@ function Style(name)
       if(!nearest || sight.pos.distance_from(this.host.pos) < nearest.pos.distance_from(this.host.pos)){
         nearest = sight;
       }
+    }
+
+    if(!nearest){
+      return WAIT();
     }
 
     if(nearest.pos.y > this.host.pos.y){
@@ -94,7 +103,6 @@ function Style(name)
 
   this.on_collision = function(collider)
   {
-    console.log("colliding");
     if(collider.pos.y > this.host.pos.y){
       return this.on_collision_up(collider);
     }
@@ -131,6 +139,49 @@ function Style(name)
   this.on_collision_right = function(collider)
   {
     console.log("collide right");
+    return new WAIT();
+  }
+
+
+  this.on_bump = function(bumper)
+  {
+    console.log("bump");
+    if(bumper.pos.y > this.host.pos.y){
+      return this.on_bump_up(bumper);
+    }
+    else if(bumper.pos.y < this.host.pos.y){
+      return this.on_bump_down(bumper);
+    }
+    else if(bumper.pos.x > this.host.pos.x){
+      return this.on_bump_right(bumper);
+    }
+    else if(bumper.pos.x < this.host.pos.x){
+      return this.on_bump_left(bumper);
+    }
+    return WAIT();
+  }
+
+  this.on_bump_up = function(bumper)
+  {
+    console.log("bump up");
+    return new WAIT();
+  }
+
+  this.on_bump_down = function(bumper)
+  {
+    console.log("bump down");
+    return new WAIT();
+  }
+
+  this.on_bump_left = function(bumper)
+  {
+    console.log("bump left");
+    return new WAIT();
+  }
+
+  this.on_bump_right = function(bumper)
+  {
+    console.log("bump right");
     return new WAIT();
   }
 

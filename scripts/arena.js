@@ -6,25 +6,30 @@ function Arena(name,size)
 
   this.element = document.createElement("div");
   this.element.setAttribute("class","arena");
+  $(this.element).css("height",(this.size.height * TILE_SIZE.width)+"px")
 
   // Create Stage
 
-  for (var x = 0; x < this.size.width; x++) {
-    for (var y = 0; y < this.size.height; y++) {
-      var tile = document.createElement("tile");
-      tile.setAttribute("style","left:"+(x*50)+"px;top:"+(y*50)+"px");
-      this.element.appendChild(tile);
+  this.start = function()
+  {
+    for (var x = 0; x < this.size.width; x++) {
+      for (var y = 0; y < this.size.height; y++) {
+        var tile = document.createElement("tile");
+        tile.setAttribute("style","left:"+(x*50)+"px;top:"+(y*50)+"px");
+        tile.innerHTML = x+","+y;
+        this.element.appendChild(tile);
+      }
     }
-  }
 
-  // Walls
-  for (var x = 0; x < this.size.width; x++) {
-    this.events.push(new Wall(new Pos(x,-1)));
-    this.events.push(new Wall(new Pos(x,this.size.height - 1)));
-  }
-  for (var y = 0; y < this.size.height; y++) {
-    this.events.push(new Wall(new Pos(-1,y)));
-    this.events.push(new Wall(new Pos(this.width - 1,y)));
+    // Walls
+    for (var x = -1; x < this.size.width+1; x++) {
+      this.add_event(new Wall(new Pos(x,-1)));
+      this.add_event(new Wall(new Pos(x,this.size.height)));
+    }
+    for (var y = 0; y < this.size.height; y++) {
+      this.add_event(new Wall(new Pos(-1,y)));
+      this.add_event(new Wall(new Pos(this.size.width,y)));
+    }
   }
 
   this.add_event = function(event)
@@ -101,9 +106,9 @@ function Arena(name,size)
     var bl = this.player_at(pos.add(new Pos(-1,-1)));
 
     if(tr){ seen.push(tr); }
-    if(tl){ seen.push(tr); }
-    if(br){ seen.push(tr); }
-    if(bl){ seen.push(tr); }
+    if(tl){ seen.push(tl); }
+    if(br){ seen.push(br); }
+    if(bl){ seen.push(bl); }
 
     return seen;
   }

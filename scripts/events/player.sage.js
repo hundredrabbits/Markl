@@ -9,7 +9,7 @@ function Sage(name,style)
   var s = document.createElementNS("http://www.w3.org/2000/svg", "circle");
   s.setAttribute("cx","25");
   s.setAttribute("cy","25");
-  s.setAttribute("r","15");
+  s.setAttribute("r","5");
 
   e.appendChild(s);
 
