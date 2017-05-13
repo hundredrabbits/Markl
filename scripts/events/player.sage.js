@@ -10,9 +10,6 @@ function Sage(name,style)
   s.setAttribute("cx","25");
   s.setAttribute("cy","25");
   s.setAttribute("r","15");
-  s.setAttribute("fill","none");
-  s.setAttribute("stroke","blue");
-  s.setAttribute("stroke-width","8");
 
   e.appendChild(s);
 

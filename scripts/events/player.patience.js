@@ -10,9 +10,6 @@ function Patience(name,style)
   s.setAttribute("cx","25");
   s.setAttribute("cy","25");
   s.setAttribute("r","15");
-  s.setAttribute("fill","none");
-  s.setAttribute("stroke","red");
-  s.setAttribute("stroke-width","4");
 
   e.appendChild(s);
 

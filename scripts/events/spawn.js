@@ -14,9 +14,6 @@ function Spawn(pos)
   s.setAttribute("cx","25");
   s.setAttribute("cy","25");
   s.setAttribute("r","10");
-  s.setAttribute("stroke","black");
-  s.setAttribute("fill","none");
-  s.setAttribute("stroke-width","4");
 
   e.appendChild(s);
 

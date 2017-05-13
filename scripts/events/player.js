@@ -28,7 +28,7 @@ function Player(name,style)
     this.update();
   }
 
-  this.update = function()
+  this.update = function(new_class = "")
   {
     this.interface.innerHTML = this.name+"("+this.hp+"/"+this.stamina+") - "+this.style.name;
   }

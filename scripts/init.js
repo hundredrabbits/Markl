@@ -22,7 +22,7 @@ test_arena.add_event(new Spawn(new Pos(0,4)));
 // test_arena.add_event(new Block(new Pos(3,1)));
 // test_arena.add_event(new Block(new Pos(1,3)));
 // test_arena.add_event(new Block(new Pos(3,3)));
-// test_arena.add_event(new Block(new Pos(0,1)));
+test_arena.add_event(new Block(new Pos(0,1)));
 markl.set_arena(test_arena);
 
 // Players

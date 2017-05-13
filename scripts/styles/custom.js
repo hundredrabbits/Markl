@@ -2,19 +2,24 @@ function Custom()
 {
   Style.call(this,"custom")
 
-  this.on_loadout_1 = function()
+  this.on_sight_up = function()
   {
-    return new FIRE();
+    return new MOVE(UP);
   }
 
-  this.on_loadout_1 = function()
+  this.on_sight_down = function()
   {
-    return new DASH();
+    return new MOVE(DOWN);
   }
 
-  this.on_sight = function()
+  this.on_sight_left = function()
   {
-    return new MOVE(RIGHT)
+    return new MOVE(LEFT);
+  }
+
+  this.on_sight_right = function()
+  {
+    return new MOVE(RIGHT);
   }
 
   this.on_attack = function()
@@ -24,7 +29,7 @@ function Custom()
 
   this.on_collision_up = function(collider)
   {
-    return new MOVE(DOWN);
+    return new MOVE(RIGHT);
   }
 
   this.on_collision_down = function(collider)
@@ -39,12 +44,12 @@ function Custom()
 
   this.on_collision_right = function(collider)
   {
-    return new MOVE(LEFT);
+    return new FIRE(RIGHT);
   }
 
   this.on_default = function()
   {
-    return new MOVE(RIGHT)
+    // return new WAIT();
     var items = [new MOVE(RIGHT), new MOVE(LEFT), new MOVE(UP), new MOVE(DOWN)];
     return items[Math.floor(Math.random()*items.length)];
   }

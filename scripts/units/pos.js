@@ -24,4 +24,14 @@ function Pos(x,y)
     if(!pos){ return null; }
     return pos.x == this.x && pos.y == this.y ? true : null;
   }
+
+  this.distance_from = function(pos)
+  {
+    return 1;
+  }
+
+  this.toString = function()
+  {
+    return this.x+","+this.y;
+  }
 }
