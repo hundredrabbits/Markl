@@ -22,11 +22,6 @@ function Custom()
     return new MOVE(RIGHT);
   }
 
-  this.on_attack = function()
-  {
-    
-  }
-
   this.on_collision_up = function(collider)
   {
     return new FIRE(UP);
@@ -34,7 +29,7 @@ function Custom()
 
   this.on_collision_down = function(collider)
   {
-    return new FIRE(UP);
+    return new FIRE(DOWN);
   }
 
   this.on_collision_left = function(collider)
@@ -50,6 +45,25 @@ function Custom()
 
 
 
+  this.on_attacked_up = function()
+  {
+    return new MOVE(RIGHT);
+  }
+  
+  this.on_attacked_down = function()
+  {
+    return new MOVE(LEFT);
+  }
+
+  this.on_attacked_right = function()
+  {
+    return new MOVE(DOWN);
+  }
+
+  this.on_attacked_left = function()
+  {
+    return new MOVE(UP);
+  }
 
 
 
@@ -75,7 +89,7 @@ function Custom()
 
   this.on_default = function()
   {
-    return new MOVE(RIGHT);
+    console.log("Move random")
     var items = [new MOVE(RIGHT), new MOVE(LEFT), new MOVE(UP), new MOVE(DOWN)];
     return items[Math.floor(Math.random()*items.length)];
   }

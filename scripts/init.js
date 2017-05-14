@@ -16,15 +16,16 @@ markl.install();
 var test_arena = new Arena("Debug",new Size(3,7));
 test_arena.add_event(new Spawn(new Pos(1,1)));
 test_arena.add_event(new Spawn(new Pos(1,5)));
-test_arena.add_event(new Block(new Pos(0,1)));
-test_arena.add_event(new Block(new Pos(0,4)));
-test_arena.add_event(new Block(new Pos(0,6)));
+test_arena.add_event(new Spawn(new Pos(1,3)));
+// test_arena.add_event(new Block(new Pos(0,1)));
+// test_arena.add_event(new Block(new Pos(0,4)));
+test_arena.add_event(new Block(new Pos(0,3)));
 markl.set_arena(test_arena);
 
 // Players
 markl.add_player(new Sage("Borges",new Custom()));
 markl.add_player(new Patience("Calvino",new Idle()));
-// markl.add_player(new Patience("Barjavel",new Idle()));
+markl.add_player(new Sage("Barjavel",new Custom()));
 // markl.add_player(new Patience("Kafka",new Idle()));
 
 markl.ready();

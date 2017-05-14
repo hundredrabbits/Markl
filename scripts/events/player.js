@@ -8,7 +8,7 @@ function Player(name,style)
   this.is_collider = true;
 
   this.hp = 9;
-  this.stamina = 9;
+  this.stamina = 10;
 
   // Interface
   
@@ -30,7 +30,11 @@ function Player(name,style)
 
   this.update = function(new_class = "")
   {
-    this.interface.innerHTML = this.name+"("+this.hp+"/"+this.stamina+") - "+this.style.name;
+    if(this.hp < 1){ 
+      $(this.element).addClass("dead"); 
+      this.is_collider = false;
+    }
+    this.interface.innerHTML = this.name+"("+this.hp+"HP/"+this.stamina+"SP) - "+this.style.name;
   }
 
   this.act = function()

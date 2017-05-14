@@ -11,6 +11,7 @@ event svg {stroke:black; fill:none; stroke-width:4px;}
 event.spawn svg { stroke-width:1px; fill:none; stroke:#ccc; }
 event.block svg { stroke:none; fill:#000; }
 event.wall svg { stroke:none; fill:#000; }
-event.player svg { stroke:none; fill:#000; }
+event.player svg { stroke:2px; fill:#000; }
+event.player.dead svg { stroke:none; fill:red; }
 event.attacking svg { stroke:red; }
 event.attacked svg { stroke:pink; }

@@ -2,9 +2,17 @@ function Style(name)
 {
   this.name = name;
   this.host = null;
+  this.is_reacting = true;
 
   this.act = function()
   {
+    this.host.stamina -= 1;
+    this.is_reacting = false;
+
+    if(this.host.stamina < 1){ 
+      this.render(new WAIT()); return; 
+    }
+
     // Find Trigger, run action
     var sights = this.host.find_sights();
 
@@ -20,6 +28,11 @@ function Style(name)
 
   this.react = function(collided_onto,attacked_by = null)
   {
+    if(this.is_reacting){ 
+      console.log(this.host.name,"Cannot react.");
+      this.render(new WAIT()); return; 
+    }
+
     if(collided_onto){
       if(collided_onto.style){
         action = this.on_collision(collided_onto);  
@@ -33,16 +46,14 @@ function Style(name)
       action = this.on_attacked(attacked_by);
     }
 
-    console.warn(this.host.name,"reaction begin:");
+    console.warn(this.host.name,"Reacting!");
     this.render(action);
-    console.log(this.host.name,"reaction ended.)");
   }
 
   this.render = function(action = new WAIT())
   {
     var log = action.play(this.host);
     this.host.update();
-    this.host.stamina -= 1;
   }
 
   // Triggers
@@ -101,6 +112,30 @@ function Style(name)
     return WAIT();    
   }
 
+  this.on_attacked_up = function(bumper)
+  {
+    console.log("attacked up");
+    return new WAIT();
+  }
+
+  this.on_attacked_down = function(bumper)
+  {
+    console.log("attacked down");
+    return new WAIT();
+  }
+
+  this.on_attacked_left = function(bumper)
+  {
+    console.log("attacked left");
+    return new WAIT();
+  }
+
+  this.on_attacked_right = function(bumper)
+  {
+    console.log("attacked right");
+    return new WAIT();
+  }
+
   this.on_collision = function(collider)
   {
     if(collider.pos.y > this.host.pos.y){
@@ -141,7 +176,6 @@ function Style(name)
     console.log("collide right");
     return new WAIT();
   }
-
 
   this.on_bump = function(bumper)
   {

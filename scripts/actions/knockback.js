@@ -1,11 +1,11 @@
-function MOVE(vector)
+function KNOCKBACK(vector)
 {
   Action.call(this);
-  
-  this.name = "Move";
+  this.name = "Knockback";
   this.vector = vector;
+
   this.target_position = null;
-  this.destination_tile = null;
+  this.target_tile = null;
 
   this.run = function()
   {
@@ -13,7 +13,7 @@ function MOVE(vector)
     this.destination_tile = markl.arena.collider_at(this.target_position);
 
     if(this.destination_tile && this.destination_tile.is_collider){
-      console.log(this.name,"collided with "+this.destination_tile.name+" "+this.target_position);
+      console.log(this.name,"collided on "+this.destination_tile.name+" "+this.target_position);
       this.host.style.react(this.destination_tile);
     }
     else{

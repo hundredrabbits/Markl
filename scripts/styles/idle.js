@@ -65,17 +65,17 @@ function Idle()
 
   this.on_bump_down = function(bumper)
   {
-    return new MOVE(UP);
+    return new MOVE(LEFT);
   }
 
   this.on_bump_left = function(bumper)
   {
-    return new MOVE(RIGHT);
+    return new MOVE(UP);
   }
 
   this.on_bump_right = function(bumper)
   {
-    return new MOVE(UP);
+    return new MOVE(DOWN);
   }
   
 }

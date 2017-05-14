@@ -26,6 +26,14 @@ function Markl(element)
     this.arena.add_event(player);
   }
 
+  this.player_with_name = function(name)
+  {
+    for(id in this.players){
+      if(this.players[id].name == name){ return this.players[id]; }
+    }
+    return null;
+  }
+
   this.ready = function()
   {
     // Set players to spawn points
