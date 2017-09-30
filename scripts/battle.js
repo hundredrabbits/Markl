@@ -13,32 +13,32 @@ function Battle()
     this.counter += 1;
     if(this.counter > this.limit){ return this.end(); }
 
-    console.info("Turn "+this.counter,"===================");
+    console.info("TURN "+this.counter,"===================");
 
-    if(markl.arena.get_players_alive().length < 2){
+    if(markl.arena.get_fighters_alive().length < 2){
       return this.end();
     }
     
-    this.next_player().act();
+    // this.next_fighter().act();
   }
 
-  this.sort_players = function()
+  this.sort_fighters = function()
   {
     var order = [];
-    while(order.length < markl.players.length){
-      order.push(this.next_player(order).name);
+    while(order.length < markl.fighters.length){
+      order.push(this.next_fighter(order).name);
     }
     return order
   }
 
-  this.next_player = function()
+  this.next_fighter = function()
   {
-    var p = markl.players[0];
-    // Find player with the most stamina
-    for (var i = markl.players.length - 1; i >= 0; i--) {
-      // if(selection.indexOf(markl.players[i].name) > -1){ continue; }
-      if(!markl.players[i].is_alive()){ continue; }
-      if(markl.players[i].stamina > p.stamina){ p = markl.players[i]; }
+    var p = markl.fighters[0];
+    // Find fighter with the most stamina
+    for (var i = markl.fighters.length - 1; i >= 0; i--) {
+      // if(selection.indexOf(markl.fighters[i].name) > -1){ continue; }
+      if(!markl.fighters[i].is_alive()){ continue; }
+      if(markl.fighters[i].stamina > p.stamina){ p = markl.fighters[i]; }
     }
     return p;
   }

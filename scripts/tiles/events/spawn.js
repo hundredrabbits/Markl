@@ -2,7 +2,7 @@ function Spawn(pos)
 {
   Event.call(this,pos);
 
-  this.player = null;
+  this.fighter = null;
 
   this.el.setAttribute("class","spawn");
 

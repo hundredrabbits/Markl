@@ -3,8 +3,20 @@ function Interface()
   this.el = document.createElement("div");
   this.el.setAttribute("id","interface");
 
-  this.set_player = function(player)
+  this.start = function()
   {
-    this.el.appendChild(player.interface);    
+    console.log("interface start")
+    markl.el.appendChild(this.el);
+
+    for(id in markl.fighters){
+      this.el.appendChild(markl.fighters[id].interface);
+    }
+  }
+
+  this.update = function()
+  {
+    for(id in markl.fighters){
+      markl.fighters[id].update_interface();
+    }
   }
 }

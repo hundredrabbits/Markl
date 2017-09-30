@@ -52,62 +52,62 @@ function Arena(name,size, events = [])
   this.get_spawn = function()
   {
     for (var i = this.events.length - 1; i >= 0; i--) {
-      if(this.events[i].constructor.name === Spawn.name && this.events[i].player == null){
+      if(this.events[i].constructor.name === Spawn.name && this.events[i].fighter == null){
         return this.events[i];
       }
     }
     return null;
   }
 
-  this.get_players_alive = function()
+  this.get_fighters_alive = function()
   {
     var a = [];
-    for (var i = markl.players.length - 1; i >= 0; i--) {
-      if(markl.players[i].is_alive() === true){
-        a.push(markl.players[i]);
+    for (var i = markl.fighters.length - 1; i >= 0; i--) {
+      if(markl.fighters[i].is_alive() === true){
+        a.push(markl.fighters[i]);
       }
     }
     return a;
   }
 
-  this.get_players_visible_from = function(pos)
+  this.get_fighters_visible_from = function(pos)
   {
     var seen = [];
 
     // Right
     for (var x = 1; x < 5; x++){
-      var p = this.player_at(pos.add(new Pos(x,0)));
+      var p = this.fighter_at(pos.add(new Pos(x,0)));
       var b = this.collider_at(pos.add(new Pos(x,0)));
       if(p){ seen.push(p); }
       if(b){ break; }
     }
     // Left
     for (var x = -1; x > -5; x--){
-      var p = this.player_at(pos.add(new Pos(x,0)));
+      var p = this.fighter_at(pos.add(new Pos(x,0)));
       var b = this.collider_at(pos.add(new Pos(x,0)));
       if(p){ seen.push(p); }
       if(b){ break; }
     }
     // Top
     for (var y = 1; y < 5; y++){
-      var p = this.player_at(pos.add(new Pos(0,y)));
+      var p = this.fighter_at(pos.add(new Pos(0,y)));
       var b = this.collider_at(pos.add(new Pos(0,y)));
       if(p){ seen.push(p); }
       if(b){ break; }
     }
     // Down
     for (var y = -1; y > -5; y--){
-      var p = this.player_at(pos.add(new Pos(0,y)));
+      var p = this.fighter_at(pos.add(new Pos(0,y)));
       var b = this.collider_at(pos.add(new Pos(0,y)));
       if(p){ seen.push(p); }
       if(b){ break; }
     }
 
     // Diagonals
-    var tr = this.player_at(pos.add(new Pos(1,1)));
-    var tl = this.player_at(pos.add(new Pos(-1,1)));
-    var br = this.player_at(pos.add(new Pos(1,-1)));
-    var bl = this.player_at(pos.add(new Pos(-1,-1)));
+    var tr = this.fighter_at(pos.add(new Pos(1,1)));
+    var tl = this.fighter_at(pos.add(new Pos(-1,1)));
+    var br = this.fighter_at(pos.add(new Pos(1,-1)));
+    var bl = this.fighter_at(pos.add(new Pos(-1,-1)));
 
     if(tr){ seen.push(tr); }
     if(tl){ seen.push(tl); }
@@ -127,12 +127,12 @@ function Arena(name,size, events = [])
     return null;
   }
 
-  this.player_at = function(pos)
+  this.fighter_at = function(pos)
   {
-    for (var i = markl.players.length - 1; i >= 0; i--) {
-      if(markl.players[i].is_alive() === true){
-        if(markl.players[i].pos.x == pos.x && markl.players[i].pos.y == pos.y){ 
-          return markl.players[i];
+    for (var i = markl.fighters.length - 1; i >= 0; i--) {
+      if(markl.fighters[i].is_alive() === true){
+        if(markl.fighters[i].pos.x == pos.x && markl.fighters[i].pos.y == pos.y){ 
+          return markl.fighters[i];
         }
       }
     }

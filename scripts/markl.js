@@ -17,7 +17,6 @@ function Markl()
   this.arena = null;
   this.fighter = null;
   this.fighters = [];
-
   this.battle = null;
 
   this.interface = new Interface();
@@ -33,11 +32,13 @@ function Markl()
 
     this.select_fighter(new Patience("Trainer",new Idle()));
     this.select_arena(arenas.training);
-    this.select_opponents([new Sage("CPU1",new Idle()),new Sage("CPU2",new Idle()),new Sage("CPU3",new Idle())]);
+    this.select_opponents([new Sage("CPU1",new Custom()),new Sage("CPU2",new Idle()),new Sage("CPU3",new Idle())]);
+
+    this.interface.start();
 
     this.arena.start();
 
-    // this.battle = new Battle();
+    this.battle = new Battle();
     // this.battle.start();
   }
 

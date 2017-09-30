@@ -1,8 +1,8 @@
 body { font-size:11px; font-family: courier; background: black }
 
 yu { display: block; background:#555; }
-#interface { margin-bottom:15px; }
-#interface .player { }
+
+#interface { margin-top:15px; color:white; }
 
 .arena { position:relative; }
 .arena tile { display:block; width:80px; height:80px;position: absolute; border:1px solid #000; font-size:10px; color:#000; text-align:center; font-family: Helvetica}
@@ -15,7 +15,7 @@ event svg {stroke:black; fill:none; stroke-width:4px;}
 event.spawn svg { stroke-width:1px; fill:none; stroke:#999; }
 event.block svg { stroke:none; fill:#000; }
 event.wall svg { stroke:none; fill:#000; }
-event.player svg { stroke:2px; fill:#000; }
-event.player.dead svg { stroke:none; fill:red; }
+event.fighter svg { stroke:2px; fill:#000; }
+event.fighter.dead svg { stroke:none; fill:red; }
 event.attacking svg { stroke:red; }
 event.attacked svg { stroke:pink; }

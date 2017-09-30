@@ -1,7 +1,7 @@
 # Markl
 
-- Focus on active player
-- Play each player one after the other instead of all at once
+- Focus on active fighter
+- Play each fighter one after the other instead of all at once
 
 ## Characters
 
@@ -9,3 +9,13 @@
 - Patience
 - Lance
 - Pest
+
+## Timeline
+
+### Splash Screen
+
+### Character Selection Screen
+
+### Arena Selection Screen
+
+### Arena Screen

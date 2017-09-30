@@ -13,11 +13,11 @@ function Fighter(name,style)
   // Interface
   
   this.interface = document.createElement("div");
-  this.interface.setAttribute("class","player");
+  this.interface.setAttribute("class","fighter");
   this.interface.innerHTML = this.name;
 
   //
-  this.el.setAttribute("class","player");
+  this.el.setAttribute("class","fighter");
 
   this.setup = function()
   {
@@ -30,7 +30,7 @@ function Fighter(name,style)
 
     markl.arena.el.appendChild(this.el);
     
-    spawn.player = this;
+    spawn.fighter = this;
     this.pos = spawn.pos;
 
     this.el.setAttribute("style","left:"+this.pos.html().x+"px;top:"+this.pos.html().y+"px");  
@@ -43,7 +43,7 @@ function Fighter(name,style)
       $(this.el).addClass("dead"); 
       this.is_collider = false;
     }
-    this.interface.innerHTML = this.name+"("+this.hp+"HP/"+this.stamina+"SP) - "+this.style.name;
+    this.update_interface();
   }
 
   this.act = function()
@@ -59,12 +59,17 @@ function Fighter(name,style)
 
   this.find_sights = function()
   {
-    return markl.arena.get_players_visible_from(this.pos);
+    return markl.arena.get_fighters_visible_from(this.pos);
   }
 
   this.end_turn = function()
   {
     console.log("End turn");
     return;
+  }
+
+  this.update_interface = function()
+  {
+    this.interface.innerHTML = this.name+"("+this.hp+"HP/"+this.stamina+"SP) - "+this.style.name;
   }
 }
