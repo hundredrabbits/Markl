@@ -8,7 +8,7 @@ function Fighter(name,style)
   this.is_collider = true;
 
   this.hp = 9;
-  this.stamina = 10;
+  this.stamina = 200;
 
   // Interface
   

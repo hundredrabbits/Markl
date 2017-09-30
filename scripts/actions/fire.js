@@ -18,7 +18,6 @@ function FIRE(vector)
       var tile = this.target_tile;
       var host = this.host;
       setTimeout(function(){ attack(position,tile,host); }, ACT_SPEED);
-      
     }
     else{
       console.log(this.name,"at "+this.target_position+", but no one is here.");

@@ -6,12 +6,10 @@ function Style(name)
 
   this.act = function()
   {
+    console.log(this.host.name+" is acting");
+
     this.host.stamina -= 1;
     this.is_reacting = false;
-
-    if(this.host.stamina < 1){ 
-      this.render(new WAIT()); return; 
-    }
 
     // Find Trigger, run action
     var sights = this.host.find_sights();
@@ -22,8 +20,25 @@ function Style(name)
     else{
       action = this.on_default();
     }
-
     this.render(action);
+  }
+
+  this.render = function(action = new WAIT())
+  {
+    this.host.el.className = "fighter active";
+    var s = this;
+
+    var log = action.play(this.host);
+    this.host.update();
+
+    setTimeout(function(){ s.complete(); }, ACT_SPEED);
+  }
+
+  this.complete = function()
+  {
+    console.log("complete")
+    this.host.el.className = "fighter idle";
+    markl.battle.turn();
   }
 
   this.react = function(collided_onto,attacked_by = null)
@@ -50,11 +65,6 @@ function Style(name)
     this.render(action);
   }
 
-  this.render = function(action = new WAIT())
-  {
-    var log = action.play(this.host);
-    this.host.update();
-  }
 
   // Triggers
 

@@ -1,6 +1,6 @@
 
 var TILE_SIZE = new Size(80,80);
-var ACT_SPEED = 200;
+var ACT_SPEED = 500;
 
 // Responses
 
@@ -39,7 +39,7 @@ function Markl()
     this.arena.start();
 
     this.battle = new Battle();
-    // this.battle.start();
+    this.battle.start();
   }
 
   this.select_arena = function(arena)
