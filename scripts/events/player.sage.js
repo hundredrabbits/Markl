@@ -13,6 +13,6 @@ function Sage(name,style)
 
   e.appendChild(s);
 
-  this.element.appendChild(e);
+  this.el.appendChild(e);
 
 }

@@ -4,7 +4,7 @@ function Spawn(pos)
 
   this.player = null;
 
-  this.element.setAttribute("class","spawn");
+  this.el.setAttribute("class","spawn");
 
   // Sprite
   var e = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -17,5 +17,5 @@ function Spawn(pos)
 
   e.appendChild(s);
 
-  this.element.appendChild(e);
+  this.el.appendChild(e);
 }

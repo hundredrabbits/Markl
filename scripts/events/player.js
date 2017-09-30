@@ -17,21 +17,21 @@ function Player(name,style)
   this.interface.innerHTML = this.name;
 
   //
-  this.element.setAttribute("class","player");
+  this.el.setAttribute("class","player");
 
   this.ready = function(spawn)
   {
     spawn.player = this;
     this.pos = spawn.pos;
 
-    this.element.setAttribute("style","left:"+this.pos.html().x+"px;top:"+this.pos.html().y+"px");  
+    this.el.setAttribute("style","left:"+this.pos.html().x+"px;top:"+this.pos.html().y+"px");  
     this.update();
   }
 
   this.update = function(new_class = "")
   {
     if(this.hp < 1){ 
-      $(this.element).addClass("dead"); 
+      $(this.el).addClass("dead"); 
       this.is_collider = false;
     }
     this.interface.innerHTML = this.name+"("+this.hp+"HP/"+this.stamina+"SP) - "+this.style.name;

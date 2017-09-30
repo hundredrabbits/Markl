@@ -19,7 +19,7 @@ function KNOCKBACK(vector)
     else{
       console.log(this.name,"to "+this.target_position);
       this.host.pos.update(this.target_position);
-      $(this.host.element).animate({ top:this.target_position.html().y, left:this.target_position.html().x }, ACT_SPEED,function(){ markl.battle.turn(); });
+      $(this.host.el).animate({ top:this.target_position.html().y, left:this.target_position.html().x }, ACT_SPEED,function(){ markl.battle.turn(); });
     }
   }
 }

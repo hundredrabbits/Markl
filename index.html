@@ -1,46 +1,55 @@
 <html>
-  <head>
-    <script type="text/javascript" src="scripts/jquery.js"></script>
+<head>
+  <script type="text/javascript" src="scripts/jquery.js"></script>
 
-    <script type="text/javascript" src="scripts/markl.js"></script>
-    <script type="text/javascript" src="scripts/arena.js"></script>
-    <script type="text/javascript" src="scripts/interface.js"></script>
-    <script type="text/javascript" src="scripts/battle.js"></script>
+  <script type="text/javascript" src="scripts/units/unit.js"></script>
+  <script type="text/javascript" src="scripts/units/size.js"></script>
+  <script type="text/javascript" src="scripts/units/pos.js"></script>
+  <script type="text/javascript" src="scripts/units/vector.js"></script>
 
-    <script type="text/javascript" src="scripts/units/unit.js"></script>
-    <script type="text/javascript" src="scripts/units/size.js"></script>
-    <script type="text/javascript" src="scripts/units/pos.js"></script>
-    <script type="text/javascript" src="scripts/units/vector.js"></script>
+  <script type="text/javascript" src="scripts/markl.js"></script>
+  <script type="text/javascript" src="scripts/arena.js"></script>
+  <script type="text/javascript" src="scripts/interface.js"></script>
+  <script type="text/javascript" src="scripts/battle.js"></script>
 
-    <script type="text/javascript" src="scripts/events/event.js"></script>
-    <script type="text/javascript" src="scripts/events/spawn.js"></script>
-    <script type="text/javascript" src="scripts/events/block.js"></script>
-    <script type="text/javascript" src="scripts/events/wall.js"></script>
-    <script type="text/javascript" src="scripts/events/player.js"></script>
-    <script type="text/javascript" src="scripts/events/player.sage.js"></script>
-    <script type="text/javascript" src="scripts/events/player.patience.js"></script>
+  <script type="text/javascript" src="scripts/events/event.js"></script>
+  <script type="text/javascript" src="scripts/events/spawn.js"></script>
+  <script type="text/javascript" src="scripts/events/block.js"></script>
+  <script type="text/javascript" src="scripts/events/wall.js"></script>
+  <script type="text/javascript" src="scripts/events/player.js"></script>
+  <script type="text/javascript" src="scripts/events/player.sage.js"></script>
+  <script type="text/javascript" src="scripts/events/player.patience.js"></script>
 
-    <script type="text/javascript" src="scripts/styles/style.js"></script>
-    <script type="text/javascript" src="scripts/styles/idle.js"></script>
-    <script type="text/javascript" src="scripts/styles/custom.js"></script>
+  <script type="text/javascript" src="scripts/styles/style.js"></script>
+  <script type="text/javascript" src="scripts/styles/idle.js"></script>
+  <script type="text/javascript" src="scripts/styles/custom.js"></script>
 
-    <script type="text/javascript" src="scripts/actions/action.js"></script>
-    <script type="text/javascript" src="scripts/actions/wait.js"></script>
-    <script type="text/javascript" src="scripts/actions/move.js"></script>
-    <script type="text/javascript" src="scripts/actions/dash.js"></script>
-    <script type="text/javascript" src="scripts/actions/fire.js"></script>
-    <script type="text/javascript" src="scripts/actions/jump.js"></script>
-    <script type="text/javascript" src="scripts/actions/push.js"></script>
-    <script type="text/javascript" src="scripts/actions/knockback.js"></script>
+  <script type="text/javascript" src="scripts/actions/action.js"></script>
+  <script type="text/javascript" src="scripts/actions/wait.js"></script>
+  <script type="text/javascript" src="scripts/actions/move.js"></script>
+  <script type="text/javascript" src="scripts/actions/dash.js"></script>
+  <script type="text/javascript" src="scripts/actions/fire.js"></script>
+  <script type="text/javascript" src="scripts/actions/jump.js"></script>
+  <script type="text/javascript" src="scripts/actions/push.js"></script>
+  <script type="text/javascript" src="scripts/actions/knockback.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="links/reset.css"/>
-    <link rel="stylesheet" type="text/css" href="links/fonts.css"/>
-    <link rel="stylesheet" type="text/css" href="links/main.css"/>
+  <script type="text/javascript" src="scripts/content/arenas.js"></script>
+  <script type="text/javascript" src="scripts/content/fighters.js"></script>
 
-    <title>Markl</title>
-  </head>
-  <body>
-    <div id='markl'></div>
-    <script type="text/javascript" charset="utf-8" src="scripts/init.js"></script>
-  </body>
+  <link rel="stylesheet" type="text/css" href="links/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="links/fonts.css"/>
+  <link rel="stylesheet" type="text/css" href="links/main.css"/>
+
+  <title>Markl</title>
+</head>
+<body>
+  <script>
+
+    markl = new Markl();
+    markl.install();
+    markl.start();
+
+
+  </script>
+</body>
 </html>

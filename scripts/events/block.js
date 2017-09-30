@@ -5,7 +5,7 @@ function Block(pos)
   this.name = "Block";
   this.is_collider = true;
 
-  this.element.setAttribute("class","block");
+  this.el.setAttribute("class","block");
 
   // Sprite
   var e = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -18,5 +18,5 @@ function Block(pos)
 
   e.appendChild(s);
 
-  this.element.appendChild(e);
+  this.el.appendChild(e);
 }

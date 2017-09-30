@@ -1,10 +1,11 @@
-body { padding:10px; font-size:11px; font-family: courier }
+body { font-size:11px; font-family: courier; background: black }
 
+yu { display: block; background:red; width:600px; height:600px; }
 #interface { margin-bottom:15px; }
 #interface .player { }
 
 .arena { position:relative; left:50px;top:50px}
-.arena tile { display:block; width:47px; height:47px;position: absolute; border:1px solid #ccc; border-radius: 3px; font-size:10px; color:#ccc; text-align:center; font-family: Helvetica}
+.arena tile { display:block; width:80px; height:80px;position: absolute; border:1px solid #000; border-radius: 3px; font-size:10px; color:#000; text-align:center; font-family: Helvetica}
 .arena event { display:block; width:50px; height:50px;position: absolute; }
 
 event svg {stroke:black; fill:none; stroke-width:4px;}

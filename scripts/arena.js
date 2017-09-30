@@ -1,12 +1,12 @@
-function Arena(name,size)
+function Arena(name,size, events = [])
 {
   this.name = name;
   this.size = size;
-  this.events = [];
+  this.events = events;
 
-  this.element = document.createElement("div");
-  this.element.setAttribute("class","arena");
-  $(this.element).css("height",(this.size.height * TILE_SIZE.width)+"px")
+  this.el = document.createElement("div");
+  this.el.setAttribute("class","arena");
+  $(this.el).css("height",(this.size.height * TILE_SIZE.width)+"px")
 
   // Create Stage
 
@@ -15,9 +15,9 @@ function Arena(name,size)
     for (var x = 0; x < this.size.width; x++) {
       for (var y = 0; y < this.size.height; y++) {
         var tile = document.createElement("tile");
-        tile.setAttribute("style","left:"+(x*50)+"px;bottom:"+(y*50)+"px");
+        tile.setAttribute("style","left:"+(x*TILE_SIZE.width)+"px;bottom:"+(y*TILE_SIZE.height)+"px");
         tile.innerHTML = x+","+y;
-        this.element.appendChild(tile);
+        this.el.appendChild(tile);
       }
     }
 
@@ -30,12 +30,14 @@ function Arena(name,size)
       this.add_event(new Wall(new Pos(-1,y)));
       this.add_event(new Wall(new Pos(this.size.width,y)));
     }
+
+    markl.el.appendChild(this.el)
   }
 
   this.add_event = function(event)
   {
     this.events.push(event);
-    this.element.appendChild(event.element);
+    this.el.appendChild(event.el);
   }
 
   this.update = function()

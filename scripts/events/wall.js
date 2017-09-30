@@ -5,7 +5,7 @@ function Wall(pos)
   this.name = "Wall";
   this.is_collider = true;
 
-  this.element.setAttribute("class","wall");
+  this.el.setAttribute("class","wall");
 
   // Sprite
   var e = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -18,5 +18,5 @@ function Wall(pos)
 
   e.appendChild(s);
 
-  this.element.appendChild(e);
+  this.el.appendChild(e);
 }
