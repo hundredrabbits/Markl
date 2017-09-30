@@ -7,10 +7,9 @@ function Patience(name,style)
   e.setAttribute("class","icon");
 
   var s = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-  s.setAttribute("cx","25");
-  s.setAttribute("cy","25");
-  s.setAttribute("r","5");
-  s.setAttribute("stroke","red");
+  s.setAttribute("cx",TILE_SIZE.width/2);
+  s.setAttribute("cy",TILE_SIZE.height/2);
+  s.setAttribute("r",TILE_SIZE.width * 0.2);
 
   e.appendChild(s);
 

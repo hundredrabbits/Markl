@@ -12,7 +12,7 @@ function Arena(name,size, events = [])
 
   this.start = function()
   {
-    for (var x = 0; x < this.size.width; x++) {
+    for(var x = 0; x < this.size.width; x++) {
       for (var y = 0; y < this.size.height; y++) {
         var tile = document.createElement("tile");
         tile.setAttribute("style","left:"+(x*TILE_SIZE.width)+"px;bottom:"+(y*TILE_SIZE.height)+"px");
@@ -21,17 +21,12 @@ function Arena(name,size, events = [])
       }
     }
 
-    // Walls
-    for (var x = -1; x < this.size.width+1; x++) {
-      this.add_event(new Wall(new Pos(x,-1)));
-      this.add_event(new Wall(new Pos(x,this.size.height)));
-    }
-    for (var y = 0; y < this.size.height; y++) {
-      this.add_event(new Wall(new Pos(-1,y)));
-      this.add_event(new Wall(new Pos(this.size.width,y)));
+    for(var i = 0; i < this.events.length; i++){
+      var event = this.events[i];
+      this.el.appendChild(event.el);
     }
 
-    markl.el.appendChild(this.el)
+    markl.el.appendChild(this.el);
   }
 
   this.add_event = function(event)
