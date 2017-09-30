@@ -15,53 +15,26 @@ function Markl()
 
   this.arena = null;
   this.fighter = null;
+  this.fighters = [];
 
   this.battle = null;
-  
-  this.players = [];
+
   this.interface = new Interface();
 
   this.install = function()
   {
     document.body.appendChild(this.el);
   }
-
-  this.set_arena = function(arena)
-  {
-    this.arena = arena;
-    this.el.appendChild(this.arena.el);
-    this.arena.start();
-  }
-
-  this.add_player = function(player)
-  {
-    this.players.push(player);
-    this.interface.set_player(player);
-    this.arena.add_event(player);
-  }
-
-  this.player_with_name = function(name)
-  {
-    for(id in this.players){
-      if(this.players[id].name == name){ return this.players[id]; }
-    }
-    return null;
-  }
-
+  
   this.start = function()
   {
     console.log("start");
 
+    this.select_fighter(new Patience("Trainer",new Idle()));
     this.select_arena(arenas.training);
-    // this.select_fighter(fighters.patience("PLAYER",new Idle()));
+    this.select_opponents([new Sage("CPU1",new Idle()),new Sage("CPU2",new Idle()),new Sage("CPU3",new Idle())]);
 
-    // Set players to spawn points
-    // for (var i = this.players.length - 1; i >= 0; i--) {
-    //   var player = this.players[i];
-    //   player.ready(this.arena.get_spawn());
-    // }
-    // this.arena.update();
-    // this.start();
+    this.arena.start();
 
     // this.battle = new Battle();
     // this.battle.start();
@@ -69,14 +42,23 @@ function Markl()
 
   this.select_arena = function(arena)
   {
-    console.log("Selecting arena:",arena);
+    console.log("Selecting arena:",arena.name);
     this.arena = arena;
-    this.arena.start();
+    this.arena.setup();
   }
 
   this.select_fighter = function(fighter)
   {
-    console.log("Selecting fighter:",fighter);
+    console.log("Selecting fighter:",fighter.name);
     this.fighter = fighter;
+    this.fighters.push(this.fighter);
+    this.fighter.setup();
+  }
+
+  this.select_opponents = function(opponents)
+  {
+    for(id in opponents){
+      this.fighters.push(opponents[id]);
+    }
   }
 }

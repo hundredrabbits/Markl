@@ -1,6 +1,6 @@
-function Player(name,style)
+function Fighter(name,style)
 {
-  Event.call(this);
+  Event.call(this, new Pos(0,0));
 
   this.name = name;
   this.style = style;
@@ -19,8 +19,17 @@ function Player(name,style)
   //
   this.el.setAttribute("class","player");
 
-  this.ready = function(spawn)
+  this.setup = function()
   {
+
+  }
+
+  this.spawn_at = function(spawn)
+  {
+    console.log(this.name+" spawn",spawn.pos.toString())
+
+    markl.arena.el.appendChild(this.el);
+    
     spawn.player = this;
     this.pos = spawn.pos;
 

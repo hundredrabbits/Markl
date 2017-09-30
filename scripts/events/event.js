@@ -1,6 +1,7 @@
 function Event(pos = null)
 {
-  this.pos = pos;
+  Tile.call(this,pos);
+
   this.is_collider = null;
 
   this.el = document.createElement("event");

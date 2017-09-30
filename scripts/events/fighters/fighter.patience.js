@@ -1,6 +1,6 @@
 function Patience(name,style)
 {
-  Player.call(this,name,style);
+  Fighter.call(this,name,style);
 
   // Sprite
   var e = document.createElementNS("http://www.w3.org/2000/svg", "svg");

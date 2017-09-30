@@ -10,14 +10,12 @@ function Arena(name,size, events = [])
 
   // Create Stage
 
-  this.start = function()
+  this.setup = function()
   {
     for(var x = 0; x < this.size.width; x++) {
       for (var y = 0; y < this.size.height; y++) {
-        var tile = document.createElement("tile");
-        tile.setAttribute("style","left:"+(x*TILE_SIZE.width)+"px;bottom:"+(y*TILE_SIZE.height)+"px");
-        tile.innerHTML = x+","+y;
-        this.el.appendChild(tile);
+        var floor = new Floor(new Pos(x,y));
+        this.el.appendChild(floor.el);
       }
     }
 
@@ -27,6 +25,15 @@ function Arena(name,size, events = [])
     }
 
     markl.el.appendChild(this.el);
+  }
+
+  this.start = function()
+  {
+    for(id in markl.fighters){
+      var fighter = markl.fighters[id];
+      fighter.spawn_at(this.get_spawn());
+    }
+    console.log("area is ready")
   }
 
   this.add_event = function(event)
