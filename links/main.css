@@ -1,10 +1,10 @@
 body { font-size:11px; font-family: courier; background: black }
 
-yu { display: block; background:red; width:600px; height:600px; }
+yu { display: block; background:#555; }
 #interface { margin-bottom:15px; }
 #interface .player { }
 
-.arena { position:relative; left:50px;top:50px}
+.arena { position:relative; }
 .arena tile { display:block; width:80px; height:80px;position: absolute; border:1px solid #000; font-size:10px; color:#000; text-align:center; font-family: Helvetica}
 .arena event { display:block; width:80px; height:80px;position: absolute; }
 
@@ -12,7 +12,7 @@ tile { display: block; }
 tile.floor { background:white; }
 
 event svg {stroke:black; fill:none; stroke-width:4px;}
-event.spawn svg { stroke-width:1px; fill:none; stroke:#fff; }
+event.spawn svg { stroke-width:1px; fill:none; stroke:#999; }
 event.block svg { stroke:none; fill:#000; }
 event.wall svg { stroke:none; fill:#000; }
 event.player svg { stroke:2px; fill:#000; }

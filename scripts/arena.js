@@ -6,7 +6,7 @@ function Arena(name,size, events = [])
 
   this.el = document.createElement("div");
   this.el.setAttribute("class","arena");
-  $(this.el).css("height",(this.size.height * TILE_SIZE.width)+"px")
+  this.el.style.height = (this.size.height * TILE_SIZE.width)+"px";
 
   // Create Stage
 

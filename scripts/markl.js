@@ -12,6 +12,7 @@ var RIGHT = new Vector(1,0);
 function Markl()
 {
   this.el = document.createElement('yu');
+  this.el.style.padding = (TILE_SIZE.width/2)+"px";
 
   this.arena = null;
   this.fighter = null;
