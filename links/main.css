@@ -19,5 +19,6 @@ event.fighter svg { stroke:2px; fill:#000; }
 event.fighter.dead svg { stroke:none; fill:red; }
 event.fighter.active svg { fill:green; }
 event.fighter.idle svg { fill:yellow; }
+event.fighter span { position: absolute; top:60px; width:80px; text-align: center }
 event.attacking svg { stroke:red; }
 event.attacked svg { stroke:pink; }

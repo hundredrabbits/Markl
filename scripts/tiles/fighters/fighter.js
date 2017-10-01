@@ -11,6 +11,9 @@ function Fighter(name,style)
   this.stamina = 200;
 
   // Interface
+
+  this.name_label = document.createElement("span");
+  this.name_label.textContent = this.name;
   
   this.interface = document.createElement("div");
   this.interface.setAttribute("class","fighter");
@@ -18,6 +21,7 @@ function Fighter(name,style)
 
   //
   this.el.setAttribute("class","fighter");
+  this.el.appendChild(this.name_label);
 
   this.setup = function()
   {
@@ -62,6 +66,19 @@ function Fighter(name,style)
     return markl.arena.get_fighters_visible_from(this.pos);
   }
 
+  this.find_target = function(sights)
+  {
+    var candidates = sights;
+
+    for(id in candidates){
+      var sighted_fighter = candidates[id];
+      var offset = sighted_fighter.pos.offset(this.pos);
+      if(Math.abs(offset.x) == 1){ return sighted_fighter; }
+      if(Math.abs(offset.y) == 1){ return sighted_fighter; }
+    }
+    return null;
+  }
+
   this.end_turn = function()
   {
     console.log("End turn");
@@ -70,6 +87,10 @@ function Fighter(name,style)
 
   this.update_interface = function()
   {
-    this.interface.innerHTML = this.name+"("+this.hp+"HP/"+this.stamina+"SP) - "+this.style.name;
+    var html = "";
+    html += this.name+"("+this.hp+"HP/"+this.stamina+"SP/"+this.style.name+") ";
+    html += this.style.sights.length > 0 ? "("+this.style.sights.length+"s) " : "";
+    html += this.style.target ? "["+this.style.target.name+"]" : "";
+    this.interface.innerHTML = html;
   }
 }

@@ -3,6 +3,8 @@ function Style(name)
   this.name = name;
   this.host = null;
   this.is_reacting = true;
+  this.sights = [];
+  this.target = null;
 
   this.act = function()
   {
@@ -12,10 +14,14 @@ function Style(name)
     this.is_reacting = false;
 
     // Find Trigger, run action
-    var sights = this.host.find_sights();
+    this.sights = this.host.find_sights();
+    this.target = this.host.find_target(this.sights);
 
-    if(sights.length > 0){
-      action = this.on_sight(sights);
+    if(this.target){
+      action = this.on_target(this.target);
+    }
+    else if(this.sights.length > 0){
+      action = this.on_sight(this.sights);
     }
     else{
       action = this.on_default();
@@ -67,6 +73,28 @@ function Style(name)
 
 
   // Triggers
+
+  this.on_target = function(target)
+  {
+    if(target.pos.y > this.host.pos.y){
+      return this.on_target_up(target);
+    }
+    else if(target.pos.y < this.host.pos.y){
+      return this.on_target_down(target);
+    }
+    else if(target.pos.x > this.host.pos.x){
+      return this.on_target_right(target);
+    }
+    else if(target.pos.x < this.host.pos.x){
+      return this.on_target_left(target);
+    }
+    return WAIT();     
+  }
+
+  this.on_target_up = function(target){ return WAIT(); }
+  this.on_target_down = function(target){ return WAIT(); }
+  this.on_target_left = function(target){ return WAIT(); }
+  this.on_target_right = function(target){ return WAIT(); }
 
   this.on_sight = function(sights)
   {

@@ -74,29 +74,30 @@ function Arena(name,size, events = [])
   {
     var seen = [];
 
+    var range = 10;
     // Right
-    for (var x = 1; x < 5; x++){
+    for (var x = 1; x < range; x++){
       var p = this.fighter_at(pos.add(new Pos(x,0)));
       var b = this.collider_at(pos.add(new Pos(x,0)));
       if(p){ seen.push(p); }
       if(b){ break; }
     }
     // Left
-    for (var x = -1; x > -5; x--){
+    for (var x = -1; x > -range; x--){
       var p = this.fighter_at(pos.add(new Pos(x,0)));
       var b = this.collider_at(pos.add(new Pos(x,0)));
       if(p){ seen.push(p); }
       if(b){ break; }
     }
     // Top
-    for (var y = 1; y < 5; y++){
+    for (var y = 1; y < range; y++){
       var p = this.fighter_at(pos.add(new Pos(0,y)));
       var b = this.collider_at(pos.add(new Pos(0,y)));
       if(p){ seen.push(p); }
       if(b){ break; }
     }
     // Down
-    for (var y = -1; y > -5; y--){
+    for (var y = -1; y > -range; y--){
       var p = this.fighter_at(pos.add(new Pos(0,y)));
       var b = this.collider_at(pos.add(new Pos(0,y)));
       if(p){ seen.push(p); }

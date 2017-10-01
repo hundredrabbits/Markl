@@ -1,6 +1,6 @@
 
 var TILE_SIZE = new Size(80,80);
-var ACT_SPEED = 500;
+var ACT_SPEED = 200;
 
 // Responses
 
@@ -30,9 +30,9 @@ function Markl()
   {
     console.log("start");
 
-    this.select_fighter(new Patience("Trainer",new Idle()));
+    this.select_fighter(new Patience("Trainer",new Custom()));
     this.select_arena(arenas.training);
-    this.select_opponents([new Sage("CPU1",new Custom()),new Sage("CPU2",new Idle()),new Sage("CPU3",new Idle())]);
+    this.select_opponents([new Sage("CPU1",new Idle()),new Sage("CPU2",new Idle()),new Sage("CPU3",new Idle())]);
 
     this.interface.start();
 

@@ -34,4 +34,9 @@ function Pos(x,y)
   {
     return this.x+","+this.y;
   }
+
+  this.offset = function(pos)
+  {
+    return new Pos(this.x - pos.x,this.y - pos.y);
+  }
 }
