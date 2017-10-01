@@ -7,7 +7,7 @@ function Fighter(name,style)
   this.style.host = this;
   this.is_collider = true;
 
-  this.hp = 9;
+  this.hp = 3;
   this.stamina = 200;
 
   // Interface
@@ -44,7 +44,7 @@ function Fighter(name,style)
   this.update = function(new_class = "")
   {
     if(this.hp < 1 || this.stamina < 1){ 
-      $(this.el).addClass("dead"); 
+      this.el.className = "fighter dead";
       this.is_collider = false;
     }
     this.update_interface();
@@ -54,6 +54,31 @@ function Fighter(name,style)
   {
     console.log(this.name,"style."+this.style.name)
     this.style.act();
+  }
+
+  this.damage = function()
+  {
+    this.hp -= 1;
+    this.update();
+  }
+
+  this.knockback = function(origin)
+  {
+    this.el.className = "fighter knocked";
+    var offset = origin.offset(this.pos);
+    var destination = this.pos.add(offset.invert());
+    
+    if(this.can_move_to(destination)){
+      this.pos = destination;
+      $(this.el).animate({ top:destination.html().y, left:destination.html().x }, ACT_SPEED/4);
+      this.stamina -= 10;
+    }
+    this.update();
+  }
+
+  this.can_move_to = function(pos)
+  {
+    return markl.arena.is_within_limits(pos);
   }
 
   this.is_alive = function()
@@ -87,6 +112,7 @@ function Fighter(name,style)
 
   this.update_interface = function()
   {
+    if(this.hp < 1){ this.interface.innerHTML = this.name+"=Dead"; return; }
     var html = "";
     html += this.name+"("+this.hp+"HP/"+this.stamina+"SP/"+this.style.name+") ";
     html += this.style.sights.length > 0 ? "("+this.style.sights.length+(this.style.target ? "->"+this.style.target.name : "")+") " : "";

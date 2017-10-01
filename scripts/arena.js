@@ -70,6 +70,14 @@ function Arena(name,size, events = [])
     return a;
   }
 
+  this.is_within_limits = function(pos)
+  {
+    if(pos.x >= 0 && pos.x < this.size.width && pos.y >= 0 && pos.y < this.size.height){
+      return true;
+    }
+    return false;
+  }
+
   this.get_fighters_visible_from = function(pos)
   {
     var seen = [];
@@ -105,15 +113,15 @@ function Arena(name,size, events = [])
     }
 
     // Diagonals
-    var tr = this.fighter_at(pos.add(new Pos(1,1)));
-    var tl = this.fighter_at(pos.add(new Pos(-1,1)));
-    var br = this.fighter_at(pos.add(new Pos(1,-1)));
-    var bl = this.fighter_at(pos.add(new Pos(-1,-1)));
+    // var tr = this.fighter_at(pos.add(new Pos(1,1)));
+    // var tl = this.fighter_at(pos.add(new Pos(-1,1)));
+    // var br = this.fighter_at(pos.add(new Pos(1,-1)));
+    // var bl = this.fighter_at(pos.add(new Pos(-1,-1)));
 
-    if(tr){ seen.push(tr); }
-    if(tl){ seen.push(tl); }
-    if(br){ seen.push(br); }
-    if(bl){ seen.push(bl); }
+    // if(tr){ seen.push(tr); }
+    // if(tl){ seen.push(tl); }
+    // if(br){ seen.push(br); }
+    // if(bl){ seen.push(bl); }
 
     return seen;
   }

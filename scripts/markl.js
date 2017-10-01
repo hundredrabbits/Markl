@@ -64,3 +64,18 @@ function Markl()
     }
   }
 }
+
+
+window.addEventListener('dragover',function(e)
+{
+  e.stopPropagation();
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'copy';
+});
+
+window.addEventListener('drop', function(e)
+{
+  e.stopPropagation();
+  e.preventDefault();
+  // markl.battle.start();
+});

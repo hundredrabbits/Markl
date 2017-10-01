@@ -1,7 +1,7 @@
 function Battle()
 {
   this.counter = 0;
-  this.limit = 250;
+  this.limit = 500;
 
   this.start = function()
   {

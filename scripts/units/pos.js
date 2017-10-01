@@ -39,4 +39,9 @@ function Pos(x,y)
   {
     return new Pos(this.x - pos.x,this.y - pos.y);
   }
+
+  this.invert = function()
+  {
+    return new Pos(this.x*-1,this.y*-1);
+  }
 }

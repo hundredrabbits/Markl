@@ -12,6 +12,10 @@
 
 ## Design
 
+### Dodging/Blocking
+
+If stamina allows, a player will dodge/block an attack automatically, but will still suffer the knockback of the attack.
+
 ### Life/Death
 
 A fighter can act as long as HP and SP are above 0. 0HP is considered dead.

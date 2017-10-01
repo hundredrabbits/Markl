@@ -1,6 +1,6 @@
-body { font-size:11px; font-family: courier; background: black }
+body { font-size:11px; font-family: courier; background: black; overflow:hidden; }
 
-yu { display: block; background:#555; }
+yu { display: block; background:#000; }
 
 #interface { margin-top:15px; color:white; }
 
@@ -19,7 +19,8 @@ event.fighter svg { stroke:2px; fill:#000; }
 event.fighter.acting svg { fill:blue; }
 event.fighter.active svg { fill:green; }
 event.fighter.idle svg { fill:yellow; }
-event.fighter.dead svg { fill:red; }
+event.fighter.knocked svg { fill:pink; }
+event.fighter.dead svg { fill:red; stroke-width:0; }
 event.fighter span { position: absolute; top:60px; width:80px; text-align: center }
 event.attacking svg { stroke:red; }
 event.attacked svg { stroke:pink; }
