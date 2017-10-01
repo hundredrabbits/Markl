@@ -2,10 +2,25 @@ function Fighter(name,style)
 {
   Event.call(this, new Pos(0,0));
 
+  this.sprite = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  this.sprite.setAttribute("class","icon");
+
+  this.sprite_basic = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  this.sprite_basic.setAttribute("cx",TILE_SIZE.width/2);
+  this.sprite_basic.setAttribute("cy",TILE_SIZE.height/2);
+  this.sprite_basic.setAttribute("r",TILE_SIZE.width * 0.2);
+
+  this.sprite_action = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+  this.sprite.appendChild(this.sprite_basic);
+  this.sprite.appendChild(this.sprite_action);
+  this.el.appendChild(this.sprite);
+
   this.name = name;
   this.style = style;
   this.style.host = this;
   this.is_collider = true;
+  this.status = "idle";
 
   this.hp = 3;
   this.stamina = 200;
@@ -47,12 +62,12 @@ function Fighter(name,style)
       this.el.className = "fighter dead";
       this.is_collider = false;
     }
+    this.update_sprite();
     this.update_interface();
   }
 
   this.act = function()
   {
-    console.log(this.name,"style."+this.style.name)
     this.style.act();
   }
 
@@ -71,8 +86,8 @@ function Fighter(name,style)
     if(this.can_move_to(destination)){
       this.pos = destination;
       $(this.el).animate({ top:destination.html().y, left:destination.html().x }, ACT_SPEED/4);
-      this.stamina -= 10;
     }
+    this.stamina -= 10;
     this.update();
   }
 
@@ -113,9 +128,38 @@ function Fighter(name,style)
   this.update_interface = function()
   {
     if(this.hp < 1){ this.interface.innerHTML = this.name+"=Dead"; return; }
+
     var html = "";
-    html += this.name+"("+this.hp+"HP/"+this.stamina+"SP/"+this.style.name+") ";
+    html += this.name+" <b>"+this.hp+"HP/"+this.stamina+"SP/"+this.style.name+"</b> "+this.status.action+(this.status.action ? "["+this.status.vector+"] " : "");
     html += this.style.sights.length > 0 ? "("+this.style.sights.length+(this.style.target ? "->"+this.style.target.name : "")+") " : "";
     this.interface.innerHTML = html;
+  }
+
+  this.update_sprite = function()
+  {
+    if(!this.status){
+      this.sprite_action.setAttribute("d","");  
+      return;
+    }
+
+    if(this.status.action == "attack"){
+      this.sprite_action.setAttribute("stroke","red");
+    }
+    else{
+      this.sprite_action.setAttribute("stroke","blue");
+    }
+
+    if(this.status.vector == "right"){
+      this.sprite_action.setAttribute("d","M40,40 l100,0");
+    }
+    if(this.status.vector == "left"){
+      this.sprite_action.setAttribute("d","M40,40 l-100,0");
+    }
+    if(this.status.vector == "down"){
+      this.sprite_action.setAttribute("d","M40,40 l0,100");
+    }
+    if(this.status.vector == "up"){
+      this.sprite_action.setAttribute("d","M40,40 l0,-100");
+    }
   }
 }

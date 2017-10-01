@@ -6,6 +6,7 @@ function WAIT()
 
   this.run = function()
   {
+    this.host.status = "wait";
     console.log("waited..");
   }
 }

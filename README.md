@@ -33,3 +33,7 @@ Waiting costs only 1 stamina, making it more likely to be the next one to move, 
 ### Arena Selection Screen
 
 ### Arena Screen
+
+## Fighting Style
+
+- `MOVE_ANY`, move in any available direction.

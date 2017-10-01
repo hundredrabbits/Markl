@@ -9,6 +9,7 @@ function MOVE(vector)
 
   this.run = function()
   {
+    this.host.status = {action:"move",vector:vector.name};
     this.target_position = new Pos(this.host.pos.x,this.host.pos.y).add(this.vector);
     this.destination_tile = markl.arena.collider_at(this.target_position);
 

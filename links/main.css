@@ -11,7 +11,7 @@ yu { display: block; background:#000; }
 tile { display: block; }
 tile.floor { background:white; }
 
-event svg {stroke:black; fill:none; stroke-width:4px;}
+event svg {stroke:black; fill:none; stroke-width:4px; width:80px; height:80px;}
 event.spawn svg { stroke-width:1px; fill:none; stroke:#999; }
 event.block svg { stroke:none; fill:#000; }
 event.wall svg { stroke:none; fill:#000; }
@@ -21,6 +21,7 @@ event.fighter.active svg { fill:green; }
 event.fighter.idle svg { fill:yellow; }
 event.fighter.knocked svg { fill:pink; }
 event.fighter.dead svg { fill:red; stroke-width:0; }
+event.fighter.dead svg path { stroke:red; stroke-width:4px; }
 event.fighter span { position: absolute; top:60px; width:80px; text-align: center }
 event.attacking svg { stroke:red; }
 event.attacked svg { stroke:pink; }
