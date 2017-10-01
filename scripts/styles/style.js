@@ -8,6 +8,7 @@ function Style(name)
   this.act = function()
   {
     this.host.stamina -= 1;
+    this.host.el.className = "fighter acting";
 
     // Find Trigger, run action
     this.sights = this.host.find_sights();

@@ -43,7 +43,7 @@ function Fighter(name,style)
 
   this.update = function(new_class = "")
   {
-    if(this.hp < 1){ 
+    if(this.hp < 1 || this.stamina < 1){ 
       $(this.el).addClass("dead"); 
       this.is_collider = false;
     }
@@ -58,7 +58,7 @@ function Fighter(name,style)
 
   this.is_alive = function()
   {
-    return this.hp > 0 ? true : false;
+    return this.hp > 0 && this.stamina > 0 ? true : false;
   }
 
   this.find_sights = function()

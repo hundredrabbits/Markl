@@ -7,6 +7,21 @@ function Custom()
     return new ATTACK(RIGHT);
   }
 
+  this.on_target_up = function()
+  {
+    return new ATTACK(UP);
+  }
+
+  this.on_target_left = function()
+  {
+    return new ATTACK(LEFT);
+  }
+
+  this.on_target_down = function()
+  {
+    return new ATTACK(DOWN);
+  }
+
   this.on_sight_up = function()
   {
     return new MOVE(UP);

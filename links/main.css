@@ -16,9 +16,10 @@ event.spawn svg { stroke-width:1px; fill:none; stroke:#999; }
 event.block svg { stroke:none; fill:#000; }
 event.wall svg { stroke:none; fill:#000; }
 event.fighter svg { stroke:2px; fill:#000; }
-event.fighter.dead svg { stroke:none; fill:red; }
+event.fighter.acting svg { fill:blue; }
 event.fighter.active svg { fill:green; }
 event.fighter.idle svg { fill:yellow; }
+event.fighter.dead svg { fill:red; }
 event.fighter span { position: absolute; top:60px; width:80px; text-align: center }
 event.attacking svg { stroke:red; }
 event.attacked svg { stroke:pink; }

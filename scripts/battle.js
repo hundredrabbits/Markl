@@ -1,7 +1,7 @@
 function Battle()
 {
   this.counter = 0;
-  this.limit = 20;
+  this.limit = 250;
 
   this.start = function()
   {
@@ -13,19 +13,18 @@ function Battle()
     this.counter += 1;
     if(this.counter > this.limit){ return this.end(); }
 
-    if(markl.arena.get_fighters_alive().length < 2){
+    var next_fighter = this.next_fighter();
+
+    if(!next_fighter || markl.arena.get_fighters_alive().length < 2){
       return this.end();
     }
 
-    var next_fighter = this.next_fighter();
-
     if(next_fighter.name == "Trainer"){
-      console.warn("TURN "+this.counter+" : "+next_fighter.name);
+      console.warn("TURN "+this.counter+" : "+next_fighter.name+" "+next_fighter.hp+"HP");
     }
     else{
       console.info("TURN "+this.counter+" : "+next_fighter.name);  
     }
-    
     
     this.next_fighter().act();
   }
@@ -41,11 +40,12 @@ function Battle()
 
   this.next_fighter = function()
   {
-    var p = markl.fighters[0];
+    var p = null;
     for (var i = markl.fighters.length - 1; i >= 0; i--) {
-      if(!markl.fighters[i].is_alive()){ continue; }
-      if(markl.fighters[i].stamina > p.stamina){ p = markl.fighters[i]; }
+      if(markl.fighters[i].is_alive() == false){ continue; }
+      if(!p || markl.fighters[i].stamina > p.stamina){ p = markl.fighters[i]; }
     }
+    if(p.hp == 0){ return; }
     return p;
   }
 
