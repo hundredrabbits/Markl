@@ -17,7 +17,6 @@ function MOVE(vector)
     }
     else if(this.destination_tile && this.destination_tile.is_collider){
       console.log(this.name,"collided with "+this.destination_tile.name+" "+this.target_position);
-      this.host.style.react(this.destination_tile);
     }
     else{
       console.log(this.name,"to "+this.target_position);

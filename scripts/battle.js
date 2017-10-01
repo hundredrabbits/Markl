@@ -18,7 +18,14 @@ function Battle()
     }
 
     var next_fighter = this.next_fighter();
-    console.info("TURN "+this.counter+" : "+next_fighter.name);
+
+    if(next_fighter.name == "Trainer"){
+      console.warn("TURN "+this.counter+" : "+next_fighter.name);
+    }
+    else{
+      console.info("TURN "+this.counter+" : "+next_fighter.name);  
+    }
+    
     
     this.next_fighter().act();
   }

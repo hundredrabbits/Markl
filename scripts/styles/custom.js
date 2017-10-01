@@ -2,6 +2,11 @@ function Custom()
 {
   Style.call(this,"custom")
 
+  this.on_target_right = function()
+  {
+    return new ATTACK(RIGHT);
+  }
+
   this.on_sight_up = function()
   {
     return new MOVE(UP);
@@ -24,22 +29,22 @@ function Custom()
 
   this.on_collision_up = function(collider)
   {
-    return new FIRE(UP);
+    return new ATTACK(UP);
   }
 
   this.on_collision_down = function(collider)
   {
-    return new FIRE(DOWN);
+    return new ATTACK(DOWN);
   }
 
   this.on_collision_left = function(collider)
   {
-    return new FIRE(LEFT);
+    return new ATTACK(LEFT);
   }
 
   this.on_collision_right = function(collider)
   {
-    return new FIRE(RIGHT);
+    return new ATTACK(RIGHT);
   }
 
 

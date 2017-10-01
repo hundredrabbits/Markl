@@ -89,8 +89,7 @@ function Fighter(name,style)
   {
     var html = "";
     html += this.name+"("+this.hp+"HP/"+this.stamina+"SP/"+this.style.name+") ";
-    html += this.style.sights.length > 0 ? "("+this.style.sights.length+"s) " : "";
-    html += this.style.target ? "["+this.style.target.name+"]" : "";
+    html += this.style.sights.length > 0 ? "("+this.style.sights.length+(this.style.target ? "->"+this.style.target.name : "")+") " : "";
     this.interface.innerHTML = html;
   }
 }

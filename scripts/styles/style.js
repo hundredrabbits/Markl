@@ -2,16 +2,12 @@ function Style(name)
 {
   this.name = name;
   this.host = null;
-  this.is_reacting = true;
   this.sights = [];
   this.target = null;
 
   this.act = function()
   {
-    console.log(this.host.name+" is acting");
-
     this.host.stamina -= 1;
-    this.is_reacting = false;
 
     // Find Trigger, run action
     this.sights = this.host.find_sights();
@@ -46,31 +42,6 @@ function Style(name)
     this.host.el.className = "fighter idle";
     markl.battle.turn();
   }
-
-  this.react = function(collided_onto,attacked_by = null)
-  {
-    if(this.is_reacting){ 
-      console.log(this.host.name,"Cannot react.");
-      this.render(new WAIT()); return; 
-    }
-
-    if(collided_onto){
-      if(collided_onto.style){
-        action = this.on_collision(collided_onto);  
-      }
-      else{
-        action = this.on_bump(collided_onto);  
-      }
-    }
-
-    if(attacked_by){
-      action = this.on_attacked(attacked_by);
-    }
-
-    console.warn(this.host.name,"Reacting!");
-    this.render(action);
-  }
-
 
   // Triggers
 
