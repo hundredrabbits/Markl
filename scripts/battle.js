@@ -51,6 +51,7 @@ function Battle()
 
   this.end = function()
   {
+    this.counter = 0;
     console.log("<Battle>Ended");
     markl.interface.update();
   }

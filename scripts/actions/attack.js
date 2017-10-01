@@ -3,15 +3,17 @@ function ATTACK(vector)
   Action.call(this);
 
   this.name = "Attack";
-  this.vector = vector;
+  this.cost = 5;
 
+  this.vector = vector;
   this.target_position = null;
   this.target = null;
 
   this.run = function()
   {
     this.host.status = {action:"attack",vector:vector.name};
-    this.host.stamina -= 5;
+    this.host.stamina -= this.cost;
+    
     this.target_position = new Pos(this.host.pos.x,this.host.pos.y).add(this.vector);
     this.target = markl.arena.fighter_at(this.target_position);
 

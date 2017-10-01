@@ -2,6 +2,7 @@ function Action()
 {
   this.host = null;
   this.name = null;
+  this.cost = 1;
 
   this.play = function(host)
   {

@@ -127,11 +127,34 @@ function Fighter(name,style)
 
   this.update_interface = function()
   {
-    if(this.hp < 1){ this.interface.innerHTML = this.name+"=Dead"; return; }
+    var html = this.name+" > ";
 
-    var html = "";
-    html += this.name+" <b>"+this.hp+"HP/"+this.stamina+"SP/"+this.style.name+"</b> "+this.status.action+(this.status.action ? "["+this.status.vector+"] " : "");
-    html += this.style.sights.length > 0 ? "("+this.style.sights.length+(this.style.target ? "->"+this.style.target.name : "")+") " : "";
+    // HP
+    if(this.hp == 4){
+      html += "||||";
+    }
+    if(this.hp == 3){
+      html += "|||<span style='color:red'>|</span>";
+    }
+    if(this.hp == 2){
+      html += "||<span style='color:red'>||</span>";
+    }
+    if(this.hp == 1){
+      html += "|<span style='color:red'>|||</span>";
+    }
+    if(this.hp == 0){
+      html += "<span style='color:red'>||||</span>";
+    }
+
+    if(markl.battle){
+      var speed = this.stamina - markl.battle.next_fighter().stamina;
+
+      if(this.hp > 0){
+        html += " - "+this.status.action+(this.status.action ? "["+this.status.vector+"] " : "");
+        html += this.style.sights.length > 0 ? (this.style.target ? "->"+this.style.target.name : "") : "";
+      }
+    }
+  
     this.interface.innerHTML = html;
   }
 

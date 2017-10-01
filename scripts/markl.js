@@ -30,7 +30,7 @@ function Markl()
   {
     console.log("start");
 
-    this.select_fighter(new Patience("Trainer",new Custom()));
+    this.select_fighter(new Patience("USER",new Custom()));
     this.select_arena(arenas.training);
     this.select_opponents([new Sage("CPU1",new Idle()),new Sage("CPU2",new Custom()),new Sage("CPU3",new Custom())]);
 

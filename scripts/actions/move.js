@@ -3,6 +3,8 @@ function MOVE(vector)
   Action.call(this);
   
   this.name = "Move";
+  this.cost = 2;
+
   this.vector = vector;
   this.target_position = null;
   this.destination_tile = null;
@@ -10,12 +12,15 @@ function MOVE(vector)
   this.run = function()
   {
     if(!this.vector){ this.vector = this.find_any(); }
-    console.log(this.vector)
+
     this.host.status = {action:"move",vector:this.vector.name};
+    this.host.stamina -= this.cost;
+    
     this.target_position = new Pos(this.host.pos.x,this.host.pos.y).add(this.vector);
     this.destination_tile = markl.arena.collider_at(this.target_position);
 
     this.host.update();
+
     if(this.target_position.x >= markl.arena.size.width || this.target_position.x < 0 || this.target_position.y >= markl.arena.size.height || this.target_position.y < 0){
       console.log(this.name,"collided with wall")
     }
