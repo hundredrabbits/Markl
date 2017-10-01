@@ -109,8 +109,6 @@ function Custom()
 
   this.on_default = function()
   {
-    console.log("Move random")
-    var items = [new MOVE(RIGHT), new MOVE(LEFT), new MOVE(UP), new MOVE(DOWN)];
-    return items[Math.floor(Math.random()*items.length)];
+    return new MOVE();
   }
 }

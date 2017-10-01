@@ -28,12 +28,54 @@ Waiting costs only 1 stamina, making it more likely to be the next one to move, 
 
 ### Splash Screen
 
+- Logo
+- Start/Option selector
+
 ### Character Selection Screen
+
+- Cursor
+- Portraits
+- Names
+- Statistics
+- Loadout(?)
 
 ### Arena Selection Screen
 
+- Worldmap
+
 ### Arena Screen
+
+- Abilities
+- Holes
+- Doodads
+- Parallax
+
+#### Characters
+
+- Basic sprites
+- Animation
+- Effects
+
+### Extras
+
+- Soundtrack
+- Sound Effects
 
 ## Fighting Style
 
-- `MOVE_ANY`, move in any available direction.
+- Decide syntax
+
+### Vectors
+
+- `UP`
+- `LEFT`
+- `RIGHT`
+- `DOWN`
+- `ANY`, a random direction, will choose an available one for move.
+
+### Commands
+
+- `MOVE`, uses 2 stamina
+- `ATTACK`, uses 5 stamina
+- `SPELL`, uses 10 stamina
+- `WAIT`, uses 1 stamina

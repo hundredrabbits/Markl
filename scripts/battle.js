@@ -52,5 +52,6 @@ function Battle()
   this.end = function()
   {
     console.log("<Battle>Ended");
+    markl.interface.update();
   }
 }

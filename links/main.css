@@ -11,7 +11,7 @@ yu { display: block; background:#000; }
 tile { display: block; }
 tile.floor { background:white; }
 
-event svg {stroke:black; fill:none; stroke-width:4px; width:80px; height:80px;}
+event svg {stroke:black; fill:none; stroke-width:4px; width:80px; height:80px; position: absolute;}
 event.spawn svg { stroke-width:1px; fill:none; stroke:#999; }
 event.block svg { stroke:none; fill:#000; }
 event.wall svg { stroke:none; fill:#000; }

@@ -150,16 +150,16 @@ function Fighter(name,style)
     }
 
     if(this.status.vector == "right"){
-      this.sprite_action.setAttribute("d","M40,40 l100,0");
+      this.sprite_action.setAttribute("d","M40,40 l15,0");
     }
     if(this.status.vector == "left"){
-      this.sprite_action.setAttribute("d","M40,40 l-100,0");
+      this.sprite_action.setAttribute("d","M40,40 l-15,0");
     }
     if(this.status.vector == "down"){
-      this.sprite_action.setAttribute("d","M40,40 l0,100");
+      this.sprite_action.setAttribute("d","M40,40 l0,15");
     }
     if(this.status.vector == "up"){
-      this.sprite_action.setAttribute("d","M40,40 l0,-100");
+      this.sprite_action.setAttribute("d","M40,40 l0,-15");
     }
   }
 }
