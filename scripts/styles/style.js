@@ -2,6 +2,7 @@ function Style(name,text)
 {
   this.name = name;
   this.text = text;
+  this.tree = parse(this.text);
   
   this.host = null;
   this.sights = [];
@@ -12,20 +13,34 @@ function Style(name,text)
     this.host.stamina -= 1;
     this.host.el.className = "fighter acting";
 
-    // Find Trigger, run action
     this.sights = this.host.find_sights();
     this.target = this.host.find_target(this.sights);
 
-    if(this.target){
-      action = this.on_target(this.target);
+    var action = this.find_action();
+  }
+
+  this.find_action = function()
+  {
+    for(trigger_id in this.tree){
+      var trigger = this.tree[trigger_id];
+      for(event_id in trigger.events){
+        var event = trigger.events[event_id];
+        for(condition_id in event.conditions){
+          var condition = event.conditions[condition_id];
+          var is_valid = this.validate(trigger.name,event.name,condition.name);
+          console.log(trigger.name+" > "+event.name+" > "+condition.name+"->"+is_valid);
+        }
+      }
     }
-    else if(this.sights.length > 0){
-      action = this.on_sight(this.sights);
+    return null;
+  }
+
+  this.validate = function(trigger,event,condition)
+  {
+    if(trigger == "DEFAULT" || (trigger == "SIGHT" && this.sights.length > 0)){
+      return true;
     }
-    else{
-      action = this.on_default();
-    }
-    this.render(action);
+    return false;
   }
 
   this.render = function(action = new WAIT())
@@ -249,5 +264,67 @@ function Style(name,text)
   this.on_default = function()
   {
     return new WAIT();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function parse(text)
+  {
+    var a = [];
+    var lines = text.toUpperCase().split("\n");
+    var stash = null;
+    var trigger = null;
+    var event = null;
+    var condition = null;
+    var action = null;
+    for(id in lines){
+      var line = lines[id];
+      var pad = pad_length(line);
+      if(line.trim() == "" || line.substr(0,2) == "--"){ continue; }
+      if(pad == 0){
+        if(trigger){ a.push(trigger); }
+        trigger = {name:line,events:[]};
+      }
+      if(pad == 2){
+        event = {name:line.trim(),conditions:[]};
+        trigger.events.push(event);
+      }
+      if(pad == 4){
+        condition = {name:line.trim(),actions:[]};
+        event.conditions.push(condition);
+      }
+      if(pad == 6){
+        condition.actions.push(line.trim());
+      }
+    }
+    if(trigger){ a.push(trigger); }
+    return a;
+  }
+
+  function pad_length(str)
+  {
+    var i = 0;
+    while(i < str.length){
+      if(str.substr(i,1) != " "){
+        return i;
+      }
+      i += 1;
+    }
+    return i;
   }
 }

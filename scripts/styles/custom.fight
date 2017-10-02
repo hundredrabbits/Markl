@@ -2,36 +2,40 @@ let custom_style = `-- wimp.fight
 
 MENU
   OPTION
-    AUDIO
+    NAME IS AUDIO
       SET OFF
   CHARACTER
-    PATIENCE
+    NAME IS PATIENCE
       SELECT
   LOADOUT
-    TELEKINETIC
+    NAME IS TELEKINETIC
       SELECT
 
 SIGHT
   ENEMY
-    DISTANCE IS 3
-      MOVE TOWARD
-    DISTANCE IS 2
-      STEP
-    NEIGHBOR
+    DISTANCE IS 1
       DASH AWAY
       FIRE TOWARD
+      STEP
+    DISTANCE IS ANY
+      FIRE TOWARD
+    DEFAULT
       STEP
   OBJECT
     DISTANCE IS 1
       PUSH TOWARD
-    DISTANCE IS 3
-      FIRE TOWARD
+    DEFAULT
+      STEP
   PROJECTILE
-    STEP
+    DEFAULT
+      STEP
 
 DEFAULT
-  WAIT
-  MOVE ANY
+  TURN
+    ID IS EVENT
+      MOVE ANY
+    ID IS ODD
+      WAIT
 
 `;
 

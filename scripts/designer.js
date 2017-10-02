@@ -10,6 +10,7 @@ function Designer()
     this.el.appendChild(this.input_el);
     this.el.appendChild(this.hint_el);
     document.body.appendChild(this.el);
+    markl.designer.input_el.addEventListener('input', markl.designer.update);
   }
 
   this.load = function(style)
@@ -20,7 +21,7 @@ function Designer()
 
   this.update = function()
   {
-    this.hint_el.innerHTML = this.parse();
+    markl.designer.hint_el.innerHTML = markl.designer.parse();
   }
 
   this.parse = function()
@@ -42,7 +43,7 @@ function Designer()
     if(line.trim() == "")                { text = ""; }
     else if(line.substr(0,2) == "--")    { text = ""; }
     else if(line.substr(0,6) == "      "){ text = ">> "; }
-    else if(line.substr(0,4) == "    ")  { text = ""; }
+    else if(line.substr(0,4) == "    ")  { text = "?? "; }
     else if(line.substr(0,2) == "  ")    { text = ""; }
     else if(line.substr(0,1) != " ")     { text = "Trigger"; style = "trigger"; }
     return {text:text,style:style};

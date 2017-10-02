@@ -8,6 +8,11 @@ function Battle()
     this.turn();
   }
 
+  this.stop = function()
+  {
+    console.log("STOP")
+  }
+
   this.turn = function()
   {
     this.counter += 1;

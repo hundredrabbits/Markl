@@ -15,7 +15,10 @@ SIGHT
       FIRE TOWARD
   PROJECTILE
     STEP
+
 DEFAULT
-  WAIT
-  MOVE ANY
+  TURN
+    ANY
+      WAIT
+      MOVE ANY
 
