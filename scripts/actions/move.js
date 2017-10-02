@@ -7,27 +7,27 @@ function MOVE(host,attr,target = null)
 
   this.run = function()
   {
-    if(!this.vector){ this.vector = this.find_any(); }
-
-    this.host.status = {action:"move",vector:this.vector.name};
+    var offset = this.host.pos.offset(this.target.pos).invert();
+    var vector = new Vector(offset.x,offset.y);
+    this.host.status = {action:"move",vector:vector.name};
     this.host.stamina -= this.cost;
-    
-    this.target_position = new Pos(this.host.pos.x,this.host.pos.y).add(this.vector);
-    this.destination_tile = markl.arena.collider_at(this.target_position);
 
-    this.host.update();
+    var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
+    var event_at_position = markl.arena.event_at(target_position);
 
-    if(this.target_position.x >= markl.arena.size.width || this.target_position.x < 0 || this.target_position.y >= markl.arena.size.height || this.target_position.y < 0){
-      console.log(this.name,"collided with wall")
+    if(target_position.x >= markl.arena.size.width || target_position.x < 0 || target_position.y >= markl.arena.size.height || target_position.y < 0){
+      console.log(this.name,"collided with wall");
     }
-    else if(this.destination_tile && this.destination_tile.is_collider){
-      console.log(this.name,"collided with "+this.destination_tile.name+" "+this.target_position);
+    else if(event_at_position){
+      console.log(this.name,"collided with "+event_at_position.name+" "+target_position);
+      event_at_position.bump();
     }
     else{
-      console.log(this.name,"to "+this.target_position);
-      this.host.pos.update(this.target_position);
-      $(this.host.el).animate({ top:this.target_position.html().y, left:this.target_position.html().x }, ACT_SPEED);
+      console.log(this.name,"to "+target_position);
+      this.host.pos.update(target_position);
+      $(this.host.el).animate({ top:target_position.html().y, left:target_position.html().x }, ACT_SPEED);
     }
+    this.host.update();
   }
 
   this.find_any = function()

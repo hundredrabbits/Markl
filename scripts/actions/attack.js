@@ -13,7 +13,7 @@ function ATTACK(host,attr,target = null)
     this.host.stamina -= this.cost;
 
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
-    var target_at_position = markl.arena.fighter_at(target_position);
+    var event_at_position = markl.arena.event_at(target_position,"fighter");
 
     if(target_at_position){
       console.log(this.name,"at "+target_position);

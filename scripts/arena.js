@@ -147,4 +147,15 @@ function Arena(name,size, events = [])
     }
     return null;
   }
+
+  this.event_at = function(pos,type = null)
+  {
+    for(id in this.events) {
+      var event = this.events[id];
+      if(!event.pos.is_equal(pos)){ continue; }
+      if(type && event.type != type){ continue; }
+      return event;
+    }
+    return null;
+  }
 }
