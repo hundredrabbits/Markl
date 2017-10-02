@@ -1,0 +1,42 @@
+let custom_style = `-- wimp.fight
+
+MENU
+  OPTION
+    AUDIO
+      SET OFF
+  CHARACTER
+    PATIENCE
+      SELECT
+  LOADOUT
+    TELEKINETIC
+      SELECT
+
+SIGHT
+  ENEMY
+    DISTANCE IS 3
+      MOVE TOWARD
+    DISTANCE IS 2
+      STEP
+    NEIGHBOR
+      DASH AWAY
+      FIRE TOWARD
+      STEP
+  OBJECT
+    DISTANCE IS 1
+      PUSH TOWARD
+    DISTANCE IS 3
+      FIRE TOWARD
+  PROJECTILE
+    STEP
+
+DEFAULT
+  WAIT
+  MOVE ANY
+
+`;
+
+let idle_style = `-- idle.fight
+
+DEFAULT
+  WAIT
+`;

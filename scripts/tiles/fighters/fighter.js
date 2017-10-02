@@ -2,6 +2,16 @@ function Fighter(name,style)
 {
   Event.call(this, new Pos(0,0));
 
+  this.name = name;
+  this.style = style;
+  this.style.host = this;
+  this.is_collider = true;
+  this.status = "idle";
+
+  this.hp = 3;
+  this.stamina = 200;
+
+
   this.sprite = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   this.sprite.setAttribute("class","icon");
 
@@ -15,15 +25,6 @@ function Fighter(name,style)
   this.sprite.appendChild(this.sprite_basic);
   this.sprite.appendChild(this.sprite_action);
   this.el.appendChild(this.sprite);
-
-  this.name = name;
-  this.style = style;
-  this.style.host = this;
-  this.is_collider = true;
-  this.status = "idle";
-
-  this.hp = 3;
-  this.stamina = 200;
 
   // Interface
 

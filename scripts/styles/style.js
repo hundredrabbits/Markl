@@ -1,6 +1,8 @@
-function Style(name)
+function Style(name,text)
 {
   this.name = name;
+  this.text = text;
+  
   this.host = null;
   this.sights = [];
   this.target = null;

@@ -62,31 +62,6 @@ function Custom()
     return new ATTACK(RIGHT);
   }
 
-
-
-
-  this.on_attacked_up = function()
-  {
-    return new MOVE(RIGHT);
-  }
-  
-  this.on_attacked_down = function()
-  {
-    return new MOVE(LEFT);
-  }
-
-  this.on_attacked_right = function()
-  {
-    return new MOVE(DOWN);
-  }
-
-  this.on_attacked_left = function()
-  {
-    return new MOVE(UP);
-  }
-
-
-
   this.on_bump_up = function(bumper)
   {
     return new MOVE(RIGHT);
