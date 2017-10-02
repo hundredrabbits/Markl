@@ -8,15 +8,35 @@ function Style(name,text)
   this.sights = [];
   this.target = null;
 
+  this.triggers = {};
+
   this.act = function()
   {
     this.host.stamina -= 1;
     this.host.el.className = "fighter acting";
 
-    this.sights = this.host.find_sights();
-    this.target = this.host.find_target(this.sights);
-
+    this.triggers = this.find_triggers();
+    console.log(this.triggers);
     var action = this.find_action();
+  }
+
+  this.find_triggers = function()
+  {
+    var h = {"SIGHT":{}};
+
+    var sights = this.host.find_sights();
+
+    for(id in sights){
+      var sight = sights[id];
+      var sight_type = sight.type.toUpperCase();
+      var sight_distance = sight.pos.distance_from(this.host.pos);
+      if(!h["SIGHT"][sight_type]){
+        h["SIGHT"][sight_type] = {};
+      }
+      h["SIGHT"][sight_type]["DEFAULT"] = sight;
+      h["SIGHT"][sight_type]["DISTANCE IS "+sight_distance] = sight;
+    }
+    return h;
   }
 
   this.find_action = function()
@@ -28,7 +48,7 @@ function Style(name,text)
         for(condition_id in event.conditions){
           var condition = event.conditions[condition_id];
           var is_valid = this.validate(trigger.name,event.name,condition.name);
-          console.log(trigger.name+" > "+event.name+" > "+condition.name+"->"+is_valid);
+          console.log(trigger.name+" > "+event.name+" > "+condition.name+"->",is_valid);
         }
       }
     }
@@ -37,10 +57,10 @@ function Style(name,text)
 
   this.validate = function(trigger,event,condition)
   {
-    if(trigger == "DEFAULT" || (trigger == "SIGHT" && this.sights.length > 0)){
-      return true;
-    }
-    return false;
+    if(!this.triggers[trigger]){ return null; }
+    if(!this.triggers[trigger][event]){ return null; }
+    if(!this.triggers[trigger][event][condition]){ return null; }
+    return this.triggers[trigger][event][condition];
   }
 
   this.render = function(action = new WAIT())

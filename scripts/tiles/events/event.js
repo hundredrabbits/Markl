@@ -3,6 +3,7 @@ function Event(pos = null)
   Tile.call(this,pos);
 
   this.is_collider = null;
+  this.type = "Any";
 
   this.el = document.createElement("event");
   this.el.setAttribute("class","");

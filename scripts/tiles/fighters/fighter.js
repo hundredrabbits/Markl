@@ -7,10 +7,10 @@ function Fighter(name,style)
   this.style.host = this;
   this.is_collider = true;
   this.status = "idle";
+  this.type = "fighter";
 
   this.hp = 3;
   this.stamina = 200;
-
 
   this.sprite = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   this.sprite.setAttribute("class","icon");

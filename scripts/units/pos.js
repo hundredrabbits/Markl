@@ -27,7 +27,12 @@ function Pos(x,y)
 
   this.distance_from = function(pos)
   {
-    return 1;
+    if(pos.x == this.x && pos.y == this.y){ return 0; } // Same tile
+    if(pos.x != this.x && pos.y != this.y){ return null; } // No aligned
+
+    if(Math.abs(pos.x - this.x) > 0){ return Math.abs(pos.x - this.x); }
+    if(Math.abs(pos.y - this.y) > 0){ return Math.abs(pos.y - this.y); }
+    return null;
   }
 
   this.toString = function()
