@@ -21,12 +21,12 @@ function Style(name,text)
 
   this.run = function(reaction,index = 0)
   {
+    console.log(reaction)
     var action = reaction.actions[index];
     var action_name = action.indexOf(" ") > -1 ? action.split(" ")[0] : action;
     var action_attr = action.indexOf(" ") > -1 ? action.split(" ")[1] : null;
 
     var a = new window[action_name](this.host,action_attr,reaction.target);
-    console.log(a);
     a.run();
   }
 
@@ -57,18 +57,18 @@ function Style(name,text)
         var event = trigger.events[event_id];
         for(condition_id in event.conditions){
           var condition = event.conditions[condition_id];
-          var reaction = this.reaction(trigger.name,event.name,condition.name);
-          if(reaction){
-            reaction.actions = condition.actions;
-            return reaction;
+          var r = this.make_reaction(trigger.name,event.name,condition.name);
+          if(r){
+            r.actions = condition.actions;
+            return r;
           }
         }
       }
     }
-    return null;
+    return {actions:["WAIT"]};
   }
 
-  this.reaction = function(trigger,event,condition)
+  this.make_reaction = function(trigger = null,event = null,condition = null)
   {
     if(!this.triggers[trigger]){ return null; }
     if(!this.triggers[trigger][event]){ return null; }

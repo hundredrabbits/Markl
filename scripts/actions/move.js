@@ -9,7 +9,7 @@ function MOVE(host,attr,target = null)
   {
     var offset = this.host.pos.offset(this.target.pos).invert();
     var vector = new Vector(offset.x,offset.y);
-    this.host.status = {action:"move",vector:vector.name};
+    this.host.status = {action:this.name,vector:vector.name};
     this.host.stamina -= this.cost;
 
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);

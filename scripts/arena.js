@@ -31,6 +31,7 @@ function Arena(name,size, events = [])
   {
     for(id in markl.fighters){
       var fighter = markl.fighters[id];
+      this.events.push(fighter);
       fighter.spawn_at(this.get_spawn());
     }
     console.log("area is ready")

@@ -9,16 +9,16 @@ function ATTACK(host,attr,target = null)
   {
     var offset = this.host.pos.offset(this.target.pos).invert();
     var vector = new Vector(offset.x,offset.y);
-    this.host.status = {action:"attack",vector:vector.name};
+    this.host.status = {action:this.name,vector:vector.name};
     this.host.stamina -= this.cost;
 
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     var event_at_position = markl.arena.event_at(target_position,"fighter");
 
-    if(target_at_position){
+    if(event_at_position){
       console.log(this.name,"at "+target_position);
-      target_at_position.target.damage(1);
-      target_at_position.target.knockback(this.host.pos);
+      event_at_position.damage(1);
+      event_at_position.knockback(this.host.pos);
     }
     else{
       console.log(this.name,"at "+target_position+", but no one is here.");

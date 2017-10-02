@@ -8,19 +8,17 @@ SIGHT
       MOVE TOWARD
   OBJECT
     DISTANCE IS 1
-      PUSH TOWARD
+      ATTACK TOWARD
     DEFAULT
-      STEP
+      MOVE
   PROJECTILE
     DEFAULT
       STEP
 
 DEFAULT
-  TURN
-    ID IS EVENT
-      MOVE ANY
-    ID IS ODD
-      WAIT
+  DEFAULT
+    DEFAULT
+      TAUNT
 
 MENU
   OPTION
@@ -38,5 +36,7 @@ MENU
 let idle_style = `-- idle.fight
 
 DEFAULT
-  WAIT
+  DEFAULT
+    DEFAULT
+      WAIT
 `;
