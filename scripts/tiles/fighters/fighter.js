@@ -152,7 +152,6 @@ function Fighter(name,style)
 
       if(this.hp > 0){
         html += " - "+this.status.action+(this.status.action ? "["+this.status.vector+"] " : "");
-        html += this.style.sights.length > 0 ? (this.style.target ? "->"+this.style.target.name : "") : "";
       }
     }
   
@@ -174,16 +173,16 @@ function Fighter(name,style)
     }
 
     if(this.status.vector == "right"){
-      this.sprite_action.setAttribute("d","M40,40 l15,0");
+      this.sprite_action.setAttribute("d","M40,40 l40,0");
     }
     if(this.status.vector == "left"){
-      this.sprite_action.setAttribute("d","M40,40 l-15,0");
+      this.sprite_action.setAttribute("d","M40,40 l-40,0");
     }
     if(this.status.vector == "down"){
-      this.sprite_action.setAttribute("d","M40,40 l0,15");
+      this.sprite_action.setAttribute("d","M40,40 l0,40");
     }
     if(this.status.vector == "up"){
-      this.sprite_action.setAttribute("d","M40,40 l0,-15");
+      this.sprite_action.setAttribute("d","M40,40 l0,-40");
     }
   }
 }

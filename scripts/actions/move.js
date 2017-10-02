@@ -1,13 +1,9 @@
-function MOVE(vector)
+function MOVE(host,attr,target = null)
 {
-  Action.call(this);
+  Action.call(this,host,attr,target);
   
   this.name = "Move";
   this.cost = 2;
-
-  this.vector = vector;
-  this.target_position = null;
-  this.destination_tile = null;
 
   this.run = function()
   {

@@ -1,29 +1,28 @@
-function ATTACK(vector)
+function ATTACK(host,attr,target = null)
 {
-  Action.call(this);
+  Action.call(this,host,attr,target);
 
   this.name = "Attack";
   this.cost = 5;
 
-  this.vector = vector;
-  this.target_position = null;
-  this.target = null;
-
   this.run = function()
   {
+    var offset = this.host.pos.offset(this.target.pos).invert();
+    var vector = new Vector(offset.x,offset.y);
     this.host.status = {action:"attack",vector:vector.name};
     this.host.stamina -= this.cost;
-    
-    this.target_position = new Pos(this.host.pos.x,this.host.pos.y).add(this.vector);
-    this.target = markl.arena.fighter_at(this.target_position);
 
-    if(this.target){
-      console.log(this.name,"at "+this.target_position);
-      this.target.damage(1);
-      this.target.knockback(this.host.pos);
+    var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
+    var target_at_position = markl.arena.fighter_at(target_position);
+
+    if(target_at_position){
+      console.log(this.name,"at "+target_position);
+      target_at_position.target.damage(1);
+      target_at_position.target.knockback(this.host.pos);
     }
     else{
-      console.log(this.name,"at "+this.target_position+", but no one is here.");
+      console.log(this.name,"at "+target_position+", but no one is here.");
     }
+    this.host.update(); 
   }
 }
