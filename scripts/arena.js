@@ -79,53 +79,6 @@ function Arena(name,size, events = [])
     return false;
   }
 
-  this.get_fighters_visible_from = function(pos)
-  {
-    var seen = [];
-
-    var range = 10;
-    // Right
-    for (var x = 1; x < range; x++){
-      var p = this.fighter_at(pos.add(new Pos(x,0)));
-      var b = this.collider_at(pos.add(new Pos(x,0)));
-      if(p){ seen.push(p); }
-      if(b){ break; }
-    }
-    // Left
-    for (var x = -1; x > -range; x--){
-      var p = this.fighter_at(pos.add(new Pos(x,0)));
-      var b = this.collider_at(pos.add(new Pos(x,0)));
-      if(p){ seen.push(p); }
-      if(b){ break; }
-    }
-    // Top
-    for (var y = 1; y < range; y++){
-      var p = this.fighter_at(pos.add(new Pos(0,y)));
-      var b = this.collider_at(pos.add(new Pos(0,y)));
-      if(p){ seen.push(p); }
-      if(b){ break; }
-    }
-    // Down
-    for (var y = -1; y > -range; y--){
-      var p = this.fighter_at(pos.add(new Pos(0,y)));
-      var b = this.collider_at(pos.add(new Pos(0,y)));
-      if(p){ seen.push(p); }
-      if(b){ break; }
-    }
-
-    // Diagonals
-    // var tr = this.fighter_at(pos.add(new Pos(1,1)));
-    // var tl = this.fighter_at(pos.add(new Pos(-1,1)));
-    // var br = this.fighter_at(pos.add(new Pos(1,-1)));
-    // var bl = this.fighter_at(pos.add(new Pos(-1,-1)));
-
-    // if(tr){ seen.push(tr); }
-    // if(tl){ seen.push(tl); }
-    // if(br){ seen.push(br); }
-    // if(bl){ seen.push(bl); }
-
-    return seen;
-  }
 
   this.collider_at = function(pos)
   {
@@ -159,4 +112,41 @@ function Arena(name,size, events = [])
     }
     return null;
   }
+
+  this.events_at = function(pos,type = null)
+  {
+    var a = [];
+    for(id in this.events) {
+      var event = this.events[id];
+      if(!event.pos.is_equal(pos)){ continue; }
+      if(type && event.type != type){ continue; }
+      a.push(event);
+    }
+    return a;
+  }
+
+  this.events_visible_from = function(pos,type = null)
+  {
+    var sight = [];
+    // Right/Left
+    for (var x = 1; x < 10; x++){
+      var events = this.events_at(new Pos(x,0),type);
+      if(events.length > 0){ sight = sight.concat(events);break;  }
+    }
+    for (var x = -1; x > -10; x--){
+      var events = this.events_at(new Pos(x,0),type);
+      if(events.length > 0){ sight = sight.concat(events); break;  }
+    }
+    // Top
+    for (var y = 1; y < 10; y++){
+      var events = this.events_at(new Pos(0,y),type);
+      if(events.length > 0){ sight = sight.concat(events); break;  }
+    }
+    for (var y = -1; y > -10; y--){
+      var events = this.events_at(new Pos(0,y),type);
+      if(events.length > 0){ sight = sight.concat(events); break;  }
+    }
+    return sight;
+  }
+
 }

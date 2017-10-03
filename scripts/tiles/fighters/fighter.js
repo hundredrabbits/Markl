@@ -104,7 +104,7 @@ function Fighter(name,style)
 
   this.find_sights = function()
   {
-    return markl.arena.get_fighters_visible_from(this.pos);
+    return markl.arena.event_visible_from(this.pos);
   }
 
   this.find_target = function(sights)

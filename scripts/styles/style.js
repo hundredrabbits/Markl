@@ -15,13 +15,11 @@ function Style(name,text)
     this.host.el.className = "fighter acting";
 
     this.triggers = this.find_triggers();
-    this.reaction = this.find_reaction();
-    this.run(this.reaction);
+    this.run(this.find_reaction());
   }
 
   this.run = function(reaction,index = 0)
   {
-    console.log(reaction)
     var action = reaction.actions[index];
     var action_name = action.indexOf(" ") > -1 ? action.split(" ")[0] : action;
     var action_attr = action.indexOf(" ") > -1 ? action.split(" ")[1] : null;
@@ -34,7 +32,7 @@ function Style(name,text)
   {
     var h = {"SIGHT":{}};
 
-    var sights = this.host.find_sights();
+    var sights = markl.arena.events_visible_from(this.host.pos);
 
     for(id in sights){
       var sight = sights[id];
@@ -70,6 +68,7 @@ function Style(name,text)
 
   this.make_reaction = function(trigger = null,event = null,condition = null)
   {
+    // console.log(trigger+" > "+event+" > "+condition, this.triggers);
     if(!this.triggers[trigger]){ return null; }
     if(!this.triggers[trigger][event]){ return null; }
     if(!this.triggers[trigger][event][condition]){ return null; }
