@@ -19,6 +19,18 @@ function Designer()
     this.update();
   }
 
+  var prev = null;
+
+  this.highlight = function(line)
+  {
+    if(prev){ prev.style.backgroundColor = 'transparent'; }
+
+    if(!line){ return; }
+    var line_el = document.getElementById("line_"+line);
+    line_el.style.backgroundColor = 'red';
+    prev = line_el;
+  }
+
   this.update = function()
   {
     markl.designer.hint_el.innerHTML = markl.designer.parse();
@@ -31,7 +43,7 @@ function Designer()
     for(id in lines){
       var line = lines[id];
       var hint = this.parse_line(line);
-      html += "<line class='"+hint.style+"'><span class='pad'>"+line+"</span> "+hint.text+"</line>";
+      html += "<line id='line_"+id+"' class='"+hint.style+"'><span class='pad'>"+line+"</span> "+hint.text+"</line>";
     }
     return html;
   }

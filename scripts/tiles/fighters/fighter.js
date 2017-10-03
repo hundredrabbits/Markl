@@ -180,7 +180,7 @@ function Fighter(name,style)
       this.sprite_action.setAttribute("stroke","red");
     }
     else{
-      this.sprite_action.setAttribute("stroke","blue");
+      this.sprite_action.setAttribute("stroke","black");
     }
 
     if(this.status.vector == "right"){

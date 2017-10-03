@@ -20,12 +20,10 @@ function Style(name,text)
 
   this.run = function(reaction,index = 0)
   {
-    console.log(reaction);
     var action = reaction.actions[index];
-    var action_name = action.indexOf(" ") > -1 ? action.split(" ")[0] : action;
-    var action_attr = action.indexOf(" ") > -1 ? action.split(" ")[1] : null;
 
-    var a = new window[action_name](this.host,action_attr,reaction.target);
+    markl.designer.highlight(action.line);
+    var a = new window[action.name](this.host,action.attr,reaction.target);
     a.run();
   }
 
@@ -120,7 +118,8 @@ function Style(name,text)
         event.conditions.push(condition);
       }
       if(pad == 6){
-        condition.actions.push(line.trim());
+        var action_obj = {name:line.trim().indexOf(" ") > -1 ? line.trim().split(" ")[0] : line.trim(), attr:line.trim().indexOf(" ") > -1 ? line.trim().split(" ")[1] : null, line:id};
+        condition.actions.push(action_obj);
       }
     }
     if(trigger){ a.push(trigger); }

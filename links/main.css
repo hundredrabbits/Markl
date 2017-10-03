@@ -24,7 +24,7 @@ event.spawn svg { stroke-width:1px; fill:none; stroke:#999; }
 event.block svg { stroke:none; fill:#000; }
 event.wall svg { stroke:none; fill:#000; }
 event.fighter svg { stroke:2px; fill:#000; }
-event.fighter.acting svg { fill:blue; }
+event.fighter.acting svg { fill:white; }
 event.fighter.active svg { fill:green; }
 event.fighter.idle svg { fill:yellow; }
 event.fighter.knocked svg { fill:pink; }
