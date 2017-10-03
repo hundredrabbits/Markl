@@ -20,4 +20,9 @@ function Spawn(pos)
   e.appendChild(s);
 
   this.el.appendChild(e);
+
+  this.update = function()
+  {
+    console.log("??")
+  }
 }

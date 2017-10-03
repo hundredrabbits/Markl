@@ -31,6 +31,7 @@ function Battle()
       console.info("TURN "+this.counter+" : "+next_fighter.name);  
     }
     
+
     this.next_fighter().act();
   }
 

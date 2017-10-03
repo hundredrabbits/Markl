@@ -80,29 +80,6 @@ function Arena(name,size, events = [])
     return false;
   }
 
-
-  this.collider_at = function(pos)
-  {
-    for (var i = this.events.length - 1; i >= 0; i--) {
-      if(this.events[i].pos.is_equal(pos)){
-        return this.events[i];
-      }
-    }
-    return null;
-  }
-
-  this.fighter_at = function(pos)
-  {
-    for (var i = markl.fighters.length - 1; i >= 0; i--) {
-      if(markl.fighters[i].is_alive() === true){
-        if(markl.fighters[i].pos.x == pos.x && markl.fighters[i].pos.y == pos.y){ 
-          return markl.fighters[i];
-        }
-      }
-    }
-    return null;
-  }
-
   this.event_at = function(pos,type = null)
   {
     for(id in this.events) {
@@ -143,7 +120,7 @@ function Arena(name,size, events = [])
     // Top
     for (var y = 1; y < 5; y++){
       var target = pos.add(new Pos(0,y)); 
-      var events = this.events_at(target,type); 
+      var events = this.events_at(target,type);
       if(events.length > 0){ sight = sight.concat(events); break;  }
     }
     for (var y = -1; y > -5; y--){
