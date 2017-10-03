@@ -12,6 +12,7 @@ function WAIT(host,attr = null,target = null)
     this.host.status = {action:this.name};
     this.host.stamina -= this.cost;
 
+    console.log("Wait");
     this.host.update(); 
   }
 }

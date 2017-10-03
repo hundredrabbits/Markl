@@ -72,24 +72,29 @@ function Fighter(name,style)
     this.style.act();
   }
 
-  this.damage = function()
+  this.damage = function(val)
   {
-    this.hp -= 1;
+    this.hp -= val;
     this.update();
   }
 
-  this.knockback = function(origin)
+  this.knockback = function(vector)
   {
-    this.el.className = "fighter knocked";
-    var offset = origin.offset(this.pos);
-    var destination = this.pos.add(offset.invert());
+    var destination = this.pos.add(vector);
+    console.log(this.name+" knockbacked to:"+destination);
     
     if(this.can_move_to(destination)){
       this.pos = destination;
       $(this.el).animate({ top:destination.html().y, left:destination.html().x }, ACT_SPEED/4);
     }
-    this.stamina -= 10;
+    this.stun();
     this.update();
+  }
+
+  this.stun = function()
+  {
+    this.stamina -= 10;
+    this.el.className = "fighter knocked";
   }
 
   this.can_move_to = function(pos)

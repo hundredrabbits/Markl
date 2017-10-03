@@ -2,6 +2,7 @@
 
 ## TODOs
 
+- CPU2 is trying to move in diagonal, because it sees in diagonal?
 - Knockback, detect blockers
 - Add moveable objects(pots,etc..)
 - Add dash

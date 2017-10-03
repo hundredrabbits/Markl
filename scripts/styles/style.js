@@ -68,7 +68,6 @@ function Style(name,text)
 
   this.make_reaction = function(trigger = null,event = null,condition = null)
   {
-    // console.log(trigger+" > "+event+" > "+condition, this.triggers);
     if(!this.triggers[trigger]){ return null; }
     if(!this.triggers[trigger][event]){ return null; }
     if(!this.triggers[trigger][event][condition]){ return null; }

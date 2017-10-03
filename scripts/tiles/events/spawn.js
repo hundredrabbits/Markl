@@ -4,6 +4,7 @@ function Spawn(pos)
 
   this.fighter = null;
   this.type = "spawn";
+  this.name = "Spawn";
 
   this.el.setAttribute("class","spawn");
 

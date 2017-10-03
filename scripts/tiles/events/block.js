@@ -4,6 +4,7 @@ function Block(pos)
 
   this.name = "Block";
   this.is_collider = true;
+  this.type = "Blocker";
 
   this.el.setAttribute("class","block");
 

@@ -16,4 +16,9 @@ function Event(pos = null)
       this.el.setAttribute("style","left:"+(this.pos.x*TILE_SIZE.width)+"px;bottom:"+(this.pos.y*TILE_SIZE.width)+"px");  
     }
   }
+
+  this.toString = function()
+  {
+    return this.name+"["+this.type+"] "+this.pos.toString();
+  }
 }

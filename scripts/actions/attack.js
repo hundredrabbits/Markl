@@ -16,9 +16,9 @@ function ATTACK(host,attr,target = null)
     var event_at_position = markl.arena.event_at(target_position,"fighter");
 
     if(event_at_position){
-      console.log(this.name,"at "+target_position);
+      console.log(this.name,"at "+target_position+"("+vector.name+")");
       event_at_position.damage(1);
-      event_at_position.knockback(this.host.pos);
+      event_at_position.knockback(vector);
     }
     else{
       console.log(this.name,"at "+target_position+", but no one is here.");

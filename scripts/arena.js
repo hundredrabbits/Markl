@@ -21,6 +21,7 @@ function Arena(name,size, events = [])
 
     for(var i = 0; i < this.events.length; i++){
       var event = this.events[i];
+      console.log("Added event:",event.toString());
       this.el.appendChild(event.el);
     }
 
@@ -129,21 +130,25 @@ function Arena(name,size, events = [])
   {
     var sight = [];
     // Right/Left
-    for (var x = 1; x < 10; x++){
-      var events = this.events_at(new Pos(x,0),type);
+    for (var x = 1; x < 5; x++){
+      var offset = new Pos(x,0);
+      var events = this.events_at(pos.add(offset),type);
       if(events.length > 0){ sight = sight.concat(events);break;  }
     }
-    for (var x = -1; x > -10; x--){
-      var events = this.events_at(new Pos(x,0),type);
+    for (var x = -1; x > -5; x--){
+      var offset = new Pos(x,0);
+      var events = this.events_at(pos.add(offset),type);
       if(events.length > 0){ sight = sight.concat(events); break;  }
     }
     // Top
-    for (var y = 1; y < 10; y++){
-      var events = this.events_at(new Pos(0,y),type);
+    for (var y = 1; y < 5; y++){
+      var target = pos.add(new Pos(0,y)); 
+      var events = this.events_at(target,type); 
       if(events.length > 0){ sight = sight.concat(events); break;  }
     }
-    for (var y = -1; y > -10; y--){
-      var events = this.events_at(new Pos(0,y),type);
+    for (var y = -1; y > -5; y--){
+      var target = pos.add(new Pos(0,y)); 
+      var events = this.events_at(target,type);
       if(events.length > 0){ sight = sight.concat(events); break;  }
     }
     return sight;
