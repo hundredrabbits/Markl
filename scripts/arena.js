@@ -91,6 +91,17 @@ function Arena(name,size, events = [])
     return null;
   }
 
+  this.colliders_at = function(pos)
+  {
+    var a = [];
+    for(id in this.events_at(pos)) {
+      var event = this.events[id];
+      if(!event.is_collider){ continue; }
+      a.push(event);
+    }
+    return a;
+  }
+
   this.events_at = function(pos,type = null)
   {
     var a = [];

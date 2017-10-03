@@ -60,8 +60,7 @@ function Fighter(name,style)
   this.update = function(new_class = "")
   {
     if(this.hp < 1 || this.stamina < 1){ 
-      this.el.className = "fighter dead";
-      this.is_collider = false;
+      this.kill();
     }
     this.update_sprite();
     this.update_interface();
@@ -76,6 +75,13 @@ function Fighter(name,style)
   {
     this.hp -= val;
     this.update();
+  }
+
+  this.kill = function()
+  {
+    this.el.className = "fighter dead";
+    this.is_collider = false;
+    this.is_visible = false;
   }
 
   this.knockback = function(vector)

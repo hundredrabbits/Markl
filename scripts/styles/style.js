@@ -20,6 +20,7 @@ function Style(name,text)
 
   this.run = function(reaction,index = 0)
   {
+    console.log(reaction);
     var action = reaction.actions[index];
     var action_name = action.indexOf(" ") > -1 ? action.split(" ")[0] : action;
     var action_attr = action.indexOf(" ") > -1 ? action.split(" ")[1] : null;
@@ -36,6 +37,7 @@ function Style(name,text)
 
     for(id in sights){
       var sight = sights[id];
+      if(!sight.is_visible){ continue; }
       var sight_type = sight.type.toUpperCase();
       var sight_distance = sight.pos.distance_from(this.host.pos);
       if(!h["SIGHT"][sight_type]){

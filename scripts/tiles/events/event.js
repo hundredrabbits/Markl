@@ -3,6 +3,7 @@ function Event(pos = null)
   Tile.call(this,pos);
 
   this.is_collider = null;
+  this.is_visible = true;
   this.type = "Any";
 
   this.el = document.createElement("event");
