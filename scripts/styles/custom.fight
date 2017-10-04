@@ -1,3 +1,10 @@
+let menu_test = `MENU
+  CHARACTER
+    NAME IS PATIENCE
+      SELECT
+`;
+
+
 let custom_style = `-- wimp.fight
 
 SIGHT

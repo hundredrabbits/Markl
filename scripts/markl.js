@@ -19,7 +19,6 @@ function Markl()
   this.fighters = [];
   this.battle = null;
 
-  this.interface = new Interface();
   this.designer = new Designer();
   this.keyboard = new Keyboard();
 
@@ -32,13 +31,12 @@ function Markl()
   {
     console.log("start");
 
-    this.select_fighter(new Patience("USER",new Style("custom",custom_style)));
+    this.select_fighter(new Patience("USER",new Style("custom",menu_test)));
     this.select_arena(arenas.training);
     this.select_opponents([new Sage("CPU1",new Style("idle",custom_style)),new Sage("CPU2",new Style("idle",custom_style)),new Sage("CPU3",new Style("idle",custom_style))]);
 
     this.keyboard.install();
     this.designer.install();
-    this.interface.start();
 
     this.arena.start();
 

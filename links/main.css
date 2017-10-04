@@ -1,16 +1,25 @@
 body { font-size:11px; font-family: courier; background: black; overflow:hidden; }
 
-yu { display: block; background:#000; }
+yu { display: block; }
 
-#interface { margin-top:15px; color:white; }
-
-yu.designer { display:block; background:#eee; width:calc(100vw - 580px); height:calc(100vh - 80px); position: fixed; top:0px; left:500px; padding:40px; font-family: 'input_mono_regular';font-size:12px;}
-yu.designer textarea { width:100%; height:100%; background:transparent; color:#111; position: absolute; line-height: 20px}
-yu.designer div { width:100%; height:calc(100vh - 80px); line-height: 20px; color:#aaa;}
+yu.designer { display:block; background:#eee; width:calc(100vw - 560px); height:calc(100vh - 80px); position: fixed; top:0px; right:0px; padding:40px; font-family: 'input_mono_regular';font-size:12px; max-width: 500px; min-width: 360px}
+yu.designer textarea { width:100%; height:100%; background:transparent; color:#111; position: absolute; line-height: 20px; max-height: calc(100% - 135px); padding-top:20px;}
+yu.designer div.hint { width:100%; height:calc(100vh - 80px); line-height: 20px; color:#aaa; max-height: calc(100% - 160px); padding-top:20px }
 yu.designer div line { display:block; line-height: 20px; white-space: pre }
 yu.designer div line .pad { color:rgba(0,0,0,0); }
 yu.designer div line.trigger {  }
 yu.designer div line.trigger:before { content: ">";position: absolute;left:15px;color:black; }
+
+yu.battle { color:#000; padding-bottom:20px; border-bottom:1px solid #ccc;}
+yu.battle b { font-family: 'input_mono_medium' }
+yu.battle ln.fighter { display: inline-block; margin-right: 15px }
+yu.battle ln.fighter .dmg { color:#ccc; }
+
+yu.designer yu.controller { display: block;height: 60px;position: absolute;bottom: 0px;width: calc(100% - 80px); }
+yu.designer yu.controller yu.button { background:black; color:#fff; padding:10px; display: inline-block; float:right; border-radius: 3px }
+yu.designer yu.controller yu.button b { font-family: 'input_mono_medium'  }
+yu.designer yu.controller yu.button i { color:#888;  }
+yu.designer yu.controller yu.button:hover { background:#ccc; color:black; cursor: pointer; }
 
 .arena { position:relative; }
 .arena tile { display:block; width:80px; height:80px;position: absolute; border:1px solid #000; font-size:10px; color:#000; text-align:center; font-family: Helvetica}

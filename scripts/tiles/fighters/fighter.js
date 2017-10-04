@@ -9,6 +9,8 @@ function Fighter(name,style)
   this.status = "idle";
   this.type = "fighter";
 
+  this.interface = new Fighter_Interface(this);
+
   this.hp = 3;
   this.stamina = 200;
 
@@ -25,19 +27,6 @@ function Fighter(name,style)
   this.sprite.appendChild(this.sprite_basic);
   this.sprite.appendChild(this.sprite_action);
   this.el.appendChild(this.sprite);
-
-  // Interface
-
-  this.name_label = document.createElement("span");
-  this.name_label.textContent = this.name;
-  
-  this.interface = document.createElement("div");
-  this.interface.setAttribute("class","fighter");
-  this.interface.innerHTML = this.name;
-
-  //
-  this.el.setAttribute("class","fighter");
-  this.el.appendChild(this.name_label);
 
   this.setup = function()
   {
@@ -63,7 +52,7 @@ function Fighter(name,style)
       this.kill();
     }
     this.update_sprite();
-    this.update_interface();
+    this.interface.update();
   }
 
   this.act = function()
@@ -138,41 +127,6 @@ function Fighter(name,style)
   {
     console.log("End turn");
     return;
-  }
-
-  this.update_interface = function()
-  {
-    var html = this.name+" > ";
-
-    // HP
-    if(this.hp == 4){
-      html += "||||";
-    }
-    if(this.hp == 3){
-      html += "|||<span style='color:red'>|</span>";
-    }
-    if(this.hp == 2){
-      html += "||<span style='color:red'>||</span>";
-    }
-    if(this.hp == 1){
-      html += "|<span style='color:red'>|||</span>";
-    }
-    if(this.hp == 0){
-      html += "<span style='color:red'>||||</span>";
-    }
-
-    // Max stamina
-
-    if(markl.battle){
-      var speed = this.stamina - markl.battle.next_fighter().stamina;
-      html += "SP:"+speed+" ";
-
-      if(this.hp > 0){
-        html += " - "+this.status.action+(this.status.action ? "["+this.status.vector+"] " : "");
-      }
-    }
-  
-    this.interface.innerHTML = html;
   }
 
   this.update_sprite = function()

@@ -31,7 +31,7 @@ function Battle()
       console.info("TURN "+this.counter+" : "+next_fighter.name);  
     }
 
-    markl.interface.update();
+    markl.designer.update();
     
     this.next_fighter().act();
   }
@@ -51,6 +51,6 @@ function Battle()
   {
     this.counter = 0;
     console.log("<Battle>Ended");
-    markl.interface.update();
+    markl.designer.update();
   }
 }

@@ -4,13 +4,31 @@ function Designer()
   this.el.className = "designer";
   this.input_el = document.createElement('textarea');
   this.hint_el = document.createElement('div');
+  this.hint_el.className = "hint";
+
+  this.battle_el = document.createElement('yu');
+  this.battle_el.className = "battle";
+
+  this.controller_el = document.createElement('yu');
+  this.controller_el.className = "controller";
+
+  this.start_button = document.createElement('yu');
+  this.start_button.className = "start button";
+  this.start_button.textContent = "Run";
 
   this.install = function()
   {
+    this.el.appendChild(this.battle_el);
     this.el.appendChild(this.input_el);
     this.el.appendChild(this.hint_el);
+    this.el.appendChild(this.controller_el);
+    this.controller_el.appendChild(this.start_button);
     document.body.appendChild(this.el);
     markl.designer.input_el.addEventListener('input', markl.designer.update);
+
+    for(id in markl.fighters){
+      this.battle_el.appendChild(markl.fighters[id].interface.el)
+    }
   }
 
   this.load = function(style)
@@ -33,7 +51,13 @@ function Designer()
 
   this.update = function()
   {
+    for(id in markl.fighters){
+      markl.fighters[id].interface.update();
+    }
+
     markl.designer.hint_el.innerHTML = markl.designer.parse();
+
+    this.start_button.innerHTML = "<b>Run</b> <i>"+this.input_el.value.split("\n").length+" lines</i>"
   }
 
   this.parse = function()
