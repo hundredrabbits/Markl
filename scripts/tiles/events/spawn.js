@@ -18,7 +18,7 @@ function Spawn(pos)
   var s = document.createElementNS("http://www.w3.org/2000/svg", "circle");
   s.setAttribute("cx",TILE_SIZE.width/2);
   s.setAttribute("cy",TILE_SIZE.height/2);
-  s.setAttribute("r",TILE_SIZE.width * 0.3);
+  s.setAttribute("r",TILE_SIZE.width * 0.4);
 
   e.appendChild(s);
 

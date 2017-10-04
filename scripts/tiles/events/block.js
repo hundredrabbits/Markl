@@ -13,10 +13,10 @@ function Block(pos)
   e.setAttribute("class","icon");
 
   var s = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-  s.setAttribute("x",TILE_SIZE.width/4);
-  s.setAttribute("y",TILE_SIZE.height/4);
-  s.setAttribute("width",TILE_SIZE.width/2);
-  s.setAttribute("height",TILE_SIZE.width/2);
+  s.setAttribute("x",0);
+  s.setAttribute("y",0);
+  s.setAttribute("width",TILE_SIZE.width);
+  s.setAttribute("height",TILE_SIZE.width);
 
   e.appendChild(s);
 

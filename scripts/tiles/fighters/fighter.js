@@ -161,8 +161,11 @@ function Fighter(name,style)
       html += "<span style='color:red'>||||</span>";
     }
 
+    // Max stamina
+
     if(markl.battle){
       var speed = this.stamina - markl.battle.next_fighter().stamina;
+      html += "SP:"+speed+" ";
 
       if(this.hp > 0){
         html += " - "+this.status.action+(this.status.action ? "["+this.status.vector+"] " : "");

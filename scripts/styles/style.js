@@ -38,7 +38,7 @@ function Style(name,text)
   {
     console.log("complete")
     this.host.el.className = "fighter idle";
-    markl.battle.turn();
+    // markl.battle.turn();
   }
 
   this.find_triggers = function()

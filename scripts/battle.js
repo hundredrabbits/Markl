@@ -30,17 +30,10 @@ function Battle()
     else{
       console.info("TURN "+this.counter+" : "+next_fighter.name);  
     }
+
+    markl.interface.update();
     
     this.next_fighter().act();
-  }
-
-  this.sort_fighters = function()
-  {
-    var order = [];
-    while(order.length < markl.fighters.length){
-      order.push(this.next_fighter(order).name);
-    }
-    return order
   }
 
   this.next_fighter = function()
