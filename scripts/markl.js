@@ -37,11 +37,13 @@ function Markl()
     this.designer.install();
 
     this.designer.select_style(new Style("custom",menu_test));
-    
+
+    this.select_fighter(new Lancer("USER"));
+
     this.show(new Character_Screen());
 
     // this.select_arena(arenas.training);
-    // this.select_opponents([new Sage("CPU1",new Style("idle",custom_style)),new Sage("CPU2",new Style("idle",custom_style)),new Sage("CPU3",new Style("idle",custom_style))]);
+    
 
 
     // this.arena.start();

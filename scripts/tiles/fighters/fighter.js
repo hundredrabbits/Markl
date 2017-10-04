@@ -1,4 +1,4 @@
-function Fighter(name,style)
+function Fighter(name,style = null)
 {
   Event.call(this, new Pos(0,0));
 
@@ -6,6 +6,8 @@ function Fighter(name,style)
   this.is_collider = true;
   this.status = "idle";
   this.type = "fighter";
+
+  this.style = style;
 
   this.interface = new Fighter_Interface(this);
 

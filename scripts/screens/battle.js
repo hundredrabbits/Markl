@@ -1,4 +1,4 @@
-function Battle()
+function Battle_Screen()
 {
   Screen.call(this);
   

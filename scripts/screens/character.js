@@ -3,7 +3,7 @@ function Character_Screen()
   Screen.call(this);
 
   this.name = "character selection";
-  this.index = 0;
+  this.index = 3;
 
   this.el.className = "character_selection";
   this.el.innerHTML = `
@@ -15,6 +15,10 @@ function Character_Screen()
 
   this.start = function()
   {
+    if(markl.fighter){
+      this.leave();
+      return;
+    }
     this.next();
   }
 
@@ -47,6 +51,17 @@ function Character_Screen()
   {
     var fighter_name = capitalize(name);
     markl.select_fighter(new window[fighter_name]("USER"));
+
+    var p_patience = document.getElementById("portrait_patience");
+    var p_sin = document.getElementById("portrait_sin");
+    var p_pest = document.getElementById("portrait_pest");
+
+    var speed = ACT_SPEED * 8;
+    $(p_patience).animate({ opacity:0 }, speed);
+    $(p_sin).animate({  opacity:0 }, speed);
+    $(p_pest).animate({ opacity:0 }, speed);
+
+    setTimeout(function(){ markl.screen.leave() }, ACT_SPEED * 16);
   }
 
   function capitalize(s)
@@ -103,7 +118,8 @@ function Character_Screen()
   this.leave = function()
   {
     console.log("LEAVE")
-    markl.show(new Battle());
+    markl.select_opponents([new Sin("CPU1",new Style("idle",custom_style)),new Patience("CPU2",new Style("idle",custom_style)),new Pest("CPU3",new Style("idle",custom_style))]);
+    markl.show(new Arena_Screen());
   }
 
 }
