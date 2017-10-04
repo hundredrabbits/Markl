@@ -2,8 +2,7 @@
 
 ## TODOs
 
-- CPU2 is trying to move in diagonal, because it sees in diagonal?
-- Knockback, detect blockers
+- Corpses should not block movement,sight
 - Add moveable objects(pots,etc..)
 - Add dash
 - Add projectiles
@@ -35,7 +34,7 @@
 
 ### Backstab
 
-If attacked at the back, instant kill.
+If attacked at the back, instant kill?
 
 ### Dodging/Blocking
 
@@ -59,7 +58,7 @@ Waiting costs only 1 stamina, making it more likely to be the next one to move, 
 ### Character Selection Screen
 
 - Cursor
-- Portraits
+- Portraits +parallax frame
 - Names
 - Statistics
 - Loadout(?)
@@ -74,6 +73,8 @@ Waiting costs only 1 stamina, making it more likely to be the next one to move, 
 - Holes
 - Doodads
 - Parallax
+- Floor tiles
+- Wall tiles
 
 #### Characters
 

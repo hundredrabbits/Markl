@@ -94,10 +94,10 @@ function Arena(name,size, events = [])
   this.colliders_at = function(pos)
   {
     var a = [];
-    for(id in this.events_at(pos)) {
-      var event = this.events[id];
-      if(!event.is_collider){ continue; }
-      a.push(event);
+    var events = this.events_at(pos);
+    for(id in events){
+      if(events[id].is_collider == false){ continue; }
+      a.push(events[id]);
     }
     return a;
   }

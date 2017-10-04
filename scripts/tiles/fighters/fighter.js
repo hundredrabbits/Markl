@@ -105,7 +105,10 @@ function Fighter(name,style)
 
   this.can_move_to = function(pos)
   {
-    return markl.arena.is_within_limits(pos);
+    if(!markl.arena.is_within_limits(pos)){ return false; }
+    if(markl.arena.colliders_at(pos).length > 0){ return false; }
+
+    return true;
   }
 
   this.is_alive = function()

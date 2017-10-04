@@ -22,14 +22,28 @@ function Style(name,text)
   {
     var action = reaction.actions[index];
 
-    markl.designer.highlight(action.line);
+    if(this.host.name == markl.fighter.name){ markl.designer.highlight(action.line,reaction.target); }
+
     var a = new window[action.name](this.host,action.attr,reaction.target);
     a.run();
+
+    this.host.el.className = "fighter active";
+    this.host.update();
+    var s = this;
+
+    setTimeout(function(){ s.complete(); }, ACT_SPEED);
+  }
+
+  this.complete = function()
+  {
+    console.log("complete")
+    this.host.el.className = "fighter idle";
+    markl.battle.turn();
   }
 
   this.find_triggers = function()
   {
-    var h = {"SIGHT":{}};
+    var h = {"SIGHT":{},"DEFAULT":{"DEFAULT":{"DEFAULT":{}}}};
 
     var sights = markl.arena.events_visible_from(this.host.pos);
 
@@ -63,7 +77,8 @@ function Style(name,text)
         }
       }
     }
-    return {actions:["WAIT"]};
+    console.warn("Empty")
+    return {actions:[{name:"WAIT"}]};
   }
 
   this.make_reaction = function(trigger = null,event = null,condition = null)
@@ -72,24 +87,6 @@ function Style(name,text)
     if(!this.triggers[trigger][event]){ return null; }
     if(!this.triggers[trigger][event][condition]){ return null; }
     return {trigger:trigger,event:event,condition:condition,target:this.triggers[trigger][event][condition]};
-  }
-
-  this.render = function(action = new WAIT())
-  {
-    this.host.el.className = "fighter active";
-    var s = this;
-
-    var log = action.play(this.host);
-    this.host.update();
-
-    setTimeout(function(){ s.complete(); }, ACT_SPEED);
-  }
-
-  this.complete = function()
-  {
-    console.log("complete")
-    this.host.el.className = "fighter idle";
-    markl.battle.turn();
   }
 
   function parse(text)

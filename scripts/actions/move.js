@@ -7,12 +7,21 @@ function MOVE(host,attr,target = null)
 
   this.run = function()
   {
-    var offset = this.host.pos.offset(this.target.pos).invert();
-    var vector = new Vector(offset.x,offset.y);
+    var vector = null;
 
     if(this.attr == "AWAY"){
-      vector = this.find_away_vector(vector);
+      var offset = this.host.pos.offset(this.target.pos).invert();
+      vector = this.find_away_vector(new Vector(offset.x,offset.y));
     }
+    if(this.attr == "TOWARD"){
+      var offset = this.host.pos.offset(this.target.pos).invert();
+      vector = new Vector(offset.x,offset.y);
+    }
+    if(this.attr == "ANY"){
+      vector = this.find_any_vector();
+    }
+
+    console.log(this.attr,vector)
 
     this.host.status = {action:this.name,vector:vector.name};
     this.host.stamina -= this.cost;
@@ -41,7 +50,6 @@ function MOVE(host,attr,target = null)
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.invert());
 
     if(this.host.can_move_to(target_position)){
-      console.log("Step backward")
       return vector.invert();
     }
 
@@ -49,28 +57,26 @@ function MOVE(host,attr,target = null)
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.rotate(1));
 
     if(this.host.can_move_to(target_position)){
-      console.log("Step sideways")
       return vector.rotate(1);
     }
     // Sideways
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.rotate(-1));
 
     if(this.host.can_move_to(target_position)){
-      console.log("Step sideways")
       return vector.rotate(-1);
     }
 
     return 
   }
 
-  this.find_any = function()
+  this.find_any_vector = function()
   {
     var items = [RIGHT, LEFT, UP, DOWN];
     var vector = items[Math.floor(Math.random()*items.length)];
 
     var target_pos = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     if(!this.host.can_move_to(target_pos)){
-      vector = this.find_any();
+      vector = this.find_any_vector();
     }
 
     return vector;

@@ -21,7 +21,7 @@ function Designer()
 
   var prev = null;
 
-  this.highlight = function(line)
+  this.highlight = function(line, target = null)
   {
     if(prev){ prev.style.backgroundColor = 'transparent'; }
 
