@@ -3,8 +3,6 @@ function Fighter(name,style)
   Event.call(this, new Pos(0,0));
 
   this.name = name;
-  this.style = style;
-  this.style.host = this;
   this.is_collider = true;
   this.status = "idle";
   this.type = "fighter";

@@ -2,6 +2,14 @@ let menu_test = `MENU
   CHARACTER
     NAME IS PATIENCE
       SELECT
+  LOADOUT
+    SPELL IS ARROW
+      SELECT
+      
+OPTION
+  AUDIO
+    NAME IS SFX
+       SET 0
 `;
 
 

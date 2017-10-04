@@ -31,7 +31,7 @@ function Designer()
     }
   }
 
-  this.load = function(style)
+  this.select_style = function(style)
   {
     this.input_el.value = style.text;
     this.update();
@@ -57,7 +57,7 @@ function Designer()
 
     markl.designer.hint_el.innerHTML = markl.designer.parse();
 
-    this.start_button.innerHTML = "<b>Run</b> <i>"+this.input_el.value.split("\n").length+" lines</i>"
+    markl.designer.start_button.innerHTML = "<b>Run</b> <i>"+markl.designer.input_el.value.split("\n").length+" lines</i>"
   }
 
   this.parse = function()
@@ -72,6 +72,11 @@ function Designer()
     return html;
   }
 
+  this.run = function()
+  {
+
+  }
+
   this.parse_line = function(line)
   {
     var text = "";
@@ -79,7 +84,7 @@ function Designer()
     if(line.trim() == "")                { text = ""; }
     else if(line.substr(0,2) == "--")    { text = ""; }
     else if(line.substr(0,6) == "      "){ text = ">> "; }
-    else if(line.substr(0,4) == "    ")  { text = "?? "; }
+    else if(line.substr(0,4) == "    ")  { text = " "; }
     else if(line.substr(0,2) == "  ")    { text = ""; }
     else if(line.substr(0,1) != " ")     { text = "Trigger"; style = "trigger"; }
     return {text:text,style:style};

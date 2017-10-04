@@ -12,7 +12,7 @@ var RIGHT = new Vector(1,0);
 function Markl()
 {
   this.el = document.createElement('yu');
-  this.el.style.padding = (TILE_SIZE.width/2)+"px";
+  this.el.className = "screen";
 
   this.arena = null;
   this.fighter = null;
@@ -31,17 +31,29 @@ function Markl()
   {
     console.log("start");
 
-    this.select_fighter(new Patience("USER",new Style("custom",menu_test)));
-    this.select_arena(arenas.training);
-    this.select_opponents([new Sage("CPU1",new Style("idle",custom_style)),new Sage("CPU2",new Style("idle",custom_style)),new Sage("CPU3",new Style("idle",custom_style))]);
-
     this.keyboard.install();
     this.designer.install();
 
-    this.arena.start();
+    this.designer.select_style(new Style("custom",menu_test));
 
-    this.battle = new Battle();
-    this.designer.load(this.fighter.style);
+    this.show(new Character_Screen());
+
+    // this.select_fighter(new Patience("USER"));
+
+    // this.select_arena(arenas.training);
+    // this.select_opponents([new Sage("CPU1",new Style("idle",custom_style)),new Sage("CPU2",new Style("idle",custom_style)),new Sage("CPU3",new Style("idle",custom_style))]);
+
+
+    // this.arena.start();
+
+    // this.battle = new Battle();
+  }
+
+  this.show = function(screen)
+  {
+    this.el.innerHTML = "";
+    this.el.appendChild(screen.el);
+    screen.start();
   }
 
   this.select_arena = function(arena)
@@ -57,6 +69,7 @@ function Markl()
     this.fighter = fighter;
     this.fighters.push(this.fighter);
     this.fighter.setup();
+    this.designer.update();
   }
 
   this.select_opponents = function(opponents)

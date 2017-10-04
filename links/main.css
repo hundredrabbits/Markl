@@ -1,8 +1,23 @@
-body { font-size:11px; font-family: courier; background: black; overflow:hidden; }
+body { font-size:11px; font-family: 'input_mono_regular'; background: black; overflow:hidden; }
 
 yu { display: block; }
 
-yu.designer { display:block; background:#eee; width:calc(100vw - 560px); height:calc(100vh - 80px); position: fixed; top:0px; right:0px; padding:40px; font-family: 'input_mono_regular';font-size:12px; max-width: 500px; min-width: 360px}
+yu.screen { background:white; width: calc(100vw - 480px); height:100vh; }
+
+yu.screen yu.character_selection { height: 400px;width: 680px; margin:0px auto }
+yu.screen yu.character { display:block; float:left; margin-top:90px; position: relative; overflow: hidden;}
+yu.screen yu.character yu.frame {  background-image: url('../media/portraits/frame.png'); background-size:contain; background-repeat:no-repeat; position: absolute;}
+yu.screen yu.character yu.portrait {  background-size:contain; background-repeat:no-repeat; position: absolute;}
+yu.screen yu.character h2 { position: absolute;z-index: 900;font-size: 15px;text-align: center;text-transform: uppercase;bottom:50px;width:100%}
+yu.screen yu.character h2 small { display: block; font-size:12px; line-height: 20px; color:#999; }
+yu.screen yu.character yu.portrait, yu.screen yu.character yu.frame, yu.screen yu.character { width:170px; height:400px; }
+
+yu.screen yu.character yu.portrait.pest { background-image: url('../media/portraits/pest.png'); }
+yu.screen yu.character yu.portrait.sin { background-image: url('../media/portraits/sin.png'); }
+yu.screen yu.character yu.portrait.lancer { background-image: url('../media/portraits/lancer.png'); }
+yu.screen yu.character yu.portrait.patience { background-image: url('../media/portraits/patience.png'); }
+
+yu.designer { display:block; background:#eee; width:calc(100vw - 560px); height:calc(100vh - 80px); position: fixed; top:0px; right:0px; padding:40px; font-family: 'input_mono_regular';font-size:12px; max-width: 400px; min-width: 360px}
 yu.designer textarea { width:100%; height:100%; background:transparent; color:#111; position: absolute; line-height: 20px; max-height: calc(100% - 135px); padding-top:20px;}
 yu.designer div.hint { width:100%; height:calc(100vh - 80px); line-height: 20px; color:#aaa; max-height: calc(100% - 160px); padding-top:20px }
 yu.designer div line { display:block; line-height: 20px; white-space: pre }
