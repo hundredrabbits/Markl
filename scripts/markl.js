@@ -14,6 +14,8 @@ function Markl()
   this.el = document.createElement('yu');
   this.el.className = "screen";
 
+  this.screen = null;
+
   this.arena = null;
   this.fighter = null;
   this.fighters = [];
@@ -35,10 +37,8 @@ function Markl()
     this.designer.install();
 
     this.designer.select_style(new Style("custom",menu_test));
-
+    
     this.show(new Character_Screen());
-
-    // this.select_fighter(new Patience("USER"));
 
     // this.select_arena(arenas.training);
     // this.select_opponents([new Sage("CPU1",new Style("idle",custom_style)),new Sage("CPU2",new Style("idle",custom_style)),new Sage("CPU3",new Style("idle",custom_style))]);
@@ -51,6 +51,7 @@ function Markl()
 
   this.show = function(screen)
   {
+    this.screen = screen;
     this.el.innerHTML = "";
     this.el.appendChild(screen.el);
     screen.start();

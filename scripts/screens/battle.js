@@ -1,5 +1,13 @@
 function Battle()
 {
+  Screen.call(this);
+  
+  this.start = function()
+  {
+    console.log("battle start")
+  }
+
+  /*  
   this.counter = 0;
   this.limit = 500;
 
@@ -53,4 +61,5 @@ function Battle()
     console.log("<Battle>Ended");
     markl.designer.update();
   }
+  */
 }

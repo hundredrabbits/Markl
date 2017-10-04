@@ -81,12 +81,31 @@ function Style(name,text)
     return {actions:[{name:"WAIT"}]};
   }
 
-  this.make_reaction = function(trigger = null,event = null,condition = null)
+  this.react = function(triggers)
   {
-    if(!this.triggers[trigger]){ return null; }
-    if(!this.triggers[trigger][event]){ return null; }
-    if(!this.triggers[trigger][event][condition]){ return null; }
-    return {trigger:trigger,event:event,condition:condition,target:this.triggers[trigger][event][condition]};
+    for(trigger_id in this.tree){
+      var trigger = this.tree[trigger_id];
+      for(event_id in trigger.events){
+        var event = trigger.events[event_id];
+        for(condition_id in event.conditions){
+          var condition = event.conditions[condition_id];
+          var r = this.make_reaction(triggers,trigger.name,event.name,condition.name);
+          if(r){
+            r.actions = condition.actions;
+            return r;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  this.make_reaction = function(triggers, trigger = null,event = null,condition = null)
+  {
+    if(!triggers[trigger]){ return null; }
+    if(!triggers[trigger][event]){ return null; }
+    if(!triggers[trigger][event][condition]){ return null; }
+    return {trigger:trigger,event:event,condition:condition,target:triggers[trigger][event][condition]};
   }
 
   function parse(text)

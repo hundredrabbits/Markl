@@ -13,7 +13,7 @@ function Keyboard()
   this.key_down = function(e)
   {
     if(e.key == " "){
-      markl.battle.turn();
+      markl.designer.run();
     }
     if(e.key == "Escape"){
       markl.battle.stop();

@@ -20,6 +20,7 @@ yu.screen yu.character yu.portrait.patience { background-image: url('../media/po
 yu.designer { display:block; background:#eee; width:calc(100vw - 560px); height:calc(100vh - 80px); position: fixed; top:0px; right:0px; padding:40px; font-family: 'input_mono_regular';font-size:12px; max-width: 400px; min-width: 360px}
 yu.designer textarea { width:100%; height:100%; background:transparent; color:#111; position: absolute; line-height: 20px; max-height: calc(100% - 135px); padding-top:20px;}
 yu.designer div.hint { width:100%; height:calc(100vh - 80px); line-height: 20px; color:#aaa; max-height: calc(100% - 160px); padding-top:20px }
+yu.designer div.hint line.highlight { background:#ccc; }
 yu.designer div line { display:block; line-height: 20px; white-space: pre }
 yu.designer div line .pad { color:rgba(0,0,0,0); }
 yu.designer div line.trigger {  }

@@ -1,6 +1,6 @@
 let menu_test = `MENU
   CHARACTER
-    NAME IS PATIENCE
+    NAME IS LANCER
       SELECT
   LOADOUT
     SPELL IS ARROW

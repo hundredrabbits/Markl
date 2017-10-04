@@ -2,6 +2,7 @@ function Character_Screen()
 {
   Screen.call(this);
 
+  this.name = "character selection";
   this.index = 0;
 
   this.el.className = "character_selection";
@@ -24,7 +25,43 @@ function Character_Screen()
     this.index = this.index % 4;
 
     this.move_to(this.index);
+
+    var triggers = this.find_triggers();
+    markl.designer.run(triggers);
+
+    if(markl.fighter){
+      this.leave();
+      return;
+    }
     setTimeout(function(){ s.next(); }, ACT_SPEED * 8);
+  }
+
+  this.act = function(reaction)
+  {
+    if(reaction.actions[0].name == "SELECT"){
+      this.select_character(reaction.target);
+    }
+  }
+
+  this.select_character = function(name)
+  {
+    var fighter_name = capitalize(name);
+    markl.select_fighter(new window[fighter_name]("USER"));
+  }
+
+  function capitalize(s)
+  {
+    return s[0].toUpperCase() + s.slice(1).toLowerCase();
+  }
+
+  this.find_triggers = function()
+  {
+    var names = ["PATIENCE","SIN","LANCER","PEST"];
+    var name_is = "NAME IS "+names[this.index];
+    var triggers = {"MENU":{"CHARACTER":{}}};
+    triggers["MENU"]["CHARACTER"][name_is] = names[this.index];
+
+    return triggers;
   }
 
   this.move_to = function(index)
@@ -61,6 +98,12 @@ function Character_Screen()
       $(p_lancer).animate({ left:-pad*1, opacity:0.75 }, speed);
       $(p_pest).animate({ left:0, opacity:1 }, speed);
     }
+  }
+
+  this.leave = function()
+  {
+    console.log("LEAVE")
+    markl.show(new Battle());
   }
 
 }

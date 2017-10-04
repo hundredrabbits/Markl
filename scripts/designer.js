@@ -1,5 +1,7 @@
 function Designer()
 {
+  this.style = null;
+
   this.el = document.createElement('yu');
   this.el.className = "designer";
   this.input_el = document.createElement('textarea');
@@ -33,20 +35,23 @@ function Designer()
 
   this.select_style = function(style)
   {
+    this.style = style;
     this.input_el.value = style.text;
     this.update();
   }
 
-  var prev = null;
+  this.line_highlight = 0;
 
-  this.highlight = function(line, target = null)
+  this.run = function(triggers)
   {
-    if(prev){ prev.style.backgroundColor = 'transparent'; }
+    var reaction = this.style.react(triggers);
+    if(!reaction){ console.log("No reaction",triggers); return; }
 
-    if(!line){ return; }
-    var line_el = document.getElementById("line_"+line);
-    line_el.style.backgroundColor = 'red';
-    prev = line_el;
+    var actions = reaction ? reaction.actions : reaction;
+    var action = actions[0];
+    this.line_highlight = action.line;
+
+    markl.screen.act(reaction);
   }
 
   this.update = function()
@@ -57,7 +62,7 @@ function Designer()
 
     markl.designer.hint_el.innerHTML = markl.designer.parse();
 
-    markl.designer.start_button.innerHTML = "<b>Run</b> <i>"+markl.designer.input_el.value.split("\n").length+" lines</i>"
+    markl.designer.start_button.innerHTML = "<b>Running..</b> <i>"+markl.designer.input_el.value.split("\n").length+" lines</i>"
   }
 
   this.parse = function()
@@ -67,14 +72,9 @@ function Designer()
     for(id in lines){
       var line = lines[id];
       var hint = this.parse_line(line);
-      html += "<line id='line_"+id+"' class='"+hint.style+"'><span class='pad'>"+line+"</span> "+hint.text+"</line>";
+      html += "<line id='line_"+id+"' class='"+hint.style+" "+(id == this.line_highlight ? "highlight" : "")+"'><span class='pad'>"+line+"</span> "+hint.text+"</line>";
     }
     return html;
-  }
-
-  this.run = function()
-  {
-
   }
 
   this.parse_line = function(line)
