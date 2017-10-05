@@ -31,14 +31,10 @@ function Markl()
   
   this.start = function()
   {
-    console.log("start");
-
     this.keyboard.install();
     this.designer.install();
 
     this.designer.select_style(new Style("custom",menu_test));
-
-    this.select_fighter(new Lancer("USER"));
 
     this.show(new Character_Screen());
   }

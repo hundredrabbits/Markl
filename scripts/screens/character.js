@@ -3,7 +3,7 @@ function Character_Screen()
   Screen.call(this);
 
   this.name = "character selection";
-  this.index = 3;
+  this.index = 1;
 
   this.el.className = "character_selection";
   this.el.innerHTML = `
@@ -15,6 +15,8 @@ function Character_Screen()
 
   this.start = function()
   {
+    console.info("CHARACTER SELECTION","start")
+
     if(markl.fighter){
       this.leave();
       return;
@@ -60,8 +62,6 @@ function Character_Screen()
     $(p_patience).animate({ opacity:0 }, speed);
     $(p_sin).animate({  opacity:0 }, speed);
     $(p_pest).animate({ opacity:0 }, speed);
-
-    setTimeout(function(){ markl.screen.leave() }, ACT_SPEED * 16);
   }
 
   function capitalize(s)
@@ -121,5 +121,4 @@ function Character_Screen()
     markl.select_opponents([new Sin("CPU1",new Style("idle",custom_style)),new Patience("CPU2",new Style("idle",custom_style)),new Pest("CPU3",new Style("idle",custom_style))]);
     markl.show(new Arena_Screen());
   }
-
 }

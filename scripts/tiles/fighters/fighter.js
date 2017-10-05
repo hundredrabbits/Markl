@@ -20,7 +20,6 @@ function Fighter(name,style = null)
 
   this.start = function()
   {
-    console.log("!!!!!")
     this.el.className = "fighter "+this.character;
   }
 
@@ -31,7 +30,7 @@ function Fighter(name,style = null)
 
   this.spawn_at = function(spawn)
   {
-    console.log(this.name+" spawn",spawn.pos.toString())
+    console.log(this.name,"Spawned at"+spawn.pos.toString())
 
     markl.arena.el.appendChild(this.el);
     

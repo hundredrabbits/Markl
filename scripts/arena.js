@@ -21,7 +21,7 @@ function Arena(name,size, events = [])
 
     for(var i = 0; i < this.events.length; i++){
       var event = this.events[i];
-      console.log("Added event:",event.toString());
+      console.log("ARENA","Added event: "+event.toString());
       this.el.appendChild(event.el);
     }
   }
@@ -36,7 +36,6 @@ function Arena(name,size, events = [])
     for(id in this.events){
       this.events[id].start();
     }
-    console.log("area is ready")
   }
 
   this.add_event = function(event)

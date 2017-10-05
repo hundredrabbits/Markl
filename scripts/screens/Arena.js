@@ -30,7 +30,7 @@ function Arena_Screen()
 
   this.start = function()
   {
-    console.log("arena start")
+    console.info("ARENA","start")
 
     if(markl.arena){
       this.leave();
@@ -49,8 +49,6 @@ function Arena_Screen()
 
   this.select_arena = function(name)
   {
-    console.log("!!!!!!",name)
-
     for(id in this.arenas){
       if(this.arenas[id].name.toUpperCase() == name.toUpperCase()){
         markl.select_arena(this.arenas[id]);
