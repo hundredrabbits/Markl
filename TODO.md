@@ -1,5 +1,11 @@
 ## TODOs
 
+### Designer
+
+- Display all players
+- Display speed
+- Tab to other fighters scripts
+
 ### Splash Screen
 
 - Logo
