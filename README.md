@@ -14,9 +14,15 @@ FightScript is meant to be as simple as possible and allow for flexible fighting
 Here's an example where the character will move away whenever an enemy fighter is at 2 tiles of distance:
 
 ```
+MENU
+  CHARACTER
+    NAME IS PEST
+      SELECT
 SIGHT
   FIGHTER
     DISTANCE IS 2
+      ATTACK TOWARD
+    DEFAULT
       MOVE AWAY
 ```
 
@@ -44,7 +50,7 @@ Conditions can be combined with `AND`.
 
 - `NAME IS ` (**STRING**), will trigger if the event's name is equal to the string parameter.
 - `DISTANCE IS ` (**INTEGER**), requires *sight*, will trigger if the event is at distance X.
-- `NAME IS ` (**STRING**), requires *sight*,
+- `DIRECTION IS ` (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*), requires *sight*, will trigger if the event is at distance X.
 - `DEFAULT` Will trigger if no condition is met.
 
 ### Actions
@@ -56,3 +62,24 @@ The `ANY` vector will choose a vector randomly.
 - `FIRE` (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)
 - `CAST` (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)
 - `WAIT`
+- `SELECT`, used in menu.
+
+### Formatting
+
+#### Comment
+
+You can comment a line with `--`.
+
+```
+-- This is a comment
+```
+
+#### Break
+
+You can end the parsing of a file with `::`.
+
+```
+Code is executed.
+++
+Code is not executed.
+```
