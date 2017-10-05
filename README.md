@@ -1,123 +1,46 @@
 # Markl
 
-## TODOs
+## FightScript Documentation
 
-- Corpses should not block movement,sight
-- Add moveable objects(pots,etc..)
-- Add dash
-- Add projectiles
+FightScript is meant to be as simple as possible and allow for flexible fighting behaviours. The preceeding number of characters on a line tells the parser what to expect.
 
-## Characters
+`{TRIGGER}
+--{EVENT}
+----{CONDITION}
+------{ACTION}`
 
-## Pest
+Here's an example where the character will move away whenever an enemy fighter is at 2 tiles of distance:
 
-- `STUN(VECTOR)`, replaced with `STUN`, stamina malus to all neighboring fighters.
-- `FIRE(VECTOR)`, fire a projectile that bounces off the wall in any direction.
+`SIGHT
+  FIGHTER
+    DISTANCE IS 2
+      MOVE AWAY`
 
-## Patience
+### Triggers
 
-- `SPELL(VECTOR)`, replaced with `TELEPORT`, move to any fighter or wall.
-- `FIRE(VECTOR)`, throws a projectile that bounces back toward patience.
+- `SIGHT` Will trigger when something is in sight.
+- `DEFAULT` Will trigger if no other trigger is found.
 
-## Lance
+### Events
 
-- `SPELL(VECTOR)`, replaced with `DASH`, move 2 tiles, if enemy attack.
-- `FIRE(VECTOR)`, fire 2 projectiles
+- `FIGHTER` Will trigger if an enemy fighter is in sight.
+- `OBJECT` Will trigger if an interactible object is in sight.
+- `PROJECTILE` Will trigger if a projectile is in sight.
+- `DEFAULT` Will trigger if no other event is found.
 
-### Sin
+### Conditions
 
-- `SPELL(VECTOR)`, fires a laser 2 tiles away.
-- `FIRE(VECTOR)`, replaced with `XX`.
-- `ATTACK(VECTOR)`, does nothing.
+Conditions can be combined with `AND`.
 
-## Design
+- `DISTANCE IS *INTEGER*`, requires *sight*, will trigger if the event is at distance X.
+- `NAME IS *STRING*`, requires *sight*,
+- `DEFAULT` Will trigger if no condition is met.
 
-### Backstab
+### Actions
 
-If attacked at the back, instant kill?
+The `ANY` vector will choose a vector randomly. 
 
-### Dodging/Blocking
-
-If stamina allows, a player will dodge/block an attack automatically, but will still suffer the knockback of the attack.
-
-### Life/Death
-
-A fighter can act as long as HP and SP are above 0. 0HP is considered dead.
-
-### Waiting
-
-Waiting costs only 1 stamina, making it more likely to be the next one to move, but waiting twice in a row gives a stamina penality.
-
-## Timeline
-
-### Splash Screen
-
-- Logo
-- Start/Option selector
-
-### Character Selection Screen
-
-- Cursor
-- Portraits +parallax frame
-- Names
-- Statistics
-- Loadout(?)
-
-### Arena Selection Screen
-
-- Worldmap
-
-### Arena Screen
-
-- Abilities
-- Holes
-- Doodads
-- Parallax
-- Floor tiles
-- Wall tiles
-
-#### Characters
-
-- Basic sprites
-- Animation
-- Effects
-
-### Extras
-
-- Soundtrack
-- Sound Effects
-
-## Fighting Style
-
-- Decide syntax
-
-### Vectors
-
-- `UP`
-- `LEFT`
-- `RIGHT`
-- `DOWN`
-- `ANY`, a random direction, will choose an available one for move.
-
-### Commands
-
-- `MOVE(VECTOR)`, uses 2 stamina and move to a neighboring tile.
-- `ATTACK(VECTOR)`, uses 5 stamina and attack a neighboring fighter.
-- `WAIT`, uses 1 stamina and do nothing.
-- `FIRE(VECTOR)`, use 15 stamina and fire a projectile.
-
-#### Sin
-
-- `FIRE(VECTOR)`, fires a laser 2 tiles away.
-
-#### Patience
-
-- `TELEPORT(VECTOR)`, move to any fighter or wall.
-
-#### Lance
-
-- `DASH(VECTOR)`, move 2 tiles, if enemy attack.
-
-#### Pest
-
-- `STUN(VECTOR)`, stamina malus to neighboring fighters.
+- `MOVE (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)`
+- `ATTACK (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)`
+- `FIRE (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)`
+- `CAST (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)`
