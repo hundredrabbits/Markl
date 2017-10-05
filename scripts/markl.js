@@ -41,14 +41,6 @@ function Markl()
     this.select_fighter(new Lancer("USER"));
 
     this.show(new Character_Screen());
-
-    // this.select_arena(arenas.training);
-    
-
-
-    // this.arena.start();
-
-    // this.battle = new Battle();
   }
 
   this.show = function(screen)

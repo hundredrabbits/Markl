@@ -5,6 +5,9 @@ let menu_test = `MENU
   LOADOUT
     SPELL IS ARROW
       SELECT
+  ARENA
+    NAME IS TRAINING
+      SELECT
       
 OPTION
   AUDIO

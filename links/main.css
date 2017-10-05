@@ -18,7 +18,9 @@ yu.screen yu.character yu.portrait.lancer { background-image: url('../media/port
 yu.screen yu.character yu.portrait.patience { background-image: url('../media/portraits/patience.png'); }
 
 yu.screen yu.arena_selection { height: 400px;width: 680px; margin:0px auto }
+yu.screen yu.arena_selection list { display: block; padding:100px; }
 yu.screen yu.arena_selection ln { display: block }
+yu.screen yu.arena_selection ln.highlight { background:#ccc; }
 
 yu.designer { display:block; background:#eee; width:calc(100vw - 560px); height:calc(100vh - 80px); position: fixed; top:0px; right:0px; padding:40px; font-family: 'input_mono_regular';font-size:12px; max-width: 400px; min-width: 360px}
 yu.designer textarea { width:100%; height:100%; background:transparent; color:#111; position: absolute; line-height: 20px; max-height: calc(100% - 135px); padding-top:20px;}

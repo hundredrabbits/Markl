@@ -24,8 +24,6 @@ function Arena(name,size, events = [])
       console.log("Added event:",event.toString());
       this.el.appendChild(event.el);
     }
-
-    markl.el.appendChild(this.el);
   }
 
   this.start = function()

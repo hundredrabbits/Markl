@@ -4,7 +4,10 @@ function Battle_Screen()
   
   this.start = function()
   {
-    console.log("battle start")
+    console.log("battle start",markl.arena.name);
+    markl.arena.setup();
+    this.el.appendChild(markl.arena.el);
+    markl.arena.start();
   }
 
   /*  
