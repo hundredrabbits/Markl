@@ -23,18 +23,13 @@ yu.screen yu.arena_selection ln { display: block }
 yu.screen yu.arena_selection ln.highlight { background:#ccc; }
 
 yu.designer { display:block; background:#eee; width:calc(100vw - 560px); height:calc(100vh - 80px); position: fixed; top:0px; right:0px; padding:40px; font-family: 'input_mono_regular';font-size:12px; max-width: 400px; min-width: 360px}
-yu.designer textarea { width:100%; height:100%; background:transparent; color:#111; position: absolute; line-height: 20px; max-height: calc(100% - 135px); padding-top:20px;}
-yu.designer div.hint { width:100%; height:calc(100vh - 80px); line-height: 20px; color:#aaa; max-height: calc(100% - 160px); padding-top:20px }
+yu.designer textarea { width:100%; height:100%; background:transparent; color:#111; line-height: 20px; max-height: calc(100% - 70px); position: relative;z-index:999 }
+yu.designer div.hint { height: calc(100vh - 80px);line-height: 20px;color: #aaa;max-height: calc(100% - 150px);overflow-y: hidden;position: absolute;top:90px;width: calc(100% - 80px); z-index:0 }
 yu.designer div.hint line.highlight { background:#ccc; }
 yu.designer div line { display:block; line-height: 20px; white-space: pre }
 yu.designer div line .pad { color:rgba(0,0,0,0); }
 yu.designer div line.trigger {  }
-yu.designer div line.trigger:before { content: ">";position: absolute;left:15px;color:black; }
-
-yu.battle { color:#000; padding-bottom:20px; border-bottom:1px solid #ccc;}
-yu.battle b { font-family: 'input_mono_medium' }
-yu.battle ln.fighter { display: inline-block; margin-right: 15px }
-yu.battle ln.fighter .dmg { color:#ccc; }
+yu.designer div line.trigger:before { content: ">";position: absolute;left:-15px;color:black; }
 
 yu.designer yu.controller { display: block;height: 60px;position: absolute;bottom: 0px;width: calc(100% - 80px); }
 yu.designer yu.controller yu.button { background:black; color:#fff; padding:10px; display: inline-block; float:right; border-radius: 3px }
@@ -42,12 +37,18 @@ yu.designer yu.controller yu.button b { font-family: 'input_mono_medium'  }
 yu.designer yu.controller yu.button i { color:#888;  }
 yu.designer yu.controller yu.button:hover { background:#ccc; color:black; cursor: pointer; }
 
+yu.designer yu.header { line-height: 30px;border-bottom: 1px solid #ccc;height:30px; margin-bottom:20px; }
+yu.designer yu.header span { border: 1px solid #ccc;display: inline-block;height: 29px;padding:0px 10px;border-top-left-radius: 3px; border-top-right-radius: 3px; color:#999; }
+yu.designer yu.header span.active { border-bottom: 1px solid #eee; color:black; }
+
 .arena { position:relative; margin:90px; }
 .arena tile { display:block; width:80px; height:80px;position: absolute; font-size:10px; color:#000; text-align:center; font-family: Helvetica; }
 .arena tile sprite { display: block;width: 80px;height: 87px;background-size: contain;background-repeat: no-repeat; }
 .arena event { display:block; width:80px; height:80px;position: absolute; z-index:100;}
 
 .arena tile.floor sprite { background-image:url(../media/tiles/floor/wood.1.png); }
+.arena tile.floor.alt_1 sprite { background-image:url(../media/tiles/rooftop/rooftop.1.png); }
+.arena tile.floor.alt_2 sprite { background-image:url(../media/tiles/floor/wood.2.png); }
 .arena tile { display: block; }
 
 .arena tile.floor.y_4 { z-index:50; }
@@ -56,15 +57,16 @@ yu.designer yu.controller yu.button:hover { background:#ccc; color:black; cursor
 .arena tile.floor.y_1 { z-index:80; }
 .arena tile.floor.y_0 { z-index:90; }
 
-.arena event.fighter sprite { display: block;width: 110px;height: 110px;background-size: cover;background-repeat: no-repeat;left: -15px;top: -45px;position: absolute  }
+
+.arena event.fighter sprite { display: block;width: 110px;height: 110px;background-size: cover;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute  }
 .arena event.fighter.lancer sprite { background-image:url(../media/fighters/lancer/idle.png);  }
 .arena event.fighter.pest sprite { background-image:url(../media/fighters/pest/idle.png);  }
 .arena event.fighter.patience sprite { background-image:url(../media/fighters/patience/idle.png);  }
 .arena event.fighter.sin sprite { background-image:url(../media/fighters/sin/idle.png);  }
 
-event.fighter sprite {}
+.arena event svg { width:80px; height:80px; }
 
-
-
+.arena event.blocker sprite { display: block;width: 80px;height: 87px;background-size: contain;background-repeat: no-repeat;background-position: center center;top:-30px;position: absolute  }
+.arena event.blocker.id_1 sprite { background-image:url(../media/tiles/floor/chimney.1.png);  }
 
 

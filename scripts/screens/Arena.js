@@ -12,8 +12,7 @@ function Arena_Screen()
     new Spawn(new Pos(4,4)),
     new Spawn(new Pos(4,0)),
     new Spawn(new Pos(0,4)),
-    new Block(new Pos(1,1)),
-    new Block(new Pos(3,3))
+    new Hole(new Pos(2,2),1)
   ]));
 
   this.arenas.push(new Arena("Duel",new Size(3,5),[
@@ -54,6 +53,7 @@ function Arena_Screen()
         markl.select_arena(this.arenas[id]);
       }
     }
+    markl.designer.update();
   }
 
   this.next = function()

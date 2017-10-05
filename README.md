@@ -80,6 +80,6 @@ You can end the parsing of a file with `::`.
 
 ```
 Code is executed.
-++
+--
 Code is not executed.
 ```

@@ -8,6 +8,7 @@ function Battle_Screen()
     markl.arena.setup();
     this.el.appendChild(markl.arena.el);
     markl.arena.start();
+    markl.designer.update();
   }
 
   /*  

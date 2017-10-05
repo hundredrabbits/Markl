@@ -8,8 +8,8 @@ function Designer()
   this.hint_el = document.createElement('div');
   this.hint_el.className = "hint";
 
-  this.battle_el = document.createElement('yu');
-  this.battle_el.className = "battle";
+  this.header_el = document.createElement('yu');
+  this.header_el.className = "header";
 
   this.controller_el = document.createElement('yu');
   this.controller_el.className = "controller";
@@ -20,7 +20,7 @@ function Designer()
 
   this.install = function()
   {
-    this.el.appendChild(this.battle_el);
+    this.el.appendChild(this.header_el);
     this.el.appendChild(this.input_el);
     this.el.appendChild(this.hint_el);
     this.el.appendChild(this.controller_el);
@@ -29,7 +29,7 @@ function Designer()
     markl.designer.input_el.addEventListener('input', markl.designer.update);
 
     for(id in markl.fighters){
-      this.battle_el.appendChild(markl.fighters[id].interface.el)
+      this.header_el.appendChild(markl.fighters[id].interface.el)
     }
   }
 
@@ -56,6 +56,8 @@ function Designer()
 
   this.update = function()
   {
+    markl.designer.update_header();
+
     for(id in markl.fighters){
       markl.fighters[id].interface.update();
     }
@@ -63,6 +65,17 @@ function Designer()
     markl.designer.hint_el.innerHTML = markl.designer.parse();
 
     markl.designer.start_button.innerHTML = "<b>Running..</b> <i>"+markl.designer.input_el.value.split("\n").length+" lines</i>"
+  }
+
+  this.update_header = function()
+  {
+    var html = "";
+
+    for(id in markl.fighters){
+      html += "<span class='"+(markl.fighters[id].name == "USER" ? "active" : "")+"'>"+markl.fighters[id].name+"</span> ";
+    }
+
+    this.header_el.innerHTML = html;
   }
 
   this.parse = function()

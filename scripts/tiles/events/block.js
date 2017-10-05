@@ -1,15 +1,17 @@
-function Block(pos)
+function Block(pos,id)
 {
   Event.call(this,pos);
 
+  this.id = id;
   this.name = "Block";
   this.is_collider = true;
   this.type = "Blocker";
+  this.el.className = "blocker id_"+id;
+
+  this.sprite = document.createElement("sprite");
 
   this.start = function()
   {
-    var target = document.getElementById("floor_"+pos.x+"_"+pos.y);
-    if(!target){ console.log("?"); return; }
-    target.style.display = "none";
+    this.el.appendChild(this.sprite);
   }
 }
