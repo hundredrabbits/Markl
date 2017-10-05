@@ -6,19 +6,10 @@ function Block(pos)
   this.is_collider = true;
   this.type = "Blocker";
 
-  this.el.setAttribute("class","block");
-
-  // Sprite
-  var e = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  e.setAttribute("class","icon");
-
-  var s = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-  s.setAttribute("x",0);
-  s.setAttribute("y",0);
-  s.setAttribute("width",TILE_SIZE.width);
-  s.setAttribute("height",TILE_SIZE.width);
-
-  e.appendChild(s);
-
-  this.el.appendChild(e);
+  this.start = function()
+  {
+    var target = document.getElementById("floor_"+pos.x+"_"+pos.y);
+    if(!target){ console.log("?"); return; }
+    target.style.display = "none";
+  }
 }

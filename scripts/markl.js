@@ -55,7 +55,6 @@ function Markl()
   {
     console.log("Selecting arena:",arena.name);
     this.arena = arena;
-    this.arena.setup();
   }
 
   this.select_fighter = function(fighter)

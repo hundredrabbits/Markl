@@ -1,4 +1,4 @@
-body { font-size:11px; font-family: 'input_mono_regular'; background: black; overflow:hidden; }
+body { font-size:11px; font-family: 'input_mono_regular'; overflow:hidden; }
 
 yu { display: block; }
 
@@ -42,28 +42,29 @@ yu.designer yu.controller yu.button b { font-family: 'input_mono_medium'  }
 yu.designer yu.controller yu.button i { color:#888;  }
 yu.designer yu.controller yu.button:hover { background:#ccc; color:black; cursor: pointer; }
 
-.arena { position:relative; }
-.arena tile { display:block; width:80px; height:80px;position: absolute; border:1px solid #000; font-size:10px; color:#000; text-align:center; font-family: Helvetica}
-.arena event { display:block; width:80px; height:80px;position: absolute; }
+.arena { position:relative; margin:90px; }
+.arena tile { display:block; width:80px; height:80px;position: absolute; font-size:10px; color:#000; text-align:center; font-family: Helvetica; }
+.arena tile sprite { display: block;width: 80px;height: 87px;background-size: contain;background-repeat: no-repeat; }
+.arena event { display:block; width:80px; height:80px;position: absolute; z-index:100;}
 
-tile { display: block; }
-tile.floor { background:white; }
+.arena tile.floor sprite { background-image:url(../media/tiles/floor/wood.1.png); }
+.arena tile { display: block; }
 
-event svg {stroke:black; fill:none; stroke-width:4px; width:80px; height:80px; position: absolute;}
-event.fighter span { position: absolute; top:60px; width:80px; text-align: center }
-event.spawn svg { stroke-width:1px; fill:none; stroke:#999; }
-event.block svg { stroke:none; fill:#000; }
-event.wall svg { stroke:none; fill:#000; }
-event.fighter { z-index: 200 }
-event.fighter svg { stroke:2px; fill:#000; }
-event.fighter.acting svg { fill:white; }
-event.fighter.active svg { fill:green; }
-event.fighter.idle svg { fill:yellow; }
-event.fighter.knocked svg { fill:pink; }
-event.fighter.dead { z-index: 100 }
-event.fighter.dead svg { fill:red; stroke-width:0; }
-event.fighter.dead svg path { stroke:red; stroke-width:4px; }
-event.fighter.dead span { display: none }
-event.fighter.dead svg path { display: none }
-event.attacking svg { stroke:red; }
-event.attacked svg { stroke:pink; }
+.arena tile.floor.y_4 { z-index:50; }
+.arena tile.floor.y_3 { z-index:60; }
+.arena tile.floor.y_2 { z-index:70; }
+.arena tile.floor.y_1 { z-index:80; }
+.arena tile.floor.y_0 { z-index:90; }
+
+.arena event.fighter sprite { display: block;width: 90px;height: 90px;background-size: contain;background-repeat: no-repeat;left:-5px;top:-35px;position: absolute  }
+.arena event.fighter.lancer sprite { background-image:url(../media/fighters/lancer/idle.1.png);  }
+.arena event.fighter.pest sprite { background-image:url(../media/fighters/pest/idle.1.png);  }
+.arena event.fighter.patience sprite { background-image:url(../media/fighters/patience/idle.1.png);  }
+.arena event.fighter.sin sprite { background-image:url(../media/fighters/sin/idle.1.png);  }
+
+event.fighter sprite {}
+
+
+
+
+

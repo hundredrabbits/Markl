@@ -33,6 +33,9 @@ function Arena(name,size, events = [])
       this.events.push(fighter);
       fighter.spawn_at(this.get_spawn());
     }
+    for(id in this.events){
+      this.events[id].start();
+    }
     console.log("area is ready")
   }
 

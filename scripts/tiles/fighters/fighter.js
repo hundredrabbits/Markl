@@ -6,6 +6,7 @@ function Fighter(name,style = null)
   this.is_collider = true;
   this.status = "idle";
   this.type = "fighter";
+  this.character = "unknown"
 
   this.style = style;
 
@@ -14,19 +15,14 @@ function Fighter(name,style = null)
   this.hp = 3;
   this.stamina = 200;
 
-  this.sprite = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  this.sprite.setAttribute("class","icon");
-
-  this.sprite_basic = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-  this.sprite_basic.setAttribute("cx",TILE_SIZE.width/2);
-  this.sprite_basic.setAttribute("cy",TILE_SIZE.height/2);
-  this.sprite_basic.setAttribute("r",TILE_SIZE.width * 0.2);
-
-  this.sprite_action = document.createElementNS("http://www.w3.org/2000/svg", "path");
-
-  this.sprite.appendChild(this.sprite_basic);
-  this.sprite.appendChild(this.sprite_action);
+  this.sprite = document.createElement("sprite");
   this.el.appendChild(this.sprite);
+
+  this.start = function()
+  {
+    console.log("!!!!!")
+    this.el.className = "fighter "+this.character;
+  }
 
   this.setup = function()
   {
@@ -51,7 +47,6 @@ function Fighter(name,style = null)
     if(this.hp < 1 || this.stamina < 1){ 
       this.kill();
     }
-    this.update_sprite();
     this.interface.update();
   }
 
@@ -127,33 +122,5 @@ function Fighter(name,style = null)
   {
     console.log("End turn");
     return;
-  }
-
-  this.update_sprite = function()
-  {
-    if(!this.status){
-      this.sprite_action.setAttribute("d","");  
-      return;
-    }
-
-    if(this.status.action == "attack"){
-      this.sprite_action.setAttribute("stroke","red");
-    }
-    else{
-      this.sprite_action.setAttribute("stroke","black");
-    }
-
-    if(this.status.vector == "right"){
-      this.sprite_action.setAttribute("d","M40,40 l40,0");
-    }
-    if(this.status.vector == "left"){
-      this.sprite_action.setAttribute("d","M40,40 l-40,0");
-    }
-    if(this.status.vector == "down"){
-      this.sprite_action.setAttribute("d","M40,40 l0,40");
-    }
-    if(this.status.vector == "up"){
-      this.sprite_action.setAttribute("d","M40,40 l0,-40");
-    }
   }
 }
