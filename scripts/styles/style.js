@@ -41,26 +41,6 @@ function Style(name,text)
     // markl.battle.turn();
   }
 
-  this.find_triggers = function()
-  {
-    var h = {"SIGHT":{},"DEFAULT":{"DEFAULT":{"DEFAULT":{}}}};
-
-    var sights = markl.arena.events_visible_from(this.host.pos);
-
-    for(id in sights){
-      var sight = sights[id];
-      if(!sight.is_visible){ continue; }
-      var sight_type = sight.type.toUpperCase();
-      var sight_distance = sight.pos.distance_from(this.host.pos);
-      if(!h["SIGHT"][sight_type]){
-        h["SIGHT"][sight_type] = {};
-      }
-      h["SIGHT"][sight_type]["DEFAULT"] = sight;
-      h["SIGHT"][sight_type]["DISTANCE IS "+sight_distance] = sight;
-    }
-    return h;
-  }
-
   this.find_reaction = function()
   {
     for(trigger_id in this.tree){

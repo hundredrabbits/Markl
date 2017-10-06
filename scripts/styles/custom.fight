@@ -77,3 +77,19 @@ DEFAULT
     DEFAULT
       WAIT
 `;
+
+let other_style = `-- dodge.fight
+
+SIGHT
+  FIGHTER
+    DISTANCE IS 2
+      MOVE AWAY
+    DISTANCE IS 1
+      ATTACK TOWARD
+  OBJECT
+    DEFAULT
+      MOVE
+  PROJECTILE
+    DEFAULT
+      MOVE AWAY
+`;

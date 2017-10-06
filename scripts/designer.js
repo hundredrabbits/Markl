@@ -19,6 +19,7 @@ function Designer()
   this.run_button.textContent = "Run";
 
   this.is_running = false;
+  this.index = 0;
 
   this.install = function()
   {
@@ -83,18 +84,29 @@ function Designer()
     else{
       markl.designer.run_button.innerHTML = "<b>Run</b> <i>"+markl.designer.input_el.value.split("\n").length+" lines</i>"  
     }
-    
   }
 
   this.update_header = function()
   {
-    var html = "";
+    var html = "<t class='right'>"+(markl.screen ? markl.screen.name : 'Error')+"</t>";
 
     for(id in markl.fighters){
-      html += "<span class='"+(markl.fighters[id].name == "USER" ? "active" : "")+"'>"+markl.fighters[id].name+"</span> ";
+      html += "<span id='style_"+id+"' class='"+(id == markl.designer.index ? "active" : "")+"'>"+markl.fighters[id].name+"</span> ";
     }
 
     this.header_el.innerHTML = html;
+    if(document.getElementById("style_0")){ document.getElementById("style_0").addEventListener('click', markl.designer.tab_click); };
+    if(document.getElementById("style_1")){ document.getElementById("style_1").addEventListener('click', markl.designer.tab_click); };
+    if(document.getElementById("style_2")){ document.getElementById("style_2").addEventListener('click', markl.designer.tab_click); };
+    if(document.getElementById("style_3")){ document.getElementById("style_3").addEventListener('click', markl.designer.tab_click); };
+  }
+
+  this.tab_click = function(e)
+  {
+    var index = parseInt(e.target.id.replace("style_",""));
+    markl.designer.index = index;
+    markl.designer.select_style(markl.fighters[index].style);
+    markl.designer.update();
   }
 
   this.parse = function()

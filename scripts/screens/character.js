@@ -52,7 +52,7 @@ function Character_Screen()
   this.select_character = function(name)
   {
     var fighter_name = capitalize(name);
-    markl.select_fighter(new window[fighter_name]("USER"));
+    markl.select_fighter(new window[fighter_name]("USER",markl.designer.style));
 
     var p_patience = document.getElementById("portrait_patience");
     var p_sin = document.getElementById("portrait_sin");
@@ -118,7 +118,7 @@ function Character_Screen()
   this.leave = function()
   {
     console.log("LEAVE")
-    markl.select_opponents([new Sin("CPU1",new Style("idle",custom_style)),new Patience("CPU2",new Style("idle",custom_style)),new Pest("CPU3",new Style("idle",custom_style))]);
+    markl.select_opponents([new Sin("CPU1",new Style("idle",idle_style)),new Patience("CPU2",new Style("idle",other_style)),new Pest("CPU3",new Style("idle",custom_style))]);
     markl.show(new Arena_Screen());
     markl.designer.update();
   }

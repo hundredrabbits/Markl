@@ -35,7 +35,7 @@ function Markl()
     this.designer.install();
 
     this.designer.select_style(new Style("custom",menu_test));
-
+    
     this.show(new Character_Screen());
     this.designer.update();
   }
