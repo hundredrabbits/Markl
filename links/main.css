@@ -55,6 +55,9 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena tile.floor.alt_2 sprite { background-image:url(../media/tiles/floor/wood.2.png); }
 .arena tile { display: block; }
 
+.arena tile.floor.y_7 { z-index:20; }
+.arena tile.floor.y_6 { z-index:30; }
+.arena tile.floor.y_5 { z-index:40; }
 .arena tile.floor.y_4 { z-index:50; }
 .arena tile.floor.y_3 { z-index:60; }
 .arena tile.floor.y_2 { z-index:70; }

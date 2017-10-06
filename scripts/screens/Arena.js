@@ -33,7 +33,7 @@ function Arena_Screen()
   {
     var s = this;
     this.index += 1;
-    this.index = this.index % 3;
+    this.index = this.index % Object.keys(arenas).length;
 
     this.move_to(this.index);
 
@@ -44,13 +44,13 @@ function Arena_Screen()
     if(reaction && reaction.actions[0].name == "SELECT" && markl.designer.is_running){
       this.select_arena(reaction.target);
     }
-    
+
     if(markl.arena){
       this.leave();
       return;
     }
 
-    setTimeout(function(){ s.next(); }, ACT_SPEED * 8);
+    setTimeout(function(){ s.next(); }, ACT_SPEED * 4);
   }
 
   this.find_triggers = function()

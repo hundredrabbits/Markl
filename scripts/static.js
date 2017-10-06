@@ -18,6 +18,13 @@ arenas.temple = new Arena("temple",new Size(3,5),[
   new Spawn(new Pos(1,4))
 ])
 
+arenas.large = new Arena("large",new Size(5,7),[
+  new Spawn(new Pos(2,0)),
+  new Spawn(new Pos(0,3)),
+  new Spawn(new Pos(4,3)),
+  new Spawn(new Pos(2,6))
+]);
+
 
 let custom_style = `
 SIGHT
@@ -41,6 +48,8 @@ DEFAULT
   DEFAULT
     DEFAULT
       MOVE ANY
+      
+-- MENUS & STUFF
 
 MENU
   OPTION
@@ -50,7 +59,7 @@ MENU
     NAME IS LANCER
       SELECT
   ARENA
-    NAME IS TRAINING
+    NAME IS LARGE
       SELECT
   LOADOUT
     NAME IS TELEKINETIC

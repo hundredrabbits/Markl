@@ -47,7 +47,7 @@ function Markl()
   {
     console.warn("RESET")
 
-    this.fighter = null;
+    this.fighter = new Fighter("USER", new Style("Test",custom_style));
     this.fighters = [];
     this.arena = null;
     this.show(new Character_Screen());
