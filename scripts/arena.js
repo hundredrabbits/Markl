@@ -141,5 +141,4 @@ function Arena(name,size, events = [])
     }
     return sight;
   }
-
 }

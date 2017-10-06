@@ -37,6 +37,17 @@ function Markl()
     this.designer.select_style(new Style("custom",menu_test));
 
     this.show(new Character_Screen());
+    this.designer.update();
+  }
+
+  this.reset = function()
+  {
+    console.warn("RESET")
+
+    this.fighter = null;
+    this.fighters = [];
+    this.arena = null;
+    this.show(new Character_Screen());
   }
 
   this.show = function(screen)

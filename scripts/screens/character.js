@@ -3,7 +3,7 @@ function Character_Screen()
   Screen.call(this);
 
   this.name = "character selection";
-  this.index = 1;
+  this.index = 0;
 
   this.el.className = "character_selection";
   this.el.innerHTML = `

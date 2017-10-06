@@ -23,13 +23,15 @@ yu.screen yu.arena_selection ln { display: block }
 yu.screen yu.arena_selection ln.highlight { background:#ccc; }
 
 yu.designer { display:block; background:#eee; width:calc(100vw - 560px); height:calc(100vh - 80px); position: fixed; top:0px; right:0px; padding:40px; font-family: 'input_mono_regular';font-size:12px; max-width: 400px; min-width: 360px}
-yu.designer textarea { width:100%; height:100%; background:transparent; color:#111; line-height: 20px; max-height: calc(100% - 70px); position: relative;z-index:999 }
+yu.designer textarea { width:100%; height:100%; background:transparent; color:#111; line-height: 20px; max-height: calc(100% - 70px); position: relative;z-index:999; padding-left:30px; }
 yu.designer div.hint { height: calc(100vh - 80px);line-height: 20px;color: #aaa;max-height: calc(100% - 150px);overflow-y: hidden;position: absolute;top:90px;width: calc(100% - 80px); z-index:0 }
 yu.designer div.hint line.highlight { background:#ccc; }
-yu.designer div line { display:block; line-height: 20px; white-space: pre }
+yu.designer div line { display:block; line-height: 20px; white-space: pre; padding-left:30px; }
 yu.designer div line .pad { color:rgba(0,0,0,0); }
 yu.designer div line.trigger {  }
 yu.designer div line.trigger:before { content: ">";position: absolute;left:-15px;color:black; }
+yu.designer div line .line_number { display: inline-block; position: absolute; left:0px; }
+
 
 yu.designer yu.controller { display: block;height: 60px;position: absolute;bottom: 0px;width: calc(100% - 80px); }
 yu.designer yu.controller yu.button { background:black; color:#fff; padding:10px; display: inline-block; float:right; border-radius: 3px }

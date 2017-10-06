@@ -3,7 +3,7 @@ function Arena_Screen()
   Screen.call(this);
   
   this.name = "arena selection";
-  this.index = 2;
+  this.index = 0;
 
   this.arenas = [];
 

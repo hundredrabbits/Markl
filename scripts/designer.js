@@ -14,9 +14,11 @@ function Designer()
   this.controller_el = document.createElement('yu');
   this.controller_el.className = "controller";
 
-  this.start_button = document.createElement('yu');
-  this.start_button.className = "start button";
-  this.start_button.textContent = "Run";
+  this.run_button = document.createElement('yu');
+  this.run_button.className = "run button";
+  this.run_button.textContent = "Run";
+
+  this.is_running = false;
 
   this.install = function()
   {
@@ -24,13 +26,23 @@ function Designer()
     this.el.appendChild(this.input_el);
     this.el.appendChild(this.hint_el);
     this.el.appendChild(this.controller_el);
-    this.controller_el.appendChild(this.start_button);
+    this.controller_el.appendChild(this.run_button);
     document.body.appendChild(this.el);
     markl.designer.input_el.addEventListener('input', markl.designer.update);
 
     for(id in markl.fighters){
       this.header_el.appendChild(markl.fighters[id].interface.el)
     }
+    this.run_button.addEventListener('click', markl.designer.run_button_click);
+  }
+
+  this.run_button_click = function()
+  {
+    if(markl.designer.is_running){
+      markl.reset(); 
+    }
+    markl.designer.is_running = markl.designer.is_running ? false : true;
+    markl.designer.update();
   }
 
   this.select_style = function(style)
@@ -44,6 +56,7 @@ function Designer()
 
   this.run = function(triggers)
   {
+    if(!markl.designer.is_running){ return; }
     var reaction = this.style.react(triggers);
     if(!reaction){ console.log("No reaction",triggers); return; }
 
@@ -64,7 +77,13 @@ function Designer()
 
     markl.designer.hint_el.innerHTML = markl.designer.parse();
 
-    markl.designer.start_button.innerHTML = "<b>Running..</b> <i>"+markl.designer.input_el.value.split("\n").length+" lines</i>"
+    if(markl.designer.is_running){
+      markl.designer.run_button.innerHTML = "Running..";
+    }
+    else{
+      markl.designer.run_button.innerHTML = "<b>Run</b> <i>"+markl.designer.input_el.value.split("\n").length+" lines</i>"  
+    }
+    
   }
 
   this.update_header = function()
@@ -85,7 +104,7 @@ function Designer()
     for(id in lines){
       var line = lines[id];
       var hint = this.parse_line(line);
-      html += "<line id='line_"+id+"' class='"+hint.style+" "+(id == this.line_highlight ? "highlight" : "")+"'><span class='pad'>"+line+"</span> "+hint.text+"</line>";
+      html += "<line id='line_"+id+"' class='"+hint.style+" "+(id == this.line_highlight ? "highlight" : "")+"'><span class='line_number'>"+id+"</span><span class='pad'>"+line+"</span> "+hint.text+"</line>";
     }
     return html;
   }
