@@ -17,7 +17,7 @@ function Battle_Screen()
 
   this.next = function()
   {
-    if(markl.arena.get_fighters_alive().length < 2){
+    if(markl.arena.get_fighters_alive().length < 2 || !markl.designer.is_running){
       return;
     }
     var fighter = this.next_fighter();

@@ -19,8 +19,7 @@ arenas.temple = new Arena("temple",new Size(3,5),[
 ])
 
 
-let custom_style = `-- wimp.fight
-
+let custom_style = `
 SIGHT
   FIGHTER
     DISTANCE IS 4
@@ -56,7 +55,6 @@ MENU
   LOADOUT
     NAME IS TELEKINETIC
       SELECT
-
 `;
 
 let idle_style = `-- idle.fight

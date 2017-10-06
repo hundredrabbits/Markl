@@ -36,7 +36,7 @@ function Character_Screen()
     var triggers = this.find_triggers(fighter);
     var reaction = fighter.style.react(triggers);
 
-    if(reaction && reaction.actions[0].name == "SELECT"){
+    if(reaction && reaction.actions[0].name == "SELECT" && markl.designer.is_running){
       this.select_character(reaction.target);
     }
     
