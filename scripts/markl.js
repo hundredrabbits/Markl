@@ -1,6 +1,6 @@
 
 var TILE_SIZE = new Size(80,80);
-var ACT_SPEED = 200;
+var ACT_SPEED = 150;
 
 // Responses
 
@@ -17,7 +17,7 @@ function Markl()
   this.screen = null;
 
   this.arena = null;
-  this.fighter = null;
+  this.fighter = new Fighter("USER", new Style("Test",custom_style));
   this.fighters = [];
   this.battle = null;
 
@@ -33,8 +33,6 @@ function Markl()
   {
     this.keyboard.install();
     this.designer.install();
-
-    this.designer.select_style(new Style("custom",menu_test));
     
     // Comment to skip
     this.select_fighter(new Lancer("USER",new Style("TUTORIAL",custom_style)));
@@ -74,7 +72,7 @@ function Markl()
     this.fighter = fighter;
     this.fighters.push(this.fighter);
     this.fighter.setup();
-    this.designer.update();
+    this.designer.select_fighter(fighter);
   }
 
   this.select_opponents = function(opponents)

@@ -1,6 +1,6 @@
 function Designer()
 {
-  this.style = null;
+  this.fighter = null;
 
   this.el = document.createElement('yu');
   this.el.className = "designer";
@@ -46,14 +46,12 @@ function Designer()
     markl.designer.update();
   }
 
-  this.select_style = function(style)
+  this.select_fighter = function(fighter)
   {
-    this.style = style;
-    this.input_el.value = style.text;
+    this.fighter = fighter;
+    this.input_el.value = fighter.style.text;
     this.update();
   }
-
-  this.line_highlight = 0;
 
   this.run = function(triggers)
   {
@@ -63,28 +61,21 @@ function Designer()
 
     var actions = reaction ? reaction.actions : reaction;
     var action = actions[0];
-    this.line_highlight = action.line;
 
     markl.screen.act(reaction);
   }
 
-  this.active_fighter = null;
-
-  this.render = function(fighter)
+  this.update = function(fighter = this.fighter, line_id = 0, target = null)
   {
-    this.active_fighter = fighter;
-    this.update();
-  }
+    markl.designer.update_header(fighter);
 
-  this.update = function()
-  {
-    markl.designer.update_header();
+    if(fighter.name != this.fighter.name){ return; }
 
     for(id in markl.fighters){
       markl.fighters[id].interface.update();
     }
 
-    markl.designer.hint_el.innerHTML = markl.designer.parse();
+    markl.designer.hint_el.innerHTML = markl.designer.parse(fighter,line_id,target);
 
     if(markl.designer.is_running){
       markl.designer.run_button.innerHTML = "Running..";
@@ -94,12 +85,12 @@ function Designer()
     }
   }
 
-  this.update_header = function()
+  this.update_header = function(playing_fighter = null)
   {
     var html = "<t class='right'>"+(markl.screen ? markl.screen.name : 'Error')+"</t>";
 
     for(id in markl.fighters){
-      html += "<span id='style_"+id+"' class='"+(id == markl.designer.index ? "active" : "")+" "+(this.active_fighter && this.active_fighter.name == markl.fighters[id].name ? "playing" : "")+"'>"+markl.fighters[id].name+"</span> ";
+      html += "<span id='style_"+id+"' class='"+(markl.fighters[id].name == markl.designer.fighter.name ? "active" : "")+" "+(playing_fighter && playing_fighter.name == markl.fighters[id].name ? "playing" : "")+"'>"+markl.fighters[id].name+"</span> ";
     }
 
     this.header_el.innerHTML = html;
@@ -114,18 +105,18 @@ function Designer()
   {
     var index = parseInt(e.target.id.replace("style_",""));
     markl.designer.index = index;
-    markl.designer.select_style(markl.fighters[index].style);
+    markl.designer.select_fighter(markl.fighters[index]);
     markl.designer.update();
   }
 
-  this.parse = function()
+  this.parse = function(fighter,line_id = 1, target = null)
   {
     var html = "";
     var lines = this.input_el.value.split("\n");
     for(id in lines){
       var line = lines[id];
       var hint = this.parse_line(line);
-      html += "<line id='line_"+id+"' class='"+hint.style+" "+(id == this.line_highlight ? "highlight" : "")+"'><span class='line_number'>"+id+"</span><span class='pad'>"+line+"</span> "+hint.text+"</line>";
+      html += "<line id='line_"+id+"' class='"+hint.style+" "+(fighter.name == this.fighter.name && line_id == id ? "highlight" : "")+"'><span class='line_number'>"+id+"</span><span class='pad'>"+line+"</span> "+(fighter.name == this.fighter.name && line_id == id && target && target.type ? target.type+"("+target.name+")" : '')+"</line>";
     }
     return html;
   }

@@ -25,7 +25,7 @@ yu.screen yu.arena_selection ln.highlight { background:#ccc; }
 yu.designer { display:block; background:#eee; width:calc(100vw - 560px); height:calc(100vh - 80px); position: fixed; top:0px; right:0px; padding:40px; font-family: 'input_mono_regular';font-size:12px; max-width: 400px; min-width: 360px}
 yu.designer textarea { width:100%; height:100%; background:transparent; color:#111; line-height: 20px; max-height: calc(100% - 70px); position: relative;z-index:999; padding-left:40px; resize: none; }
 yu.designer div.hint { height: calc(100vh - 80px);line-height: 20px;color: #aaa;max-height: calc(100% - 150px);overflow-y: hidden;position: absolute;top:90px;width: calc(100% - 80px); z-index:0; margin-left:10px;}
-yu.designer div.hint line.highlight { background:#fff; }
+yu.designer div.hint line.highlight { background:#f00; color:white; }
 yu.designer div line { display:block; line-height: 20px; white-space: pre; padding-left:30px; }
 yu.designer div line .pad { color:rgba(0,0,0,0); }
 yu.designer div line.trigger {  }
@@ -42,7 +42,7 @@ yu.designer yu.header { line-height: 30px;border-bottom: 1px solid #ccc;height:3
 yu.designer yu.header span { border: 1px solid #ccc;display: inline-block;height: 29px;padding:0px 10px;border-top-left-radius: 3px; border-top-right-radius: 3px; color:#999; }
 yu.designer yu.header span.active { border-bottom: 1px solid #eee; color:black; }
 yu.designer yu.header span:hover { color:black; cursor: pointer }
-yu.designer yu.header span.playing { text-decoration: underline; }
+yu.designer yu.header span.playing { background:#ccc; color:white; }
 yu.designer yu.header t { display: inline-block; float:right; font-size:11px; color:#ccc; }
 
 .arena { position:relative; margin:90px; }
@@ -62,16 +62,22 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena tile.floor.y_0 { z-index:90; }
 
 .arena event.fighter { }
-.arena event.fighter sprite { display: block;width: 110px;height: 110px;background-size: cover;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute  }
-.arena event.fighter sprite.attack { border:2px solid red; }
+.arena event.fighter sprite { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute  }
+/*.arena event.fighter sprite.attack { border:2px solid red; }
 .arena event.fighter sprite.stun { border:2px solid yellow; }
-.arena event.fighter sprite.move { border:2px solid green; }
+.arena event.fighter sprite.move { border:2px solid green; }*/
 .arena event.fighter text { background: red;color: white;position: relative;z-index: 900;text-align: center;width:50%;display: inline-block;left:20px;top:-50px;font-family: 'input_mono_medium';font-size:11px; }
 .arena event.fighter text.user { background:white; color:red; }
-.arena event.fighter.lancer sprite { background-image:url(../media/fighters/lancer/idle.png);  }
-.arena event.fighter.pest sprite { background-image:url(../media/fighters/pest/idle.png);  }
-.arena event.fighter.patience sprite { background-image:url(../media/fighters/patience/idle.png);  }
-.arena event.fighter.sin sprite { background-image:url(../media/fighters/sin/idle.png);  }
+.arena event.fighter.lancer sprite { background-image:url(../media/fighters/lancer.png);  }
+.arena event.fighter.pest sprite { background-image:url(../media/fighters/pest.png);  }
+.arena event.fighter.patience sprite { background-image:url(../media/fighters/patience.png);  }
+.arena event.fighter.sin sprite { background-image:url(../media/fighters/sin.png);  }
+
+.arena event.fighter sprite.up { background-position: 0px -110px }
+.arena event.fighter sprite.right { background-position: 0px -220px }
+.arena event.fighter sprite.left { background-position: 0px -220px; transform: scaleX(-1)  }
+.arena event.fighter sprite.down { background-position: 0px 0px }
+.arena event.fighter sprite.stun { background-position: 0px -440px }
 
 .arena event svg { width:80px; height:80px; }
 

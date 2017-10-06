@@ -87,7 +87,7 @@ function Fighter(name,style = null)
 
   this.stun = function()
   {
-    this.stamina += 10;
+    this.stamina -= 10;
     this.status.action = "stun";
     this.update();
   }

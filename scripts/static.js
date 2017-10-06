@@ -57,7 +57,7 @@ let custom_style = `-- wimp.fight
 
 SIGHT
   FIGHTER
-    DISTANCE IS 2
+    DISTANCE IS 4
       MOVE AWAY
     DISTANCE IS 1
       ATTACK TOWARD

@@ -23,8 +23,8 @@ function Battle_Screen()
     var fighter = this.next_fighter();
     var triggers = this.find_triggers(fighter);
     var reaction = fighter.style.react(triggers);
-    markl.designer.render(fighter);
     fighter.style.run(reaction);
+    markl.designer.update(fighter,parseInt(reaction.actions[0].line),reaction.target);
   }
 
   this.find_triggers = function(fighter)
