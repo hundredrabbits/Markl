@@ -3,7 +3,7 @@ function Character_Screen()
   Screen.call(this);
 
   this.name = "character selection";
-  this.index = 0;
+  this.index = 3;
 
   this.el.className = "character_selection";
   this.el.innerHTML = `
@@ -17,7 +17,7 @@ function Character_Screen()
   {
     console.info("CHARACTER SELECTION","start")
 
-    if(markl.fighter){
+    if(markl.fighter && markl.fighter.character){
       this.leave();
       return;
     }
@@ -32,27 +32,26 @@ function Character_Screen()
 
     this.move_to(this.index);
 
-    var triggers = this.find_triggers();
-    markl.designer.run(triggers);
+    var fighter = markl.fighter;
+    var triggers = this.find_triggers(fighter);
+    var reaction = fighter.style.react(triggers);
 
-    if(markl.fighter){
+    if(reaction && reaction.actions[0].name == "SELECT"){
+      this.select_character(reaction.target);
+    }
+    
+    if(markl.fighter && markl.fighter.character){
       this.leave();
       return;
     }
     setTimeout(function(){ s.next(); }, ACT_SPEED * 8);
   }
 
-  this.act = function(reaction)
-  {
-    if(reaction.actions[0].name == "SELECT"){
-      this.select_character(reaction.target);
-    }
-  }
-
   this.select_character = function(name)
   {
     var fighter_name = capitalize(name);
-    markl.select_fighter(new window[fighter_name]("USER",markl.designer.style));
+    var style_text = new Style("WHAT",markl.fighter.style.text);
+    markl.select_fighter(new window[fighter_name]("USER",style_text));
 
     var p_patience = document.getElementById("portrait_patience");
     var p_sin = document.getElementById("portrait_sin");

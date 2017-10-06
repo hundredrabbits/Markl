@@ -5,8 +5,6 @@ function Arena_Screen()
   this.name = "arena selection";
   this.index = 0;
 
-  this.arenas = [arenas.duel,arenas.temple,arenas.training];
-
   this.el.className = "arena_selection";
 
   this.start = function()
@@ -21,18 +19,11 @@ function Arena_Screen()
     this.next();
   }
 
-  this.act = function(reaction)
-  {
-    if(reaction.actions[0].name == "SELECT"){
-      this.select_arena(reaction.target);
-    }    
-  }
-
   this.select_arena = function(name)
   {
-    for(id in this.arenas){
-      if(this.arenas[id].name.toUpperCase() == name.toUpperCase()){
-        markl.select_arena(this.arenas[id]);
+    for(id in arenas){
+      if(arenas[id].name.toUpperCase() == name.toUpperCase()){
+        markl.select_arena(arenas[id]);
       }
     }
     markl.designer.update();
@@ -46,9 +37,14 @@ function Arena_Screen()
 
     this.move_to(this.index);
 
-    var triggers = this.find_triggers();
-    markl.designer.run(triggers);
+    var fighter = markl.fighter;
+    var triggers = this.find_triggers(fighter);
+    var reaction = fighter.style.react(triggers);
 
+    if(reaction && reaction.actions[0].name == "SELECT"){
+      this.select_arena(reaction.target);
+    }
+    
     if(markl.arena){
       this.leave();
       return;
@@ -61,8 +57,8 @@ function Arena_Screen()
   {
     var names = [];
 
-    for(id in this.arenas){
-      names.push(this.arenas[id].name.toUpperCase());
+    for(id in arenas){
+      names.push(arenas[id].name.toUpperCase());
     }
 
     var name_is = "NAME IS "+names[this.index];
@@ -76,8 +72,9 @@ function Arena_Screen()
   {
     var html = "";  
 
-    for(id in this.arenas){
-      html += "<ln class='"+(this.index == id ? "highlight" : "")+"'>"+this.arenas[id].name+"</ln>";
+    for(id in arenas){
+      console.log(arenas[id].name,Object.keys(arenas)[this.index])
+      html += "<ln class='"+(Object.keys(arenas)[this.index] == arenas[id].name ? "highlight" : "")+"'>"+arenas[id].name+"</ln>";
     }
     this.el.innerHTML = "<list>"+html+"</list>"
   }

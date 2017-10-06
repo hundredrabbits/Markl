@@ -6,7 +6,7 @@ function Fighter(name,style = null)
   this.is_collider = true;
   this.status = "idle";
   this.type = "fighter";
-  this.character = "unknown"
+  this.character = null;
 
   this.style = style;
   this.style.host = this;

@@ -1,6 +1,6 @@
 let arenas = {};
 
-arenas.tutorial = new Arena("Training",new Size(5,5),[
+arenas.training = new Arena("training",new Size(5,5),[
   new Spawn(new Pos(0,0)),
   new Spawn(new Pos(4,4)),
   new Spawn(new Pos(4,0)),
@@ -8,49 +8,15 @@ arenas.tutorial = new Arena("Training",new Size(5,5),[
   new Hole(new Pos(2,2),1)
 ]);
 
-arenas.duel = new Arena("Duel",new Size(3,5),[
+arenas.duel = new Arena("duel",new Size(3,5),[
   new Spawn(new Pos(1,1)),
   new Spawn(new Pos(1,4))
 ])
 
-arenas.temple = new Arena("Temple",new Size(3,5),[
+arenas.temple = new Arena("temple",new Size(3,5),[
   new Spawn(new Pos(1,1)),
   new Spawn(new Pos(1,4))
 ])
-
-let menu_test = `MENU
-  CHARACTER
-    NAME IS LANCER
-      SELECT
-  LOADOUT
-    SPELL IS ARROW
-      SELECT
-  ARENA
-    NAME IS TRAINING
-      SELECT
-      
-OPTION
-  AUDIO
-    NAME IS SFX
-       SET 0
-
-SIGHT
-  FIGHTER
-    DISTANCE IS 3
-      MOVE AWAY
-    DISTANCE IS 1
-      ATTACK TOWARD
-    DEFAULT
-      MOVE TOWARD
-  OBJECT
-    DISTANCE IS 1
-      ATTACK TOWARD
-    DEFAULT
-      MOVE
-  PROJECTILE
-    DEFAULT
-      STEP
-`;
 
 
 let custom_style = `-- wimp.fight
@@ -82,7 +48,10 @@ MENU
     NAME IS AUDIO
       SET OFF
   CHARACTER
-    NAME IS PATIENCE
+    NAME IS LANCER
+      SELECT
+  ARENA
+    NAME IS TRAINING
       SELECT
   LOADOUT
     NAME IS TELEKINETIC

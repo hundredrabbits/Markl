@@ -33,10 +33,11 @@ function Markl()
   {
     this.keyboard.install();
     this.designer.install();
+    this.designer.select_fighter(this.fighter);
     
     // Comment to skip
-    this.select_fighter(new Lancer("USER",new Style("TUTORIAL",custom_style)));
-    this.select_arena(arenas.tutorial);
+    // this.select_fighter(new Lancer("USER",new Style("TUTORIAL",custom_style)));
+    // this.select_arena(arenas.tutorial);
 
     this.show(new Character_Screen());
     this.designer.update();

@@ -42,7 +42,7 @@ yu.designer yu.header { line-height: 30px;border-bottom: 1px solid #ccc;height:3
 yu.designer yu.header span { border: 1px solid #ccc;display: inline-block;height: 29px;padding:0px 10px;border-top-left-radius: 3px; border-top-right-radius: 3px; color:#999; }
 yu.designer yu.header span.active { border-bottom: 1px solid #eee; color:black; }
 yu.designer yu.header span:hover { color:black; cursor: pointer }
-yu.designer yu.header span.playing { background:#ccc; color:white; }
+yu.designer yu.header span.playing { border-top-color: #999;border-right-color: #999;border-left-color: #999;  }
 yu.designer yu.header t { display: inline-block; float:right; font-size:11px; color:#ccc; }
 
 .arena { position:relative; margin:90px; }

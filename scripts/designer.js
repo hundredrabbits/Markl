@@ -69,7 +69,7 @@ function Designer()
   {
     markl.designer.update_header(fighter);
 
-    if(fighter.name != this.fighter.name){ return; }
+    if(!fighter || fighter.name != this.fighter.name){ return; }
 
     for(id in markl.fighters){
       markl.fighters[id].interface.update();

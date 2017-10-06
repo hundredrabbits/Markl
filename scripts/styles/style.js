@@ -9,15 +9,6 @@ function Style(name,text)
   this.triggers = {};
   this.reaction = null;
 
-  this.act = function()
-  {
-    this.host.stamina -= 1;
-    this.host.el.className = "fighter acting";
-
-    this.triggers = this.find_triggers();
-    this.run(this.find_reaction());
-  }
-
   this.run = function(reaction,index = 0)
   {
     if(!reaction){
