@@ -5,25 +5,7 @@ function Arena_Screen()
   this.name = "arena selection";
   this.index = 0;
 
-  this.arenas = [];
-
-  this.arenas.push(new Arena("Training",new Size(5,5),[
-    new Spawn(new Pos(0,0)),
-    new Spawn(new Pos(4,4)),
-    new Spawn(new Pos(4,0)),
-    new Spawn(new Pos(0,4)),
-    new Hole(new Pos(2,2),1)
-  ]));
-
-  this.arenas.push(new Arena("Duel",new Size(3,5),[
-    new Spawn(new Pos(1,1)),
-    new Spawn(new Pos(1,4))
-  ]));
-
-  this.arenas.push(new Arena("Temple",new Size(3,5),[
-    new Spawn(new Pos(1,1)),
-    new Spawn(new Pos(1,4))
-  ]));
+  this.arenas = [arenas.duel,arenas.temple,arenas.training];
 
   this.el.className = "arena_selection";
 

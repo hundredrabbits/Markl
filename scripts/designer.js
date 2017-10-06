@@ -68,6 +68,14 @@ function Designer()
     markl.screen.act(reaction);
   }
 
+  this.active_fighter = null;
+
+  this.render = function(fighter)
+  {
+    this.active_fighter = fighter;
+    this.update();
+  }
+
   this.update = function()
   {
     markl.designer.update_header();
@@ -91,7 +99,7 @@ function Designer()
     var html = "<t class='right'>"+(markl.screen ? markl.screen.name : 'Error')+"</t>";
 
     for(id in markl.fighters){
-      html += "<span id='style_"+id+"' class='"+(id == markl.designer.index ? "active" : "")+"'>"+markl.fighters[id].name+"</span> ";
+      html += "<span id='style_"+id+"' class='"+(id == markl.designer.index ? "active" : "")+" "+(this.active_fighter && this.active_fighter.name == markl.fighters[id].name ? "playing" : "")+"'>"+markl.fighters[id].name+"</span> ";
     }
 
     this.header_el.innerHTML = html;
@@ -100,6 +108,7 @@ function Designer()
     if(document.getElementById("style_2")){ document.getElementById("style_2").addEventListener('click', markl.designer.tab_click); };
     if(document.getElementById("style_3")){ document.getElementById("style_3").addEventListener('click', markl.designer.tab_click); };
   }
+
 
   this.tab_click = function(e)
   {

@@ -42,6 +42,7 @@ yu.designer yu.header { line-height: 30px;border-bottom: 1px solid #ccc;height:3
 yu.designer yu.header span { border: 1px solid #ccc;display: inline-block;height: 29px;padding:0px 10px;border-top-left-radius: 3px; border-top-right-radius: 3px; color:#999; }
 yu.designer yu.header span.active { border-bottom: 1px solid #eee; color:black; }
 yu.designer yu.header span:hover { color:black; cursor: pointer }
+yu.designer yu.header span.playing { text-decoration: underline; }
 yu.designer yu.header t { display: inline-block; float:right; font-size:11px; color:#ccc; }
 
 .arena { position:relative; margin:90px; }
@@ -60,8 +61,13 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena tile.floor.y_1 { z-index:80; }
 .arena tile.floor.y_0 { z-index:90; }
 
-
+.arena event.fighter { }
 .arena event.fighter sprite { display: block;width: 110px;height: 110px;background-size: cover;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute  }
+.arena event.fighter sprite.attack { border:2px solid red; }
+.arena event.fighter sprite.stun { border:2px solid yellow; }
+.arena event.fighter sprite.move { border:2px solid green; }
+.arena event.fighter text { background: red;color: white;position: relative;z-index: 900;text-align: center;width:50%;display: inline-block;left:20px;top:-50px;font-family: 'input_mono_medium';font-size:11px; }
+.arena event.fighter text.user { background:white; color:red; }
 .arena event.fighter.lancer sprite { background-image:url(../media/fighters/lancer/idle.png);  }
 .arena event.fighter.pest sprite { background-image:url(../media/fighters/pest/idle.png);  }
 .arena event.fighter.patience sprite { background-image:url(../media/fighters/patience/idle.png);  }

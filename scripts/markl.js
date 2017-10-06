@@ -1,6 +1,6 @@
 
 var TILE_SIZE = new Size(80,80);
-var ACT_SPEED = 100;
+var ACT_SPEED = 200;
 
 // Responses
 
@@ -36,6 +36,10 @@ function Markl()
 
     this.designer.select_style(new Style("custom",menu_test));
     
+    // Comment to skip
+    this.select_fighter(new Lancer("USER",new Style("TUTORIAL",custom_style)));
+    this.select_arena(arenas.tutorial);
+
     this.show(new Character_Screen());
     this.designer.update();
   }

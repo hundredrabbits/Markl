@@ -20,14 +20,15 @@ function Style(name,text)
 
   this.run = function(reaction,index = 0)
   {
+    if(!reaction){
+      console.log("No reaction");
+      return;
+    }
     var action = reaction.actions[index];
-
-    if(this.host.name == markl.fighter.name){ markl.designer.highlight(action.line,reaction.target); }
 
     var a = new window[action.name](this.host,action.attr,reaction.target);
     a.run();
 
-    this.host.el.className = "fighter active";
     this.host.update();
     var s = this;
 
@@ -36,29 +37,7 @@ function Style(name,text)
 
   this.complete = function()
   {
-    console.log("complete")
-    this.host.el.className = "fighter idle";
-    // markl.battle.turn();
-  }
-
-  this.find_reaction = function()
-  {
-    for(trigger_id in this.tree){
-      var trigger = this.tree[trigger_id];
-      for(event_id in trigger.events){
-        var event = trigger.events[event_id];
-        for(condition_id in event.conditions){
-          var condition = event.conditions[condition_id];
-          var r = this.make_reaction(trigger.name,event.name,condition.name);
-          if(r){
-            r.actions = condition.actions;
-            return r;
-          }
-        }
-      }
-    }
-    console.warn("Empty")
-    return {actions:[{name:"WAIT"}]};
+    markl.screen.next();
   }
 
   this.react = function(triggers)

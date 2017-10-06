@@ -2,7 +2,7 @@ function ATTACK(host,attr,target = null)
 {
   Action.call(this,host,attr,target);
 
-  this.name = "Attack";
+  this.name = "attack";
   this.cost = 5;
 
   this.run = function()

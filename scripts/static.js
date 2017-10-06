@@ -1,3 +1,23 @@
+let arenas = {};
+
+arenas.tutorial = new Arena("Training",new Size(5,5),[
+  new Spawn(new Pos(0,0)),
+  new Spawn(new Pos(4,4)),
+  new Spawn(new Pos(4,0)),
+  new Spawn(new Pos(0,4)),
+  new Hole(new Pos(2,2),1)
+]);
+
+arenas.duel = new Arena("Duel",new Size(3,5),[
+  new Spawn(new Pos(1,1)),
+  new Spawn(new Pos(1,4))
+])
+
+arenas.temple = new Arena("Temple",new Size(3,5),[
+  new Spawn(new Pos(1,1)),
+  new Spawn(new Pos(1,4))
+])
+
 let menu_test = `MENU
   CHARACTER
     NAME IS LANCER
@@ -16,7 +36,7 @@ OPTION
 
 SIGHT
   FIGHTER
-    DISTANCE IS 2
+    DISTANCE IS 3
       MOVE AWAY
     DISTANCE IS 1
       ATTACK TOWARD

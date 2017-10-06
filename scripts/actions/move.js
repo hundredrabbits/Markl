@@ -2,7 +2,7 @@ function MOVE(host,attr,target = null)
 {
   Action.call(this,host,attr,target);
   
-  this.name = "Move";
+  this.name = "move";
   this.cost = 2;
 
   this.run = function()
@@ -20,8 +20,6 @@ function MOVE(host,attr,target = null)
     if(this.attr == "ANY"){
       vector = this.find_any_vector();
     }
-
-    console.log(this.attr,vector)
 
     this.host.status = {action:this.name,vector:vector.name};
     this.host.stamina -= this.cost;

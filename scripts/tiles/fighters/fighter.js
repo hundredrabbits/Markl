@@ -9,6 +9,7 @@ function Fighter(name,style = null)
   this.character = "unknown"
 
   this.style = style;
+  this.style.host = this;
 
   this.interface = new Fighter_Interface(this);
 
@@ -17,10 +18,14 @@ function Fighter(name,style = null)
 
   this.sprite = document.createElement("sprite");
   this.el.appendChild(this.sprite);
+  this.label_el = document.createElement("text");
+  this.el.appendChild(this.label_el);
+  this.label_el.className = this.name.toLowerCase();
 
   this.start = function()
   {
     this.el.className = "fighter "+this.character;
+    this.label_el.textContent = this.name;
   }
 
   this.setup = function()
@@ -47,6 +52,7 @@ function Fighter(name,style = null)
       this.kill();
     }
     this.interface.update();
+    this.sprite.className = this.status.action+" "+this.status.vector;
   }
 
   this.act = function()
@@ -70,7 +76,6 @@ function Fighter(name,style = null)
   this.knockback = function(vector)
   {
     var destination = this.pos.add(vector);
-    console.log(this.name+" knockbacked to:"+destination);
     
     if(this.can_move_to(destination)){
       this.pos = destination;
@@ -82,8 +87,9 @@ function Fighter(name,style = null)
 
   this.stun = function()
   {
-    this.stamina -= 10;
-    this.el.className = "fighter knocked";
+    this.stamina += 10;
+    this.status.action = "stun";
+    this.update();
   }
 
   this.can_move_to = function(pos)
