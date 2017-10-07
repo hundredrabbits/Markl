@@ -3,6 +3,7 @@ function Arena(name,size, events = [])
   this.name = name;
   this.size = size;
   this.events = events;
+  this.effects = [];
 
   this.el = document.createElement("div");
   this.el.setAttribute("class","arena");
@@ -63,6 +64,12 @@ function Arena(name,size, events = [])
   {
     this.events.push(event);
     this.el.appendChild(event.el);
+  }
+
+  this.add_effect = function(effect)
+  {
+    this.effects.push(effect);
+    this.el.appendChild(effect.el);
   }
 
   this.update = function()

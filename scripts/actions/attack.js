@@ -15,6 +15,8 @@ function ATTACK(host,attr,target = null)
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     var event_at_position = markl.arena.event_at(target_position,"fighter");
 
+    this.host.animator.index = 0;
+    
     if(event_at_position){
       console.log(this.name,"at "+target_position+"("+vector.name+")");
       event_at_position.damage(1);

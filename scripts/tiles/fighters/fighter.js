@@ -26,6 +26,9 @@ function Fighter(name,style = null)
   this.sprite = document.createElement("sprite");
   this.el.appendChild(this.sprite);
 
+  this.shadow = document.createElement("shadow");
+  this.el.appendChild(this.shadow);
+
   this.start = function()
   {
     this.el.className = "fighter "+this.character;
@@ -52,7 +55,6 @@ function Fighter(name,style = null)
 
   this.update = function(new_class = "")
   {
-    this.animator.index = 0;
     if(this.hp < 1 || this.stamina < 1){ 
       this.kill();
     }
@@ -66,6 +68,8 @@ function Fighter(name,style = null)
 
   this.damage = function(val)
   {
+    console.log(this.pos)
+    markl.arena.add_effect(new Hit(new Pos(this.pos.x,this.pos.y)));
     this.hp -= val;
     this.update();
   }

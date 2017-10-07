@@ -34,7 +34,7 @@ function Battle_Screen()
     markl.arena.focus();
     
     var s = this;
-    setTimeout(function(){ s.next(); }, ACT_SPEED);
+    setTimeout(function(){ s.next(); }, ACT_SPEED * 1.25);
   }
 
   this.move_missiles = function()
@@ -59,7 +59,6 @@ function Battle_Screen()
       if(!sight || !sight.is_visible){ continue; }
       var sight_type = sight.type.toUpperCase().trim();
       var sight_distance = sight.pos.distance_from(fighter.pos);
-      console.log(sight,sight_type);
       h["SIGHT"][sight_type]["DEFAULT"] = sight;
       h["SIGHT"][sight_type]["DISTANCE IS "+sight_distance] = sight;
       if(sight.character){

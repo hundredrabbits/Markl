@@ -72,7 +72,7 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena event.fighter .progress .bar { height:3px; border-radius:4px; }
 .arena event.fighter .progress .bar.health { background:red; }
 .arena event.fighter .progress .bar.speed { background:white;  }
-.arena event.fighter sprite { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute  }
+.arena event.fighter sprite { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index: 200; }
 /*.arena event.fighter sprite.attack { border:2px solid red; }
 .arena event.fighter sprite.stun { border:2px solid yellow; }
 .arena event.fighter sprite.move { border:2px solid green; }*/
@@ -128,10 +128,25 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena event.fighter sprite.fire.f_2 { background-position: -220px -550px }
 .arena event.fighter sprite.fire.f_3 { background-position: -330px -550px }
 
-.arena event svg { width:80px; height:80px; }
+.arena event.fighter shadow { background-image:url(../media/effects.png); display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index:100; }
+
+.arena event.fighter shadow.idle { background-position: 0px -330px }
+.arena event.fighter shadow.idle.f_0 { background-position: 0px -330px }
+.arena event.fighter shadow.idle.f_1 { background-position: -110px -330px }
+.arena event.fighter shadow.idle.f_2 { background-position: -220px -330px }
+.arena event.fighter shadow.idle.f_3 { background-position: -330px -330px }
 
 .arena event.blocker sprite { display: block;width: 80px;height: 87px;background-size: contain;background-repeat: no-repeat;background-position: center center;top:-30px;position: absolute  }
 .arena event.blocker.id_1 sprite { background-image:url(../media/tiles/floor/chimney.1.png);  }
 
 .arena event.fighter.dead { display:none; }
+
+.arena effect { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index: 200; border:2px dashed red;}
+.arena effect sprite { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index: 200; background-image:url(../media/effects.png); background-position: 0px -110px}
+
+.arena effect sprite.explode.f_0 { background-position: 0px -110px }
+.arena effect sprite.explode.f_1 { background-position: -110px -110px }
+.arena effect sprite.explode.f_2 { background-position: -220px -110px }
+.arena effect sprite.explode.f_3 { background-position: -330px -110px }
+.arena effect sprite.explode.f_4 { background-position: -440px -110px }
 

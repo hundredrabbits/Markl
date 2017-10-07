@@ -23,13 +23,18 @@
 
 - Worldmap
 
+#### The Dojo
+
+- Tatami theme
+- Totem actions
+- Move totem on circuit
+
 ### Arena Screen
 
 - Holes
 - Doodads
 - Parallax
 - Wall tiles
-- Projectiles
 
 #### Characters
 
@@ -38,7 +43,6 @@
 ### Actions
 
 - Cast
-- Fire
 - Taunt
 
 ### Objects

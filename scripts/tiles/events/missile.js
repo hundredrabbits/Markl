@@ -9,13 +9,8 @@ function Missile(pos,vector)
   this.is_active = true;
   this.type = "missile";
   this.el.className = "missile";
-
   this.sprite = document.createElement("sprite");
-
-  this.start = function()
-  {
-    this.el.appendChild(this.sprite);
-  }
+  this.el.appendChild(this.sprite);
 
   this.move = function()
   {
@@ -24,7 +19,7 @@ function Missile(pos,vector)
     console.log("move");
 
     this.pos = new Pos(this.pos.x,this.pos.y).add(this.vector);
-    // this.update();
+  
     $(this.el).animate({ top:this.pos.html().y, left:this.pos.html().x }, ACT_SPEED);
 
     var event_at_position = markl.arena.event_at(this.pos,"fighter");
