@@ -39,6 +39,10 @@ function MOVE(host,attr,target = null)
     else{
       this.host.pos = new Pos(target_position.x,target_position.y);
       $(this.host.el).animate({ top:target_position.html().y, left:target_position.html().x }, ACT_SPEED);
+
+      var h = this.host;
+      setTimeout(function(){ h.status.action = "idle"; }, ACT_SPEED * 1.75);
+      
     }
   }
 

@@ -71,10 +71,6 @@ function Designer()
 
     if(!fighter || fighter.name != this.fighter.name){ return; }
 
-    for(id in markl.fighters){
-      markl.fighters[id].interface.update();
-    }
-
     markl.designer.hint_el.innerHTML = markl.designer.parse(fighter,line_id,target);
 
     if(markl.designer.is_running){

@@ -4,7 +4,7 @@ function Animator(host)
   var a = this;
 
   this.animations = {};
-  this.index = 0;
+  this.index = parseInt(Math.random() * 300);
 
   this.add = function(animation)
   {
@@ -13,7 +13,8 @@ function Animator(host)
 
   this.update = function()
   {
-    var a = this.animations[this.host.status.action]
+    var a = this.animations[this.host.status.action];
+    if(!a){ console.log("missing",this.host.status.action); return; }
     var frame = a.frames[this.index % a.frames.length];
     this.host.sprite.className = this.host.status.action+" "+this.host.status.vector+" f_"+frame;
   }

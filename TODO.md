@@ -32,14 +32,13 @@
 
 #### Characters
 
-- Basic sprites
-- Animation
 - Effects
 
 ### Actions
 
-- Dash
+- Cast
 - Fire
+- Taunt
 
 ### Objects
 

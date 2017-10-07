@@ -65,12 +65,13 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena tile.floor.y_0 { z-index:90; }
 
 .arena event.fighter { }
+.arena event.fighter .label { color: white;position: relative;z-index: 900;text-align: center;width:50%;display: inline-block;left:20px;top:-50px;font-family: 'input_mono_medium';font-size:11px; color: #fff;text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; }
+.arena event.fighter .progress { background: black;width: 80px;position: relative;top: -50px;padding:2px}
+.arena event.fighter .progress .bar { background:red; height:3px; }
 .arena event.fighter sprite { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute  }
 /*.arena event.fighter sprite.attack { border:2px solid red; }
 .arena event.fighter sprite.stun { border:2px solid yellow; }
 .arena event.fighter sprite.move { border:2px solid green; }*/
-.arena event.fighter text { background: red;color: white;position: relative;z-index: 900;text-align: center;width:50%;display: inline-block;left:20px;top:-50px;font-family: 'input_mono_medium';font-size:11px; }
-.arena event.fighter text.user { background:white; color:red; }
 .arena event.fighter.lancer sprite { background-image:url(../media/fighters/lancer.png);  }
 .arena event.fighter.pest sprite { background-image:url(../media/fighters/pest.png);  }
 .arena event.fighter.patience sprite { background-image:url(../media/fighters/patience.png);  }
@@ -87,6 +88,11 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena event.fighter sprite.idle.f_1 { background-position: -110px -330px }
 .arena event.fighter sprite.idle.f_2 { background-position: -220px -330px }
 .arena event.fighter sprite.idle.f_3 { background-position: -330px -330px }
+
+.arena event.fighter sprite.idle.up.f_0 { background-position: 0px -110px }
+.arena event.fighter sprite.idle.up.f_1 { background-position: -110px -110px }
+.arena event.fighter sprite.idle.up.f_2 { background-position: -220px -110px }
+.arena event.fighter sprite.idle.up.f_3 { background-position: -330px -110px }
 
 .arena event.fighter sprite.move.down.f_0 { background-position: 0px -0px }
 .arena event.fighter sprite.move.down.f_1 { background-position: -110px -0px }
@@ -113,4 +119,5 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena event.blocker sprite { display: block;width: 80px;height: 87px;background-size: contain;background-repeat: no-repeat;background-position: center center;top:-30px;position: absolute  }
 .arena event.blocker.id_1 sprite { background-image:url(../media/tiles/floor/chimney.1.png);  }
 
+.arena event.fighter.dead { display:none; }
 

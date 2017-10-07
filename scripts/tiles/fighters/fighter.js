@@ -12,24 +12,22 @@ function Fighter(name,style = null)
   this.style.host = this;
 
   this.animator = new Animator(this);
-  this.animator.add(new Animation("idle",[0,1,2,3,2,1]))
+  this.animator.add(new Animation("idle",[0,1,2,3,2,1,0,0,0,0]))
   this.animator.add(new Animation("move",[0,1,2,3]))
-  this.animator.add(new Animation("stun",[0]))
+  this.animator.add(new Animation("stun",[0]));
+
   this.interface = new Fighter_Interface(this);
 
-  this.hp = 5;
+  this.hp = 4;
   this.stamina = 200;
 
   this.sprite = document.createElement("sprite");
   this.el.appendChild(this.sprite);
-  this.label_el = document.createElement("text");
-  this.el.appendChild(this.label_el);
-  this.label_el.className = this.name.toLowerCase();
 
   this.start = function()
   {
     this.el.className = "fighter "+this.character;
-    this.label_el.textContent = this.name;
+    this.el.appendChild(this.interface.el);
   }
 
   this.setup = function()

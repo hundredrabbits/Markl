@@ -2,54 +2,25 @@ function Fighter_Interface(host)
 {
   this.host = host;
 
-  this.el = document.createElement("ln");
+  this.el = document.createElement("yu");
 
-  // Interface
+  this.label_el = document.createElement("text");
+  this.el.appendChild(this.label_el);
+  this.label_el.textContent = this.host.name;
+  this.label_el.className = "label";
 
-  this.name_label = document.createElement("span");
-  this.name_label.textContent = this.host.name;
-  
-  this.interface = document.createElement("div");
-  this.interface.setAttribute("class","fighter");
-  this.interface.innerHTML = this.host.name;
+  this.progress_el = document.createElement("yu");
+  this.progress_el.className = "progress";
+  this.el.appendChild(this.progress_el);
 
-  //
-  this.el.setAttribute("class","fighter");
-  this.el.appendChild(this.name_label);
+  this.bar_el = document.createElement("yu");
+  this.bar_el.className = "bar";
+  this.progress_el.appendChild(this.bar_el);
+
+  // this.label_el.className = this.name.toLowerCase();
 
   this.update = function()
   {
-    var html = "<b>"+this.host.name+"</b> ";
-
-    // HP
-    if(this.host.hp == 4){
-      html += "||||";
-    }
-    if(this.host.hp == 3){
-      html += "|||<span class='dmg'>|</span>";
-    }
-    if(this.host.hp == 2){
-      html += "||<span class='dmg'>||</span>";
-    }
-    if(this.host.hp == 1){
-      html += "|<span class='dmg'>|||</span>";
-    }
-    if(this.host.hp == 0){
-      html += "<span class='dmg'>||||</span>";
-    }
-
-    // Max stamina
-
-    if(markl.battle){
-      var speed = this.host.stamina - markl.battle.next_fighter().stamina;
-      // html += "SP:"+speed+" ";
-
-      if(this.hp > 0){
-        // html += " - "+this.host.status.action+(this.host.status.action ? "["+this.host.status.vector+"] " : "");
-      }
-    }
-  
-    this.el.innerHTML = html;
+    $(this.bar_el).animate({ width: ((this.host.hp/3.0) * 80) }, ACT_SPEED/4);
   }
-
 }
