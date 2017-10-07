@@ -17,14 +17,20 @@ function Battle_Screen()
 
   this.next = function()
   {
-    if(markl.arena.get_fighters_alive().length < 2 || !markl.designer.is_running){
+    if(markl.arena.get_fighters_alive().length < 2){
+      this.end();
       return;
     }
-    var fighter = this.next_fighter();
-    var triggers = this.find_triggers(fighter);
-    var reaction = fighter.style.react(triggers);
-    fighter.style.run(reaction);
-    markl.designer.update(fighter,parseInt(reaction.actions[0].line),reaction.target);
+    if(markl.designer.is_running){
+      var fighter = this.next_fighter();
+      var triggers = this.find_triggers(fighter);
+      var reaction = fighter.style.react(triggers);
+      fighter.style.run(reaction);
+      markl.designer.update(fighter,parseInt(reaction.actions[0].line),reaction.target);
+    }
+    
+    var s = this;
+    setTimeout(function(){ s.next(); }, ACT_SPEED);
   }
 
   this.find_triggers = function(fighter)
@@ -65,5 +71,4 @@ function Battle_Screen()
     console.log("<Battle>Ended");
     markl.designer.update();
   }
-  
 }

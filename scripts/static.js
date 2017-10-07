@@ -25,7 +25,6 @@ arenas.large = new Arena("large",new Size(5,7),[
   new Spawn(new Pos(2,6))
 ]);
 
-
 let custom_style = `
 SIGHT
   FIGHTER

@@ -78,9 +78,35 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 
 .arena event.fighter sprite.up { background-position: 0px -110px }
 .arena event.fighter sprite.right { background-position: 0px -220px }
-.arena event.fighter sprite.left { background-position: 0px -220px; transform: scaleX(-1)  }
+.arena event.fighter sprite.left { background-position: 0px -220px; transform: scaleX(-1) !important  }
 .arena event.fighter sprite.down { background-position: 0px 0px }
 .arena event.fighter sprite.stun { background-position: 0px -440px }
+
+.arena event.fighter sprite.idle { background-position: 0px -330px }
+.arena event.fighter sprite.idle.f_0 { background-position: 0px -330px }
+.arena event.fighter sprite.idle.f_1 { background-position: -110px -330px }
+.arena event.fighter sprite.idle.f_2 { background-position: -220px -330px }
+.arena event.fighter sprite.idle.f_3 { background-position: -330px -330px }
+
+.arena event.fighter sprite.move.down.f_0 { background-position: 0px -0px }
+.arena event.fighter sprite.move.down.f_1 { background-position: -110px -0px }
+.arena event.fighter sprite.move.down.f_2 { background-position: -220px -0px }
+.arena event.fighter sprite.move.down.f_3 { background-position: -330px -0px }
+
+.arena event.fighter sprite.move.left.f_0 { background-position: 0px -220px }
+.arena event.fighter sprite.move.left.f_1 { background-position: -110px -220px }
+.arena event.fighter sprite.move.left.f_2 { background-position: -220px -220px }
+.arena event.fighter sprite.move.left.f_3 { background-position: -330px -220px }
+
+.arena event.fighter sprite.move.right.f_0 { background-position: 0px -220px }
+.arena event.fighter sprite.move.right.f_1 { background-position: -110px -220px }
+.arena event.fighter sprite.move.right.f_2 { background-position: -220px -220px }
+.arena event.fighter sprite.move.right.f_3 { background-position: -330px -220px }
+
+.arena event.fighter sprite.move.up.f_0 { background-position: 0px -110px }
+.arena event.fighter sprite.move.up.f_1 { background-position: -110px -110px }
+.arena event.fighter sprite.move.up.f_2 { background-position: -220px -110px }
+.arena event.fighter sprite.move.up.f_3 { background-position: -330px -110px }
 
 .arena event svg { width:80px; height:80px; }
 

@@ -22,8 +22,6 @@ function Style(name,text)
 
     this.host.update();
     var s = this;
-
-    setTimeout(function(){ s.complete(); }, ACT_SPEED);
   }
 
   this.complete = function()

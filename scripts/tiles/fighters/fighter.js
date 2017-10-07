@@ -4,16 +4,20 @@ function Fighter(name,style = null)
 
   this.name = name;
   this.is_collider = true;
-  this.status = "idle";
+  this.status = {action:"idle",vector:"down"};
   this.type = "fighter";
   this.character = null;
 
   this.style = style;
   this.style.host = this;
 
+  this.animator = new Animator(this);
+  this.animator.add(new Animation("idle",[0,1,2,3,2,1]))
+  this.animator.add(new Animation("move",[0,1,2,3]))
+  this.animator.add(new Animation("stun",[0]))
   this.interface = new Fighter_Interface(this);
 
-  this.hp = 3;
+  this.hp = 5;
   this.stamina = 200;
 
   this.sprite = document.createElement("sprite");
@@ -52,7 +56,6 @@ function Fighter(name,style = null)
       this.kill();
     }
     this.interface.update();
-    this.sprite.className = this.status.action+" "+this.status.vector;
   }
 
   this.act = function()
