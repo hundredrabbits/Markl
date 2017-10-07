@@ -22,7 +22,7 @@ function Battle_Screen()
       return;
     }
     if(markl.designer.is_running){
-      this.move_missles();
+      this.move_missiles();
       var fighter = this.next_fighter();
       var triggers = this.find_triggers(fighter);
       var reaction = fighter.style.react(triggers);
@@ -37,14 +37,14 @@ function Battle_Screen()
     setTimeout(function(){ s.next(); }, ACT_SPEED);
   }
 
-  this.move_missles = function()
+  this.move_missiles = function()
   {
     for(id in markl.arena.events)
     {
       var event = markl.arena.events[id];
-      if(event.type != "missle"){ continue; }
-      var missle = event;
-      missle.move();
+      if(event.type != "missile"){ continue; }
+      var missile = event;
+      missile.move();
     }
   }
 

@@ -20,8 +20,8 @@ function FIRE(host,attr,target = null)
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
 
     console.warn("MISSLE")
-    var missile = new Missle(this.host.pos, vector);
-    missle.start();
-    markl.arena.add_event(missle);
+    var missile = new Missile(this.host.pos, vector);
+    missile.start();
+    markl.arena.add_event(missile);
   }
 }

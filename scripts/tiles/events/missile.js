@@ -1,4 +1,4 @@
-function Missle(pos,vector)
+function Missile(pos,vector)
 {
   Event.call(this,pos);
 
@@ -7,8 +7,8 @@ function Missle(pos,vector)
   this.is_collider = false;
   this.is_visible = true;
   this.is_active = true;
-  this.type = "missle";
-  this.el.className = "missle";
+  this.type = "missile";
+  this.el.className = "missile";
 
   this.sprite = document.createElement("sprite");
 

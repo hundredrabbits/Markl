@@ -64,7 +64,7 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena tile.floor.y_1 { z-index:80; }
 .arena tile.floor.y_0 { z-index:90; }
 
-.arena event.missle sprite { background:red; display: block;width: 20px;height: 20px;left: 28px;top: 28px;position: absolute; border-radius: 100px; border:2px solid red; }
+.arena event.missile sprite { background:red; display: block;width: 20px;height: 20px;left: 28px;top: 28px;position: absolute; border-radius: 100px; border:2px solid red; }
 
 .arena event.fighter { }
 .arena event.fighter .label { position: relative;z-index: 900;text-align: center;width:80px;display: inline-block;top:-50px;font-family: 'input_mono_medium';font-size:11px; color: #fff;text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; }
