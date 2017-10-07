@@ -1,6 +1,6 @@
 
 var TILE_SIZE = new Size(80,80);
-var ACT_SPEED = 150;
+var ACT_SPEED = 200;
 
 // Responses
 

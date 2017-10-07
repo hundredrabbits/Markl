@@ -50,7 +50,7 @@ function Battle_Screen()
 
   this.find_triggers = function(fighter)
   {
-    var h = {"SIGHT":{"FIGHTER":{},"BLOCKER":{},"MISSLE":{}},"DEFAULT":{"DEFAULT":{"DEFAULT":{}}}};
+    var h = {"SIGHT":{"FIGHTER":{},"BLOCKER":{},"MISSILE":{}},"DEFAULT":{"DEFAULT":{"DEFAULT":{}}}};
 
     var sights = markl.arena.events_visible_from(fighter.pos);
 
@@ -59,6 +59,7 @@ function Battle_Screen()
       if(!sight || !sight.is_visible){ continue; }
       var sight_type = sight.type.toUpperCase().trim();
       var sight_distance = sight.pos.distance_from(fighter.pos);
+      console.log(sight,sight_type);
       h["SIGHT"][sight_type]["DEFAULT"] = sight;
       h["SIGHT"][sight_type]["DISTANCE IS "+sight_distance] = sight;
       if(sight.character){

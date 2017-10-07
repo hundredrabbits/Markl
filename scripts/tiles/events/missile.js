@@ -21,9 +21,11 @@ function Missile(pos,vector)
   {
     if(!this.is_active){ return; }
 
-    var target_position = new Pos(this.pos.x,this.pos.y).add(this.vector);
-    this.pos = target_position;
-    this.update();
+    console.log("move");
+
+    this.pos = new Pos(this.pos.x,this.pos.y).add(this.vector);
+    // this.update();
+    $(this.el).animate({ top:this.pos.html().y, left:this.pos.html().x }, ACT_SPEED);
 
     var event_at_position = markl.arena.event_at(this.pos,"fighter");
 
