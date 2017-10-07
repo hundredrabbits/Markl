@@ -38,6 +38,27 @@ function Arena(name,size, events = [])
     }
   }
 
+  this.focus = function()
+  {
+    var arena_center = new Pos(((this.size.width+1)/2.0),((this.size.height+1)/2.0));
+
+    var characters_average = {x:0,y:0};
+
+    var players_alive = 0.0;
+    for(id in markl.fighters){
+      if(!markl.fighters[id].is_alive()){ continue; }
+      characters_average.x += markl.fighters[id].pos.x+1;
+      characters_average.y += markl.fighters[id].pos.y+1;
+      players_alive += 1;
+    }
+
+    characters_average = {x:characters_average.x/players_alive,y:characters_average.y/players_alive};
+    
+    var offset = {x:characters_average.x-arena_center.x,y:characters_average.y-arena_center.y};
+
+    $(this.el).animate({ left:(offset.x * -5),top:(offset.y * 5) }, ACT_SPEED);
+  }
+
   this.add_event = function(event)
   {
     this.events.push(event);

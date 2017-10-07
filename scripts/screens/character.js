@@ -119,7 +119,7 @@ function Character_Screen()
   this.leave = function()
   {
     console.log("LEAVE")
-    markl.select_opponents([new Sin("CPU1",new Style("idle",custom_style)),new Patience("CPU2",new Style("idle",custom_style)),new Pest("CPU3",new Style("idle",custom_style))]);
+    markl.select_opponents([new Sin("CPU1",new Style("idle",flower_style)),new Patience("CPU2",new Style("idle",custom_style)),new Pest("CPU3",new Style("idle",custom_style))]);
     markl.show(new Arena_Screen());
     markl.designer.update();
   }

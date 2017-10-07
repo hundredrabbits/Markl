@@ -88,3 +88,29 @@ SIGHT
     DEFAULT
       MOVE AWAY
 `;
+
+let flower_style = `-- flower.fight
+SIGHT
+  FIGHTER
+    DISTANCE IS 4
+      WAIT
+    DISTANCE IS 2
+      MOVE AWAY
+    DISTANCE IS 1
+      ATTACK TOWARD
+    DEFAULT
+      MOVE AWAY
+  OBJECT
+    DISTANCE IS 1
+      ATTACK TOWARD
+    DEFAULT
+      MOVE
+  PROJECTILE
+    DEFAULT
+      STEP
+
+DEFAULT
+  DEFAULT
+    DEFAULT
+      MOVE ANY
+`;

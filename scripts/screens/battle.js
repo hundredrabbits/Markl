@@ -27,7 +27,9 @@ function Battle_Screen()
       var reaction = fighter.style.react(triggers);
       fighter.style.run(reaction);
       markl.designer.update(fighter,parseInt(reaction.actions[0].line),reaction.target);
-    }
+    } 
+
+    markl.arena.focus();
     
     var s = this;
     setTimeout(function(){ s.next(); }, ACT_SPEED);

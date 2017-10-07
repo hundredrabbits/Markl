@@ -2,8 +2,6 @@
 
 ### Designer
 
-- Display speed
-
 ### Splash Screen
 
 - Logo
@@ -12,7 +10,6 @@
 ### Character Selection Screen
 
 - Cursor
-- Names
 - Statistics
 - Loadout(?)
 
@@ -29,6 +26,7 @@
 - Floor tiles
 - Wall tiles
 - Projectiles
+- Animate arena
 
 #### Characters
 

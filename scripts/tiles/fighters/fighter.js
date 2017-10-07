@@ -19,7 +19,7 @@ function Fighter(name,style = null)
   this.interface = new Fighter_Interface(this);
 
   this.hp = 4;
-  this.stamina = 200;
+  this.stamina = 1000;
 
   this.sprite = document.createElement("sprite");
   this.el.appendChild(this.sprite);

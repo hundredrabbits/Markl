@@ -65,9 +65,11 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena tile.floor.y_0 { z-index:90; }
 
 .arena event.fighter { }
-.arena event.fighter .label { color: white;position: relative;z-index: 900;text-align: center;width:50%;display: inline-block;left:20px;top:-50px;font-family: 'input_mono_medium';font-size:11px; color: #fff;text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; }
-.arena event.fighter .progress { background: black;width: 80px;position: relative;top: -50px;padding:2px}
-.arena event.fighter .progress .bar { background:red; height:3px; }
+.arena event.fighter .label { position: relative;z-index: 900;text-align: center;width:80px;display: inline-block;top:-50px;font-family: 'input_mono_medium';font-size:11px; color: #fff;text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; }
+.arena event.fighter .progress { background: black;width: 80px;position: relative;top: -50px;padding:2px; border-radius:3px;}
+.arena event.fighter .progress .bar { height:3px; border-radius:4px; }
+.arena event.fighter .progress .bar.health { background:red; }
+.arena event.fighter .progress .bar.speed { background:white;  }
 .arena event.fighter sprite { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute  }
 /*.arena event.fighter sprite.attack { border:2px solid red; }
 .arena event.fighter sprite.stun { border:2px solid yellow; }
