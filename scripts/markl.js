@@ -36,8 +36,8 @@ function Markl()
     this.designer.select_fighter(this.fighter);
     
     // Comment to skip
-    // this.select_fighter(new Lancer("USER",new Style("TUTORIAL",custom_style)));
-    // this.select_arena(arenas.training);
+    this.select_fighter(new Lancer("USER",new Style("TUTORIAL",custom_style)));
+    this.select_arena(arenas.training);
 
     this.show(new Character_Screen());
     this.designer.update();
