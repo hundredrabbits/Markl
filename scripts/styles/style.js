@@ -11,11 +11,12 @@ function Style(name,text)
 
   this.run = function(reaction,index = 0)
   {
-    if(!reaction){
-      console.log("No reaction");
+    var action = reaction.actions[index];
+
+    if(!window[action.name]){
+      console.warn("Unknown",action.name)
       return;
     }
-    var action = reaction.actions[index];
 
     var a = new window[action.name](this.host,action.attr,reaction.target);
     a.run();

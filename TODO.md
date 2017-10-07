@@ -19,14 +19,11 @@
 
 ### Arena Screen
 
-- Abilities
 - Holes
 - Doodads
 - Parallax
-- Floor tiles
 - Wall tiles
 - Projectiles
-- Animate arena
 
 #### Characters
 

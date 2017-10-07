@@ -15,6 +15,7 @@ function Fighter(name,style = null)
   this.animator.add(new Animation("idle",[0,1,2,3,2,1,0,0,0,0]))
   this.animator.add(new Animation("move",[0,1,2,3]))
   this.animator.add(new Animation("stun",[0]));
+  this.animator.add(new Animation("attack",[0]));
 
   this.interface = new Fighter_Interface(this);
 

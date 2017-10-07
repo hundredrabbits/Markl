@@ -58,7 +58,7 @@ MENU
     NAME IS LANCER
       SELECT
   ARENA
-    NAME IS LARGE
+    NAME IS TRAINING
       SELECT
   LOADOUT
     NAME IS TELEKINETIC
@@ -77,16 +77,19 @@ let other_style = `-- dodge.fight
 
 SIGHT
   FIGHTER
-    DISTANCE IS 2
-      MOVE AWAY
-    DISTANCE IS 1
-      ATTACK TOWARD
+    DEFAULT
+      FIRE TOWARD
   OBJECT
     DEFAULT
       MOVE
   PROJECTILE
     DEFAULT
       MOVE AWAY
+
+DEFAULT
+  DEFAULT
+    DEFAULT
+      MOVE ANY
 `;
 
 let flower_style = `-- flower.fight

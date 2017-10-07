@@ -116,6 +116,11 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena event.fighter sprite.move.up.f_2 { background-position: -220px -110px }
 .arena event.fighter sprite.move.up.f_3 { background-position: -330px -110px }
 
+.arena event.fighter sprite.attack.f_0 { background-position: 0px -550px }
+.arena event.fighter sprite.attack.f_1 { background-position: -110px -550px }
+.arena event.fighter sprite.attack.f_2 { background-position: -220px -550px }
+.arena event.fighter sprite.attack.f_3 { background-position: -330px -550px }
+
 .arena event svg { width:80px; height:80px; }
 
 .arena event.blocker sprite { display: block;width: 80px;height: 87px;background-size: contain;background-repeat: no-repeat;background-position: center center;top:-30px;position: absolute  }

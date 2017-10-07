@@ -25,7 +25,8 @@ function Battle_Screen()
       var fighter = this.next_fighter();
       var triggers = this.find_triggers(fighter);
       var reaction = fighter.style.react(triggers);
-      fighter.style.run(reaction);
+      if(reaction){ fighter.style.run(reaction); }else{ console.log("No reaction",reaction); }
+      
       markl.designer.update(fighter,parseInt(reaction.actions[0].line),reaction.target);
     } 
 
@@ -71,6 +72,11 @@ function Battle_Screen()
   {
     this.counter = 0;
     console.log("<Battle>Ended");
+
+    for(id in markl.fighters){
+      if(!markl.fighters[id].is_alive()){ continue; }
+      markl.fighters[id].status = {action:"idle",vector:"down"};
+    }
     markl.designer.update();
   }
 }
