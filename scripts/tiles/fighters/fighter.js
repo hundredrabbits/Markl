@@ -15,7 +15,8 @@ function Fighter(name,style = null)
   this.animator.add(new Animation("idle",[0,1,2,3,2,1,0,0,0,0]))
   this.animator.add(new Animation("move",[0,1,2,3]))
   this.animator.add(new Animation("stun",[0]));
-  this.animator.add(new Animation("attack",[0]));
+  this.animator.add(new Animation("attack",[0,1,2,3,3,3,3,3,3,3,3,3,3,3]));
+  this.animator.add(new Animation("fire",[0,1,2,3,3,3,3,3,3,3,3,3,3,3]));
 
   this.interface = new Fighter_Interface(this);
 
@@ -51,6 +52,7 @@ function Fighter(name,style = null)
 
   this.update = function(new_class = "")
   {
+    this.animator.index = 0;
     if(this.hp < 1 || this.stamina < 1){ 
       this.kill();
     }
@@ -89,8 +91,9 @@ function Fighter(name,style = null)
 
   this.stun = function()
   {
-    this.stamina -= 10;
+    this.stamina -= 15;
     this.status.action = "stun";
+    this.status.vector = "down";
     this.update();
   }
 

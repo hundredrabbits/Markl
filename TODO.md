@@ -1,5 +1,11 @@
 ## TODOs
 
+- Shadow sprite
+- Attack frames
+- Attack Effect
+- Missle sprite
+- Faint sprites
+
 ### Designer
 
 ### Splash Screen
@@ -46,4 +52,3 @@
 
 ## Fighting Style
 
-- Decide syntax

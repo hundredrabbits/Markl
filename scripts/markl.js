@@ -17,7 +17,7 @@ function Markl()
   this.screen = null;
 
   this.arena = null;
-  this.fighter = new Fighter("USER", new Style("Test",custom_style));
+  this.fighter = new Fighter("USER", new Style("Test",other_style));
   this.fighters = [];
   this.battle = null;
 
@@ -36,8 +36,8 @@ function Markl()
     this.designer.select_fighter(this.fighter);
     
     // Comment to skip
-    this.select_fighter(new Lancer("USER",new Style("TUTORIAL",custom_style)));
-    this.select_arena(arenas.training);
+    this.select_fighter(new Lancer("USER",new Style("TUTORIAL",other_style)));
+    this.select_arena(arenas.duel);
 
     this.show(new Character_Screen());
     this.designer.update();
@@ -47,7 +47,7 @@ function Markl()
   {
     console.warn("RESET")
 
-    this.fighter = new Fighter("USER", new Style("Test",custom_style));
+    this.fighter = new Fighter("USER", new Style("Test",other_style));
     this.fighters = [];
     this.arena = null;
     this.show(new Character_Screen());

@@ -2,10 +2,10 @@ function FIRE(host,attr,target = null)
 {
   Action.call(this,host,attr,target);
 
-  this.name = "wait";
-  this.cost = 1;
+  this.name = "fire";
+  this.cost = 20;
 
-  this.name = "Wait";
+  this.name = "fire";
 
   this.run = function()
   {
@@ -14,9 +14,14 @@ function FIRE(host,attr,target = null)
     this.host.status = {action:this.name,vector:vector.name};
     this.host.stamina -= this.cost;
 
+    this.host.animator.index = 0;
+    this.host.update();
+
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
 
-    // markl.arena.add_event(new Missle(target_position));
-    this.host.update();
+    console.warn("MISSLE")
+    var missile = new Missle(this.host.pos, vector);
+    missle.start();
+    markl.arena.add_event(missle);
   }
 }

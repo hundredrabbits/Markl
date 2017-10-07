@@ -8,9 +8,9 @@ arenas.training = new Arena("training",new Size(5,5),[
   new Hole(new Pos(2,2),1)
 ]);
 
-arenas.duel = new Arena("duel",new Size(3,5),[
-  new Spawn(new Pos(1,1)),
-  new Spawn(new Pos(1,4))
+arenas.duel = new Arena("duel",new Size(3,7),[
+  new Spawn(new Pos(1,0)),
+  new Spawn(new Pos(1,6))
 ])
 
 arenas.temple = new Arena("temple",new Size(3,5),[
@@ -77,6 +77,10 @@ let other_style = `-- dodge.fight
 
 SIGHT
   FIGHTER
+    DISTANCE IS 2
+      MOVE AWAY
+    DISTANCE IS 1
+      MOVE AWAY
     DEFAULT
       FIRE TOWARD
   OBJECT
