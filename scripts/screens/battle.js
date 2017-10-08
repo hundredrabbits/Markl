@@ -2,7 +2,10 @@ function Battle_Screen()
 {
   Screen.call(this);
 
-  this.name = "Battle"
+  this.name = "Battle";
+
+  this.summary_el = document.createElement("yu");
+  this.summary_el.className = "summary";
   
   this.start = function()
   {
@@ -12,15 +15,20 @@ function Battle_Screen()
     markl.arena.start();
     markl.designer.update();
 
+    markl.screen.el.appendChild(this.summary_el);
+
     this.next();
   }
 
   this.next = function()
   {
+    this.update_interface();
+
     if(markl.arena.get_fighters_alive().length < 2){
       this.end();
       return;
     }
+
     if(markl.designer.is_running){
       this.move_missiles();
       var fighter = this.next_fighter();
@@ -78,6 +86,27 @@ function Battle_Screen()
     }
     if(p.hp == 0){ return; }
     return p;
+  }
+
+  this.update_interface = function()
+  {
+    var html = "";
+
+    for(id in markl.fighters){
+      var fighter = markl.fighters[id];
+      html += fighter.name+" ";
+      if(fighter.score.hits > 0){
+        html += fighter.score.hits+"H ";
+      }
+      if(fighter.score.kills > 0){
+        html += fighter.score.kills+"K ";
+      }
+      if(fighter.is_alive() && fighter.relative_stamina() > 0){
+        html += fighter.relative_stamina()+"S ";
+      }
+      html += "<br />";
+    }
+    this.summary_el.innerHTML = html;
   }
 
   this.end = function()

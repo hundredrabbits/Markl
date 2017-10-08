@@ -50,9 +50,9 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena tile sprite { display: block;width: 80px;height: 87px;background-size: contain;background-repeat: no-repeat; }
 .arena event { display:block; width:80px; height:80px;position: absolute; z-index:100;}
 
-.arena tile.floor sprite { background-image:url(../media/tiles/floor/wood.1.png); }
-.arena tile.floor.alt_1 sprite { background-image:url(../media/tiles/rooftop/rooftop.1.png); }
-.arena tile.floor.alt_2 sprite { background-image:url(../media/tiles/floor/wood.2.png); }
+.arena tile.floor sprite { background-image:url(../media/tiles/floor/tatami.3.png); }
+.arena tile.floor.alt_1 sprite { background-image:url(../media/tiles/floor/tatami.1.png); }
+.arena tile.floor.alt_2 sprite { background-image:url(../media/tiles/floor/tatami.2.png); }
 .arena tile { display: block; }
 
 .arena tile.floor.y_7 { z-index:20; }
@@ -137,7 +137,7 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena event.fighter shadow.idle.f_3 { background-position: -330px -330px }
 
 .arena event.blocker sprite { display: block;width: 80px;height: 87px;background-size: contain;background-repeat: no-repeat;background-position: center center;top:-30px;position: absolute  }
-.arena event.blocker.id_1 sprite { background-image:url(../media/tiles/floor/chimney.1.png);  }
+.arena event.blocker.id_1 sprite { background-image:url(../media/tiles/floor/chimney.2.png);  }
 
 .arena event.fighter.dead { display:none; }
 
@@ -151,4 +151,6 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena effect sprite.explode.f_2 { background-position: -220px -110px }
 .arena effect sprite.explode.f_3 { background-position: -330px -110px }
 .arena effect sprite.explode.f_4 { background-position: -440px -110px }
+
+.screen .summary { position: fixed; bottom:0px; padding:20px; background:white; width:calc(100vw - 520px); }
 

@@ -5,7 +5,7 @@ arenas.training = new Arena("training",new Size(5,5),[
   new Spawn(new Pos(4,4)),
   new Spawn(new Pos(4,0)),
   new Spawn(new Pos(0,4)),
-  new Hole(new Pos(2,2),1)
+  new Block(new Pos(2,2),1)
 ]);
 
 arenas.duel = new Arena("duel",new Size(3,7),[

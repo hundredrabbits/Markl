@@ -7,6 +7,7 @@ function Fighter(name,style = null)
   this.status = {action:"idle",vector:"down"};
   this.type = "fighter";
   this.character = null;
+  this.score = {hits:0,kills:0};
 
   this.style = style;
   this.style.host = this;
@@ -138,5 +139,21 @@ function Fighter(name,style = null)
   {
     console.log("End turn");
     return;
+  }
+
+  this.relative_stamina = function()
+  {
+    var min_stamina = 9999999;
+    var max_stamina = 0;
+    for(id in markl.fighters){
+      if(!markl.fighters[id].is_alive()){ continue; }
+      if(markl.fighters[id].stamina < min_stamina){
+        min_stamina = markl.fighters[id].stamina;
+      }
+      if(markl.fighters[id].stamina > max_stamina){
+        max_stamina = markl.fighters[id].stamina;
+      }
+    }
+    return this.stamina - min_stamina;
   }
 }

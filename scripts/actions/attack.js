@@ -33,6 +33,10 @@ function ATTACK(host,attr,target = null)
       console.log(this.name,"at "+target_position+"("+vector.name+")");
       event_at_position.damage(1);
       event_at_position.knockback(vector);
+      this.host.score.hits += 1;
+      if(event_at_position.hp < 1){
+        this.host.score.kills += 1;        
+      }
     }
     else{
       console.log(this.name,"at "+target_position+", but no one is here.");
