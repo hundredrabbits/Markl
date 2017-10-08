@@ -1,10 +1,8 @@
 ## TODOs
 
-- Shadow sprite
-- Attack frames
-- Attack Effect
 - Missle sprite
 - Faint sprites
+- FLANK
 
 ### Designer
 

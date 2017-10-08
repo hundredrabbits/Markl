@@ -11,15 +11,15 @@ function Missile(pos,vector)
   this.el.className = "missile";
   this.sprite = document.createElement("sprite");
   this.el.appendChild(this.sprite);
+  this.el.style.top = this.pos.html().y+"px";
+  this.el.style.left = this.pos.html().y+"px";
 
   this.move = function()
   {
     if(!this.is_active){ return; }
 
-    console.log("move");
-
     this.pos = new Pos(this.pos.x,this.pos.y).add(this.vector);
-  
+    
     $(this.el).animate({ top:this.pos.html().y, left:this.pos.html().x }, ACT_SPEED);
 
     var event_at_position = markl.arena.event_at(this.pos,"fighter");
@@ -29,6 +29,10 @@ function Missile(pos,vector)
       event_at_position.damage(1);
       event_at_position.knockback(this.vector);
       this.destroy();
+    }
+    else if(!markl.arena.is_within_limits(this.pos))
+    {
+      this.destroy();      
     }
   }
 

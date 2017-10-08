@@ -13,6 +13,9 @@ function Arena(name,size, events = [])
 
   this.setup = function()
   {
+    this.el.appendChild(new Wall(new Pos(0,-1),1).el);
+    this.el.appendChild(new Wall(new Pos(4,-1),1).el);
+
     for(var x = 0; x < this.size.width; x++) {
       for (var y = 0; y < this.size.height; y++) {
         var floor = new Floor(new Pos(x,y));
@@ -44,6 +47,7 @@ function Arena(name,size, events = [])
     var arena_center = new Pos(((this.size.width+1)/2.0),((this.size.height+1)/2.0));
 
     var characters_average = {x:0,y:0};
+    var movement = 5;
 
     var players_alive = 0.0;
     for(id in markl.fighters){
@@ -53,11 +57,15 @@ function Arena(name,size, events = [])
       players_alive += 1;
     }
 
+    if(players_alive == 4){ movement = 10; }
+    if(players_alive == 3){ movement = 20; }
+    if(players_alive == 2){ movement = 30; }
+
     characters_average = {x:characters_average.x/players_alive,y:characters_average.y/players_alive};
     
     var offset = {x:characters_average.x-arena_center.x,y:characters_average.y-arena_center.y};
 
-    $(this.el).animate({ left:(offset.x * -5),top:(offset.y * 5) }, ACT_SPEED);
+    $(this.el).animate({ left:(offset.x * -movement),top:(offset.y * movement) }, ACT_SPEED * 0.75);
   }
 
   this.add_event = function(event)

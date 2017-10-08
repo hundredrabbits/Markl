@@ -21,6 +21,7 @@ function FIRE(host,attr,target = null)
 
     var missile = new Missile(this.host.pos, vector);
     missile.start();
+    missile.update()
     markl.arena.add_event(missile);
   }
 }

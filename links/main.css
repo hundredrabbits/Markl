@@ -2,7 +2,7 @@ body { font-size:11px; font-family: 'input_mono_regular'; overflow:hidden; }
 
 yu { display: block; }
 
-yu.screen { background:white; width: calc(100vw - 480px); height:100vh; }
+yu.screen { background:white; width: calc(100vw - 480px); height:100vh; position: relative; z-index: 900}
 
 yu.screen yu.character_selection { height: 400px;width: 680px; margin:0px auto }
 yu.screen yu.character { display:block; float:left; margin-top:90px; position: relative; overflow: hidden;}
@@ -25,7 +25,7 @@ yu.screen yu.arena_selection ln.highlight { background:#ccc; }
 yu.designer { display:block; background:#eee; width:calc(100vw - 560px); height:calc(100vh - 80px); position: fixed; top:0px; right:0px; padding:40px; font-family: 'input_mono_regular';font-size:12px; max-width: 400px; min-width: 360px}
 yu.designer textarea { width:100%; height:100%; background:transparent; color:#111; line-height: 20px; max-height: calc(100% - 70px); position: relative;z-index:999; padding-left:40px; resize: none; }
 yu.designer div.hint { height: calc(100vh - 80px);line-height: 20px;color: #aaa;max-height: calc(100% - 150px);overflow-y: hidden;position: absolute;top:90px;width: calc(100% - 80px); z-index:0; margin-left:10px;}
-yu.designer div.hint line.highlight { background:#f00; color:white; }
+yu.designer div.hint line.highlight { background:#fff; color:#000; }
 yu.designer div line { display:block; line-height: 20px; white-space: pre; padding-left:30px; }
 yu.designer div line .pad { color:rgba(0,0,0,0); }
 yu.designer div line.trigger {  }
@@ -64,6 +64,8 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena tile.floor.y_1 { z-index:80; }
 .arena tile.floor.y_0 { z-index:90; }
 
+.arena tile.wall sprite { background-image:url(../media/tiles/walls/fence.1.png); -webkit-filter: brightness(0.75); filter: brightness(0.75); }
+
 .arena event.missile sprite { background:red; display: block;width: 20px;height: 20px;left: 28px;top: 28px;position: absolute; border-radius: 100px; border:2px solid red; }
 
 .arena event.fighter { }
@@ -73,9 +75,7 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 .arena event.fighter .progress .bar.health { background:red; }
 .arena event.fighter .progress .bar.speed { background:white;  }
 .arena event.fighter sprite { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index: 200; }
-/*.arena event.fighter sprite.attack { border:2px solid red; }
-.arena event.fighter sprite.stun { border:2px solid yellow; }
-.arena event.fighter sprite.move { border:2px solid green; }*/
+
 .arena event.fighter.lancer sprite { background-image:url(../media/fighters/lancer.png);  }
 .arena event.fighter.pest sprite { background-image:url(../media/fighters/pest.png);  }
 .arena event.fighter.patience sprite { background-image:url(../media/fighters/patience.png);  }
@@ -141,8 +141,10 @@ yu.designer yu.header t { display: inline-block; float:right; font-size:11px; co
 
 .arena event.fighter.dead { display:none; }
 
-.arena effect { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index: 200; border:2px dashed red;}
+.arena effect { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index: 200; }
 .arena effect sprite { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index: 200; background-image:url(../media/effects.png); background-position: 0px -110px}
+
+.arena effect sprite.explode { -webkit-filter: invert(100%); filter: invert(100%); }
 
 .arena effect sprite.explode.f_0 { background-position: 0px -110px }
 .arena effect sprite.explode.f_1 { background-position: -110px -110px }

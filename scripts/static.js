@@ -77,10 +77,12 @@ let other_style = `-- dodge.fight
 
 SIGHT
   FIGHTER
+    DISTANCE IS 3
+      MOVE AWAY
     DISTANCE IS 2
       MOVE AWAY
     DISTANCE IS 1
-      MOVE AWAY
+      ATTACK TOWARD
     DEFAULT
       FIRE TOWARD
   OBJECT

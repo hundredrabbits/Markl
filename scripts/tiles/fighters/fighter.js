@@ -15,12 +15,14 @@ function Fighter(name,style = null)
   this.animator.add(new Animation("idle",[0,1,2,3,2,1,0,0,0,0]))
   this.animator.add(new Animation("move",[0,1,2,3]))
   this.animator.add(new Animation("stun",[0]));
+  this.animator.add(new Animation("wait",[0,1,2,3,2,1,0,0,0,0]));
   this.animator.add(new Animation("attack",[0,1,2,3,3,3,3,3,3,3,3,3,3,3]));
   this.animator.add(new Animation("fire",[0,1,2,3,3,3,3,3,3,3,3,3,3,3]));
 
   this.interface = new Fighter_Interface(this);
 
   this.hp = 4;
+  this.hp_max = 4;
   this.stamina = 1000;
 
   this.sprite = document.createElement("sprite");
@@ -68,7 +70,6 @@ function Fighter(name,style = null)
 
   this.damage = function(val)
   {
-    console.log(this.pos)
     markl.arena.add_effect(new Hit(new Pos(this.pos.x,this.pos.y)));
     this.hp -= val;
     this.update();
@@ -98,6 +99,7 @@ function Fighter(name,style = null)
     this.stamina -= 15;
     this.status.action = "stun";
     this.status.vector = "down";
+    this.animator.index = 0;
     this.update();
   }
 

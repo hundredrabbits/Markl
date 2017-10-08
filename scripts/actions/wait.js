@@ -5,7 +5,7 @@ function WAIT(host,attr = null,target = null)
   this.name = "wait";
   this.cost = 1;
 
-  this.name = "Wait";
+  this.name = "wait";
 
   this.run = function()
   {

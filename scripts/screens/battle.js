@@ -34,7 +34,7 @@ function Battle_Screen()
     markl.arena.focus();
     
     var s = this;
-    setTimeout(function(){ s.next(); }, ACT_SPEED * 1.25);
+    setTimeout(function(){ s.next(); }, ACT_SPEED * 1.001);
   }
 
   this.move_missiles = function()

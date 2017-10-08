@@ -3,7 +3,7 @@ function Effect(pos)
   Tile.call(this,pos);
 
   this.status = {action:"explode",vector:"down"};
-  this.animator = new Animator(this);
+  this.animator = new Animator(this,100,false);
   this.animator.add(new Animation("explode",[0,1,2,3,4],false));
 
   this.el = document.createElement("effect");
