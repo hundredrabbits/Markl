@@ -101,6 +101,9 @@ function Battle_Screen()
       if(fighter.score.kills > 0){
         html += fighter.score.kills+"K ";
       }
+      if(fighter.score.turns > 0){
+        html += fighter.score.turns+"T ";
+      }
       if(fighter.is_alive() && fighter.relative_stamina() > 0){
         html += fighter.relative_stamina()+"S ";
       }

@@ -1,7 +1,7 @@
 function Screen()
 {
   this.name = "Untitled";
-  this.el = document.createElement('yu');
+  this.el = document.createElement('screen');
 
   this.start = function()
   {

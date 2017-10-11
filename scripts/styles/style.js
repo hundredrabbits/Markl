@@ -18,6 +18,8 @@ function Style(name,text)
       return;
     }
 
+    this.host.score.turns += 1;
+
     var a = new window[action.name](this.host,action.attr,reaction.target);
     a.run();
 

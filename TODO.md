@@ -1,8 +1,14 @@
 ## TODOs
 
 - Missle sprite
-- Faint sprites
 - FLANK
+- COUNTER systems
+- Battle ROUNDS
+- Stage Progression(Death?)
+- Tutorial
+- Inline syntax (MENU -> CHARACTER -> NAME IS PEST -> SELECT)
+- Campaign stuff(Stages, Enemies, duels, etc..)
+- Display character typing on character selection screen
 
 ### Designer
 

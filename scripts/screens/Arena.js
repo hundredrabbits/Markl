@@ -15,6 +15,14 @@ function Arena_Screen()
       this.leave();
       return;
     }
+
+    var html = "";  
+
+    for(id in campaign.stages){
+      html += "<ln>"+campaign.stages[id]+"</ln>";
+    }
+    this.el.innerHTML = "<list>"+html+"</list>"
+
     this.move_to(0);
     this.next();
   }
@@ -70,18 +78,11 @@ function Arena_Screen()
 
   this.move_to = function(index)
   {
-    var html = "";  
-
-    for(id in arenas){
-      console.log(arenas[id].name,Object.keys(arenas)[this.index])
-      html += "<ln class='"+(Object.keys(arenas)[this.index] == arenas[id].name ? "highlight" : "")+"'>"+arenas[id].name+"</ln>";
-    }
-    this.el.innerHTML = "<list>"+html+"</list>"
   }
 
   this.leave = function()
   {
     console.log("LEAVE")
-    markl.show(new Battle_Screen());
+    // markl.show(new Battle_Screen());
   }
 }

@@ -7,7 +7,7 @@ function Fighter(name,style = null)
   this.status = {action:"idle",vector:"down"};
   this.type = "fighter";
   this.character = null;
-  this.score = {hits:0,kills:0};
+  this.score = {hits:0,kills:0,turns:0};
 
   this.style = style;
   this.style.host = this;

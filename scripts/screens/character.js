@@ -7,10 +7,10 @@ function Character_Screen()
 
   this.el.className = "character_selection";
   this.el.innerHTML = `
-  <yu class='character'><yu id='portrait_patience' class='portrait patience'></yu><yu class='frame'></yu><h2>Patience<small>HP2</small></h2></yu>
-  <yu class='character'><yu id='portrait_sin' class='portrait sin'></yu><yu class='frame'></yu><h2>Sin<small>HP1</small></h2></yu>
-  <yu class='character'><yu id='portrait_lancer' class='portrait lancer'></yu><yu class='frame'></yu><h2>Lancer<small>HP3</small></h2></yu>
-  <yu class='character'><yu id='portrait_pest' class='portrait pest'></yu><yu class='frame'></yu><h2>Pest<small>HP4</small></h2></yu>
+  <yu class='character'><yu id='portrait_patience' class='portrait patience'></yu><yu class='frame'></yu><h2>Patience<small>HP2</small></h2><event class='fighter patience'><shadow></shadow><sprite></sprite></event></yu>
+  <yu class='character'><yu id='portrait_sin' class='portrait sin'></yu><yu class='frame'></yu><h2>Sin<small>HP1</small></h2><event class='fighter sin'><shadow></shadow><sprite></sprite></event></yu>
+  <yu class='character'><yu id='portrait_lancer' class='portrait lancer'></yu><yu class='frame'></yu><h2>Lancer<small>HP3</small></h2><event class='fighter lancer'><shadow></shadow><sprite></sprite></event></yu>
+  <yu class='character'><yu id='portrait_pest' class='portrait pest'></yu><yu class='frame'></yu><h2>Pest<small>HP4</small></h2><event class='fighter pest'><shadow></shadow><sprite></sprite></event></yu>
   `;
 
   this.start = function()
@@ -36,7 +36,6 @@ function Character_Screen()
     var triggers = this.find_triggers(fighter);
     var reaction = fighter.style.react(triggers);
 
-    
     if(reaction && reaction.actions[0].name == "SELECT" && markl.designer.is_running){
       this.select_character(reaction.target);
       markl.designer.update(fighter,parseInt(reaction.actions[0].line),reaction.target);
