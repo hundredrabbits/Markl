@@ -1,20 +1,13 @@
 ## TODOs
 
-- Missle sprite
-- FLANK
-- COUNTER systems
-- Battle ROUNDS
-- Stage Progression(Death?)
-- Tutorial
-- Inline syntax (MENU -> CHARACTER -> NAME IS PEST -> SELECT)
-- Campaign stuff(Stages, Enemies, duels, etc..)
-- Display character typing on character selection screen
-
 ### Designer
+
+- Show/Hide
+- Lock input when running
 
 ### Splash Screen
 
-- Logo
+- Design logo
 - Start/Option selector
 
 ### Character Selection Screen
@@ -23,9 +16,13 @@
 - Statistics
 - Loadout(?)
 
-### Arena Selection Screen
+### Campaign
 
+- Tutorial
 - Worldmap
+- Campaign flow(Stages, Enemies, duels, etc..)
+- Battle ROUNDS
+- Stage Progression(Death?)
 
 #### The Dojo
 
@@ -48,10 +45,14 @@
 
 - Cast
 - Taunt
+- Move/Flank
+- COUNTER systems
+- Add stun sprite Wait penality
 
 ### Objects
 
 - Implement
+- Missle sprite
 
 ### Extras
 
@@ -59,4 +60,6 @@
 - Sound Effects
 
 ## Fighting Style
+
+- Inline syntax (MENU -> CHARACTER -> NAME IS PEST -> SELECT)
 

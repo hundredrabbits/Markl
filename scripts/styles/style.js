@@ -9,6 +9,8 @@ function Style(name,text)
   this.triggers = {};
   this.reaction = null;
 
+  this.last_action = null;
+
   this.run = function(reaction,index = 0)
   {
     var action = reaction.actions[index];
@@ -21,10 +23,15 @@ function Style(name,text)
     this.host.score.turns += 1;
 
     var a = new window[action.name](this.host,action.attr,reaction.target);
+
+    if(this.last_action && a.name == "wait" && this.last_action.name == "wait"){
+      a = new Idle(this.host); console.warn("WAIT PENALITY");
+    }
     a.run();
 
+    console.log(a.name)
     this.host.update();
-    var s = this;
+    this.last_action = a;
   }
 
   this.complete = function()

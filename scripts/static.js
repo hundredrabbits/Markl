@@ -136,10 +136,10 @@ DEFAULT
 
 let campaign = new Campaign();
 
+campaign.stages.push(new Stage("Trial",arenas.training,[new Sin("CPU1",new Style("idle",flower_style)),new Patience("CPU2",new Style("idle",custom_style)),new Pest("CPU3",new Style("idle",custom_style))],"bamboo"));
 campaign.stages.push(new Stage("Dojo",arenas.dojo,[new Sin("CPU1",new Style("idle",flower_style))],"tatami"));
 campaign.stages.push(new Stage("Training",arenas.training,[new Patience("CPU1",new Style("idle",flower_style))],"tatami"));
 campaign.stages.push(new Stage("Lesson",arenas.training,[new Pest("CPU1",new Style("idle",flower_style))],"bamboo"));
-campaign.stages.push(new Stage("Trial",arenas.training,[new Sin("CPU1",new Style("idle",flower_style)),new Patience("CPU2",new Style("idle",custom_style)),new Pest("CPU3",new Style("idle",custom_style))],"bamboo"));
 campaign.stages.push(new Stage("Exam",arenas.training,[new Lancer("CPU1",new Style("idle",flower_style))],"temple"));
 campaign.stages.push(new Stage("Duel",arenas.training,[new Lancer("CPU1",new Style("idle",flower_style))],"temple"));
 
