@@ -1,5 +1,10 @@
 let arenas = {};
 
+arenas.dojo = new Arena("dojo",new Size(3,7),[
+  new Spawn(new Pos(1,0)),
+  new Spawn(new Pos(1,6))
+])
+
 arenas.training = new Arena("training",new Size(5,5),[
   new Spawn(new Pos(0,0)),
   new Spawn(new Pos(4,4)),
@@ -134,7 +139,7 @@ let campaign = new Campaign();
 campaign.stages.push(new Stage("Dojo",arenas.dojo,[new Sin("CPU1",new Style("idle",flower_style))],"tatami"));
 campaign.stages.push(new Stage("Training",arenas.training,[new Patience("CPU1",new Style("idle",flower_style))],"tatami"));
 campaign.stages.push(new Stage("Lesson",arenas.training,[new Pest("CPU1",new Style("idle",flower_style))],"bamboo"));
-campaign.stages.push(new Stage("Trial",arenas.training,[new Patience("CPU1",new Style("idle",flower_style))],"bamboo"));
+campaign.stages.push(new Stage("Trial",arenas.training,[new Sin("CPU1",new Style("idle",flower_style)),new Patience("CPU2",new Style("idle",custom_style)),new Pest("CPU3",new Style("idle",custom_style))],"bamboo"));
 campaign.stages.push(new Stage("Exam",arenas.training,[new Lancer("CPU1",new Style("idle",flower_style))],"temple"));
 campaign.stages.push(new Stage("Duel",arenas.training,[new Lancer("CPU1",new Style("idle",flower_style))],"temple"));
 

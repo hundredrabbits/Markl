@@ -19,7 +19,7 @@ yu.screen screen.character_selection yu.character event { margin-left:45px; posi
 
 yu.screen screen.arena_selection { height: 400px;width: 680px; margin:0px auto }
 yu.screen screen.arena_selection b { font-family: 'input_mono_medium' }
-yu.screen screen.arena_selection list { display: block; padding:100px; }
+yu.screen screen.arena_selection list { display: block; padding-top:100px; padding-left:100px;}
 yu.screen screen.arena_selection ln { display: block }
 yu.screen screen.arena_selection ln.highlight { background:#ccc; }
 

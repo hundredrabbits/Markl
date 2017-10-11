@@ -39,6 +39,8 @@ function Character_Screen()
     if(reaction && reaction.actions[0].name == "SELECT" && markl.designer.is_running){
       this.select_character(reaction.target);
       markl.designer.update(fighter,parseInt(reaction.actions[0].line),reaction.target);
+      setTimeout(function(){ s.leave(); }, ACT_SPEED * 24);
+      return;
     }
     
     if(markl.fighter && markl.fighter.character){
@@ -56,12 +58,15 @@ function Character_Screen()
 
     var p_patience = document.getElementById("portrait_patience");
     var p_sin = document.getElementById("portrait_sin");
+    var p_lancer = document.getElementById("portrait_lancer");
     var p_pest = document.getElementById("portrait_pest");
 
-    var speed = ACT_SPEED * 8;
-    $(p_patience).animate({ opacity:0 }, speed);
-    $(p_sin).animate({  opacity:0 }, speed);
-    $(p_pest).animate({ opacity:0 }, speed);
+    console.log(name);
+    var speed = ACT_SPEED * 4;
+    if(name != "PATIENCE"){ $(p_patience).animate({ opacity:0 }, speed); }
+    if(name != "SIN"){ $(p_sin).animate({  opacity:0 }, speed); }
+    if(name != "LANCER"){ $(p_lancer).animate({ opacity:0 }, speed); }
+    if(name != "PEST"){ $(p_pest).animate({ opacity:0 }, speed); }
   }
 
   function capitalize(s)
@@ -118,8 +123,6 @@ function Character_Screen()
   this.leave = function()
   {
     console.log("LEAVE")
-    markl.select_opponents([new Sin("CPU1",new Style("idle",flower_style)),new Patience("CPU2",new Style("idle",custom_style)),new Pest("CPU3",new Style("idle",custom_style))]);
-    // markl.select_opponents([new Sin("CPU1",new Style("idle",custom_style))]);
     markl.show(new Arena_Screen());
     markl.designer.update();
   }
