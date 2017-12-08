@@ -1,7 +1,10 @@
-function Sprite()
+function Sprite(host,src)
 {
+  this.host = host;
   this.el = document.createElement("canvas")
   this.el.className = "sprite";
+  this.sheet = new Image(); this.sheet.src = src;
+  this.sheet.onload = function(){ console.log("loaded asset",src); }
 
   this.context = function()
   {
@@ -11,6 +14,12 @@ function Sprite()
   this.clear = function()
   {
     this.context().clearRect(0, 0, this.el.offsetWidth * 2, this.el.offsetHeight * 2);
+  }
+
+  this.draw = function()
+  {
+    var ctx = this.context();
+    ctx.drawImage(this.sheet, 0, 0, 400, 400, 0, 0, 300, 150);
   }
 
   this.fill = function(color = "red")
@@ -27,5 +36,7 @@ function Sprite()
     ctx.fillStyle = color;
     ctx.fill();
     ctx.closePath();
+
+    this.draw();
   }
 }

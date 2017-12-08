@@ -26,14 +26,13 @@ function Fighter(name,style = null)
   this.hp_max = 4;
   this.stamina = 1000;
 
-  this.sprite = new Sprite();
-  this.el.appendChild(this.sprite.el);
-
   this.shadow = document.createElement("shadow");
   this.el.appendChild(this.shadow);
 
   this.start = function()
   {
+    this.sprite = new Sprite(this,"media/fighters/"+this.character+".png");
+    this.el.appendChild(this.sprite.el);
     this.el.className = "fighter "+this.character;
     this.el.appendChild(this.interface.el);
   }

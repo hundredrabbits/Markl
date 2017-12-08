@@ -9,7 +9,7 @@ function Missile(pos,vector)
   this.is_active = true;
   this.type = "missile";
   this.el.className = "missile";
-  this.sprite = new Sprite();
+  this.sprite = new Sprite(this);
   this.el.appendChild(this.sprite.el);
   this.el.style.top = this.pos.html().y+"px";
   this.el.style.left = this.pos.html().y+"px";

@@ -9,7 +9,7 @@ function Effect(pos)
   this.el = document.createElement("effect");
   this.el.setAttribute("class","");
 
-  this.sprite = new Sprite();
+  this.sprite = new Sprite(this);
   this.el.appendChild(this.sprite.el);
 
   this.el.setAttribute("style","left:"+this.pos.html().x+"px;top:"+this.pos.html().y+"px"); 

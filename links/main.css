@@ -56,10 +56,10 @@ event.fighter .progress .bar.health { background:red; }
 event.fighter .progress .bar.speed { background:white;  }
 event.fighter .sprite { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index: 200; }
 
-event.fighter.lancer .sprite { background-image:url(../media/fighters/lancer.png);  }
+/*event.fighter.lancer .sprite { background-image:url(../media/fighters/lancer.png);  }
 event.fighter.pest .sprite { background-image:url(../media/fighters/pest.png);  }
 event.fighter.patience .sprite { background-image:url(../media/fighters/patience.png);  }
-event.fighter.sin .sprite { background-image:url(../media/fighters/sin.png);  }
+event.fighter.sin .sprite { background-image:url(../media/fighters/sin.png);  }*/
 
 event.fighter .sprite.up { background-position: 0px -110px }
 event.fighter .sprite.right { background-position: 0px -220px }
