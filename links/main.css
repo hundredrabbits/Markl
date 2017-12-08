@@ -25,12 +25,12 @@ yu.screen screen.arena_selection ln.highlight { background:#ccc; }
 
 .arena { position:relative; margin:90px; }
 .arena tile { display:block; width:80px; height:80px;position: absolute; font-size:10px; color:#000; text-align:center; font-family: Helvetica; }
-.arena tile sprite { display: block;width: 80px;height: 87px;background-size: contain;background-repeat: no-repeat; }
+.arena tile .sprite { display: block;width: 80px;height: 87px;background-size: contain;background-repeat: no-repeat; }
 event { display:block; width:80px; height:80px;position: absolute; z-index:100;}
 
-tile.floor sprite { background-image:url(../media/tiles/floor/wood.2.png); }
-tile.floor.alt_1 sprite { background-image:url(../media/tiles/floor/tatami.1.png); }
-tile.floor.alt_2 sprite { background-image:url(../media/tiles/floor/wood.1.png); }
+tile.floor .sprite { background-image:url(../media/tiles/floor/wood.2.png); }
+tile.floor.alt_1 .sprite { background-image:url(../media/tiles/floor/tatami.1.png); }
+tile.floor.alt_2 .sprite { background-image:url(../media/tiles/floor/wood.1.png); }
 tile { display: block; }
 
 tile.floor.y_7 { z-index:20; }
@@ -42,9 +42,9 @@ tile.floor.y_2 { z-index:70; }
 tile.floor.y_1 { z-index:80; }
 tile.floor.y_0 { z-index:90; }
 
-tile.wall sprite { background-image:url(../media/tiles/walls/fence.1.png); -webkit-filter: brightness(0.75); filter: brightness(0.75); }
+tile.wall .sprite { background-image:url(../media/tiles/walls/fence.1.png); -webkit-filter: brightness(0.75); filter: brightness(0.75); }
 
-event.missile sprite { background:red; display: block;width: 20px;height: 20px;left: 28px;top: 28px;position: absolute; border-radius: 100px; border:2px solid red; }
+event.missile .sprite { background:red; display: block;width: 20px;height: 20px;left: 28px;top: 28px;position: absolute; border-radius: 100px; border:2px solid red; }
 
 /* FIGHTER */
 
@@ -54,59 +54,59 @@ event.fighter .progress { background: black;width: 80px;position: relative;top: 
 event.fighter .progress .bar { height:3px; border-radius:4px; }
 event.fighter .progress .bar.health { background:red; }
 event.fighter .progress .bar.speed { background:white;  }
-event.fighter sprite { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index: 200; }
+event.fighter .sprite { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index: 200; }
 
-event.fighter.lancer sprite { background-image:url(../media/fighters/lancer.png);  }
-event.fighter.pest sprite { background-image:url(../media/fighters/pest.png);  }
-event.fighter.patience sprite { background-image:url(../media/fighters/patience.png);  }
-event.fighter.sin sprite { background-image:url(../media/fighters/sin.png);  }
+event.fighter.lancer .sprite { background-image:url(../media/fighters/lancer.png);  }
+event.fighter.pest .sprite { background-image:url(../media/fighters/pest.png);  }
+event.fighter.patience .sprite { background-image:url(../media/fighters/patience.png);  }
+event.fighter.sin .sprite { background-image:url(../media/fighters/sin.png);  }
 
-event.fighter sprite.up { background-position: 0px -110px }
-event.fighter sprite.right { background-position: 0px -220px }
-event.fighter sprite.left { background-position: 0px -220px; transform: scaleX(-1) !important  }
-event.fighter sprite.down { background-position: 0px 0px }
-event.fighter sprite.stun { background-position: 0px -440px }
+event.fighter .sprite.up { background-position: 0px -110px }
+event.fighter .sprite.right { background-position: 0px -220px }
+event.fighter .sprite.left { background-position: 0px -220px; transform: scaleX(-1) !important  }
+event.fighter .sprite.down { background-position: 0px 0px }
+event.fighter .sprite.stun { background-position: 0px -440px }
 
-event.fighter sprite.idle { background-position: 0px -330px }
-event.fighter sprite.idle.f_0 { background-position: 0px -330px }
-event.fighter sprite.idle.f_1 { background-position: -110px -330px }
-event.fighter sprite.idle.f_2 { background-position: -220px -330px }
-event.fighter sprite.idle.f_3 { background-position: -330px -330px }
+event.fighter .sprite.idle { background-position: 0px -330px }
+event.fighter .sprite.idle.f_0 { background-position: 0px -330px }
+event.fighter .sprite.idle.f_1 { background-position: -110px -330px }
+event.fighter .sprite.idle.f_2 { background-position: -220px -330px }
+event.fighter .sprite.idle.f_3 { background-position: -330px -330px }
 
-event.fighter sprite.idle.up.f_0 { background-position: 0px -110px }
-event.fighter sprite.idle.up.f_1 { background-position: -110px -110px }
-event.fighter sprite.idle.up.f_2 { background-position: -220px -110px }
-event.fighter sprite.idle.up.f_3 { background-position: -330px -110px }
+event.fighter .sprite.idle.up.f_0 { background-position: 0px -110px }
+event.fighter .sprite.idle.up.f_1 { background-position: -110px -110px }
+event.fighter .sprite.idle.up.f_2 { background-position: -220px -110px }
+event.fighter .sprite.idle.up.f_3 { background-position: -330px -110px }
 
-event.fighter sprite.move.down.f_0 { background-position: 0px -0px }
-event.fighter sprite.move.down.f_1 { background-position: -110px -0px }
-event.fighter sprite.move.down.f_2 { background-position: -220px -0px }
-event.fighter sprite.move.down.f_3 { background-position: -330px -0px }
+event.fighter .sprite.move.down.f_0 { background-position: 0px -0px }
+event.fighter .sprite.move.down.f_1 { background-position: -110px -0px }
+event.fighter .sprite.move.down.f_2 { background-position: -220px -0px }
+event.fighter .sprite.move.down.f_3 { background-position: -330px -0px }
 
-event.fighter sprite.move.left.f_0 { background-position: 0px -220px }
-event.fighter sprite.move.left.f_1 { background-position: -110px -220px }
-event.fighter sprite.move.left.f_2 { background-position: -220px -220px }
-event.fighter sprite.move.left.f_3 { background-position: -330px -220px }
+event.fighter .sprite.move.left.f_0 { background-position: 0px -220px }
+event.fighter .sprite.move.left.f_1 { background-position: -110px -220px }
+event.fighter .sprite.move.left.f_2 { background-position: -220px -220px }
+event.fighter .sprite.move.left.f_3 { background-position: -330px -220px }
 
-event.fighter sprite.move.right.f_0 { background-position: 0px -220px }
-event.fighter sprite.move.right.f_1 { background-position: -110px -220px }
-event.fighter sprite.move.right.f_2 { background-position: -220px -220px }
-event.fighter sprite.move.right.f_3 { background-position: -330px -220px }
+event.fighter .sprite.move.right.f_0 { background-position: 0px -220px }
+event.fighter .sprite.move.right.f_1 { background-position: -110px -220px }
+event.fighter .sprite.move.right.f_2 { background-position: -220px -220px }
+event.fighter .sprite.move.right.f_3 { background-position: -330px -220px }
 
-event.fighter sprite.move.up.f_0 { background-position: 0px -110px }
-event.fighter sprite.move.up.f_1 { background-position: -110px -110px }
-event.fighter sprite.move.up.f_2 { background-position: -220px -110px }
-event.fighter sprite.move.up.f_3 { background-position: -330px -110px }
+event.fighter .sprite.move.up.f_0 { background-position: 0px -110px }
+event.fighter .sprite.move.up.f_1 { background-position: -110px -110px }
+event.fighter .sprite.move.up.f_2 { background-position: -220px -110px }
+event.fighter .sprite.move.up.f_3 { background-position: -330px -110px }
 
-event.fighter sprite.attack.f_0 { background-position: 0px -550px }
-event.fighter sprite.attack.f_1 { background-position: -110px -550px }
-event.fighter sprite.attack.f_2 { background-position: -220px -550px }
-event.fighter sprite.attack.f_3 { background-position: -330px -550px }
+event.fighter .sprite.attack.f_0 { background-position: 0px -550px }
+event.fighter .sprite.attack.f_1 { background-position: -110px -550px }
+event.fighter .sprite.attack.f_2 { background-position: -220px -550px }
+event.fighter .sprite.attack.f_3 { background-position: -330px -550px }
 
-event.fighter sprite.fire.f_0 { background-position: 0px -550px }
-event.fighter sprite.fire.f_1 { background-position: -110px -550px }
-event.fighter sprite.fire.f_2 { background-position: -220px -550px }
-event.fighter sprite.fire.f_3 { background-position: -330px -550px }
+event.fighter .sprite.fire.f_0 { background-position: 0px -550px }
+event.fighter .sprite.fire.f_1 { background-position: -110px -550px }
+event.fighter .sprite.fire.f_2 { background-position: -220px -550px }
+event.fighter .sprite.fire.f_3 { background-position: -330px -550px }
 
 event.fighter shadow { background-image:url(../media/effects.png); display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -50px;position: absolute; z-index:100; opacity: 0.25 }
 
@@ -122,15 +122,15 @@ event.blocker.id_1 sprite { background-image:url(../media/tiles/floor/chimney.2.
 event.fighter.dead { display:none; }
 
 .arena effect { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index: 200; }
-.arena effect sprite { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index: 200; background-image:url(../media/effects.png); background-position: 0px -110px}
+.arena effect .sprite { display: block;width: 110px;height: 110px;background-size: 550px;background-repeat: no-repeat;left: -15px;top: -55px;position: absolute; z-index: 200; background-image:url(../media/effects.png); background-position: 0px -110px}
 
-.arena effect sprite.explode { -webkit-filter: invert(100%); filter: invert(100%); }
+.arena effect .sprite.explode { -webkit-filter: invert(100%); filter: invert(100%); }
 
-.arena effect sprite.explode.f_0 { background-position: 0px -110px }
-.arena effect sprite.explode.f_1 { background-position: -110px -110px }
-.arena effect sprite.explode.f_2 { background-position: -220px -110px }
-.arena effect sprite.explode.f_3 { background-position: -330px -110px }
-.arena effect sprite.explode.f_4 { background-position: -440px -110px }
+.arena effect .sprite.explode.f_0 { background-position: 0px -110px }
+.arena effect .sprite.explode.f_1 { background-position: -110px -110px }
+.arena effect .sprite.explode.f_2 { background-position: -220px -110px }
+.arena effect .sprite.explode.f_3 { background-position: -330px -110px }
+.arena effect .sprite.explode.f_4 { background-position: -440px -110px }
 
 .screen .summary { position: fixed; bottom:0px; padding:20px; background:white; width:calc(100vw - 520px); }
 

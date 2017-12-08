@@ -26,8 +26,8 @@ function Fighter(name,style = null)
   this.hp_max = 4;
   this.stamina = 1000;
 
-  this.sprite = document.createElement("sprite");
-  this.el.appendChild(this.sprite);
+  this.sprite = new Sprite();
+  this.el.appendChild(this.sprite.el);
 
   this.shadow = document.createElement("shadow");
   this.el.appendChild(this.shadow);
