@@ -20,7 +20,8 @@ function Animator(host, speed = 200, shuffle = true)
     if(!a.repeat && this.index >= a.frames.length){ this.host.sprite.style.display = "none"; return; }
     // this.host.sprite.className = this.host.status.action+" "+this.host.status.vector+" f_"+frame;  
     if(this.host.sprite){
-      this.host.sprite.fill(this.index % 2 == 0 ? "blue" : "red");
+      // this.host.sprite.fill(this.index % 2 == 0 ? "blue" : "red");
+      this.host.sprite.draw(frame,0);
     }
   }
 

@@ -24,6 +24,8 @@ yu.screen screen.arena_selection ln { display: block }
 yu.screen screen.arena_selection ln.highlight { background:#ccc; }
 
 .arena { position:relative; margin:90px; }
+.arena .background { background-image: url(../media/arenas/background/rooftop.png);width: 800px;height: 730px;display: block;background-size: contain;background-repeat: no-repeat;position: absolute;top: -245px;left: -55px }
+.arena .foreground { background-image: url(../media/arenas/foreground/rooftop.png);width: 510px;height: 330px;display: block;background-size: contain;background-repeat: no-repeat;position: absolute;top: 365px;left: -53px }
 .arena tile { display:block; width:80px; height:80px;position: absolute; font-size:10px; color:#000; text-align:center; font-family: Helvetica; }
 .arena tile .sprite { display: block;width: 80px;height: 87px;background-size: contain;background-repeat: no-repeat; }
 event { display:block; width:80px; height:80px;position: absolute; z-index:100;}

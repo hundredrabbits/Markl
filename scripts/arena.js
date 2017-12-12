@@ -9,6 +9,13 @@ function Arena(name,size, events = [])
   this.el.setAttribute("class","arena");
   this.el.style.height = (this.size.height * TILE_SIZE.width)+"px";
 
+  this.background_el = document.createElement("div");
+  this.background_el.setAttribute("class","background");
+  this.el.appendChild(this.background_el);
+  this.foreground_el = document.createElement("div");
+  this.foreground_el.setAttribute("class","foreground");
+  this.el.appendChild(this.foreground_el);
+
   // Create Stage
 
   this.setup = function()

@@ -16,10 +16,11 @@ function Sprite(host,src)
     this.context().clearRect(0, 0, this.el.offsetWidth * 2, this.el.offsetHeight * 2);
   }
 
-  this.draw = function()
+  this.draw = function(x,y)
   {
+    this.clear();
     var ctx = this.context();
-    ctx.drawImage(this.sheet, 0, 0, 400, 400, 0, 0, 300, 150);
+    ctx.drawImage(this.sheet, x * 400, 0, 400, 400, 0, 0, 300, 150);
   }
 
   this.fill = function(color = "red")
