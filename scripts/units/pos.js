@@ -16,7 +16,7 @@ function Pos(x,y)
 
   this.html = function()
   {
-    return new Pos(this.x * TILE_SIZE.width, (markl.arena.size.height * TILE_SIZE.width) - ((this.y + 1) * TILE_SIZE.height) );
+    return new Pos(this.x * TILE_SIZE.width, (markl.arena.size.height * TILE_SIZE.width) - ((this.y + 1) * (TILE_SIZE.height*0.9) + 40) );
   }
 
   this.is_equal = function(pos)
