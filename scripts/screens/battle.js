@@ -109,7 +109,10 @@ function Battle_Screen()
       }
       html += "<br />";
     }
-    this.summary_el.innerHTML = html;
+    if(html != this.summary_el.innerHTML){
+      // console.log("update")
+      // this.summary_el.innerHTML = html;  
+    }
   }
 
   this.end = function()

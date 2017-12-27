@@ -15,18 +15,17 @@ function Arena(name,size, events = [])
   this.foreground_el = document.createElement("div");
   this.foreground_el.setAttribute("class","foreground");
   this.el.appendChild(this.foreground_el);
+  this.floor_el = document.createElement("canvas");
+  this.floor_el.setAttribute("class","floor");
+  this.el.appendChild(this.floor_el);
 
   // Create Stage
 
   this.setup = function()
   {
-    this.el.appendChild(new Wall(new Pos(0,-1),1).el);
-    this.el.appendChild(new Wall(new Pos(4,-1),1).el);
-
     for(var x = 0; x < this.size.width; x++) {
       for (var y = 0; y < this.size.height; y++) {
-        var floor = new Floor(new Pos(x,y));
-        this.el.appendChild(floor.el);
+        // var floor = new Floor(new Pos(x,y));
       }
     }
 

@@ -1,0 +1,64 @@
+<html>
+<head>
+  <title>Markl - Character tests</title>
+</head>
+<body>
+  <sprite class='sprite lancer' data-offset='0'></sprite>
+  <sprite class='sprite lancer' data-offset='1'></sprite>
+  <sprite class='sprite lancer' data-offset='2'></sprite>
+  <sprite class='sprite lancer' data-offset='3'></sprite>
+  <sprite class='sprite lancer' data-offset='4'></sprite>
+  <sprite class='sprite lancer' data-offset='5'></sprite>
+  <sprite class='sprite lancer' data-offset='6'></sprite>
+  <hr />
+  <sprite class='sprite patience' data-offset='0'></sprite>
+  <sprite class='sprite patience' data-offset='1'></sprite>
+  <sprite class='sprite patience' data-offset='2'></sprite>
+  <sprite class='sprite patience' data-offset='3'></sprite>
+  <sprite class='sprite patience' data-offset='4'></sprite>
+  <sprite class='sprite patience' data-offset='5'></sprite>
+  <sprite class='sprite patience' data-offset='6'></sprite>
+  <hr />
+  <sprite class='sprite pest' data-offset='0'></sprite>
+  <sprite class='sprite pest' data-offset='1'></sprite>
+  <sprite class='sprite pest' data-offset='2'></sprite>
+  <sprite class='sprite pest' data-offset='3'></sprite>
+  <sprite class='sprite pest' data-offset='4'></sprite>
+  <sprite class='sprite pest' data-offset='5'></sprite>
+  <sprite class='sprite pest' data-offset='6'></sprite>
+  <hr />
+  <sprite class='sprite sin' data-offset='0'></sprite>
+  <sprite class='sprite sin' data-offset='1'></sprite>
+  <sprite class='sprite sin' data-offset='2'></sprite>
+  <sprite class='sprite sin' data-offset='3'></sprite>
+  <sprite class='sprite sin' data-offset='4'></sprite>
+  <sprite class='sprite sin' data-offset='5'></sprite>
+  <sprite class='sprite sin' data-offset='6'></sprite>
+  <hr />
+  <style>
+    hr { display: block; clear:both; border:0px;  }
+    sprite { display: block; width:110px; height:110px;  background-size: 550px 775px; float:left; padding-bottom:10px; }
+    sprite.lancer { background-image: url(media/fighters/lancer.png); }
+    sprite.patience { background-image: url(media/fighters/patience.png); }
+    sprite.pest { background-image: url(media/fighters/pest.png); }
+    sprite.sin { background-image: url(media/fighters/sin.png); }
+  </style>
+  <script>
+    var index = 0;
+
+    function update()
+    {
+      index += 1;
+
+      var sprites = document.getElementsByClassName('sprite');
+      var i;
+      for (i = 0; i < sprites.length; i++) {
+        var offset = parseInt(sprites[i].getAttribute("data-offset"));
+        sprites[i].style.backgroundPosition = (index * 110)+"px "+(offset * -110)+"px";
+      }
+    }
+
+    setInterval(update,150);
+  </script>
+</body>
+</html>

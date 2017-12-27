@@ -2,7 +2,7 @@ body { font-size:11px; font-family: 'input_mono_regular'; overflow:hidden; }
 
 yu { display: block; }
 
-yu.screen { background:white; width: calc(100vw - 480px); height:100vh; position: relative; z-index: 900}
+yu.screen { background:white; width: calc(100vw - 480px); height:100vh; position: relative; z-index: 900; top:50px;}
 yu.screen screen { display:block; }
 yu.screen screen.character_selection { height: 100vh;width: 680px; margin:0px auto }
 yu.screen screen.character_selection yu.character { display:block; float:left; margin-top:90px; position: relative; overflow: hidden; height:500px;}
@@ -26,6 +26,7 @@ yu.screen screen.arena_selection ln.highlight { background:#ccc; }
 .arena { position:relative; margin:90px; }
 .arena .background { background-image: url(../media/arenas/background/rooftop.png);width: 800px;height: 730px;display: block;background-size: contain;background-repeat: no-repeat;position: absolute;top: -245px;left: -55px }
 .arena .foreground { background-image: url(../media/arenas/foreground/rooftop.png);width: 510px;height: 330px;display: block;background-size: contain;background-repeat: no-repeat;position: absolute;top: 365px;left: -53px }
+.arena .floor { background:#ccc; width:400px; height:400px; }
 .arena tile { display:block; width:80px; height:80px;position: absolute; font-size:10px; color:#000; text-align:center; font-family: Helvetica; }
 .arena tile .sprite { display: block;width: 80px;height: 87px;background-size: contain;background-repeat: no-repeat; }
 event { display:block; width:80px; height:80px;position: absolute; z-index:100;}
@@ -134,7 +135,7 @@ event.fighter.dead { display:none; }
 .arena effect .sprite.explode.f_3 { background-position: -330px -110px }
 .arena effect .sprite.explode.f_4 { background-position: -440px -110px }
 
-.screen .summary { position: fixed; bottom:0px; padding:20px; background:white; width:calc(100vw - 520px); }
+.screen .summary { position: fixed; bottom:0px; padding:20px; width:calc(100vw - 520px); }
 
 /* DESIGNER */
 
