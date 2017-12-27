@@ -24,8 +24,8 @@ yu.screen screen.arena_selection ln { display: block }
 yu.screen screen.arena_selection ln.highlight { background:#ccc; }
 
 .arena { position:relative; margin:90px; }
-.arena .background { background-image: url(../media/arenas/background/rooftop.png);width: 800px;height: 730px;display: block;background-size: contain;background-repeat: no-repeat;position: absolute;top: -245px;left: -55px }
-.arena .foreground { background-image: url(../media/arenas/foreground/rooftop.png);width: 510px;height: 330px;display: block;background-size: contain;background-repeat: no-repeat;position: absolute;top: 365px;left: -53px }
+.arena .background { background-image: url(../media/arenas/background/dojo.png);width: 800px;height: 730px;display: block;background-size: contain;background-repeat: no-repeat;position: absolute;top: -245px;left: -55px }
+.arena .foreground { background-image: url(../media/arenas/foreground/dojo.png);width: 510px;height: 330px;display: block;background-size: contain;background-repeat: no-repeat;position: absolute;top: 365px;left: -53px }
 .arena .floor { background:#ccc; width:400px; height:400px; }
 .arena tile { display:block; width:80px; height:80px;position: absolute; font-size:10px; color:#000; text-align:center; font-family: Helvetica; }
 .arena tile .sprite { display: block;width: 80px;height: 87px;background-size: contain;background-repeat: no-repeat; }
@@ -139,7 +139,7 @@ event.fighter.dead { display:none; }
 
 /* DESIGNER */
 
-yu.designer { display:block; background:#eee; width:calc(100vw - 560px); height:calc(100vh - 80px); position: fixed; top:0px; right:0px; padding:40px; font-family: 'input_mono_regular';font-size:12px; max-width: 400px; min-width: 360px}
+yu.designer { display:block; background:#eee; width:calc(100vw - 560px); height:calc(100vh - 80px); position: fixed; top:0px; right:0px; padding:40px; font-family: 'input_mono_regular';font-size:12px; max-width: 400px; min-width: 360px; z-index: 9000}
 yu.designer textarea { width:100%; height:100%; background:transparent; color:#111; line-height: 20px; max-height: calc(100% - 70px); position: relative;z-index:999; padding-left:40px; resize: none; }
 yu.designer div.hint { height: calc(100vh - 80px);line-height: 20px;color: #aaa;max-height: calc(100% - 150px);overflow-y: hidden;position: absolute;top:90px;width: calc(100% - 80px); z-index:0; margin-left:10px;}
 yu.designer div.hint line.highlight { background:#fff; color:#000; }

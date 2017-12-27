@@ -17,22 +17,33 @@ function Arena(name,size, events = [])
   this.el.appendChild(this.foreground_el);
   this.floor_el = document.createElement("canvas");
   this.floor_el.setAttribute("class","floor");
+  this.floor_el.width = 800;
+  this.floor_el.height = 800;
   this.el.appendChild(this.floor_el);
 
   // Create Stage
 
   this.setup = function()
   {
-    for(var x = 0; x < this.size.width; x++) {
-      for (var y = 0; y < this.size.height; y++) {
-        // var floor = new Floor(new Pos(x,y));
-      }
-    }
+    this.draw_floor();
 
     for(var i = 0; i < this.events.length; i++){
       var event = this.events[i];
       console.log("ARENA","Added event: "+event.toString());
       this.el.appendChild(event.el);
+    }
+  }
+
+  this.draw_floor = function()
+  {
+    var ctx =  this.floor_el.getContext('2d');
+    var sheet = new Image(); sheet.src = "media/floor/dojo.5.png";
+    sheet.onload = function(){ 
+      for(var x = 0; x < 5; x++){
+        for (var y = 0; y < 5; y++){
+          ctx.drawImage(sheet, 0, 0, 512, 547,x * 160,(y * 145)+5, 400/2.5, 400/2.5);
+        }
+      }
     }
   }
 
