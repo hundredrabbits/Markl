@@ -35,7 +35,7 @@ module.exports = {
 
   record: function(state){
     var copy = JSON.parse(JSON.stringify(state));
-    this.history.push(state);
+    this.history.push(copy);
   },
 
   next_player: function(state){
@@ -63,18 +63,12 @@ module.exports = {
   render:function(state){
     this.initial_state = state;
 
-    this.run(state);
-    this.run(state);
-    this.run(state);
-    this.run(state);
-    this.run(state);
-    this.run(state);
-    this.run(state);
-    this.run(state);
-    this.run(state);
-    this.run(state);
-    this.run(state);
-    this.run(state);
+    var max_turns = 20;
+    var i = 0;
+    while(i < max_turns){
+      this.run(state);
+      i += 1;
+    }
 
     return this.history;
   }

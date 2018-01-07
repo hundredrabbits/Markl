@@ -45,8 +45,8 @@ function MOVE(host,attr,target = null)
       vector = new Vector(1,0)
     }
 
-    this.host.status = {action:this.name,vector:vector.name};
-    this.host.stamina -= this.cost;
+    // this.host.status = {action:this.name,vector:vector.name};
+    this.host.sp -= this.cost;
 
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     var collider = this.player_at(target_position);
