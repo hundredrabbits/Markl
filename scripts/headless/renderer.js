@@ -14,7 +14,8 @@ module.exports = {
 
   players_el: [
     blessed.box({top: 0,left: 0,height: 1,width: 1, content:'1' ,style: {bg: '#f0f',fg: '#fff'}}),
-    blessed.box({top: 0,left: 2,height: 1,width: 1, content:'2' ,style: {bg: '#f0f',fg: '#fff'}})
+    blessed.box({top: 0,left: 2,height: 1,width: 1, content:'2' ,style: {bg: '#f0f',fg: '#fff'}}),
+    blessed.box({top: 2,left: 2,height: 1,width: 1, content:'3' ,style: {bg: '#f0f',fg: '#fff'}})
   ],
 
   install: function(){
@@ -24,8 +25,10 @@ module.exports = {
     this.body.append(this.arena_el);
     this.body.append(this.reaction_el);
     this.body.append(this.action_el);
-    this.arena_el.append(this.players_el[0]);
-    this.arena_el.append(this.players_el[1]);
+
+    for(id in this.history[this.index].state.players){
+      this.arena_el.append(this.players_el[id]);
+    }
     // Close the example on Escape, Q, or Ctrl+C
     this.screen.key(['escape', 'q', 'C-c'], (ch, key) => (process.exit(0)));
     this.screen.key(['left'], (ch, key) => (this.backward()));

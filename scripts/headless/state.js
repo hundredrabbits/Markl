@@ -72,6 +72,28 @@ DEFAULT
       MOVE RIGHT`
 }
 
+let player3 = {
+  id:1,
+  hp:5,
+  sp:0,
+  name:"CPU2",
+  type:"FIGHTER",
+  character: "Sin",
+  pos:{
+    x:2,
+    y:2
+  },
+  style: `
+SIGHT
+  FIGHTER
+    DISTANCE IS 1
+      ATTACK TOWARD
+DEFAULT
+  DEFAULT
+    DEFAULT
+      WAIT`
+}
+
 module.exports = {
-  players : [player1,player2]
+  players : [player1,player2,player3]
 }

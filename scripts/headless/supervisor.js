@@ -66,7 +66,7 @@ module.exports = {
   render:function(state){
     this.initial_state = state;
 
-    var max_turns = 20;
+    var max_turns = 40;
     var i = 0;
     while(i < max_turns){
       this.run(state);

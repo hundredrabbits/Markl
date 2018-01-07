@@ -28,10 +28,29 @@ function ATTACK(host,attr,target = null)
       console.log(this.name,"at "+target_position+"("+vector.name+")");
       collider.hp -= 1;
       collider.status = "hit"
+      this.knockback(collider,vector);
     }
     else{
       console.log(this.name,"at "+target_position+", but no one is here.");
     }
+  }
+
+  this.knockback = function(host,vector)
+  {
+    var host_pos = new Pos(host.pos.x,host.pos.y);
+    var target_position = new Pos(host.pos.x,host.pos.y).add(vector);
+    if(this.can_move_to(target_position)){
+      host.pos = {x:target_position.x,y:target_position.y};  
+    }
+  }
+
+  this.can_move_to = function(pos)
+  {
+    if(pos.x > 4){ return false; }
+    if(pos.y > 4){ return false; }
+    if(pos.x < 0){ return false; }
+    if(pos.y < 0){ return false; }
+    return !this.player_at(pos) ? true : false;
   }
 
   this.player_at = function(pos)
