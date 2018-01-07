@@ -1,3 +1,5 @@
+var Style = require('./style.js')
+
 module.exports = {
 
   initial_state: null,
@@ -5,9 +7,16 @@ module.exports = {
   turn:0,
 
   run: function(state){
+    console.log(`TURN ${this.turn}`)
     var player = this.next_player(state);
-    console.log(`Running:${this.turn} -> ${player.name}#${player.id}`)
+    this.play(player,state);
     this.turn += 1;
+  },
+
+  play: function(player,state){
+    console.log(`PLAY ${player.name} #${player.id}`)
+    let reaction = new Style(player).run(state)
+    console.log(">>>>",reaction)
   },
 
   next_player: function(state){
@@ -35,9 +44,6 @@ module.exports = {
   render:function(state){
     this.initial_state = state;
 
-
-    this.run(state);
-    this.run(state);
     this.run(state);
 
     return this.history;

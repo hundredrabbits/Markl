@@ -1,4 +1,4 @@
-function Pos(x,y)
+function Pos(x = 0,y = 0)
 {
   this.x = x;
   this.y = y;
@@ -50,3 +50,5 @@ function Pos(x,y)
     return new Pos(this.x*-1,this.y*-1);
   }
 }
+
+module.exports = Pos;

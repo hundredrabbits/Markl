@@ -3,6 +3,7 @@ let player1 = {
   hp:5,
   sp:0,
   name:"USER",
+  type:"FIGHTER",
   character: "Pest",
   pos:{
     x:0,
@@ -11,6 +12,8 @@ let player1 = {
   style: `
 SIGHT
   FIGHTER
+    CHARACTER IS SIN
+      MOVE AWAY
     DISTANCE IS 4
       WAIT
     DISTANCE IS 2
@@ -38,6 +41,7 @@ let player2 = {
   hp:5,
   sp:0,
   name:"CPU1",
+  type:"FIGHTER",
   character: "Sin",
   pos:{
     x:0,
