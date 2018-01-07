@@ -1,4 +1,5 @@
 var Pos = require('../../units/pos.js')
+const Vector = require('../../units/vector.js')
 var Action = require('./action.js')
 
 function ATTACK(host,attr,target = null)
@@ -8,44 +9,41 @@ function ATTACK(host,attr,target = null)
   this.name = "attack";
   this.cost = 10;
 
-  this.run = function()
+  this.run = function(state)
   {
-    var offset = this.host.pos.offset(this.target.pos).invert();
+    this.state = state;
+
+    var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
+    var offset = host_pos.offset(this.target.pos).invert();
     var vector = new Vector(offset.x,offset.y);
     this.host.status = {action:this.name,vector:vector.name};
     this.host.stamina -= this.cost;
 
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
-    var event_at_position = markl.arena.event_at(target_position,"fighter");
+    var collider = this.player_at(target_position);
 
-    if(vector.name == "right"){
-      this.host.el.style.left = this.host.pos.html().x + 10;
-    }
-    if(vector.name == "left"){
-      this.host.el.style.left = this.host.pos.html().x - 10;
-    }
-    if(vector.name == "up"){
-      this.host.el.style.top = this.host.pos.html().y - 10;
-    }
-    if(vector.name == "down"){
-      this.host.el.style.top = this.host.pos.html().y + 10;
-    }
-    $(this.host.el).animate({ top:this.host.pos.html().y, left:this.host.pos.html().x }, ACT_SPEED/2);
+    console.log(`ATCK ${host_pos.toString()} => ${target_position.toString()}`)
 
-    if(event_at_position){
+    if(collider){
       console.log(this.name,"at "+target_position+"("+vector.name+")");
-      event_at_position.damage(1);
-      event_at_position.knockback(vector);
-      this.host.score.hits += 1;
-      if(event_at_position.hp < 1){
-        this.host.score.kills += 1;        
-      }
+      collider.hp -= 1;
+      collider.status = "hit"
     }
     else{
       console.log(this.name,"at "+target_position+", but no one is here.");
     }
-    this.host.animator.index = 0;
-    this.host.update(); 
+  }
+
+  this.player_at = function(pos)
+  {
+    for(id in this.state.players){
+      var player = this.state.players[id];
+      var player_pos = new Pos(player.pos.x,player.pos.y);
+      if(player_pos.is_equal(pos)){
+        return player;
+      }
+    }
+    return null;
   }
 }
 

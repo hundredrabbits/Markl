@@ -11,7 +11,7 @@ function Pos(x = 0,y = 0)
 
   this.add = function(pos)
   {
-    return new Pos(this.x + pos.x, this.y + pos.y);
+    return pos ? new Pos(this.x + pos.x, this.y + pos.y) : this;
   }
 
   this.html = function()

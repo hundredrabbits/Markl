@@ -18,6 +18,7 @@ function MOVE(host,attr,target = null)
   this.run = function(state)
   {
     this.state = state;
+    
     var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
     var vector = null;
 
@@ -45,7 +46,6 @@ function MOVE(host,attr,target = null)
       vector = new Vector(1,0)
     }
 
-    // this.host.status = {action:this.name,vector:vector.name};
     this.host.sp -= this.cost;
 
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
@@ -53,7 +53,10 @@ function MOVE(host,attr,target = null)
 
     console.log(`MOVE ${host_pos.toString()} -> ${target_position.toString()}`)
 
-    if(collider){
+    if(!this.can_move_to(target_position)){
+        console.log(this.name,"cannot move there");
+    }
+    else if(collider){
       console.log(this.name,"collided with "+collider.name+" "+target_position);
     }
     else{
@@ -85,7 +88,7 @@ function MOVE(host,attr,target = null)
       return vector.rotate(-1);
     }
 
-    return 
+    return null;
   }
 
   this.find_any_vector = function()
@@ -106,8 +109,8 @@ function MOVE(host,attr,target = null)
 
   this.can_move_to = function(pos)
   {
-    if(pos.x > 5){ return false; }
-    if(pos.y > 5){ return false; }
+    if(pos.x > 4){ return false; }
+    if(pos.y > 4){ return false; }
     if(pos.x < 0){ return false; }
     if(pos.y < 0){ return false; }
     return !this.player_at(pos) ? true : false;

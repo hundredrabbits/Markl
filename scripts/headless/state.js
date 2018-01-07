@@ -45,7 +45,7 @@ let player2 = {
   character: "Sin",
   pos:{
     x:0,
-    y:5
+    y:4
   },
   style: `
 SIGHT
