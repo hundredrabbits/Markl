@@ -30,6 +30,12 @@ module.exports = {
     var a = new actions[action.name](player,action.attr,reaction.target);
     console.log(`ACT  ${action.name}`)
     a.run(state);
+    this.record(state);
+  },
+
+  record: function(state){
+    var copy = JSON.parse(JSON.stringify(state));
+    this.history.push(state);
   },
 
   next_player: function(state){
@@ -57,6 +63,16 @@ module.exports = {
   render:function(state){
     this.initial_state = state;
 
+    this.run(state);
+    this.run(state);
+    this.run(state);
+    this.run(state);
+    this.run(state);
+    this.run(state);
+    this.run(state);
+    this.run(state);
+    this.run(state);
+    this.run(state);
     this.run(state);
     this.run(state);
 
