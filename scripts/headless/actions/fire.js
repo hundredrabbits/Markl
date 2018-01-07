@@ -1,3 +1,6 @@
+var Pos = require('../../units/pos.js')
+var Action = require('./action.js')
+
 function FIRE(host,attr,target = null)
 {
   Action.call(this,host,attr,target);

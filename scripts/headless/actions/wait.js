@@ -1,3 +1,6 @@
+var Pos = require('../../units/pos.js')
+var Action = require('./action.js')
+
 function WAIT(host,attr = null,target = null)
 {
   Action.call(this,host,attr,target);
@@ -16,3 +19,5 @@ function WAIT(host,attr = null,target = null)
     this.host.update(); 
   }
 }
+
+module.exports = WAIT;

@@ -49,6 +49,11 @@ function Pos(x = 0,y = 0)
   {
     return new Pos(this.x*-1,this.y*-1);
   }
+
+  this.toString = function()
+  {
+    return `${this.x},${this.y}`;
+  }
 }
 
 module.exports = Pos;

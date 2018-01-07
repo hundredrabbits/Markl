@@ -33,7 +33,7 @@ SIGHT
 DEFAULT
   DEFAULT
     DEFAULT
-      MOVE ANY`
+      MOVE UP`
 }
 
 let player2 = {
@@ -69,7 +69,7 @@ SIGHT
 DEFAULT
   DEFAULT
     DEFAULT
-      MOVE ANY`
+      MOVE RIGHT`
 }
 
 module.exports = {

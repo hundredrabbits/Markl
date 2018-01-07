@@ -1,3 +1,6 @@
+var Pos = require('../../units/pos.js')
+var Action = require('./action.js')
+
 function ATTACK(host,attr,target = null)
 {
   Action.call(this,host,attr,target);
@@ -45,3 +48,5 @@ function ATTACK(host,attr,target = null)
     this.host.update(); 
   }
 }
+
+module.exports = ATTACK;
