@@ -12,7 +12,7 @@ function MOVE(host,attr,target = null)
   Action.call(this,host,attr,target);
   
   this.name = "move";
-  this.cost = 2;
+  this.cost = 6;
   this.state = null;
 
   this.run = function(state)
@@ -54,13 +54,14 @@ function MOVE(host,attr,target = null)
     console.log(`MOVE ${host_pos.toString()} -> ${target_position.toString()}`)
 
     if(!this.can_move_to(target_position)){
-        console.log(this.name,"cannot move there");
+      console.log(this.name,"cannot move there");
     }
     else if(collider){
       console.log(this.name,"collided with "+collider.name+" "+target_position);
     }
     else{
       this.host.pos = {x:target_position.x,y:target_position.y};
+      this.host.status = "moving";
     }
 
     this.end();
@@ -94,8 +95,6 @@ function MOVE(host,attr,target = null)
   this.find_any_vector = function()
   {
     var vectors = [RIGHT, LEFT, UP, DOWN];
-    var vector = items[Math.floor(Math.random()*items.length)];
-
     for(id in vectors){
       var vector = vectors[id];
       var target_pos = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
@@ -121,7 +120,7 @@ function MOVE(host,attr,target = null)
     for(id in this.state.players){
       var player = this.state.players[id];
       var player_pos = new Pos(player.pos.x,player.pos.y);
-      if(player_pos.is_equal(pos)){
+      if(player.hp > 0 && player_pos.is_equal(pos)){
         return player;
       }
     }

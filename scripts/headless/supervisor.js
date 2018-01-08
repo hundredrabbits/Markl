@@ -33,7 +33,7 @@ module.exports = {
     this.record(state,reaction,action);
   },
 
-  record: function(state,reaction,action){
+  record: function(state,reaction = {},action = {}){
     this.history.push({state:this.copy(state),reaction:this.copy(reaction),action:this.copy(action)});
   },
 
@@ -42,9 +42,10 @@ module.exports = {
   },
 
   next_player: function(state){
-    let p = state.players[0];
-    for(id in state.players){
-      var player = state.players[id];
+    let players = this.players_alive(state);
+    let p = players[0];
+    for(id in players){
+      var player = players[id];
       p = player.sp > p.sp ? player : p;
     }
     return p;
@@ -65,10 +66,14 @@ module.exports = {
 
   render:function(state){
     this.initial_state = state;
+    this.record(state);
 
-    var max_turns = 40;
+    var max_turns = 50;
     var i = 0;
     while(i < max_turns){
+      if(this.has_winner(state)){
+        break;
+      }
       this.run(state);
       i += 1;
     }

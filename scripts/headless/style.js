@@ -65,7 +65,7 @@ function Style(host)
     for(id in this.state.players){
       var player = this.state.players[id];
       var player_pos = new Pos(player.pos.x,player.pos.y);
-      if(player_pos.is_equal(pos)){
+      if(player.hp > 0 && player_pos.is_equal(pos)){
         e.push(player)
       }
     }

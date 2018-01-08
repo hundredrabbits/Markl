@@ -5,6 +5,7 @@ let player1 = {
   name:"USER",
   type:"FIGHTER",
   character: "Pest",
+  status:"default",
   pos:{
     x:0,
     y:0
@@ -13,13 +14,13 @@ let player1 = {
 SIGHT
   FIGHTER
     CHARACTER IS SIN
-      MOVE AWAY
+      MOVE TOWARD
     DISTANCE IS 4
       WAIT
     DISTANCE IS 2
       MOVE AWAY
     DISTANCE IS 1
-      ATTACK TOWARD
+      ATTACK AWAY
     DEFAULT
       MOVE AWAY
   OBJECT
@@ -33,7 +34,7 @@ SIGHT
 DEFAULT
   DEFAULT
     DEFAULT
-      MOVE UP`
+      MOVE ANY`
 }
 
 let player2 = {
@@ -43,6 +44,7 @@ let player2 = {
   name:"CPU1",
   type:"FIGHTER",
   character: "Sin",
+  status:"default",
   pos:{
     x:0,
     y:4
@@ -53,7 +55,7 @@ SIGHT
     DISTANCE IS 4
       WAIT
     DISTANCE IS 2
-      MOVE AWAY
+      MOVE TOWARD
     DISTANCE IS 1
       ATTACK TOWARD
     DEFAULT
@@ -61,15 +63,13 @@ SIGHT
   OBJECT
     DISTANCE IS 1
       ATTACK TOWARD
-    DEFAULT
-      MOVE
   PROJECTILE
     DEFAULT
       STEP
 DEFAULT
   DEFAULT
     DEFAULT
-      MOVE RIGHT`
+      MOVE ANY`
 }
 
 let player3 = {
@@ -79,21 +79,49 @@ let player3 = {
   name:"CPU2",
   type:"FIGHTER",
   character: "Sin",
+  status:"default",
   pos:{
-    x:2,
-    y:2
+    x:4,
+    y:4
   },
   style: `
 SIGHT
   FIGHTER
     DISTANCE IS 1
       ATTACK TOWARD
+    DEFAULT
+      MOVE TOWARD
 DEFAULT
   DEFAULT
     DEFAULT
-      WAIT`
+      MOVE ANY`
+}
+
+let player4 = {
+  id:1,
+  hp:5,
+  sp:0,
+  name:"CPU2",
+  type:"FIGHTER",
+  character: "Sin",
+  status:"default",
+  pos:{
+    x:4,
+    y:0
+  },
+  style: `
+SIGHT
+  FIGHTER
+    DISTANCE IS 1
+      ATTACK TOWARD
+    DEFAULT
+      MOVE TOWARD
+DEFAULT
+  DEFAULT
+    DEFAULT
+      MOVE ANY`
 }
 
 module.exports = {
-  players : [player1,player2,player3]
+  players : [player1,player2,player3,player4]
 }

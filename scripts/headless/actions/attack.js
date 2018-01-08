@@ -7,7 +7,7 @@ function ATTACK(host,attr,target = null)
   Action.call(this,host,attr,target);
 
   this.name = "attack";
-  this.cost = 10;
+  this.cost = 15;
 
   this.run = function(state)
   {
@@ -27,8 +27,9 @@ function ATTACK(host,attr,target = null)
     if(collider){
       console.log(this.name,"at "+target_position+"("+vector.name+")");
       collider.hp -= 1;
-      collider.status = "hit"
+      collider.status = collider.hp < 1 ? "dead" : "hit";
       this.knockback(collider,vector);
+      this.host.status = "attacking";
     }
     else{
       console.log(this.name,"at "+target_position+", but no one is here.");
@@ -58,7 +59,7 @@ function ATTACK(host,attr,target = null)
     for(id in this.state.players){
       var player = this.state.players[id];
       var player_pos = new Pos(player.pos.x,player.pos.y);
-      if(player_pos.is_equal(pos)){
+      if(player.hp > 0 && player_pos.is_equal(pos)){
         return player;
       }
     }
