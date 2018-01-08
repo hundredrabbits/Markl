@@ -1,5 +1,17 @@
 ## TODOs
 
+### Immediate
+
+- Scores
+
+
+
+
+
+
+
+
+
 ### Designer
 
 - Show/Hide
@@ -43,6 +55,7 @@
 
 ### Actions
 
+- Block
 - Cast
 - Taunt
 - Move/Flank

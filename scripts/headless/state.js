@@ -13,10 +13,8 @@ let player1 = {
   style: `
 SIGHT
   FIGHTER
-    CHARACTER IS SIN
-      MOVE TOWARD
     DISTANCE IS 4
-      WAIT
+      DASH TOWARD
     DISTANCE IS 2
       MOVE AWAY
     DISTANCE IS 1
@@ -121,6 +119,12 @@ DEFAULT
     DEFAULT
       MOVE ANY`
 }
+
+
+player1.score = {hits:0,blocks:0}
+player2.score = {hits:0,blocks:0}
+player3.score = {hits:0,blocks:0}
+player4.score = {hits:0,blocks:0}
 
 module.exports = {
   players : [player1,player2,player3,player4]

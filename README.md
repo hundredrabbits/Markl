@@ -55,14 +55,28 @@ Conditions can be combined with `AND`.
 
 ### Actions
 
-The `ANY` vector will choose a vector randomly. 
+The `ANY` vector will choose an available vector in this order `UP`, `RIGHT`, `DOWN` & `LEFT`. 
 
-- `MOVE` (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)
+- `MOVE`   (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)
+- `DASH`   (*TOWARD*,*AWAY*)
 - `ATTACK` (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)
-- `FIRE` (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)
-- `CAST` (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)
+- `FIRE`   (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)
+- `CAST`   (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)
 - `WAIT`
+
 - `SELECT`, used in menu.
+
+#### Attacking
+
+Attacks affect adjacent tiles only. 
+
+#### Blocking
+
+A character will automatically block if their available stamina is high enough.
+
+#### Waiting
+
+Waiting costs only 2 stamina points, but waiting 3 turns in a row will put you in **statis**.
 
 ### Formatting
 
@@ -84,5 +98,17 @@ Code is executed.
 Code is not executed.
 ```
 
+## Cast
 
+The `cast` action triggers character abilities, costs `20sp`.
+
+### Leech(Sin)
+
+Gives `1hp` damage, and health of `1hp`.
+
+### Tele(Patience)
+
+Warp to the closest enemy, attacking for `2hp`, without knockback.
+
+### 
 

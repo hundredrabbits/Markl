@@ -82,7 +82,7 @@ module.exports = {
     for(id in this.history[this.index].state.players){
       var player = this.history[this.index].state.players[id];
 
-      status_html += `${player.name} ${player.hp}HP ${player.sp}SP <${player.status}>\n`
+      status_html += `${player.name} ${player.hp}HP ${player.sp}SP ${player.score.hits+player.score.blocks}AP <${player.status}>\n`
 
       this.players_el[id].left = player.pos.x;
       this.players_el[id].top = player.pos.y;
@@ -101,6 +101,10 @@ module.exports = {
       else if(player.status == "dead"){
         this.players_el[id].style.bg = "#f0f"
         this.players_el[id].style.fg = "grey"
+      }
+      else if(player.status == "statis"){
+        this.players_el[id].style.bg = "#fff"
+        this.players_el[id].style.fg = "blue"
       }
       else if(player.status == "blocking"){
         this.players_el[id].style.bg = "yellow"

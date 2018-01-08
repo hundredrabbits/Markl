@@ -7,12 +7,12 @@ const DOWN = new Vector(0,-1);
 const LEFT = new Vector(-1,0);
 const RIGHT = new Vector(1,0);
 
-function MOVE(host,attr,target = null)
+function DASH(host,attr,target = null)
 {
   Action.call(this,host,attr,target);
   
-  this.name = "move";
-  this.cost = 5;
+  this.name = "dash";
+  this.cost = 7;
   this.state = null;
 
   this.run = function(state)
@@ -37,32 +37,11 @@ function MOVE(host,attr,target = null)
       var offset = host_pos.offset(this.target.pos).invert();
       vector = new Vector(offset.x,offset.y);
     }
-    if(this.attr == "ANY"){
-      vector = this.find_any_vector();
-    }
-    if(this.attr == "UP"){
-      vector = new Vector(0,1)
-    }
-    if(this.attr == "DOWN"){
-      vector = new Vector(0,-1)
-    }
-    if(this.attr == "LEFT"){
-      vector = new Vector(-1,0)
-    }
-    if(this.attr == "RIGHT"){
-      vector = new Vector(1,0)
-    }
 
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
-
-    console.log(`MOVE ${host_pos.toString()} -> ${target_position.toString()}`)
-
-    if(!this.can_move_to(target_position)){
-      console.log(this.name,"cannot move there");
-    }
-    else{
+    while(this.can_move_to(target_position)){
       this.host.pos = {x:target_position.x,y:target_position.y};
-      this.host.status = "moving";
+      target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     }
   }
 
@@ -91,20 +70,6 @@ function MOVE(host,attr,target = null)
     return null;
   }
 
-  this.find_any_vector = function()
-  {
-    var vectors = [UP, RIGHT, DOWN, LEFT];
-    for(id in vectors){
-      var vector = vectors[id];
-      var target_pos = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
-      if(this.can_move_to(target_pos)){
-        return vector;
-      } 
-    }
-    console.log("BLOCKED?!")
-    return null;
-  }
-
   this.can_move_to = function(pos)
   {
     if(pos.x > 4){ return false; }
@@ -127,4 +92,4 @@ function MOVE(host,attr,target = null)
   }
 }
 
-module.exports = MOVE;
+module.exports = DASH;

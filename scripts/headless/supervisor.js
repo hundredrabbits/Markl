@@ -2,8 +2,9 @@ var Style = require('./style.js')
 
 var actions = {
    MOVE: require('./actions/move.js'),
+   DASH: require('./actions/dash.js'),
    ATTACK: require('./actions/attack.js'),
-   WAIT: require('./actions/wait.js')
+   WAIT: require('./actions/wait.js'),
 };
 
 module.exports = {
@@ -68,7 +69,7 @@ module.exports = {
     this.initial_state = state;
     this.record(state);
 
-    var max_turns = 50;
+    var max_turns = 100;
     var i = 0;
     while(i < max_turns){
       if(this.has_winner(state)){
