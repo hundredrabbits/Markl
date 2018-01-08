@@ -101,7 +101,7 @@ let player4 = {
   id:1,
   hp:5,
   sp:0,
-  name:"CPU2",
+  name:"CPU3",
   type:"FIGHTER",
   character: "Sin",
   status:"default",

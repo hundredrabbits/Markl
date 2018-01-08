@@ -30,11 +30,11 @@ module.exports = {
     var a = new actions[action.name](player,action.attr,reaction.target);
     console.log(`ACT  ${action.name}`)
     a.run(state);
-    this.record(state,reaction,action);
+    this.record(state,player,reaction,action);
   },
 
-  record: function(state,reaction = {},action = {}){
-    this.history.push({state:this.copy(state),reaction:this.copy(reaction),action:this.copy(action)});
+  record: function(state,player = {},reaction = {},action = {}){
+    this.history.push({state:this.copy(state),player:this.copy(player),reaction:this.copy(reaction),action:this.copy(action)});
   },
 
   copy: function(obj){

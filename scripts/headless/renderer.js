@@ -6,13 +6,16 @@ module.exports = {
   history: null,
   screen: blessed.screen(),
   body: blessed.box({top: 0,left: 0,height: '100%',width: '100%',keys: true,mouse: true,alwaysScroll: true,scrollable: true,style: {bg: '#f0f',fg: '#00f'},scrollbar: {ch: '+',bg: '#999'}}),
-  arena_el: blessed.box({top: 1,left: 3,height: 7,width: 7, border:{ch: ' ', bg:'#000'} ,style: {bg: '#fff',fg: '#000'}}),
+  arena_el: blessed.box({top: 1,left: 3,height: 7,width: 7, border:{type: 'line',fg:'#fff', bg:'#000'} ,style: {bg: '#000',fg: '#000'}}),
 
-  turn_el: blessed.box({top: 1,left: 13,height: 1,width: 20,style: {bg: '#000',fg: '#fff'}}),
-  reaction_el: blessed.box({top: 3,left: 13,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
-  action_el: blessed.box({top: 3,left: 40,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
-  status_el: blessed.box({top: 8,left: 13,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
-
+  turn_el: blessed.box({top: 2,left: 13,height: 1,width: 20,style: {bg: '#000',fg: '#fff'}}),
+  reaction_el: blessed.box({top: 4,left: 13,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
+  action_el: blessed.box({top: 4,left: 40,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
+  status_el: blessed.box({top: 9,left: 13,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
+  player_el: blessed.box({top: 14,left: 13,height: 1,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
+  style_el: blessed.box({top: 15,left: 13,height: 40,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
+  marker_el: blessed.box({top: 0,left: 0,height: 1,width: 1 ,content:'>',style: {bg:'#000',fg: '#72dec2'}}),
+  
   players_el: [
     blessed.box({top: 0,left: 0,height: 1,width: 1, content:'1' ,style: {bg: '#f0f',fg: '#fff'}}),
     blessed.box({top: 0,left: 2,height: 1,width: 1, content:'2' ,style: {bg: '#f0f',fg: '#fff'}}),
@@ -29,6 +32,9 @@ module.exports = {
     this.body.append(this.reaction_el);
     this.body.append(this.action_el);
     this.body.append(this.status_el);
+    this.body.append(this.player_el);
+    this.body.append(this.style_el);
+    this.style_el.append(this.marker_el);
 
     for(id in this.history[this.index].state.players){
       this.arena_el.append(this.players_el[id]);
@@ -57,35 +63,52 @@ module.exports = {
   },
 
   draw: function(){
-    this.turn_el.setContent(` TURN ${this.index}/${this.history.length-1}`);
+    this.turn_el.setContent(`TURN ${this.index}/${this.history.length-1}`);
 
     var reaction = this.history[this.index].reaction;
-    this.reaction_el.setContent(` TRIG ${reaction.trigger}\n EVNT ${reaction.event}\n COND ${reaction.condition}\n TARG ${reaction.target ? reaction.target.name : ''}`);
+    this.reaction_el.setContent(`TRIG ${reaction.trigger}\nEVNT ${reaction.event}\nCOND ${reaction.condition}\nTARG ${reaction.target ? reaction.target.name : ''}`);
 
     var action = this.history[this.index].action;
-    this.action_el.setContent(` NAME ${action.name}\n ATTR ${action.attr}\n LINE ${action.line}`);
+    this.action_el.setContent(`NAME ${action.name}\nATTR ${action.attr}\nLINE ${action.line}`);
 
-    var status_html = " ";
+    var playing = this.history[this.index].player;
+    this.style_el.setContent(playing.style);
+    this.player_el.setContent(playing.name);
+
+    this.marker_el.top = parseInt(action.line);
+
+    var status_html = "";
 
     for(id in this.history[this.index].state.players){
       var player = this.history[this.index].state.players[id];
 
-      status_html += `${player.name} ${player.hp}HP ${player.sp}SP <${player.status}>\n `
+      status_html += `${player.name} ${player.hp}HP ${player.sp}SP <${player.status}>\n`
 
       this.players_el[id].left = player.pos.x;
       this.players_el[id].top = player.pos.y;
 
+      this.players_el[id].style.fg = "#fff"
+      this.players_el[id].style.bg = "#f0f"
+
+      if(playing.name == player.name){
+        this.players_el[id].style.bg = "#333";
+      }
+
       if(player.status == "hit"){
         this.players_el[id].style.bg = "red"
+        this.players_el[id].style.fg = "#fff"
       }
       else if(player.status == "dead"){
-        this.players_el[id].style.bg = "grey"
+        this.players_el[id].style.bg = "#f0f"
+        this.players_el[id].style.fg = "grey"
+      }
+      else if(player.status == "blocking"){
+        this.players_el[id].style.bg = "yellow"
+        this.players_el[id].style.fg = "black"
       }
       else if(player.status == "attacking"){
-        this.players_el[id].style.bg = "blue"
-      }
-      else{
         this.players_el[id].style.bg = "#f0f"
+        this.players_el[id].style.fg = "#72dec2"
       }
     }
 

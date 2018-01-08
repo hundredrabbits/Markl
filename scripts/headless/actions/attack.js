@@ -7,7 +7,7 @@ function ATTACK(host,attr,target = null)
   Action.call(this,host,attr,target);
 
   this.name = "attack";
-  this.cost = 15;
+  this.cost = 10;
 
   this.run = function(state)
   {
@@ -17,7 +17,7 @@ function ATTACK(host,attr,target = null)
     var offset = host_pos.offset(this.target.pos).invert();
     var vector = new Vector(offset.x,offset.y);
     this.host.status = {action:this.name,vector:vector.name};
-    this.host.stamina -= this.cost;
+    this.host.sp -= this.cost;
 
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     var collider = this.player_at(target_position);
@@ -26,10 +26,17 @@ function ATTACK(host,attr,target = null)
 
     if(collider){
       console.log(this.name,"at "+target_position+"("+vector.name+")");
-      collider.hp -= 1;
-      collider.status = collider.hp < 1 ? "dead" : "hit";
-      this.knockback(collider,vector);
-      this.host.status = "attacking";
+      if(collider.sp - 5 > this.host.sp && collider.status == "moving"){
+        this.host.status = "attacking";
+        collider.status = "blocking";
+        this.knockback(this.host,vector.invert());
+      }
+      else{
+        collider.hp -= 1;
+        collider.status = collider.hp < 1 ? "dead" : "hit";
+        this.host.status = "attacking";
+        this.knockback(collider,vector);
+      }
     }
     else{
       console.log(this.name,"at "+target_position+", but no one is here.");
