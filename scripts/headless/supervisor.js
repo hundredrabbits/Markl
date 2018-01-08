@@ -4,6 +4,7 @@ var actions = {
    MOVE: require('./actions/move.js'),
    DASH: require('./actions/dash.js'),
    ATTACK: require('./actions/attack.js'),
+   PUSH: require('./actions/push.js'),
    WAIT: require('./actions/wait.js'),
 };
 

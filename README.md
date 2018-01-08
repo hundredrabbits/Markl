@@ -57,14 +57,15 @@ Conditions can be combined with `AND`.
 
 The `ANY` vector will choose an available vector in this order `UP`, `RIGHT`, `DOWN` & `LEFT`. 
 
+- Menu Events
+- `SELECT`, used in menu.
+- Arena Events
 - `MOVE`   (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)
 - `DASH`   (*TOWARD*,*AWAY*)
-- `ATTACK` (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)
-- `FIRE`   (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)
+- `ATTACK` 
+- `PUSH`   
 - `CAST`   (UP,DOWN,LEFT,RIGHT,ANY,*TOWARD*,*AWAY*)
 - `WAIT`
-
-- `SELECT`, used in menu.
 
 #### Attacking
 
@@ -109,6 +110,4 @@ Gives `1hp` damage, and health of `1hp`.
 ### Tele(Patience)
 
 Warp to the closest enemy, attacking for `2hp`, without knockback.
-
-### 
 
