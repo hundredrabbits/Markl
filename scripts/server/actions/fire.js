@@ -1,4 +1,5 @@
 var Pos = require('../../units/pos.js')
+const Vector = require('../../units/vector.js')
 var Action = require('./action.js')
 
 function FIRE(host,attr,target = null)
@@ -8,23 +9,20 @@ function FIRE(host,attr,target = null)
   this.name = "fire";
   this.cost = 20;
 
-  this.name = "fire";
-
-  this.run = function()
+  this.run = function(state)
   {
-    var offset = this.host.pos.offset(this.target.pos).invert();
+    this.state = state;
+
+    var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
+    var offset = host_pos.offset(this.target.pos).invert();
     var vector = new Vector(offset.x,offset.y);
-    this.host.status = {action:this.name,vector:vector.name};
-    this.host.stamina -= this.cost;
+    this.host.status = this.name;
+    this.host.sp -= this.cost;
 
-    this.host.animator.index = 0;
-    this.host.update();
+    console.log(`FIRE ${host_pos} => ${vector}`)
 
-    var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
 
-    var missile = new Missile(this.host.pos, vector);
-    missile.start();
-    missile.update()
-    markl.arena.add_event(missile);
   }
 }
+
+module.exports = FIRE;

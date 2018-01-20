@@ -17,7 +17,7 @@ function PUSH(host,attr,target = null)
     var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
     var offset = host_pos.offset(this.target.pos).invert();
     var vector = new Vector(offset.x,offset.y);
-    this.host.status = {action:this.name,vector:vector.name};
+    this.host.status = this.name;
 
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     var collider = this.player_at(target_position);

@@ -7,6 +7,7 @@ var actions = {
    PUSH: require('./actions/push.js'),
    WAIT: require('./actions/wait.js'),
    IDLE: require('./actions/idle.js'),
+   FIRE: require('./actions/fire.js'),
 };
 
 module.exports = {

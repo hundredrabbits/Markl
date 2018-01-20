@@ -5,7 +5,7 @@ module.exports = {
   index:0,
   history: null,
   screen: blessed.screen(),
-  body: blessed.box({top: 0,left: 0,height: '100%',width: '100%',keys: true,mouse: true,alwaysScroll: true,scrollable: true,style: {bg: '#f0f',fg: '#00f'},scrollbar: {ch: '+',bg: '#999'}}),
+  body: blessed.box({top: 0,left: 0,height: '100%',width: '100%',keys: true,mouse: true,alwaysScroll: true,scrollable: true,style: {bg: '#000',fg: '#00f'},scrollbar: {ch: '+',bg: '#999'}}),
   arena_el: blessed.box({top: 1,left: 3,height: 7,width: 7, border:{type: 'line',fg:'#fff', bg:'#000'} ,style: {bg: '#000',fg: '#000'}}),
 
   turn_el: blessed.box({top: 2,left: 13,height: 1,width: 20,style: {bg: '#000',fg: '#fff'}}),
@@ -17,10 +17,10 @@ module.exports = {
   marker_el: blessed.box({top: 0,left: 0,height: 1,width: 1 ,content:'>',style: {bg:'#000',fg: '#72dec2'}}),
   
   players_el: [
-    blessed.box({top: 0,left: 0,height: 1,width: 1, content:'1' ,style: {bg: '#f0f',fg: '#fff'}}),
-    blessed.box({top: 0,left: 2,height: 1,width: 1, content:'2' ,style: {bg: '#f0f',fg: '#fff'}}),
-    blessed.box({top: 2,left: 2,height: 1,width: 1, content:'3' ,style: {bg: '#f0f',fg: '#fff'}}),
-    blessed.box({top: 2,left: 2,height: 1,width: 1, content:'4' ,style: {bg: '#f0f',fg: '#fff'}})
+    blessed.box({top: 0,left: 0,height: 1,width: 1, content:'1' ,style: {bg: '#000',fg: '#fff'}}),
+    blessed.box({top: 0,left: 2,height: 1,width: 1, content:'2' ,style: {bg: '#000',fg: '#fff'}}),
+    blessed.box({top: 2,left: 2,height: 1,width: 1, content:'3' ,style: {bg: '#000',fg: '#fff'}}),
+    blessed.box({top: 2,left: 2,height: 1,width: 1, content:'4' ,style: {bg: '#000',fg: '#fff'}})
   ],
 
   install: function(){
