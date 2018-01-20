@@ -21,8 +21,7 @@ function MOVE(host,attr,target = null)
     this.host.sp -= this.cost;
 
     if(this.host.status == "stasis"){
-      console.log(`RCVR`)
-      this.host.status = "default";
+      this.host.status = "recovery";
       return;
     }
     

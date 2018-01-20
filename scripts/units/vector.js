@@ -18,6 +18,16 @@ function Vector(x,y)
     return new Vector(this.y*direction,this.x*direction);    
   }
 
+  this.from_name = function(s)
+  {
+    var name = s.toLowerCase();
+    if(name == "up"){ return new Vector(0,1); }
+    else if(name == "down"){ return new Vector(0,-1); }
+    else if(name == "left"){ return new Vector(-1,0); }
+    else if(name == "right"){ return new Vector(1,0); }
+    return null;
+  }
+
   function clamp(v, min, max)
   { 
     return v < min ? min : v > max ? max : v; 

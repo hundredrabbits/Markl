@@ -12,13 +12,18 @@ function ATTACK(host,attr,target = null)
   this.run = function(state)
   {
     this.state = state;
+    this.host.sp -= this.cost;
+
+    if(this.host.status == "stasis"){
+      this.host.status = "recovery";
+      return;
+    }
 
     var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
     var offset = host_pos.offset(this.target.pos).invert();
     var vector = new Vector(offset.x,offset.y);
     this.host.status = {action:this.name,vector:vector.name};
-    this.host.sp -= this.cost;
-
+  
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     var collider = this.player_at(target_position);
 

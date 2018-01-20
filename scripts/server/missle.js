@@ -18,21 +18,32 @@ function Missle(host,settings)
   this.run = function(state)
   {
     this.life -= 1;
+
+    this.step(state);
+
     this.pos.x += this.vector.x;
     this.pos.y += this.vector.y;
 
-    var collider = this.player_at(state,this.pos);
+    this.step(state);
 
-    if(collider){
-      console.log(this.name,"at "+this.pos);
-      collider.hp -= this.damage;
-      collider.status = collider.hp < 1 ? "dead" : "stasis";
-      this.host.score.hits += 1;
-      this.knockback(state,collider,this.vector);
-    }
     if(!this.can_move_to(state,this.pos)){
       this.life = -1;
     }
+  }
+
+  this.step = function(state)
+  {
+    if(this.life < 0){ return; }
+
+    var collider = this.player_at(state,this.pos);
+
+    if(!collider){ return; }
+
+    collider.hp -= this.damage;
+    collider.status = collider.hp < 1 ? "dead" : "stasis";
+    this.host.score.hits += 1;
+    this.knockback(state,collider,this.vector);
+    this.life = -1;
   }
 
   this.knockback = function(state,host,vector)

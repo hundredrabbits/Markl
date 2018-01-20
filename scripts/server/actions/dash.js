@@ -2,11 +2,6 @@ const Pos = require('../../units/pos.js')
 const Vector = require('../../units/vector.js')
 const Action = require('../action.js')
 
-const UP = new Vector(0,1);
-const DOWN = new Vector(0,-1);
-const LEFT = new Vector(-1,0);
-const RIGHT = new Vector(1,0);
-
 function DASH(host,attr,target = null)
 {
   Action.call(this,host,attr,target);
@@ -21,11 +16,10 @@ function DASH(host,attr,target = null)
     this.host.sp -= this.cost;
 
     if(this.host.status == "stasis"){
-      console.log(`RCVR`)
-      this.host.status = "default";
+      this.host.status = "recovery";
       return;
     }
-    
+
     var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
     var vector = null;
 
@@ -33,9 +27,12 @@ function DASH(host,attr,target = null)
       var offset = host_pos.offset(this.target.pos).invert();
       vector = this.find_away_vector(new Vector(offset.x,offset.y));
     }
-    if(this.attr == "TOWARD"){
+    else if(this.attr == "TOWARD"){
       var offset = host_pos.offset(this.target.pos).invert();
       vector = new Vector(offset.x,offset.y);
+    }
+    else{
+      vector = new Vector().from_name(this.attr);
     }
 
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);

@@ -14,9 +14,9 @@ let player1 = {
 SIGHT
   FIGHTER
     DISTANCE IS 4
-      DASH TOWARD
-    DISTANCE IS 3
       FIRE TOWARD
+    DISTANCE IS 3
+      DASH TOWARD
     DISTANCE IS 1
       PUSH
     DEFAULT
@@ -51,13 +51,15 @@ let player2 = {
 SIGHT
   FIGHTER
     DISTANCE IS 4
-      WAIT
+      MOVE RIGHT
+    DISTANCE IS 3
+      FIRE TOWARD
     DISTANCE IS 2
       MOVE TOWARD
     DISTANCE IS 1
       ATTACK TOWARD
     DEFAULT
-      MOVE AWAY
+      MOVE TOWARD
   OBJECT
     DISTANCE IS 1
       ATTACK TOWARD
@@ -67,7 +69,7 @@ SIGHT
 DEFAULT
   DEFAULT
     DEFAULT
-      MOVE ANY`
+      DASH LEFT`
 }
 
 let player3 = {

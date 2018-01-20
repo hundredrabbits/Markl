@@ -14,6 +14,11 @@ function PUSH(host,attr,target = null)
     this.state = state;
     this.host.sp -= this.cost;
 
+    if(this.host.status == "stasis"){
+      this.host.status = "recovery";
+      return;
+    }
+
     var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
     var offset = host_pos.offset(this.target.pos).invert();
     var vector = new Vector(offset.x,offset.y);

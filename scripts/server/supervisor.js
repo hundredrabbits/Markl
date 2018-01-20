@@ -33,21 +33,17 @@ module.exports = {
     var action = reaction.actions[0];
     var a = actions[action.name] ? new actions[action.name](player,action.attr,reaction.target) : new actions.IDLE(player,action.attr,reaction.target);
     console.log(`ACT  ${action.name}`)
-    a.run(state);
     this.stage(state);
+    a.run(state);
     this.record(state,player,reaction,action);
   },
 
   stage: function(state){
-    
     var a = []
     for(id in state.events){
       var event = state.events[id];
       event.run(state);
-      // Remove dead events
-      if(event.life >= 0){
-        a.push(event);
-      }
+      if(event.life >= 0){ a.push(event); } // Remove dead events
     }
     state.events = a;
   },

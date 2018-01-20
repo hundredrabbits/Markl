@@ -13,6 +13,12 @@ function FIRE(host,attr,target = null)
   this.run = function(state)
   {
     this.state = state;
+    this.host.sp -= this.cost;
+
+    if(this.host.status == "stasis"){
+      this.host.status = "recovery";
+      return;
+    }
 
     var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
     var offset = host_pos.offset(this.target.pos).invert();
@@ -20,11 +26,9 @@ function FIRE(host,attr,target = null)
     this.host.status = this.name;
     this.host.sp -= this.cost;
 
-    console.log(`FIRE ${host_pos} => ${vector}`)
-
     // Add new missle into play
 
-    var missle = new Missle(this.host,{pos:host_pos,vector:vector,life:5});
+    var missle = new Missle(this.host,{pos:host_pos.add(vector),vector:vector,life:5});
     state.events.push(missle);
   }
 }
