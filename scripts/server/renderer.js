@@ -67,15 +67,31 @@ module.exports = {
     this.install();
   },
 
+  // Events
+  
+  events_ui: [],
+
+  remove_events_ui: function(){
+    for(id in this.events_ui){
+      var el = this.events_ui[id];
+      el.destroy();
+    }
+  },
+
   draw_events(turn){
+    this.remove_events_ui();
     var s = ""
     for(i in turn.state.events){
       var event = turn.state.events[i];
+      var event_ui = blessed.box({left: event.pos.x,top: event.pos.y,height:1,width:1,content:"+",style: {bg: '#fff',fg: '#000'}});
+      event_ui.setContent("+")
+      this.arena_el.append(event_ui);
+      this.events_ui.push(event_ui);
       s += `${event.name}(${event.pos.x},${event.pos.y} : ${event.vector.x},${event.vector.y})\n`;
     }
     this.events_el.setContent(s ? s : "NO EVENTS")
   },
-
+  
   draw_timeline(){
     var s = ""
     for(id in this.history){
@@ -137,7 +153,7 @@ module.exports = {
         this.players_el[id].style.bg = "cyan"
         this.players_el[id].style.fg = "white"
       }
-      else if(player.status == "statis"){
+      else if(player.status == "stasis"){
         this.players_el[id].style.bg = "#fff"
         this.players_el[id].style.fg = "blue"
       }

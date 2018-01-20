@@ -77,7 +77,7 @@ A character will automatically block if their available stamina is high enough.
 
 #### Waiting
 
-Waiting costs only 2 stamina points, but waiting 3 turns in a row will put you in **statis**.
+Waiting costs only 2 stamina points, but waiting 3 turns in a row will put you in **stasis**.
 
 ### Formatting
 

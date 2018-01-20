@@ -27,7 +27,7 @@ function ATTACK(host,attr,target = null)
     if(collider){
       console.log(this.name,"at "+target_position+"("+vector.name+")");
       if(collider.sp - 5 > this.host.sp && collider.status == "moving"){
-        this.host.status = "statis";
+        this.host.status = "stasis";
         collider.status = "blocking";
         collider.score.blocks += 1;
         this.knockback(this.host,vector.invert());

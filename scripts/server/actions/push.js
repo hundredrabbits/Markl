@@ -30,7 +30,7 @@ function PUSH(host,attr,target = null)
       this.knockback(collider,vector);
       slide += 1;
     }
-    collider.status = "statis";
+    collider.status = "stasis";
   }
 
   this.knockback = function(host,vector)
