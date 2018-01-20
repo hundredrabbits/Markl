@@ -127,5 +127,6 @@ player3.score = {hits:0,blocks:0}
 player4.score = {hits:0,blocks:0}
 
 module.exports = {
-  players : [player1,player2,player3,player4]
+  players : [player1,player2,player3,player4],
+  events  : []
 }

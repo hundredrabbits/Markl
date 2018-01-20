@@ -1,5 +1,5 @@
 var Pos = require('../../units/pos.js')
-var Action = require('./action.js')
+var Action = require('../action.js')
 
 function WAIT(host,attr = null,target = null)
 {

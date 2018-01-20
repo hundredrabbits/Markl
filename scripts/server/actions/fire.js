@@ -1,6 +1,7 @@
 var Pos = require('../../units/pos.js')
 const Vector = require('../../units/vector.js')
-var Action = require('./action.js')
+var Action = require('../action.js')
+var Missle = require('../missle.js')
 
 function FIRE(host,attr,target = null)
 {
@@ -23,6 +24,8 @@ function FIRE(host,attr,target = null)
 
     // Add new missle into play
 
+    var missle = new Missle(this.host,{pos:host_pos,vector:vector,life:5});
+    state.events.push(missle);
   }
 }
 

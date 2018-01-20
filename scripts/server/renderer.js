@@ -10,12 +10,14 @@ module.exports = {
 
   timeline_el: blessed.box({top: 1,left: 13,height: 1,width: 100 ,style: {bg: '#000',fg: '#fff'}}),
   turn_el: blessed.box({top: 3,left: 13,height: 1,width: 20,style: {bg: '#000',fg: '#fff'}}),
-  reaction_el: blessed.box({top: 4,left: 13,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
-  action_el: blessed.box({top: 4,left: 40,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
-  status_el: blessed.box({top: 9,left: 13,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
-  player_el: blessed.box({top: 14,left: 13,height: 1,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
-  style_el: blessed.box({top: 15,left: 13,height: 40,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
+  reaction_el: blessed.box({top: 5,left: 13,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
+  action_el: blessed.box({top: 5,left: 40,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
+  status_el: blessed.box({top: 5,left: 60,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
+  player_el: blessed.box({top: 10,left: 13,height: 1,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
+  style_el: blessed.box({top: 11,left: 13,height: 40,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
   marker_el: blessed.box({top: 0,left: 0,height: 1,width: 1 ,content:'>',style: {bg:'#000',fg: '#72dec2'}}),
+
+  events_el: blessed.box({top: 10,left: 40,height: 4,width: 30 ,content:'>',style: {bg:'#000',fg: '#fff'}}),
   
   players_el: [
     blessed.box({top: 0,left: 0,height: 1,width: 1, content:'1' ,style: {bg: '#000',fg: '#fff'}}),
@@ -36,6 +38,7 @@ module.exports = {
     this.body.append(this.player_el);
     this.body.append(this.style_el);
     this.body.append(this.timeline_el);
+    this.body.append(this.events_el);
     this.style_el.append(this.marker_el);
 
     for(id in this.history[this.index].state.players){
@@ -64,46 +67,51 @@ module.exports = {
     this.install();
   },
 
-  draw_timeline(){
+  draw_events(turn){
+    var s = ""
+    for(i in turn.state.events){
+      var event = turn.state.events[i];
+      s += `${event.name}(${event.pos.x},${event.pos.y} : ${event.vector.x},${event.vector.y})\n`;
+    }
+    this.events_el.setContent(s ? s : "NO EVENTS")
+  },
 
+  draw_timeline(){
     var s = ""
     for(id in this.history){
       var turn = this.history[id];
-      if(this.index > id){
-        s += "="; continue;
-      }
-      if(turn.action.name && turn.action.name.substr(0,1) == "M"){
-        s += "-"; continue;
-      }
+      if(this.index > id){ s += "="; continue; }
+      if(turn.action.name && turn.action.name.substr(0,1) == "M"){ s += "-"; continue; }
       s += turn.action.name ? turn.action.name.substr(0,1) : "-";
     }
-
     this.timeline_el.setContent(s)
   },
 
   draw: function(){
 
-    // console.log(this.history[this.index])
+    var turn = this.history[this.index];
+
     this.turn_el.setContent(`TURN ${this.index}/${this.history.length-1}`);
 
     this.draw_timeline();
+    this.draw_events(turn);
 
-    var reaction = this.history[this.index].reaction;
+    var reaction = turn.reaction;
     this.reaction_el.setContent(`TRIG ${reaction.trigger}\nEVNT ${reaction.event}\nCOND ${reaction.condition}\nTARG ${reaction.target ? reaction.target.name : ''}`);
 
-    var action = this.history[this.index].action;
+    var action = turn.action;
     this.action_el.setContent(`NAME ${action.name}\nATTR ${action.attr}\nLINE ${action.line}`);
 
-    var playing = this.history[this.index].player;
+    var playing = turn.player;
     this.style_el.setContent(playing.style);
-    this.player_el.setContent(playing.name);
+    this.player_el.setContent(playing.name+" "+turn.state.events.length);
 
     this.marker_el.top = parseInt(action.line);
 
     var status_html = "";
 
-    for(id in this.history[this.index].state.players){
-      var player = this.history[this.index].state.players[id];
+    for(id in turn.state.players){
+      var player = turn.state.players[id];
 
       status_html += `${player.name} ${player.hp}HP ${player.sp}SP ${player.score.hits+player.score.blocks}AP <${player.status}>\n`
 

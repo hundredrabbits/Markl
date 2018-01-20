@@ -1,6 +1,6 @@
 var Pos = require('../../units/pos.js')
 const Vector = require('../../units/vector.js')
-var Action = require('./action.js')
+var Action = require('../action.js')
 
 function PUSH(host,attr,target = null)
 {
