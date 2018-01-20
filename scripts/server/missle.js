@@ -1,5 +1,5 @@
-var Pos = require('../units/pos.js')
-var Vector = require('../units/vector.js')
+var Pos = require('./units/pos.js')
+var Vector = require('./units/vector.js')
 
 function Missle(host,settings)
 {

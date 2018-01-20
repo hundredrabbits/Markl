@@ -96,7 +96,7 @@ module.exports = {
     var s = ""
     for(id in this.history){
       var turn = this.history[id];
-      if(this.index > id){ s += "="; continue; }
+      if(this.index > id){ s += ">"; continue; }
       if(turn.action.name && turn.action.name.substr(0,1) == "M"){ s += "-"; continue; }
       s += turn.action.name ? turn.action.name.substr(0,1) : "-";
     }

@@ -1,4 +1,4 @@
-var Pos = require('../units/pos.js')
+var Pos = require('./units/pos.js')
 
 function Style(host)
 {

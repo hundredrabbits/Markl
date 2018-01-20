@@ -1,4 +1,4 @@
-var Pos = require('../../units/pos.js')
+var Pos = require('../units/pos.js')
 var Action = require('../action.js')
 
 function IDLE(host,attr = null,target = null)
