@@ -88,7 +88,7 @@ module.exports = {
       this.players_el[id].top = player.pos.y;
 
       this.players_el[id].style.fg = "#fff"
-      this.players_el[id].style.bg = "#f0f"
+      this.players_el[id].style.bg = "#000"
 
       if(playing.name == player.name){
         this.players_el[id].style.bg = "#333";
@@ -99,8 +99,12 @@ module.exports = {
         this.players_el[id].style.fg = "#fff"
       }
       else if(player.status == "dead"){
-        this.players_el[id].style.bg = "#f0f"
+        this.players_el[id].style.bg = "#000"
         this.players_el[id].style.fg = "grey"
+      }
+      else if(player.status == "confused"){
+        this.players_el[id].style.bg = "cyan"
+        this.players_el[id].style.fg = "white"
       }
       else if(player.status == "statis"){
         this.players_el[id].style.bg = "#fff"
@@ -111,7 +115,7 @@ module.exports = {
         this.players_el[id].style.fg = "black"
       }
       else if(player.status == "attacking"){
-        this.players_el[id].style.bg = "#f0f"
+        this.players_el[id].style.bg = "#000"
         this.players_el[id].style.fg = "#72dec2"
       }
     }

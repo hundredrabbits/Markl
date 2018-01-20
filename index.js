@@ -1,7 +1,7 @@
 
-const state       = require('./scripts/headless/state.js')
-const supervisor  = require('./scripts/headless/supervisor')
-const renderer    = require('./scripts/headless/renderer.js')
+const state       = require('./scripts/server/state.js')
+const supervisor  = require('./scripts/server/supervisor')
+const renderer    = require('./scripts/server/renderer.js')
 
 // console.log(process.argv[2]);
 

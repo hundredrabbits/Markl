@@ -6,6 +6,7 @@ var actions = {
    ATTACK: require('./actions/attack.js'),
    PUSH: require('./actions/push.js'),
    WAIT: require('./actions/wait.js'),
+   IDLE: require('./actions/idle.js'),
 };
 
 module.exports = {
@@ -29,7 +30,7 @@ module.exports = {
 
   act: function(player,reaction,state){
     var action = reaction.actions[0];
-    var a = new actions[action.name](player,action.attr,reaction.target);
+    var a = actions[action.name] ? new actions[action.name](player,action.attr,reaction.target) : new actions.IDLE(player,action.attr,reaction.target);
     console.log(`ACT  ${action.name}`)
     a.run(state);
     this.record(state,player,reaction,action);

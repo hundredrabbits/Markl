@@ -4,7 +4,7 @@ let player1 = {
   sp:0,
   name:"USER",
   type:"FIGHTER",
-  character: "Pest",
+  character: "Lancer",
   status:"default",
   pos:{
     x:0,
@@ -16,7 +16,7 @@ SIGHT
     DISTANCE IS 4
       DASH TOWARD
     DISTANCE IS 2
-      MOVE AWAY
+      WHAT
     DISTANCE IS 1
       PUSH
     DEFAULT
