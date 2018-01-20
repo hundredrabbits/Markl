@@ -8,7 +8,8 @@ module.exports = {
   body: blessed.box({top: 0,left: 0,height: '100%',width: '100%',keys: true,mouse: true,alwaysScroll: true,scrollable: true,style: {bg: '#000',fg: '#00f'},scrollbar: {ch: '+',bg: '#999'}}),
   arena_el: blessed.box({top: 1,left: 3,height: 7,width: 7, border:{type: 'line',fg:'#fff', bg:'#000'} ,style: {bg: '#000',fg: '#000'}}),
 
-  turn_el: blessed.box({top: 2,left: 13,height: 1,width: 20,style: {bg: '#000',fg: '#fff'}}),
+  timeline_el: blessed.box({top: 1,left: 13,height: 1,width: 100 ,style: {bg: '#000',fg: '#fff'}}),
+  turn_el: blessed.box({top: 3,left: 13,height: 1,width: 20,style: {bg: '#000',fg: '#fff'}}),
   reaction_el: blessed.box({top: 4,left: 13,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
   action_el: blessed.box({top: 4,left: 40,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
   status_el: blessed.box({top: 9,left: 13,height: 4,width: 35 ,style: {bg: '#000',fg: '#fff'}}),
@@ -34,6 +35,7 @@ module.exports = {
     this.body.append(this.status_el);
     this.body.append(this.player_el);
     this.body.append(this.style_el);
+    this.body.append(this.timeline_el);
     this.style_el.append(this.marker_el);
 
     for(id in this.history[this.index].state.players){
@@ -62,8 +64,29 @@ module.exports = {
     this.install();
   },
 
+  draw_timeline(){
+
+    var s = ""
+    for(id in this.history){
+      var turn = this.history[id];
+      if(this.index > id){
+        s += "="; continue;
+      }
+      if(turn.action.name && turn.action.name.substr(0,1) == "M"){
+        s += "-"; continue;
+      }
+      s += turn.action.name ? turn.action.name.substr(0,1) : "-";
+    }
+
+    this.timeline_el.setContent(s)
+  },
+
   draw: function(){
+
+    // console.log(this.history[this.index])
     this.turn_el.setContent(`TURN ${this.index}/${this.history.length-1}`);
+
+    this.draw_timeline();
 
     var reaction = this.history[this.index].reaction;
     this.reaction_el.setContent(`TRIG ${reaction.trigger}\nEVNT ${reaction.event}\nCOND ${reaction.condition}\nTARG ${reaction.target ? reaction.target.name : ''}`);

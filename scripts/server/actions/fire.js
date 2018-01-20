@@ -21,6 +21,7 @@ function FIRE(host,attr,target = null)
 
     console.log(`FIRE ${host_pos} => ${vector}`)
 
+    // Add new missle into play
 
   }
 }
