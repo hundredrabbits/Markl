@@ -18,9 +18,9 @@ function Markl()
   
   this.start = function()
   {
-    var state = require('../server/state')
-    var result = this.supervisor.render(state);
-    console.log(result);
+    this.scenario.load("garden");
+    this.scenario.run();
+    console.log(this.scenario.history);
     this.renderer.update();
   }
 }
