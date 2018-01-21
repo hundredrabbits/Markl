@@ -6,6 +6,7 @@ function Markl()
   this.designer = new Designer();
   this.renderer = new Renderer();
   this.supervisor = require('../server/supervisor')
+  this.scenario = require('../server/scenario')
 
   this.install = function()
   {

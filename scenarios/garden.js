@@ -11,28 +11,10 @@ let player1 = {
     y:0
   },
   style: `
-SIGHT
-  FIGHTER
-    DISTANCE IS 4
-      FIRE TOWARD
-    DISTANCE IS 3
-      DASH TOWARD
-    DISTANCE IS 1
-      PUSH
-    DEFAULT
-      MOVE AWAY
-  OBJECT
-    DISTANCE IS 1
-      ATTACK TOWARD
-    DEFAULT
-      MOVE
-  PROJECTILE
-    DEFAULT
-      STEP
 DEFAULT
   DEFAULT
     DEFAULT
-      MOVE ANY`
+      WAIT`
 }
 
 let player2 = {

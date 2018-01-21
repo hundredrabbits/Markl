@@ -1,3 +1,4 @@
 # README
 
-To build: `npm start`, to use the headless server: `npm run serve`.
+- To Electron: `npm start`.
+- To use the headless server: `npm run scenario 1`.

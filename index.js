@@ -1,7 +1,9 @@
 
-const state       = require('./server/state.js')
-const supervisor  = require('./server/supervisor')
-const renderer    = require('./server/renderer.js')
+const scenario_name = process.argv[2] ? process.argv[2] : "garden";
+const scenario = require('./server/scenario');
+const renderer = require('./server/renderer.js')
 
-var result = supervisor.render(state);
-var render = renderer.render(result);
+scenario.load(scenario_name);
+scenario.run();
+
+var render = renderer.render(scenario.history);
