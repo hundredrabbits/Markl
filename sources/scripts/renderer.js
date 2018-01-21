@@ -19,7 +19,7 @@ function Renderer()
 
   this.play = function(history)
   {
-    console.log("Playing history")
+    console.log("Playing history",history)
   }
 
   this.update = function()

@@ -70,8 +70,11 @@ DEFAULT
 
   this.run_button_click = function()
   {
+    markl.scenario.reload()
     markl.scenario.inject_style(markl.designer.input_el.value);
-    markl.renderer.play(markl.scenario.run());
+    var history = markl.scenario.run();
+    
+    markl.renderer.play(history);
   }
 
   this.stop_button_click = function()

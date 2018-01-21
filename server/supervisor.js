@@ -78,6 +78,7 @@ module.exports = {
   },
 
   render:function(state){
+    this.history = [];
     this.initial_state = state;
     this.record(state);
 

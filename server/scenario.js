@@ -10,7 +10,12 @@ function Scenario()
   {
     this.name = name;
     console.log(`Loading ${this.name}`)
-    this.state = require(`../scenarios/${this.name}`)
+    this.reload();
+  }
+
+  this.reload = function()
+  {
+    this.state = this.copy(require(`../scenarios/${this.name}`));
   }
 
   this.inject_style = function(style,player = 0)
@@ -23,8 +28,13 @@ function Scenario()
   {
     console.log(`Running ${this.name}`)
     this.history = supervisor.render(this.state);
-    console.log(`Completed ${this.name}`)
+    console.log(`Completed ${this.name}, in ${this.history.length} turns`)
     return this.history;
+  }
+
+  this.copy = function(state)
+  {
+    return JSON.parse(JSON.stringify(state))
   }
 }
 
