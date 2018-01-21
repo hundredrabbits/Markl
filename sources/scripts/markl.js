@@ -5,7 +5,7 @@ function Markl()
 
   this.designer = new Designer();
   this.renderer = new Renderer();
-  this.supervisor = require('./scripts/server/supervisor')
+  this.supervisor = require('../server/supervisor')
 
   this.install = function()
   {
@@ -17,7 +17,7 @@ function Markl()
   
   this.start = function()
   {
-    var state = require('./scripts/server/state')
+    var state = require('../server/state')
     var result = this.supervisor.render(state);
     console.log(result);
     this.renderer.update();
