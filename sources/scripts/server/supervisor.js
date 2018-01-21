@@ -17,14 +17,12 @@ module.exports = {
   turn:0,
 
   run: function(state){
-    console.log(`TURN ${this.turn}`)
     var player = this.next_player(state);
     this.play(player,state);
     this.turn += 1;
   },
 
   play: function(player,state){
-    console.log(`PLAY ${player.name} #${player.id}`)
     let reaction = new Style(player).run(state)
     this.act(player,reaction,state);
   },
@@ -32,7 +30,6 @@ module.exports = {
   act: function(player,reaction,state){
     var action = reaction.actions[0];
     var a = actions[action.name] ? new actions[action.name](player,action.attr,reaction.target) : new actions.IDLE(player,action.attr,reaction.target);
-    console.log(`ACT  ${action.name}`)
     this.stage(state);
     a.run(state);
     this.record(state,player,reaction,action);

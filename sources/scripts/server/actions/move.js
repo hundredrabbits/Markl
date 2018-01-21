@@ -54,10 +54,8 @@ function MOVE(host,attr,target = null)
 
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
 
-    console.log(`MOVE ${host_pos.toString()} -> ${target_position.toString()}`)
-
     if(!this.can_move_to(target_position)){
-      console.log(this.name,"cannot move there");
+      // console.log(this.name,"cannot move there");
     }
     else{
       this.host.pos = {x:target_position.x,y:target_position.y};

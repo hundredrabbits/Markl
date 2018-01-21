@@ -2,12 +2,12 @@ var Pos = require('../units/pos.js')
 const Vector = require('../units/vector.js')
 var Action = require('../action.js')
 
-function ATTACK(host,attr,target = null)
+function PUSH(host,attr,target = null)
 {
   Action.call(this,host,attr,target);
 
-  this.name = "attack";
-  this.cost = 10;
+  this.name = "push";
+  this.cost = 8;
 
   this.run = function(state)
   {
@@ -22,32 +22,18 @@ function ATTACK(host,attr,target = null)
     var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
     var offset = host_pos.offset(this.target.pos).invert();
     var vector = new Vector(offset.x,offset.y);
-    this.host.status = {action:this.name,vector:vector.name};
-  
+    this.host.status = this.name;
+
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     var collider = this.player_at(target_position);
 
-    console.log(`ATCK ${host_pos.toString()} => ${target_position.toString()}`)
-
-    if(collider){
-      console.log(this.name,"at "+target_position+"("+vector.name+")");
-      if(collider.sp - 5 > this.host.sp && collider.status == "moving"){
-        this.host.status = "stasis";
-        collider.status = "blocking";
-        collider.score.blocks += 1;
-        this.knockback(this.host,vector.invert());
-      }
-      else{
-        collider.hp -= 1;
-        collider.status = collider.hp < 1 ? "dead" : "hit";
-        this.host.status = "attacking";
-        this.host.score.hits += 1;
-        this.knockback(collider,vector);
-      }
+    if(!collider){ return; }
+    var slide = 0;
+    while(slide < 5){
+      this.knockback(collider,vector);
+      slide += 1;
     }
-    else{
-      console.log(this.name,"at "+target_position+", but no one is here.");
-    }
+    collider.status = "stasis";
   }
 
   this.knockback = function(host,vector)
@@ -81,4 +67,4 @@ function ATTACK(host,attr,target = null)
   }
 }
 
-module.exports = ATTACK;
+module.exports = PUSH;
