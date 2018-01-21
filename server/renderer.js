@@ -97,7 +97,7 @@ module.exports = {
     for(id in this.history){
       var turn = this.history[id];
       if(this.index > id){ s += ">"; continue; }
-      if(turn.action.name && turn.action.name.substr(0,1) == "M"){ s += "-"; continue; }
+      if(turn.action.name && (turn.action.name.substr(0,1) == "M" || turn.action.name.substr(0,1) == "W")){ s += "-"; continue; }
       s += turn.action.name ? turn.action.name.substr(0,1) : "-";
     }
     this.timeline_el.setContent(s)

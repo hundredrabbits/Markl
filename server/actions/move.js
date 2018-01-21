@@ -92,13 +92,12 @@ function MOVE(host,attr,target = null)
   {
     var vectors = [UP, RIGHT, DOWN, LEFT];
     for(id in vectors){
-      var vector = vectors[id];
+      var vector = vectors[(id + this.state.turn) % vectors.length];
       var target_pos = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
       if(this.can_move_to(target_pos)){
         return vector;
       } 
     }
-    console.log("BLOCKED?!")
     return null;
   }
 

@@ -20,6 +20,7 @@ module.exports = {
     var player = this.next_player(state);
     this.play(player,state);
     this.turn += 1;
+    state.turn = this.turn;
   },
 
   play: function(player,state){
