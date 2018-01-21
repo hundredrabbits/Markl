@@ -19,8 +19,6 @@ function Markl()
   this.start = function()
   {
     this.scenario.load("garden");
-    this.scenario.run();
-    console.log(this.scenario.history);
     this.renderer.update();
   }
 }

@@ -32,6 +32,29 @@ function Designer()
     this.el.appendChild(this.hint_el);
     this.el.appendChild(this.controls_el);
 
+    this.input_el.value = `SIGHT
+  FIGHTER
+    DISTANCE IS 4
+      MOVE TOWARD
+    DISTANCE IS 3
+      FIRE TOWARD
+    DISTANCE IS 2
+      DASH TOWARD
+    DISTANCE IS 1
+      ATTACK TOWARD
+    DEFAULT
+      MOVE TOWARD
+  OBJECT
+    DISTANCE IS 1
+      ATTACK TOWARD
+  PROJECTILE
+    DEFAULT
+      STEP
+DEFAULT
+  DEFAULT
+    DEFAULT
+      MOVE ANY`;
+
     this.controls_el.appendChild(this.run_button);
     this.controls_el.appendChild(this.stop_button);
     this.controls_el.appendChild(this.hide_button);
@@ -47,11 +70,8 @@ function Designer()
 
   this.run_button_click = function()
   {
-    if(markl.designer.is_running){
-      markl.reset(); 
-    }
-    markl.designer.is_running = markl.designer.is_running ? false : true;
-    markl.designer.update();
+    markl.scenario.inject_style(markl.designer.input_el.value);
+    markl.renderer.play(markl.scenario.run());
   }
 
   this.stop_button_click = function()

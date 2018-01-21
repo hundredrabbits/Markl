@@ -17,6 +17,11 @@ function Renderer()
     host.appendChild(this.el);
   }
 
+  this.play = function(history)
+  {
+    console.log("Playing history")
+  }
+
   this.update = function()
   {
     this.clear();

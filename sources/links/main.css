@@ -9,4 +9,4 @@ yu { display: block; }
 #designer .controls .button:hover { background:black; color:white; cursor: pointer }
 
 #renderer {  }
-#renderer canvas { border:1px solid black; margin:15px; border-radius: 3px;}
+#renderer canvas { margin:15px; border-radius: 3px;}

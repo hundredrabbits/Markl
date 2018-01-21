@@ -13,11 +13,18 @@ function Scenario()
     this.state = require(`../scenarios/${this.name}`)
   }
 
+  this.inject_style = function(style,player = 0)
+  {
+    this.state.players[0].style = style;
+    console.log(`Updated player#${player} style!`)
+  }
+
   this.run = function()
   {
     console.log(`Running ${this.name}`)
     this.history = supervisor.render(this.state);
     console.log(`Completed ${this.name}`)
+    return this.history;
   }
 }
 
