@@ -4,7 +4,7 @@ let player1 = {
   sp:0,
   name:"USER",
   type:"FIGHTER",
-  character: "Lancer",
+  character: "lancer",
   status:"default",
   pos:{
     x:0,
@@ -23,7 +23,7 @@ let player2 = {
   sp:0,
   name:"CPU1",
   type:"FIGHTER",
-  character: "Sin",
+  character: "sin",
   status:"default",
   pos:{
     x:0,
@@ -60,7 +60,7 @@ let player3 = {
   sp:0,
   name:"CPU2",
   type:"FIGHTER",
-  character: "Sin",
+  character: "pest",
   status:"default",
   pos:{
     x:4,
@@ -85,7 +85,7 @@ let player4 = {
   sp:0,
   name:"CPU3",
   type:"FIGHTER",
-  character: "Sin",
+  character: "patience",
   status:"default",
   pos:{
     x:4,

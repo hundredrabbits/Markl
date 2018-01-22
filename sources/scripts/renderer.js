@@ -34,6 +34,7 @@ function Renderer()
 
     this.verify_sprites(state);
     this.update_sprites(state);
+    this.focus(state);
 
     console.log(this.sprites)
   }
@@ -57,5 +58,26 @@ function Renderer()
       var player = this.sprites.players[id];
       player.animate_to(state.players[id].pos);
     }
+  }
+
+  this.focus = function(state)
+  {
+    var positions = [];
+
+    for(id in state.players){
+      var player = state.players[id];
+      if(player.hp < 1){ continue; }
+      positions.push(player.pos);
+    }
+
+    var sum = {x:0,y:0};
+    for(id in positions){
+      sum.x += positions[id].x;
+      sum.y += positions[id].y;
+    }
+    var stage_center = (STAGE.tile * 4)/2;
+    var offset = {x:sum.x/positions.length,y:sum.y/positions.length}
+    this.stage.style.marginLeft = `-${(offset.x * STAGE.tile) - stage_center}px`;
+    this.stage.style.marginTop = `-${(offset.y * STAGE.tile) - stage_center}px`;
   }
 }
