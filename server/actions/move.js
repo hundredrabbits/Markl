@@ -60,6 +60,7 @@ function MOVE(host,attr,target = null)
     else{
       this.host.pos = {x:target_position.x,y:target_position.y};
       this.host.status = "moving";
+      this.host.vector = vector.name;
     }
   }
 

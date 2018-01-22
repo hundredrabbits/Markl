@@ -15,7 +15,6 @@ function Keyboard()
   this.key_down = function(e)
   {
     if(markl.keyboard.collection[e.key]){
-      console.log("Found");
       markl.keyboard.collection[e.key]();
       e.preventDefault();
     }

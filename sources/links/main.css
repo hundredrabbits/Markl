@@ -21,7 +21,18 @@ yu { display: block; }
 #renderer stage background { display: block;position: absolute;transition: all 150ms;background-image: url(../media/arenas/dojo.png);width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
 #renderer stage sprite { display: block; position:absolute; transition:all 150ms;}
 #renderer stage sprite sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 35%;background-size: 600px;background-position: 0px 0px;left: -25%; }
+
+/* Characters */
 #renderer stage sprite sheet.lancer { background-image: url(../media/fighters/lancer.png); }
 #renderer stage sprite sheet.sin { background-image: url(../media/fighters/sin.png); }
 #renderer stage sprite sheet.patience { background-image: url(../media/fighters/patience.png); }
 #renderer stage sprite sheet.pest { background-image: url(../media/fighters/pest.png); }
+
+/* Status */
+#renderer stage sprite sheet.moving { background-position-y:0px; }
+#renderer stage sprite sheet.moving.up { background-position-y:-120px; }
+#renderer stage sprite sheet.moving.right { background-position-y:-240px; }
+#renderer stage sprite sheet.moving.left { background-position-y:-240px; transform: scaleX(-1); }
+#renderer stage sprite sheet.attacking { background-position-y:-600px; }
+#renderer stage sprite sheet.hit { background-position-y:-480px; }
+#renderer stage sprite sheet.dead { opacity:0.1; }

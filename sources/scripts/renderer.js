@@ -35,8 +35,6 @@ function Renderer()
     this.verify_sprites(state);
     this.update_sprites(state);
     this.focus(state);
-
-    console.log(this.sprites)
   }
 
   this.verify_sprites = function(state)
@@ -57,6 +55,10 @@ function Renderer()
     for(id in this.sprites.players){
       var player = this.sprites.players[id];
       player.animate_to(state.players[id].pos);
+      player.set_status(state.players[id].status);
+      player.set_character(state.players[id].character);
+      player.set_vector(state.players[id].vector);
+      player.update();
     }
   }
 
@@ -78,6 +80,6 @@ function Renderer()
     var stage_center = (STAGE.tile * 4)/2;
     var offset = {x:sum.x/positions.length,y:sum.y/positions.length}
     this.stage.style.marginLeft = `-${(offset.x * STAGE.tile) - stage_center}px`;
-    this.stage.style.marginTop = `-${(offset.y * STAGE.tile) - stage_center}px`;
+    this.stage.style.marginTop = `${(offset.y * STAGE.tile) - stage_center}px`;
   }
 }
