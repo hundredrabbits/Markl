@@ -2,8 +2,11 @@ function Sprite(type,id)
 {
   this.el = document.createElement('sprite');
   this.sheet = document.createElement('sheet');
+  this.shadow = document.createElement('shadow');
+  this.el.appendChild(this.shadow)
   this.el.appendChild(this.sheet)
 
+  this.pos = {x:0,y:0};
   this.character = "";
   this.status = "";
   this.vector = "";
@@ -19,6 +22,7 @@ function Sprite(type,id)
 
   this.to = function(pos)
   {
+    this.pos = pos;
     this.el.style.left = `${pos.x * STAGE.tile}px`;
     this.el.style.bottom = `${pos.y * STAGE.tile}px`;
   }
@@ -45,6 +49,7 @@ function Sprite(type,id)
 
   this.update = function()
   {
-    this.sheet.className = `${this.character} ${this.status} ${this.vector}`;    
+    this.sheet.className = `${this.character} ${this.status} ${this.vector}`;
+    this.el.className = `depth${this.pos.y}`;
   }
 }
