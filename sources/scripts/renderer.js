@@ -7,9 +7,6 @@ function Renderer()
   var STAGE = {padding:{x:15,y:15}}
   var TILE = {size:{w:20,h:20}}
 
-  this.history = null;
-  this.index = 0;
-
   this.install = function(host)
   {
     this.canvas.width = 400;
@@ -19,38 +16,11 @@ function Renderer()
     host.appendChild(this.el);
   }
 
-  this.play = function(history)
+  this.update = function(state)
   {
-    console.log("Play")
-    this.index = 0;
-    this.history = history;
-    this.update();
-  }
-
-  this.next = function()
-  {
-    if(!this.history || this.index == this.history.length-1 ){ console.warn("No history, or at end"); return; }
-
-    this.index += this.index <= this.history.length ? 1 : 0;
-    this.update();
-  }
-
-  this.prev = function()
-  {
-    if(!this.history || this.index == 0){ console.warn("No history, or at beginning"); return; }
-
-    this.index -= this.index >= 0 ? 1 : 0;
-    this.update();
-  }
-
-  this.update = function()
-  {
-    if(!this.history){ console.warn("No history"); return; }
-
-    console.log(`Update: Turn ${this.index}`);
-
-    var state = this.history[this.index].state;
     this.clear();
+
+    if(!state){ return; }
     this.draw_ground();
     this.draw_players(state.players);
   }

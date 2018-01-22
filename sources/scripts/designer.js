@@ -24,6 +24,7 @@ function Designer()
   this.hide_button.textContent = "Hide";
 
   this.is_running = false;
+  this.history = null;
   this.index = 0;
 
   this.install = function(host)
@@ -72,9 +73,27 @@ DEFAULT
   {
     markl.scenario.reload()
     markl.scenario.inject_style(markl.designer.input_el.value);
-    var history = markl.scenario.run();
 
-    markl.renderer.play(history);
+    this.history = markl.scenario.run();
+    this.index = 0;
+
+    markl.renderer.update(this.history[this.index].state);
+  }
+
+  this.next = function()
+  {
+    if(!this.history || this.index == this.history.length-1 ){ console.warn("No history, or at end"); return; }
+
+    this.index += this.index <= this.history.length ? 1 : 0;
+    markl.renderer.update(this.history[this.index].state);
+  }
+
+  this.prev = function()
+  {
+    if(!this.history || this.index == 0){ console.warn("No history, or at beginning"); return; }
+
+    this.index -= this.index >= 0 ? 1 : 0;
+    markl.renderer.update(this.history[this.index].state);
   }
 
   this.stop_button_click = function()
