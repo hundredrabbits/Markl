@@ -1,5 +1,7 @@
 function Keyboard()
 {
+  this.collection = {};
+
   this.install = function()
   {
     window.addEventListener('keydown', markl.keyboard.key_down);
@@ -12,12 +14,16 @@ function Keyboard()
 
   this.key_down = function(e)
   {
-    if(e.key == " "){
-      markl.designer.run();
-    }
-    if(e.key == "Escape"){
-      markl.battle.stop();
+    if(markl.keyboard.collection[e.key]){
+      console.log("Found");
+      markl.keyboard.collection[e.key]();
+      e.preventDefault();
     }
   }
 
+  this.add = function(k,f)
+  {
+    console.log("Added keyboard",k)
+    this.collection[k] = f;
+  }
 }

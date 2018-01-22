@@ -128,7 +128,7 @@ DEFAULT
     var target = turn.reaction.target;
 
     if(target){
-      html += `${target.name}{${target.pos.x},${target.pos.y}} `;
+      html += `${target.name}{${target.pos ? target.pos.x : "?"},${target.pos ? target.pos.y : "?"}} `;
     }
     if(action){
       html += `${action.name} ${action.attr}[${action.line}] `;

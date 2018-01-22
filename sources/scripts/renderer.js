@@ -2,71 +2,58 @@ function Renderer()
 {
   this.el = document.createElement('yu');
   this.el.id = "renderer";
-  this.canvas = document.createElement('canvas');
+  this.stage = document.createElement('stage');
 
-  var STAGE = {padding:{x:15,y:15}}
-  var TILE = {size:{w:20,h:20}}
+  var STAGE = {padding:{x:15,y:15},tile:80}
+
+  this.sprites = { players:{}, events:{} };
 
   this.install = function(host)
   {
-    this.canvas.width = 400;
-    this.canvas.height = 400;
-
-    this.el.appendChild(this.canvas);
+    this.el.appendChild(this.stage);
     host.appendChild(this.el);
+
+    this.setup();
+  }
+
+  this.setup = function()
+  {
+    // Resize
+    this.stage.style.width = `${5 * STAGE.tile}px`;
+    this.stage.style.height = `${5 * STAGE.tile}px`;
+    // Center
+    this.stage.style.left = `calc(50% - ${(5 * STAGE.tile)/2}px)`;
+    this.stage.style.top = `calc(50% - ${(5 * STAGE.tile)/2}px)`;
   }
 
   this.update = function(state)
   {
-    this.clear();
-
     if(!state){ return; }
-    this.draw_ground();
-    this.draw_players(state.players);
+
+    this.verify_sprites(state);
+    this.update_sprites(state);
+
+    console.log(this.sprites)
   }
 
-  this.context = function()
+  this.verify_sprites = function(state)
   {
-    return this.canvas.getContext('2d');
-  }
-
-  this.clear = function()
-  {
-    this.context().clearRect(0, 0, this.canvas.width, this.canvas.height);
-  }
-
-  this.draw_ground = function()
-  {
-    var x = 0;
-    while(x < 5){
-      var y = 0;
-      while(y < 5){
-        this.draw_rect({x:x * TILE.size.w,y:y * TILE.size.h,w:TILE.size.w,h:TILE.size.h});  
-        y += 1;  
-      }
-      x += 1;
+    for(id in state.players){
+      var player = state.players[id];
+      if(this.sprites.players[player.id]){ continue; }
+      console.log("Creating sprite for ",player.id)
+      var sprite = new Sprite("player",player.id)
+      sprite.setup(player);
+      this.sprites.players[player.id] = sprite;
+      this.stage.appendChild(sprite.el);
     }
   }
 
-  this.draw_players = function(players)
+  this.update_sprites = function(state)
   {
-    for(id in players){
-      this.draw_player(players[id]);
+    for(id in this.sprites.players){
+      var player = this.sprites.players[id];
+      player.animate_to(state.players[id].pos);
     }
-  }
-
-  this.draw_player = function(player)
-  {
-    var rect = {x:player.pos.x * TILE.size.w,y:player.pos.y * TILE.size.w,w:10,h:10,color:"red"};
-    var ctx = this.context();
-    ctx.fillStyle = player.id == 0 ? "green" : "red";
-    ctx.fillRect(rect.x+0.5+STAGE.padding.x,rect.y+0.5+STAGE.padding.y,rect.w,rect.h);
-  }
-
-  this.draw_rect = function(rect)
-  {
-    var ctx = this.context();
-    ctx.rect(rect.x+0.5+STAGE.padding.x,rect.y+0.5+STAGE.padding.y,rect.w,rect.h);
-    ctx.stroke();
   }
 }

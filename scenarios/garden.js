@@ -55,7 +55,7 @@ DEFAULT
 }
 
 let player3 = {
-  id:1,
+  id:2,
   hp:5,
   sp:0,
   name:"CPU2",
@@ -80,7 +80,7 @@ DEFAULT
 }
 
 let player4 = {
-  id:1,
+  id:3,
   hp:5,
   sp:0,
   name:"CPU3",
@@ -103,7 +103,6 @@ DEFAULT
     DEFAULT
       MOVE ANY`
 }
-
 
 player1.score = {hits:0,blocks:0}
 player2.score = {hits:0,blocks:0}

@@ -10,11 +10,13 @@ yu { display: block; }
 #designer .hint line span.content { opacity: 0 }
 #designer .hint line span.rune { position: absolute;left: -10px; color:#ccc; }
 #designer .hint line.selected { background:#ccc; }
-#designer .controls  { margin-left:15px; border-top:1px solid white; padding-top:15px; }
+#designer .controls  { margin-left:15px; border-top:1px solid white; padding-top:15px; -webkit-user-select: none;-webkit-app-region: drag; }
 #designer .controls .button { background: white;display: inline-block;border-radius: 3px;padding: 0px 10px;margin-right: 15px;line-height: 25px; }
 #designer .controls .button:hover { background:black; color:white; cursor: pointer }
 #designer .controls .turn { line-height: 25px; float: right; padding:0px 15px; }
 #designer .reaction { position: absolute;bottom: 70px;left: 15px;color: #999; }
 
-#renderer {  }
-#renderer canvas { margin:15px; border-radius: 3px;}
+#renderer { position: relative; height: 100vh;width: 50vw; -webkit-user-select: none;-webkit-app-region: drag;}
+#renderer stage { display:block; border:1px solid red; position:absolute;  }
+
+#renderer stage sprite { display: block; border:1px solid black; position:absolute; transition:all 150ms;}

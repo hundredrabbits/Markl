@@ -6,6 +6,7 @@ function Markl()
   this.designer   = new Designer();
   this.renderer   = new Renderer();
   this.controller = new Controller();
+  this.keyboard = new Keyboard();
   this.supervisor = require('../server/supervisor')
   this.scenario = require('../server/scenario')
 
@@ -37,6 +38,11 @@ function Markl()
     this.controller.add("default","Designer","Prev Turn",() => { markl.designer.prev(); },"Left");
 
     this.controller.commit();
+
+    this.keyboard.add("ArrowRight",() => { markl.designer.next(); });
+    this.keyboard.add("ArrowLeft",() => { markl.designer.prev(); });
+
+    this.keyboard.install();
   }
   
   this.start = function()
