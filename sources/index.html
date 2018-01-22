@@ -14,6 +14,9 @@
 <body>
   <script>
 
+    const {dialog,app} = require('electron').remote;
+    const fs = require('fs');
+    
     markl = new Markl();
     markl.install();
     markl.start();

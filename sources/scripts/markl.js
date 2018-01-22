@@ -24,6 +24,14 @@ function Markl()
     this.controller.add("default","*","Reset",() => { markl.reset(); },"CmdOrCtrl+Backspace");
     this.controller.add("default","*","Quit",() => { app.exit(); },"CmdOrCtrl+Q");
 
+    this.controller.add_role("default","Edit","undo");
+    this.controller.add_role("default","Edit","redo");
+    this.controller.add_role("default","Edit","cut");
+    this.controller.add_role("default","Edit","copy");
+    this.controller.add_role("default","Edit","paste");
+    this.controller.add_role("default","Edit","delete");
+    this.controller.add_role("default","Edit","selectall");
+    
     this.controller.add("default","Designer","Play",() => { markl.designer.run(); },"Space");
     this.controller.add("default","Designer","Next Turn",() => { markl.designer.next(); },"Right");
     this.controller.add("default","Designer","Prev Turn",() => { markl.designer.prev(); },"Left");
