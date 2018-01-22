@@ -7,6 +7,7 @@ function Renderer()
 
   var STAGE = {padding:{x:15,y:15},tile:80}
 
+  this.interface = new Interface();
   this.sprites = { players:{}, events:{}, effects:[] };
 
   this.install = function(host)
@@ -14,6 +15,7 @@ function Renderer()
     this.stage.appendChild(this.background);
     this.el.appendChild(this.stage);
     host.appendChild(this.el);
+    this.interface.install(this.el);
 
     this.setup();
   }
@@ -36,6 +38,7 @@ function Renderer()
     this.verify_sprites(state);
     this.update_sprites(state);
     this.add_effects(state);
+    this.interface.update(state);
     this.focus(state);
   }
 

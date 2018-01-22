@@ -3,8 +3,10 @@ function Sprite(type,id)
   this.el = document.createElement('sprite');
   this.sheet = document.createElement('sheet');
   this.shadow = document.createElement('shadow');
+  this.marker = document.createElement('marker');
   this.el.appendChild(this.shadow)
   this.el.appendChild(this.sheet)
+  this.el.appendChild(this.marker)
 
   this.pos = {x:0,y:0};
   this.character = "";
@@ -15,6 +17,8 @@ function Sprite(type,id)
 
   this.setup = function(h)
   {
+    this.marker.className = h.id == 0 ? "active" : ""
+
     this.el.style.width = `${STAGE.tile}px`;
     this.el.style.height = `${STAGE.tile}px`;
     this.to(h.pos);

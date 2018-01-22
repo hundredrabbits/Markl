@@ -2,25 +2,27 @@ body { font-size:11px; font-family: 'input_mono_regular'; overflow:hidden; backg
 
 yu { display: block; }
 
-#designer { position: fixed; left:50vw; width:50vw; background:#eee; height:100vh; }
-#designer textarea { color:black; margin:15px; width:calc(100% - 60px); height:calc(100% - 85px); background:none; padding:15px; border-radius:3px; position: relative; z-index:900; margin-left: 30px; }
-#designer .hint { color: black;margin: 15px;width: calc(100% - 60px);height: calc(100% - 85px);background: none;padding: 15px;border-radius: 3px;position: absolute;top: 0px;left: 0px;z-index: 0;white-space: pre; z-index:0; margin-left: 30px;}
+#designer { position: fixed;left: 60vw;width: 40vw;background: #000;height: 100vh;color: white; }
+#designer textarea { color:white; margin:15px; width:calc(100% - 60px); height:calc(100% - 85px); background:none; padding:15px; border-radius:3px; position: relative; z-index:900; margin-left: 45px; line-height:20px; }
+#designer .hint { color: black;margin: 15px;width: calc(100% - 60px);height: calc(100% - 85px);background: none;padding: 15px;border-radius: 3px;position: absolute;top: 0px;left: 0px;z-index: 0;white-space: pre; z-index:0; margin-left: 30px; line-height:20px;}
 #designer .hint line { display: block; position: relative; }
 #designer .hint line span.number { position: absolute;left: -30px;color: #999; }
 #designer .hint line span.content { opacity: 0 }
-#designer .hint line span.rune { position: absolute;left: -10px; color:#ccc; }
-#designer .hint line.selected { background:#ccc; }
-#designer .controls  { margin-left:15px; border-top:1px solid white; padding-top:15px; -webkit-user-select: none;-webkit-app-region: drag; }
-#designer .controls .button { background: white;display: inline-block;border-radius: 3px;padding: 0px 10px;margin-right: 15px;line-height: 25px; }
+#designer .hint line span.rune { position: absolute;left: -5px; color:#ccc; }
+#designer .hint line.selected { background:#333; }
+#designer .controls  { margin-left:15px; border-top:1px solid #333; padding-top:15px; -webkit-user-select: none;-webkit-app-region: drag; }
+#designer .controls .button { background: #333;display: inline-block;border-radius: 3px;padding: 0px 10px;margin-right: 15px;line-height: 25px; }
 #designer .controls .button:hover { background:black; color:white; cursor: pointer }
 #designer .controls .turn { line-height: 25px; float: right; padding:0px 15px; }
 #designer .reaction { position: absolute;bottom: 70px;left: 15px;color: #999; }
 
-#renderer { position: relative; height: 100vh;width: 50vw; -webkit-user-select: none;-webkit-app-region: drag;}
+#renderer { position: relative; height: 100vh;width: 60vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden;}
 #renderer stage { display:block; border:1px solid red; position:absolute; transition:all 250ms; }
 #renderer stage background { display: block;position: absolute;transition: all 150ms;background-image: url(../media/arenas/dojo.png);width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
 #renderer stage sprite { display: block; position:absolute; transition:all 150ms;}
 #renderer stage sprite sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 35%;background-size: 600px;background-position: 0px 0px;left: -25%; }
+#renderer stage sprite marker { display: none;width: 50px;height: 50px;background: red;z-index: 900;position: absolute;top: -80px;left: 50%;margin-left: -25px; background:url(../media/interface/marker.svg); background-size:50%; background-position: center center; background-repeat: no-repeat; }
+#renderer stage sprite marker.active { display: block }
 #renderer stage sprite shadow { display: block;width: 150%;height: 150%;position: absolute;bottom: 30%;background-size: 600px;background-position: 0px 0px;left: -25%;background-image: url(../media/effects.png);opacity: 0.5; }
 #renderer stage effect { display: block; position:absolute; transition:all 150ms; }
 #renderer stage effect sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 30%;background-size: 600px;background-position: 0px 0px;left: -25%;background-image: url(../media/effects.png);z-index: 200;background-position-y: -120px; filter:brightness(0); }
