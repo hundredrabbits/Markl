@@ -18,5 +18,5 @@ yu { display: block; }
 
 #renderer { position: relative; height: 100vh;width: 50vw; -webkit-user-select: none;-webkit-app-region: drag;}
 #renderer stage { display:block; border:1px solid red; position:absolute;  }
-
+#renderer stage background { display: block;position: absolute;transition: all 150ms;background-image: url(../media/arenas/dojo.png);width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
 #renderer stage sprite { display: block; border:1px solid black; position:absolute; transition:all 150ms;}

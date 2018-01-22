@@ -3,6 +3,7 @@ function Renderer()
   this.el = document.createElement('yu');
   this.el.id = "renderer";
   this.stage = document.createElement('stage');
+  this.background = document.createElement('background');
 
   var STAGE = {padding:{x:15,y:15},tile:80}
 
@@ -10,6 +11,7 @@ function Renderer()
 
   this.install = function(host)
   {
+    this.stage.appendChild(this.background);
     this.el.appendChild(this.stage);
     host.appendChild(this.el);
 
@@ -23,7 +25,7 @@ function Renderer()
     this.stage.style.height = `${5 * STAGE.tile}px`;
     // Center
     this.stage.style.left = `calc(50% - ${(5 * STAGE.tile)/2}px)`;
-    this.stage.style.top = `calc(50% - ${(5 * STAGE.tile)/2}px)`;
+    this.stage.style.top = `calc(55% - ${(5 * STAGE.tile)/2}px)`;
   }
 
   this.update = function(state)
