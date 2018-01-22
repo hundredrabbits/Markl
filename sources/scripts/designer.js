@@ -61,19 +61,19 @@ DEFAULT
 
     markl.designer.input_el.addEventListener('input', markl.designer.update);
 
-    this.run_button.addEventListener('click', markl.designer.run_button_click);
+    this.run_button.addEventListener('click', markl.designer.run);
     this.stop_button.addEventListener('click', markl.designer.stop_button_click);
     this.hide_button.addEventListener('click', markl.designer.hide_button_click);
 
     host.appendChild(this.el)
   }
 
-  this.run_button_click = function()
+  this.run = function()
   {
     markl.scenario.reload()
     markl.scenario.inject_style(markl.designer.input_el.value);
     var history = markl.scenario.run();
-    
+
     markl.renderer.play(history);
   }
 

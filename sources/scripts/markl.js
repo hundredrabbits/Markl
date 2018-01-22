@@ -24,7 +24,7 @@ function Markl()
     this.controller.add("default","*","Reset",() => { markl.reset(); },"CmdOrCtrl+Backspace");
     this.controller.add("default","*","Quit",() => { app.exit(); },"CmdOrCtrl+Q");
 
-    this.controller.add("default","Renderer","Play",() => { markl.renderer.play(); },"Space");
+    this.controller.add("default","Renderer","Play",() => { markl.designer.run(); },"Space");
     this.controller.add("default","Renderer","Next Turn",() => { markl.renderer.next(); },"Right");
     this.controller.add("default","Renderer","Prev Turn",() => { markl.renderer.prev(); },"Left");
 
