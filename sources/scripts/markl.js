@@ -3,8 +3,9 @@ function Markl()
   this.el = document.createElement('yu');
   this.el.className = "screen";
 
-  this.designer = new Designer();
-  this.renderer = new Renderer();
+  this.designer   = new Designer();
+  this.renderer   = new Renderer();
+  this.controller = new Controller();
   this.supervisor = require('../server/supervisor')
   this.scenario = require('../server/scenario')
 
@@ -14,6 +15,20 @@ function Markl()
 
     this.designer.install(this.el);
     this.renderer.install(this.el);
+
+    this.controller.add("default","*","About",() => { require('electron').shell.openExternal('https://github.com/hundredrabbits/Dotgrid'); },"CmdOrCtrl+,");
+    this.controller.add("default","*","Fullscreen",() => { app.toggle_fullscreen(); },"CmdOrCtrl+Enter");
+    this.controller.add("default","*","Hide",() => { app.toggle_visible(); },"CmdOrCtrl+H");
+    this.controller.add("default","*","Inspect",() => { app.inspect(); },"CmdOrCtrl+.");
+    this.controller.add("default","*","Documentation",() => { markl.controller.docs(); },"CmdOrCtrl+Esc");
+    this.controller.add("default","*","Reset",() => { markl.reset(); },"CmdOrCtrl+Backspace");
+    this.controller.add("default","*","Quit",() => { app.exit(); },"CmdOrCtrl+Q");
+
+    this.controller.add("default","Renderer","Play",() => { markl.renderer.play(); },"Space");
+    this.controller.add("default","Renderer","Next Turn",() => { markl.renderer.next(); },"Right");
+    this.controller.add("default","Renderer","Prev Turn",() => { markl.renderer.prev(); },"Left");
+
+    this.controller.commit();
   }
   
   this.start = function()

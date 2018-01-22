@@ -19,7 +19,17 @@ function Renderer()
 
   this.play = function(history)
   {
-    console.log("Playing history",history)
+    console.log("Play")
+  }
+
+  this.next = function()
+  {
+    console.log("Next turn")
+  }
+
+  this.prev = function()
+  {
+    console.log("Prev turn")
   }
 
   this.update = function()
