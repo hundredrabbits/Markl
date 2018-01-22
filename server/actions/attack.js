@@ -51,6 +51,7 @@ function ATTACK(host,attr,target = null)
   {
     var host_pos = new Pos(host.pos.x,host.pos.y);
     var target_position = new Pos(host.pos.x,host.pos.y).add(vector);
+    host.origin = host_pos;
     if(this.can_move_to(target_position)){
       host.pos = {x:target_position.x,y:target_position.y};  
     }

@@ -1,4 +1,0 @@
-function Campaign()
-{
-  this.stages = [];
-}

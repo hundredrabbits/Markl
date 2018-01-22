@@ -7,7 +7,7 @@ function Renderer()
 
   var STAGE = {padding:{x:15,y:15},tile:80}
 
-  this.sprites = { players:{}, events:{} };
+  this.sprites = { players:{}, events:{}, effects:[] };
 
   this.install = function(host)
   {
@@ -32,8 +32,10 @@ function Renderer()
   {
     if(!state){ return; }
 
+    this.remove_effects();
     this.verify_sprites(state);
     this.update_sprites(state);
+    this.add_effects(state);
     this.focus(state);
   }
 
@@ -62,6 +64,34 @@ function Renderer()
     }
   }
 
+  this.remove_effects = function()
+  {
+    for(id in this.sprites.effects){
+      var effect = this.sprites.effects[id]
+      effect.el.parentNode.removeChild(effect.el);
+    }
+    this.sprites.effects = [];
+  }
+
+  this.add_effects = function(state)
+  {
+    for(id in state.players){
+      var player = state.players[id];
+      if(player.status == "hit"){
+        this.add_effect("hit",player.origin);
+      }
+    }
+  }
+
+  this.add_effect = function(name,pos)
+  {
+    console.log(`Add ${name} at ${pos.x},${pos.y}`)
+
+    var effect = new Effect(name,pos);
+    this.sprites.effects.push(effect);
+    this.stage.appendChild(effect.el)
+  }
+
   this.focus = function(state)
   {
     var positions = [];
@@ -78,7 +108,7 @@ function Renderer()
       sum.y += positions[id].y;
     }
     var stage_center = (STAGE.tile * 4)/2;
-    var offset = {x:sum.x/positions.length,y:sum.y/positions.length}
+    var offset = positions.length > 1 ? {x:sum.x/positions.length,y:sum.y/positions.length} : {x:0,y:0};
     this.stage.style.marginLeft = `-${(offset.x * STAGE.tile) - stage_center}px`;
     this.stage.style.marginTop = `${(offset.y * STAGE.tile) - stage_center}px`;
   }
