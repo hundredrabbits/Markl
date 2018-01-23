@@ -47,7 +47,7 @@ function Markl()
   
   this.start = function()
   {
-    this.scenario.load("garden");
+    this.scenario.load("temple");
     this.renderer.update();
   }
 }

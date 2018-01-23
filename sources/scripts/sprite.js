@@ -28,7 +28,7 @@ function Sprite(type,id)
 
   this.setup = function(h)
   {
-    this.marker.className = h.id == 0 ? "active" : ""
+    this.marker.className = h.id == 0 ? `active` : ``;
 
     this.el.style.width = `${STAGE.tile}px`;
     this.el.style.height = `${STAGE.tile}px`;

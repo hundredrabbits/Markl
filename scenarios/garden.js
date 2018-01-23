@@ -1,6 +1,6 @@
 let player1 = {
   id:0,
-  hp:5,
+  hp:4,
   sp:0,
   name:"USER",
   type:"FIGHTER",
@@ -19,7 +19,7 @@ DEFAULT
 
 let player2 = {
   id:1,
-  hp:5,
+  hp:4,
   sp:0,
   name:"CPU1",
   type:"FIGHTER",
@@ -56,7 +56,7 @@ DEFAULT
 
 let player3 = {
   id:2,
-  hp:5,
+  hp:4,
   sp:0,
   name:"CPU2",
   type:"FIGHTER",
@@ -81,7 +81,7 @@ DEFAULT
 
 let player4 = {
   id:3,
-  hp:5,
+  hp:4,
   sp:0,
   name:"CPU3",
   type:"FIGHTER",

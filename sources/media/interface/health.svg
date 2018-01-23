@@ -1,0 +1,8 @@
+<svg class="vector" width="300px" height="300px" xmlns="http://www.w3.org/2000/svg" baseProfile="full" version="1.1" style="width: 300px; height: 300px; stroke: rgb(0, 0, 0); stroke-width: 10; fill: none; stroke-linecap: square;">
+  <g transform="translate(0,0)">
+    <path d="M150,30 A45,45 0 0,1 195,75 A-45,45 0 0,1 150,120  A-45,-45 0 0,1 105,75 A45,-45 0 0,1 150,30  Z  "></path>
+    <path d="M75,105 A45,45 0 0,1 120,150 A-45,45 0 0,1 75,195  A-45,-45 0 0,1 30,150 A45,-45 0 0,1 75,105  Z  "></path>
+    <path d="M225,105 A45,45 0 0,1 270,150 A-45,45 0 0,1 225,195  A-45,-45 0 0,1 180,150 A45,-45 0 0,1 225,105  Z  "></path>
+    <path d="M150,180 A45,45 0 0,1 195,225 A-45,45 0 0,1 150,270  A-45,-45 0 0,1 105,225 A45,-45 0 0,1 150,180  Z  "></path>
+  </g>
+</svg>

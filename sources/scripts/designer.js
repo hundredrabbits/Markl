@@ -91,6 +91,11 @@ DEFAULT
     this.update();
     markl.renderer.update(this.history[this.index].state);
 
+    setTimeout(() => { this.start(); }, 1000)
+  }
+
+  this.start = function()
+  {
     this.timer = setInterval(() => { this.next(); },200);
   }
 

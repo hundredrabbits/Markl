@@ -1,10 +1,10 @@
 let player1 = {
   id:0,
-  hp:5,
+  hp:4,
   sp:0,
   name:"USER",
   type:"FIGHTER",
-  character: "Lancer",
+  character: "lancer",
   status:"default",
   pos:{
     x:0,
@@ -19,11 +19,11 @@ DEFAULT
 
 let player2 = {
   id:1,
-  hp:5,
+  hp:4,
   sp:0,
   name:"CPU1",
   type:"FIGHTER",
-  character: "Sin",
+  character: "sin",
   status:"default",
   pos:{
     x:0,
@@ -55,12 +55,12 @@ DEFAULT
 }
 
 let player3 = {
-  id:1,
-  hp:5,
+  id:2,
+  hp:4,
   sp:0,
   name:"CPU2",
   type:"FIGHTER",
-  character: "Sin",
+  character: "pest",
   status:"default",
   pos:{
     x:4,
@@ -80,12 +80,12 @@ DEFAULT
 }
 
 let player4 = {
-  id:1,
-  hp:5,
+  id:3,
+  hp:4,
   sp:0,
   name:"CPU3",
   type:"FIGHTER",
-  character: "Sin",
+  character: "patience",
   status:"default",
   pos:{
     x:4,
@@ -104,7 +104,6 @@ DEFAULT
       MOVE ANY`
 }
 
-
 player1.score = {hits:0,blocks:0}
 player2.score = {hits:0,blocks:0}
 player3.score = {hits:0,blocks:0}
@@ -112,5 +111,6 @@ player4.score = {hits:0,blocks:0}
 
 module.exports = {
   players : [player1,player2,player3,player4],
-  events  : []
+  events  : [],
+  effects : []
 }

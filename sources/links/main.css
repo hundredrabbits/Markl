@@ -18,11 +18,11 @@ yu { display: block; }
 
 #renderer { position: relative; height: 100vh;width: 60vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden;}
 #renderer stage { display:block; position:absolute; transition:all 250ms; }
-#renderer stage background { display: block;position: absolute;transition: all 150ms;background-image: url(../media/arenas/dojo.png);width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
+#renderer stage background { display: block;position: absolute;transition: all 150ms;background-image: url(../media/arenas/temple.png);width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
 #renderer stage sprite { display: block; position:absolute; transition:all 150ms;}
 #renderer stage sprite sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 35%;background-size: 600px;background-position: 0px -360px;left: -25%; }
-#renderer stage sprite marker { display: none;width: 50px;height: 50px;background: red;z-index: 900;position: absolute;top: -80px;left: 50%;margin-left: -25px; background:url(../media/interface/marker.svg); background-size:50%; background-position: center center; background-repeat: no-repeat; }
-#renderer stage sprite marker.active { display: block }
+#renderer stage sprite marker { display: none;width: 50px;height: 50px;z-index: 900;position: absolute;top: -80px;left: 50%;margin-left: -25px; background-size:50%; background-position: center center; background-repeat: no-repeat; }
+#renderer stage sprite marker.active { display:block; background-image:url(../media/interface/arrow.svg); }
 #renderer stage sprite shadow { display: block;width: 150%;height: 150%;position: absolute;bottom: 30%;background-size: 600px;background-position: 0px 0px;left: -25%;background-image: url(../media/effects.png);opacity: 0.5; }
 #renderer stage effect { display: block; position:absolute; transition:all 150ms; }
 #renderer stage effect sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 30%;background-size: 600px;background-position: 0px 0px;left: -25%;background-image: url(../media/effects.png);z-index: 200;background-position-y: -120px; filter:brightness(0); }
@@ -63,11 +63,25 @@ yu { display: block; }
 #renderer stage sprite.depth3 { z-index:101; }
 #renderer stage sprite.depth4 { z-index:100; }
 
-/* Effect */
 
+#renderer interface { display: block; }
+#renderer interface div.ui { position: absolute; padding:15px; width:40px; }
+#renderer interface div.ui t {  }
+#renderer interface div.ui t.name { font-size: 12px;display: block;position: absolute;left: 65px;top: 12px; }
+#renderer interface div.ui t.health {  display:none; }
+#renderer interface div.ui t.stamina { display:none; }
+#renderer interface div.ui wr { display: block;width: 100%;height: 2px;border: 1px solid black;border-radius: 40px;margin-bottom: 1px;overflow: hidden;}
+#renderer interface div.ui wr bar { height: 100%;width: 0%;background: white; transition:width 250ms; display: block }
+#renderer interface div.ui wr.health bar { background:red;}
+#renderer interface div.ui wr.stamina bar {  background:#22c79a; }
 
+#renderer interface div.ui.player0 { bottom:0px; left:0px; }
+#renderer interface div.ui.player1 { bottom:0px; right:0px; }
+#renderer interface div.ui.player2 { top:0px; right:0px; }
+#renderer interface div.ui.player3 { top:0px; left:0px; }
 
-
+#renderer interface div.ui.player1 t.name { left:auto; right:65px; }
+#renderer interface div.ui.player2 t.name { left:auto; right:65px; }
 
 
 
