@@ -17,7 +17,7 @@ yu { display: block; }
 #designer .reaction { position: absolute;bottom: 70px;left: 15px;color: #999; }
 
 #renderer { position: relative; height: 100vh;width: 60vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden;}
-#renderer stage { display:block; border:1px solid red; position:absolute; transition:all 250ms; }
+#renderer stage { display:block; position:absolute; transition:all 250ms; }
 #renderer stage background { display: block;position: absolute;transition: all 150ms;background-image: url(../media/arenas/dojo.png);width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
 #renderer stage sprite { display: block; position:absolute; transition:all 150ms;}
 #renderer stage sprite sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 35%;background-size: 600px;background-position: 0px 0px;left: -25%; }

@@ -86,8 +86,6 @@ function Renderer()
 
   this.add_effect = function(name,pos)
   {
-    console.log(`Add ${name} at ${pos.x},${pos.y}`)
-
     var effect = new Effect(name,pos);
     this.sprites.effects.push(effect);
     this.stage.appendChild(effect.el)

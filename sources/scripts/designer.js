@@ -34,6 +34,7 @@ function Designer()
   this.is_running = false;
   this.history = null;
   this.index = 0;
+  this.timer = null;
 
   this.install = function(host)
   {
@@ -45,7 +46,7 @@ function Designer()
     this.input_el.value = `SIGHT
   FIGHTER
     DISTANCE IS 4
-      MOVE TOWARD
+      DASH TOWARD
     DISTANCE IS 3
       FIRE TOWARD
     DISTANCE IS 2
@@ -72,7 +73,7 @@ DEFAULT
 
     markl.designer.input_el.addEventListener('input', markl.designer.update);
 
-    this.run_button.addEventListener('click', markl.designer.run);
+    this.run_button.addEventListener('click', () => { markl.designer.run(); });
     this.stop_button.addEventListener('click', markl.designer.stop_button_click);
     this.hide_button.addEventListener('click', markl.designer.hide_button_click);
 
@@ -89,11 +90,21 @@ DEFAULT
 
     this.update();
     markl.renderer.update(this.history[this.index].state);
+
+    this.timer = setInterval(() => { this.next(); },150);
+  }
+
+  this.stop = function()
+  {
+    this.index = 0;
+    clearInterval(this.timer);
+    this.update();
+    markl.renderer.update(this.history[this.index].state);
   }
 
   this.next = function()
   {
-    if(!this.history || this.index == this.history.length-1 ){ console.warn("No history, or at end"); return; }
+    if(!this.history || this.index == this.history.length-1 ){ console.warn("No history, or at end"); this.stop(); return; }
 
     this.index += this.index <= this.history.length ? 1 : 0;
     this.update();
