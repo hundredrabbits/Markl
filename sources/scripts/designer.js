@@ -46,6 +46,7 @@ function Designer()
   this.index = 0;
   this.timer = null;
 
+
   this.install = function(host)
   {
     this.el.appendChild(this.input_el);
@@ -92,8 +93,14 @@ DEFAULT
     this.hide_button.addEventListener('click', () => { markl.designer.toggle(); });
 
     host.appendChild(this.el)
+    this.input_el.addEventListener('keydown', () => { markl.designer.update(); });
 
     this.show();
+  }
+
+  this.on_change = function()
+  {
+    markl.designer.update();
   }
 
   this.run = function()
@@ -120,6 +127,8 @@ DEFAULT
 
   this.pause = function()
   {
+    if(this.is_paused){ this.resume(); return; }
+
     this.is_paused = true;
     clearInterval(this.timer);
     this.update();
@@ -141,7 +150,9 @@ DEFAULT
     this.index = 0;
     clearInterval(this.timer);
     this.update();
-    markl.renderer.update(this.history[this.index].state);
+    if(this.history){
+      markl.renderer.update(this.history[this.index].state);  
+    }
   }
 
   this.next = function()
@@ -186,10 +197,13 @@ DEFAULT
 
   this.update = function()
   {
-    this.el.className = `${this.is_playing ? "playing" : ""} ${this.is_paused ? "paused" : ""}`;
-    this.turn_el.textContent = `${this.index}/${this.history.length}`;
-    this.update_hint();
-    this.update_reaction();
+    markl.designer.el.className = `${markl.designer.is_playing ? "playing" : ""} ${markl.designer.is_paused ? "paused" : ""}`;
+
+    if(markl.designer.history){
+      markl.designer.turn_el.textContent = `${markl.designer.index}/${markl.designer.history.length}`;
+      markl.designer.update_hint();
+      markl.designer.update_reaction();
+    }
   }
 
   this.update_reaction = function()
