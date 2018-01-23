@@ -41,12 +41,14 @@ yu { display: block; }
 #renderer stage effect sheet.f1 { background-position-x:480px; }
 
 /* Characters */
+
 #renderer stage sprite sheet.lancer { background-image: url(../media/fighters/lancer.png); }
 #renderer stage sprite sheet.sin { background-image: url(../media/fighters/sin.png); }
 #renderer stage sprite sheet.patience { background-image: url(../media/fighters/patience.png); }
 #renderer stage sprite sheet.pest { background-image: url(../media/fighters/pest.png); }
 
 /* Status */
+
 #renderer stage sprite sheet.moving { background-position-y:0px; }
 #renderer stage sprite sheet.moving.up { background-position-y:-120px; }
 #renderer stage sprite sheet.moving.right { background-position-y:-240px; }
@@ -64,30 +66,30 @@ yu { display: block; }
 #renderer stage sprite.depth3 { z-index:101; }
 #renderer stage sprite.depth4 { z-index:100; }
 
+/* Interface */
 
 #renderer interface { display: block;margin: 20px;width: calc(100% - 40px);height: calc(100vh - 40px);position: relative; }
 #renderer interface div.ui { position: absolute; width:40px; }
 #renderer interface div.ui t {  }
-#renderer interface div.ui t.name { font-size: 12px;display: block;position: absolute;left: 65px;top: -2px; }
+#renderer interface div.ui t.name { font-size: 12px;display: block;position: absolute;left: 55px;top: -2px; }
 #renderer interface div.ui t.health {  display:none; }
 #renderer interface div.ui t.stamina { display:none; }
 #renderer interface div.ui wr { display: block;width: 100%;height: 4px;border-radius: 40px;margin-bottom: 1px;overflow: hidden;}
 #renderer interface div.ui wr bar { height: 100%;width: 0%;background: white; transition:width 250ms; display: block; border-radius: 10px; min-width: 4px }
 #renderer interface div.ui wr.health bar { background:red;}
 #renderer interface div.ui wr.stamina bar {  background:#000; }
-
 #renderer interface div.ui.player0 { bottom:0px; left:0px; }
 #renderer interface div.ui.player1 { bottom:0px; right:0px; }
 #renderer interface div.ui.player2 { top:0px; right:0px; }
 #renderer interface div.ui.player3 { top:0px; left:0px; }
+#renderer interface div.ui.player1 t.name { left:auto; right:55px; }
+#renderer interface div.ui.player2 t.name { left:auto; right:55px; }
 
-#renderer interface div.ui.player1 t.name { left:auto; right:65px; }
-#renderer interface div.ui.player2 t.name { left:auto; right:65px; }
+/* Modes */
 
 .designer_on #designer { left:60vw; }
 .designer_off #designer { left:100vw; }
 .designer_on #renderer { width:60vw; }
 .designer_off #renderer { width:100vw; }
-
 
 

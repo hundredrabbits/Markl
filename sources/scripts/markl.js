@@ -33,7 +33,7 @@ function Markl()
     this.controller.add_role("default","Edit","delete");
     this.controller.add_role("default","Edit","selectall");
     
-    this.controller.add("default","Designer","Play",() => { markl.designer.run(); },"CmdOrCtrl+Space");
+    this.controller.add("default","Designer","Play",() => { markl.designer.run(); },"CmdOrCtrl+R");
     this.controller.add("default","Designer","Next Turn",() => { markl.designer.next(); },"CmdOrCtrl+Right");
     this.controller.add("default","Designer","Prev Turn",() => { markl.designer.prev(); },"CmdOrCtrl+Left");
     this.controller.add("default","Designer","Toggle",() => { markl.designer.toggle(); },"CmdOrCtrl+D");

@@ -75,7 +75,7 @@ DEFAULT
     markl.designer.input_el.addEventListener('input', markl.designer.update);
 
     this.run_button.addEventListener('click', () => { markl.designer.run(); });
-    this.stop_button.addEventListener('click', markl.designer.stop_button_click);
+    this.stop_button.addEventListener('click', () => { markl.designer.stop(); });
     this.hide_button.addEventListener('click', () => { markl.designer.toggle(); });
 
     host.appendChild(this.el)
@@ -207,14 +207,5 @@ DEFAULT
     }
 
     return `<line class='${reaction && reaction.actions && reaction.actions[0].line == id ? 'selected' : ""}'><span class='rune'>${rune}</span><span class='number'>${id}</span><span class='content'>${line}</span></line>`;
-  }
-
-  this.stop_button_click = function()
-  {
-  }
-
-  this.hide_button_click = function()
-  {
-    console.log("!")
   }
 }
