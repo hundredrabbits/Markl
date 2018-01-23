@@ -68,6 +68,6 @@ function Sprite(type,id)
     this.el.className = `depth${this.pos.y}`;
 
     this.index = 0;
-    this.timer = setInterval(() => { this.animate(); },200);
+    this.timer = setInterval(() => { this.animate(); },50);
   }
 }

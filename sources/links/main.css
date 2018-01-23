@@ -53,6 +53,7 @@ yu { display: block; }
 #renderer stage sprite sheet.moving.left { background-position-y:-240px; transform: scaleX(-1); }
 #renderer stage sprite sheet.attacking { background-position-y:-600px; }
 #renderer stage sprite sheet.hit { background-position-y:-480px; }
+#renderer stage sprite sheet.fire { background-position-y:-720px; }
 #renderer stage sprite sheet.dead { opacity:0.1; }
 
 /* ZIndex*/
