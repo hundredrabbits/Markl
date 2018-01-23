@@ -13,4 +13,15 @@ function Effect(name,pos)
   this.el.style.height = `${STAGE.tile}px`;
   this.el.style.left = `${this.pos.x * STAGE.tile}px`;
   this.el.style.bottom = `${this.pos.y * STAGE.tile}px`;
+
+  this.index = 0;
+
+  this.animate = function()
+  {
+    if(this.index > 4){ return; }
+    this.index += 1;
+    this.sheet.className = `f${this.index}`;
+  }
+
+  setInterval(() => { this.animate(); },100);
 }

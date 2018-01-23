@@ -78,11 +78,9 @@ function Renderer()
 
   this.add_effects = function(state)
   {
-    for(id in state.players){
-      var player = state.players[id];
-      if(player.status == "hit"){
-        this.add_effect("hit",player.origin);
-      }
+    for(id in state.effects){
+      var effect = state.effects[id];
+      this.add_effect("hit",effect.pos);
     }
   }
 
@@ -111,8 +109,8 @@ function Renderer()
       sum.y += positions[id].y;
     }
     var stage_center = (STAGE.tile * 4)/2;
-    var offset = positions.length > 1 ? {x:sum.x/positions.length,y:sum.y/positions.length} : {x:0,y:0};
-    this.stage.style.marginLeft = `-${(offset.x * STAGE.tile) - stage_center}px`;
-    this.stage.style.marginTop = `${(offset.y * STAGE.tile) - stage_center}px`;
+    var offset = {x:sum.x/positions.length,y:sum.y/positions.length};
+    this.stage.style.marginLeft = positions.length > 1 ? `-${(offset.x * STAGE.tile) - stage_center}px` : "0px";
+    this.stage.style.marginTop = positions.length > 1 ? `${(offset.y * STAGE.tile) - stage_center}px` : "0px";
   }
 }

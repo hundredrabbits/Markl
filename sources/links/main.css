@@ -27,6 +27,13 @@ yu { display: block; }
 #renderer stage effect { display: block; position:absolute; transition:all 150ms; }
 #renderer stage effect sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 30%;background-size: 600px;background-position: 0px 0px;left: -25%;background-image: url(../media/effects.png);z-index: 200;background-position-y: -120px; filter:brightness(0); }
 
+/* Frames */
+#renderer stage effect sheet.f5 { display: none; }
+#renderer stage effect sheet.f4 { background-position-x:120px; }
+#renderer stage effect sheet.f3 { background-position-x:240px; }
+#renderer stage effect sheet.f2 { background-position-x:360px; }
+#renderer stage effect sheet.f1 { background-position-x:480px; }
+
 /* Characters */
 #renderer stage sprite sheet.lancer { background-image: url(../media/fighters/lancer.png); }
 #renderer stage sprite sheet.sin { background-image: url(../media/fighters/sin.png); }

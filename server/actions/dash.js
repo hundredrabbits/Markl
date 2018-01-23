@@ -19,6 +19,8 @@ function DASH(host,attr,target = null)
       this.host.status = "recovery";
       return;
     }
+    
+    this.host.status = "default";
 
     var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
     var vector = null;

@@ -54,6 +54,10 @@ module.exports = {
     return JSON.parse(JSON.stringify(obj));
   },
 
+  clean: function(state){
+    state.effects = [];
+  },
+
   next_player: function(state){
     let players = this.players_alive(state);
     let p = players[0];
@@ -88,6 +92,7 @@ module.exports = {
       if(this.has_winner(state)){
         break;
       }
+      this.clean(state);
       this.run(state);
       i += 1;
     }
