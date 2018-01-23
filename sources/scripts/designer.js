@@ -15,6 +15,14 @@ function Designer()
   this.run_button.className = "run button";
   this.run_button.textContent = "Run";
 
+  this.resume_button = document.createElement('yu');
+  this.resume_button.className = "resume button";
+  this.resume_button.textContent = "Resume";
+
+  this.pause_button = document.createElement('yu');
+  this.pause_button.className = "pause button";
+  this.pause_button.textContent = "Pause";
+
   this.stop_button = document.createElement('yu');
   this.stop_button.className = "stop button";
   this.stop_button.textContent = "Stop";
@@ -32,7 +40,8 @@ function Designer()
   this.reaction_el.textContent = "--";
 
   this.is_visible = true;
-  this.is_running = false;
+  this.is_paused = false;
+  this.is_playing = false;
   this.history = null;
   this.index = 0;
   this.timer = null;
@@ -68,6 +77,8 @@ DEFAULT
       MOVE ANY`;
 
     this.controls_el.appendChild(this.run_button);
+    this.controls_el.appendChild(this.pause_button);
+    this.controls_el.appendChild(this.resume_button);
     this.controls_el.appendChild(this.stop_button);
     this.controls_el.appendChild(this.hide_button);
     this.controls_el.appendChild(this.turn_el);
@@ -75,6 +86,8 @@ DEFAULT
     markl.designer.input_el.addEventListener('input', markl.designer.update);
 
     this.run_button.addEventListener('click', () => { markl.designer.run(); });
+    this.pause_button.addEventListener('click', () => { markl.designer.pause(); });
+    this.resume_button.addEventListener('click', () => { markl.designer.resume(); });
     this.stop_button.addEventListener('click', () => { markl.designer.stop(); });
     this.hide_button.addEventListener('click', () => { markl.designer.toggle(); });
 
@@ -100,11 +113,31 @@ DEFAULT
 
   this.start = function()
   {
+    this.is_paused = false;
+    this.is_playing = true;
     this.timer = setInterval(() => { this.next(); },TIMING.turn);
+  }
+
+  this.pause = function()
+  {
+    this.is_paused = true;
+    clearInterval(this.timer);
+    this.update();
+    markl.renderer.update(this.history[this.index].state);
+  }
+
+  this.resume = function()
+  {
+    this.is_paused = false;
+    this.timer = setInterval(() => { this.next(); },TIMING.turn);
+    this.update();
+    markl.renderer.update(this.history[this.index].state);
   }
 
   this.stop = function()
   {
+    this.is_paused = false;
+    this.is_playing = false;
     this.index = 0;
     clearInterval(this.timer);
     this.update();
@@ -153,6 +186,7 @@ DEFAULT
 
   this.update = function()
   {
+    this.el.className = `${this.is_playing ? "playing" : ""} ${this.is_paused ? "paused" : ""}`;
     this.turn_el.textContent = `${this.index}/${this.history.length}`;
     this.update_hint();
     this.update_reaction();
