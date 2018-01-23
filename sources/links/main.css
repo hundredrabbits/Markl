@@ -2,7 +2,7 @@ body { font-size:11px; font-family: 'input_mono_regular'; overflow:hidden; backg
 
 yu { display: block; }
 
-#designer { position: fixed;left: 60vw;width: 40vw;background: #000;height: 100vh;color: white; }
+#designer { position: fixed;left: 60vw;width: 40vw;background: #000;height: 100vh;color: white; transition:left 250ms; }
 #designer textarea { color:white; margin:15px; width:calc(100% - 60px); height:calc(100% - 85px); background:none; padding:15px; border-radius:3px; position: relative; z-index:900; margin-left: 45px; line-height:20px; }
 #designer .hint { color: black;margin: 15px;width: calc(100% - 60px);height: calc(100% - 85px);background: none;padding: 15px;border-radius: 3px;position: absolute;top: 0px;left: 0px;z-index: 0;white-space: pre; z-index:0; margin-left: 30px; line-height:20px;}
 #designer .hint line { display: block; position: relative; }
@@ -16,7 +16,7 @@ yu { display: block; }
 #designer .controls .turn { line-height: 25px; float: right; padding:0px 15px; }
 #designer .reaction { position: absolute;bottom: 70px;left: 15px;color: #999; }
 
-#renderer { position: relative; height: 100vh;width: 60vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden;}
+#renderer { position: relative; height: 100vh;width: 60vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden; transition: width 250ms;}
 #renderer stage { display:block; position:absolute; transition:all 250ms; }
 #renderer stage background { display: block;position: absolute;transition: all 150ms;background-image: url(../media/arenas/temple.png);width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
 #renderer stage sprite { display: block; position:absolute; transition:all 150ms;}
@@ -65,16 +65,16 @@ yu { display: block; }
 #renderer stage sprite.depth4 { z-index:100; }
 
 
-#renderer interface { display: block; }
-#renderer interface div.ui { position: absolute; padding:15px; width:40px; }
+#renderer interface { display: block;margin: 20px;width: calc(100% - 40px);height: calc(100vh - 40px);position: relative; }
+#renderer interface div.ui { position: absolute; width:40px; }
 #renderer interface div.ui t {  }
-#renderer interface div.ui t.name { font-size: 12px;display: block;position: absolute;left: 65px;top: 12px; }
+#renderer interface div.ui t.name { font-size: 12px;display: block;position: absolute;left: 65px;top: -2px; }
 #renderer interface div.ui t.health {  display:none; }
 #renderer interface div.ui t.stamina { display:none; }
-#renderer interface div.ui wr { display: block;width: 100%;height: 2px;border: 1px solid black;border-radius: 40px;margin-bottom: 1px;overflow: hidden;}
-#renderer interface div.ui wr bar { height: 100%;width: 0%;background: white; transition:width 250ms; display: block }
+#renderer interface div.ui wr { display: block;width: 100%;height: 4px;border-radius: 40px;margin-bottom: 1px;overflow: hidden;}
+#renderer interface div.ui wr bar { height: 100%;width: 0%;background: white; transition:width 250ms; display: block; border-radius: 10px; min-width: 4px }
 #renderer interface div.ui wr.health bar { background:red;}
-#renderer interface div.ui wr.stamina bar {  background:#22c79a; }
+#renderer interface div.ui wr.stamina bar {  background:#000; }
 
 #renderer interface div.ui.player0 { bottom:0px; left:0px; }
 #renderer interface div.ui.player1 { bottom:0px; right:0px; }
@@ -83,6 +83,11 @@ yu { display: block; }
 
 #renderer interface div.ui.player1 t.name { left:auto; right:65px; }
 #renderer interface div.ui.player2 t.name { left:auto; right:65px; }
+
+.designer_on #designer { left:60vw; }
+.designer_off #designer { left:100vw; }
+.designer_on #renderer { width:60vw; }
+.designer_off #renderer { width:100vw; }
 
 
 

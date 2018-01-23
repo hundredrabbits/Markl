@@ -33,9 +33,10 @@ function Markl()
     this.controller.add_role("default","Edit","delete");
     this.controller.add_role("default","Edit","selectall");
     
-    this.controller.add("default","Designer","Play",() => { markl.designer.run(); },"Space");
-    this.controller.add("default","Designer","Next Turn",() => { markl.designer.next(); },"Right");
-    this.controller.add("default","Designer","Prev Turn",() => { markl.designer.prev(); },"Left");
+    this.controller.add("default","Designer","Play",() => { markl.designer.run(); },"CmdOrCtrl+Space");
+    this.controller.add("default","Designer","Next Turn",() => { markl.designer.next(); },"CmdOrCtrl+Right");
+    this.controller.add("default","Designer","Prev Turn",() => { markl.designer.prev(); },"CmdOrCtrl+Left");
+    this.controller.add("default","Designer","Toggle",() => { markl.designer.toggle(); },"CmdOrCtrl+D");
 
     this.controller.commit();
 
@@ -49,5 +50,10 @@ function Markl()
   {
     this.scenario.load("temple");
     this.renderer.update();
+  }
+
+  this.update = function()
+  {
+    this.el.className = `${this.designer.is_visible ? "designer_on" : "designer_off"}`;
   }
 }

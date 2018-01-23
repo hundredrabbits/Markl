@@ -21,6 +21,8 @@
     const {dialog,app} = require('electron').remote;
     const fs = require('fs');
     
+    var TIMING = {turn:250,sprite:250,frame:50,delayed_start:1000}
+
     markl = new Markl();
     markl.install();
     markl.start();

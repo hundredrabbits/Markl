@@ -31,6 +31,7 @@ function Designer()
   this.reaction_el.className = "reaction";
   this.reaction_el.textContent = "--";
 
+  this.is_visible = true;
   this.is_running = false;
   this.history = null;
   this.index = 0;
@@ -75,9 +76,11 @@ DEFAULT
 
     this.run_button.addEventListener('click', () => { markl.designer.run(); });
     this.stop_button.addEventListener('click', markl.designer.stop_button_click);
-    this.hide_button.addEventListener('click', markl.designer.hide_button_click);
+    this.hide_button.addEventListener('click', () => { markl.designer.toggle(); });
 
     host.appendChild(this.el)
+
+    this.show();
   }
 
   this.run = function()
@@ -92,12 +95,12 @@ DEFAULT
     markl.renderer.update(this.history[this.index].state);
 
     this.stop();
-    setTimeout(() => { this.start(); }, 1000)
+    setTimeout(() => { this.start(); }, TIMING.delayed_start)
   }
 
   this.start = function()
   {
-    this.timer = setInterval(() => { this.next(); },200);
+    this.timer = setInterval(() => { this.next(); },TIMING.turn);
   }
 
   this.stop = function()
@@ -124,6 +127,28 @@ DEFAULT
     this.index -= this.index >= 0 ? 1 : 0;
     this.update();
     markl.renderer.update(this.history[this.index].state);
+  }
+
+  this.toggle = function()
+  {
+    if(this.is_visible){
+      this.hide();
+    }
+    else{
+      this.show();
+    }
+  }
+
+  this.show = function()
+  {
+    this.is_visible = true;
+    markl.update();
+  }
+
+  this.hide = function()
+  {
+    this.is_visible = false;
+    markl.update();
   }
 
   this.update = function()

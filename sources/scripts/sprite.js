@@ -30,6 +30,7 @@ function Sprite(type,id)
   {
     this.marker.className = h.id == 0 ? `active` : ``;
 
+    this.el.style.transition = `all ${TIMING.sprite}ms`;
     this.el.style.width = `${STAGE.tile}px`;
     this.el.style.height = `${STAGE.tile}px`;
     this.to(h.pos);
@@ -68,6 +69,6 @@ function Sprite(type,id)
     this.el.className = `depth${this.pos.y}`;
 
     this.index = 0;
-    this.timer = setInterval(() => { this.animate(); },50);
+    this.timer = setInterval(() => { this.animate(); },TIMING.frame);
   }
 }
