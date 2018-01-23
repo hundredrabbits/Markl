@@ -20,7 +20,7 @@ function DASH(host,attr,target = null)
       return;
     }
     
-    this.host.status = "default";
+    this.host.status = "idle";
 
     var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
     var vector = null;

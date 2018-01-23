@@ -56,6 +56,10 @@ module.exports = {
 
   clean: function(state){
     state.effects = [];
+    for(id in state.players){
+      var player = state.players[id];
+      player.status = player.status == "stasis" || player.status == "dead" ? player.status : "idle";
+    }
   },
 
   next_player: function(state){

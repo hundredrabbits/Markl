@@ -11,7 +11,7 @@ function WAIT(host,attr = null,target = null)
   this.run = function()
   {
     this.host.sp -= this.cost;
-    this.host.status = "default";
+    this.host.status = "idle";
   }
 }
 

@@ -14,14 +14,14 @@ function Effect(name,pos)
   this.el.style.left = `${this.pos.x * STAGE.tile}px`;
   this.el.style.bottom = `${this.pos.y * STAGE.tile}px`;
 
+  // Animation
   this.index = 0;
+  this.timer = setInterval(() => { this.animate(); },100);
 
   this.animate = function()
   {
-    if(this.index > 4){ return; }
+    if(this.index > 4){ clearInterval(this.timer); return; }
     this.index += 1;
     this.sheet.className = `f${this.index}`;
-  }
-
-  setInterval(() => { this.animate(); },100);
+  }  
 }

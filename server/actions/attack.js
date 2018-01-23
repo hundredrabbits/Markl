@@ -44,7 +44,7 @@ function ATTACK(host,attr,target = null)
       }
     }
     else{
-      this.host.status = "default";
+      this.host.status = "idle";
     }
   }
 

@@ -20,7 +20,7 @@ yu { display: block; }
 #renderer stage { display:block; position:absolute; transition:all 250ms; }
 #renderer stage background { display: block;position: absolute;transition: all 150ms;background-image: url(../media/arenas/dojo.png);width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
 #renderer stage sprite { display: block; position:absolute; transition:all 150ms;}
-#renderer stage sprite sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 35%;background-size: 600px;background-position: 0px 0px;left: -25%; }
+#renderer stage sprite sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 35%;background-size: 600px;background-position: 0px -360px;left: -25%; }
 #renderer stage sprite marker { display: none;width: 50px;height: 50px;background: red;z-index: 900;position: absolute;top: -80px;left: 50%;margin-left: -25px; background:url(../media/interface/marker.svg); background-size:50%; background-position: center center; background-repeat: no-repeat; }
 #renderer stage sprite marker.active { display: block }
 #renderer stage sprite shadow { display: block;width: 150%;height: 150%;position: absolute;bottom: 30%;background-size: 600px;background-position: 0px 0px;left: -25%;background-image: url(../media/effects.png);opacity: 0.5; }
@@ -28,6 +28,12 @@ yu { display: block; }
 #renderer stage effect sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 30%;background-size: 600px;background-position: 0px 0px;left: -25%;background-image: url(../media/effects.png);z-index: 200;background-position-y: -120px; filter:brightness(0); }
 
 /* Frames */
+
+#renderer stage sprite sheet.f4 { background-position-x:-120px; }
+#renderer stage sprite sheet.f3 { background-position-x:-240px; }
+#renderer stage sprite sheet.f2 { background-position-x:-360px; }
+#renderer stage sprite sheet.f1 { background-position-x:-360px; }
+
 #renderer stage effect sheet.f5 { display: none; }
 #renderer stage effect sheet.f4 { background-position-x:120px; }
 #renderer stage effect sheet.f3 { background-position-x:240px; }
