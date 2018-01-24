@@ -88,7 +88,8 @@ function Style(host)
         }
       }
     }
-    return null;
+    // Throw default case
+    return {trigger: "DEFAULT", event: "DEFAULT", condition: "DEFAULT", actions:[{name:"idle",attr:"??",line:"0"}]};
   }
 
   this.make_reaction = function(triggers, trigger = null,event = null,condition = null)

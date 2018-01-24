@@ -22,6 +22,8 @@ function Renderer()
 
   this.setup = function()
   {
+    this.stage.style.transition = `all ${TIMING.camera}ms`;
+
     // Resize
     this.stage.style.width = `${5 * STAGE.tile}px`;
     this.stage.style.height = `${5 * STAGE.tile}px`;

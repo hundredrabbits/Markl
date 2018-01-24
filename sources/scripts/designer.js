@@ -46,7 +46,6 @@ function Designer()
   this.index = 0;
   this.timer = null;
 
-
   this.install = function(host)
   {
     this.el.appendChild(this.input_el);
@@ -54,28 +53,7 @@ function Designer()
     this.el.appendChild(this.controls_el);
     this.el.appendChild(this.reaction_el);
 
-    this.input_el.value = `SIGHT
-  FIGHTER
-    DISTANCE IS 4
-      DASH TOWARD
-    DISTANCE IS 3
-      FIRE TOWARD
-    DISTANCE IS 2
-      DASH TOWARD
-    DISTANCE IS 1
-      ATTACK TOWARD
-    DEFAULT
-      MOVE TOWARD
-  OBJECT
-    DISTANCE IS 1
-      ATTACK TOWARD
-  PROJECTILE
-    DEFAULT
-      STEP
-DEFAULT
-  DEFAULT
-    DEFAULT
-      MOVE ANY`;
+    this.load();
 
     this.controls_el.appendChild(this.run_button);
     this.controls_el.appendChild(this.pause_button);
@@ -100,13 +78,14 @@ DEFAULT
 
   this.on_change = function()
   {
+    console.log("")
     markl.designer.update();
   }
 
   this.run = function()
   {
     markl.scenario.reload()
-    markl.scenario.inject_style(markl.designer.input_el.value);
+    markl.scenario.inject_style(markl.designer.input_el.value.toUpperCase());
 
     this.history = markl.scenario.run();
     this.index = 0;
@@ -195,13 +174,32 @@ DEFAULT
     markl.update();
   }
 
+  this.save = function()
+  {
+    console.log("Saved");
+
+    localStorage.setItem("designer", this.input_el.value);
+    this.update();
+  }
+
+  this.load = function()
+  {
+    this.input_el.value = localStorage.designer ? localStorage.designer : this.default();
+    this.update();
+  }
+
+  this.default = function()
+  {
+    return require("../presets/default");
+  }
+
   this.update = function()
   {
     markl.designer.el.className = `${markl.designer.is_playing ? "playing" : ""} ${markl.designer.is_paused ? "paused" : ""}`;
+    markl.designer.update_hint();
 
     if(markl.designer.history){
       markl.designer.turn_el.textContent = `${markl.designer.index}/${markl.designer.history.length}`;
-      markl.designer.update_hint();
       markl.designer.update_reaction();
     }
   }
@@ -228,20 +226,24 @@ DEFAULT
 
   this.update_hint = function()
   {
-    var turn = this.history[this.index];
     var lines = this.input_el.value.split("\n");
     var html = "";
     for(id in lines){
       var line = lines[id];
-      html += `${this.parse_hint_line(id,line, turn.player.id == 0 ? turn.reaction : null)}`;
+      html += `${this.parse_hint_line(id,line)}`;
     }
     this.hint_el.innerHTML = html;
   }
 
-  this.parse_hint_line = function(id,line,reaction = null)
+  this.parse_hint_line = function(id,line)
   {
+    var reaction = this.history && this.history[this.index].player.id == 0 ? this.history[this.index].reaction : null;
     var rune = " "
-    if(line.substr(0,6) == "      "){
+
+    if(line.substr(0,1) == "#"){
+      rune = "#"
+    }
+    else if(line.substr(0,6) == "      "){
       rune = " "
     }
     else if(line.substr(0,4) == "    "){

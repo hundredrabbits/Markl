@@ -3,10 +3,10 @@ body { font-size:11px; font-family: 'input_mono_regular'; overflow:hidden; backg
 yu { display: block; }
 
 #designer { position: fixed;left: 60vw;width: 40vw;background: #000;height: 100vh;color: white; transition:left 250ms; }
-#designer textarea { color:white; margin:15px; width:calc(100% - 60px); height:calc(100% - 85px); background:none; padding:15px; border-radius:3px; position: relative; z-index:900; margin-left: 45px; line-height:20px; }
+#designer textarea { color:white; margin:15px; width:calc(100% - 60px); height:calc(100% - 85px); background:none; padding:15px; border-radius:3px; position: relative; z-index:900; margin-left: 45px; line-height:20px; text-transform: uppercase;}
 #designer .hint { color: black;margin: 15px;width: calc(100% - 60px);height: calc(100% - 85px);background: none;padding: 15px;border-radius: 3px;position: absolute;top: 0px;left: 0px;z-index: 0;white-space: pre; z-index:0; margin-left: 30px; line-height:20px;}
 #designer .hint line { display: block; position: relative; }
-#designer .hint line span.number { position: absolute;left: -30px;color: #999; }
+#designer .hint line span.number { position: absolute;left: -30px;color: #666; }
 #designer .hint line span.content { opacity: 0 }
 #designer .hint line span.rune { position: absolute;left: -5px; color:#ccc; }
 #designer .hint line.selected { background:#333; }
