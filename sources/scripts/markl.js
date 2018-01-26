@@ -49,7 +49,7 @@ function Markl()
   
   this.start = function()
   {
-    this.scenario.load("temple");
+    this.scenario.load("dojo");
     this.renderer.start();
   }
 

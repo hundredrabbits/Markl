@@ -41,7 +41,7 @@ function Missle(host,settings)
 
     if(!collider){ return; }
 
-    state.effects.push({name:"explosion",pos:target_position})
+    state.effects.push({name:"explosion",pos:collider.pos})
     collider.hp -= this.damage;
     collider.status = collider.hp < 1 ? "dead" : "stasis";
     this.host.score.hits += 1;
