@@ -1,5 +1,4 @@
-module.exports = `
-# This is the default fighting style
+module.exports = `# default
 SIGHT
   FIGHTER
     DISTANCE IS 4

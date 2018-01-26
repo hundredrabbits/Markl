@@ -43,16 +43,18 @@ function Markl()
 
     this.controller.commit();
 
-    this.keyboard.add("ArrowRight",() => { markl.designer.next(); });
-    this.keyboard.add("ArrowLeft",() => { markl.designer.prev(); });
-
     this.keyboard.install();
   }
   
   this.start = function()
   {
     this.scenario.load("temple");
-    this.renderer.update();
+    this.renderer.start();
+  }
+
+  this.reset = function()
+  {
+    this.designer.reset();
   }
 
   this.update = function()

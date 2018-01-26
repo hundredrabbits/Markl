@@ -112,7 +112,7 @@ function Style(host)
     for(id in lines){
       var line = lines[id];
       var pad = pad_length(line);
-      if(line.trim() == "" || line.substr(0,2) == "--"){ continue; }
+      if(line.trim() == "" || line.substr(0,1) == "#"){ continue; }
       if(pad == 0){
         if(trigger){ a.push(trigger); }
         trigger = {name:line,events:[]};

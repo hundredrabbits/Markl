@@ -25,6 +25,7 @@ yu { display: block; }
 #designer.paused .controls .button.resume { display: inline-block; }
 
 #renderer { position: relative; height: 100vh;width: 60vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden; transition: width 250ms;}
+#renderer view { display: block; position: relative; }
 #renderer stage { display:block; position:absolute; transition:all 250ms; }
 #renderer stage background { display: block;position: absolute;transition: all 150ms;background-image: url(../media/arenas/temple.png);width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
 #renderer stage sprite { display: block; position:absolute; transition:all 150ms;}
@@ -57,12 +58,20 @@ yu { display: block; }
 
 /* Status */
 
-#renderer stage sprite sheet.moving { background-position-y:0px; }
-#renderer stage sprite sheet.moving.up { background-position-y:-120px; }
-#renderer stage sprite sheet.moving.right { background-position-y:-240px; }
-#renderer stage sprite sheet.moving.left { background-position-y:-240px; transform: scaleX(-1); }
-#renderer stage sprite sheet.attacking { background-position-y:-600px; }
-#renderer stage sprite sheet.hit { background-position-y:-480px; }
+#renderer stage sprite sheet.idle { background-position-y:0px; }
+#renderer stage sprite sheet.moving { background-position-y:-120px; }
+#renderer stage sprite sheet.moving.up { background-position-y:-240px; }
+#renderer stage sprite sheet.moving.right { background-position-y:-360px; }
+#renderer stage sprite sheet.moving.left { background-position-y:-360px; transform: scaleX(-1); }
+#renderer stage sprite sheet.dash { background-position-y:-480px; }
+#renderer stage sprite sheet.dash.right { background-position-y:-600px; }
+#renderer stage sprite sheet.dash.left { background-position-y:-600px; transform: scaleX(-1); }
+#renderer stage sprite sheet.attack { background-position-y:-720px; }
+#renderer stage sprite sheet.attack.right { background-position-y:-840px; }
+#renderer stage sprite sheet.attack.left { background-position-y:-840px; transform: scaleX(-1); }
+
+#renderer stage sprite sheet.confused { background-position-y:-1200px; }
+#renderer stage sprite sheet.hit { background-position-y:-1200px; }
 #renderer stage sprite sheet.fire { background-position-y:-720px; }
 #renderer stage sprite sheet.dead { opacity:0.1; }
 

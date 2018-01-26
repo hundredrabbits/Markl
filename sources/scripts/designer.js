@@ -188,9 +188,21 @@ function Designer()
     this.update();
   }
 
+  this.reset = function()
+  {
+    this.input_el.value = this.blank();
+    this.save();
+    this.update();
+  }
+
   this.default = function()
   {
     return require("../presets/default");
+  }
+
+  this.blank = function()
+  {
+    return require("../presets/blank");
   }
 
   this.update = function()
