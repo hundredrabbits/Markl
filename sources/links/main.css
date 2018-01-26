@@ -36,11 +36,11 @@ yu { display: block; }
 #renderer stage effect { display: block; position:absolute; transition:all 150ms; }
 #renderer stage effect sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 30%;background-size: 600px;background-position: 0px 0px;left: -25%;background-image: url(../media/fighters/effects.png);z-index: 200;background-position-y: -120px; filter:brightness(0); }
 
-#renderer stage.dojo { background-image: url(../media/arenas/dojo.png); }
-#renderer stage.temple { background-image: url(../media/arenas/temple.png); }
-#renderer stage.garden { background-image: url(../media/arenas/garden.png); }
-#renderer stage.rooftop { background-image: url(../media/arenas/rooftop.png); }
-#renderer stage.wood { background-image: url(../media/arenas/wood.png); }
+#renderer stage.dojo background { background-image: url(../media/arenas/dojo.png); }
+#renderer stage.temple background { background-image: url(../media/arenas/temple.png); }
+#renderer stage.garden background { background-image: url(../media/arenas/garden.png); }
+#renderer stage.rooftop background { background-image: url(../media/arenas/rooftop.png); }
+#renderer stage.wood background { background-image: url(../media/arenas/wood.png); }
 
 #renderer stage effect sheet.shadow { background-position-y:0px; }
 #renderer stage effect sheet.puff { background-position-y:-120px; }
