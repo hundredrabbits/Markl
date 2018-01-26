@@ -5,7 +5,7 @@ let player1 = {
   name:"USER",
   type:"FIGHTER",
   character: "lancer",
-  status:"default",
+  status:"idle",
   pos:{
     x:2,
     y:0
@@ -24,7 +24,7 @@ let player2 = {
   name:"CPU1",
   type:"FIGHTER",
   character: "sin",
-  status:"default",
+  status:"idle",
   pos:{
     x:2,
     y:4

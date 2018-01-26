@@ -22,6 +22,6 @@ function Effect(name,pos)
   {
     if(this.index > 4){ clearInterval(this.timer); return; }
     this.index += 1;
-    this.sheet.className = `f${this.index}`;
+    this.sheet.className = `${this.name} f${this.index}`;
   }  
 }

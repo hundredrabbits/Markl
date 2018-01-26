@@ -40,6 +40,7 @@ function Markl()
     this.controller.add("default","Designer","Prev Turn",() => { markl.designer.prev(); },"CmdOrCtrl+Left");
     this.controller.add("default","Designer","Toggle View",() => { markl.designer.toggle(); },"CmdOrCtrl+D");
     this.controller.add("default","Designer","Save",() => { markl.designer.save(); },"CmdOrCtrl+S");
+    this.controller.add("default","Designer","Export",() => { markl.designer.export(); },"CmdOrCtrl+E");
 
     this.controller.commit();
 

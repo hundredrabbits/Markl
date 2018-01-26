@@ -188,6 +188,11 @@ function Designer()
     this.update();
   }
 
+  this.export = function()
+  {
+    console.log("TODO")
+  }
+
   this.reset = function()
   {
     this.input_el.value = this.blank();
