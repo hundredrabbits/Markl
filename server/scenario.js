@@ -16,6 +16,7 @@ function Scenario()
   this.reload = function()
   {
     this.state = this.copy(require(`../scenarios/${this.name}`));
+    this.state.turn = 0;
   }
 
   this.inject_style = function(style,player = 0)

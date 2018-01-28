@@ -14,13 +14,11 @@ module.exports = {
 
   initial_state: null,
   history:[],
-  turn:0,
 
   run: function(state){
     var player = this.next_player(state);
     this.play(player,state);
-    this.turn += 1;
-    state.turn = this.turn;
+    state.turn += 1;
   },
 
   play: function(player,state){
@@ -29,7 +27,7 @@ module.exports = {
   },
 
   act: function(player,reaction,state){
-    var action = reaction.actions[this.turn % reaction.actions.length];
+    var action = reaction.actions[state.turn % reaction.actions.length];
     var a = actions[action.name] ? new actions[action.name](player,action.attr,reaction.target) : new actions.IDLE(player,action.attr,reaction.target);
     this.stage(state);
     a.run(state);
