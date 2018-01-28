@@ -31,13 +31,14 @@ function ATTACK(host,attr,target = null)
         state.effects.push({name:"shield",pos:target_position})
         this.host.status = "stasis";
         collider.status = "blocking";
+        console.log("BLOCKED!")
         collider.score.blocks += 1;
         this.knockback(this.host,vector.invert());
       }
       else{
         state.effects.push({name:"hit",pos:target_position})
         collider.hp -= 1;
-        collider.status = collider.hp < 1 ? "dead" : "hit";
+        collider.status = collider.hp < 1 ? "kill" : "hit";
         this.host.status = this.name;
         this.host.score.hits += 1;
         this.knockback(collider,vector);

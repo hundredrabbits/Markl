@@ -29,7 +29,7 @@ module.exports = {
   },
 
   act: function(player,reaction,state){
-    var action = reaction.actions[0];
+    var action = reaction.actions[this.turn % reaction.actions.length];
     var a = actions[action.name] ? new actions[action.name](player,action.attr,reaction.target) : new actions.IDLE(player,action.attr,reaction.target);
     this.stage(state);
     a.run(state);
@@ -58,6 +58,9 @@ module.exports = {
     state.effects = [];
     for(id in state.players){
       var player = state.players[id];
+      if(player.status == "kill"){
+        player.status = "dead";
+      }
       player.status = player.status == "stasis" || player.status == "dead" ? player.status : "idle";
     }
   },

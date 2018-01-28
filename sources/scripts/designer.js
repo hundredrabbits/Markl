@@ -64,11 +64,11 @@ function Designer()
 
     markl.designer.input_el.addEventListener('input', markl.designer.update);
 
-    this.run_button.addEventListener('click', () => { markl.designer.run(); });
-    this.pause_button.addEventListener('click', () => { markl.designer.pause(); });
-    this.resume_button.addEventListener('click', () => { markl.designer.resume(); });
-    this.stop_button.addEventListener('click', () => { markl.designer.stop(); });
-    this.hide_button.addEventListener('click', () => { markl.designer.toggle(); });
+    this.run_button.addEventListener('click', (e) => { e.preventDefault(); markl.designer.run(); });
+    this.pause_button.addEventListener('click', (e) => { e.preventDefault(); markl.designer.pause(); });
+    this.resume_button.addEventListener('click', (e) => { e.preventDefault(); markl.designer.resume(); });
+    this.stop_button.addEventListener('click', (e) => { e.preventDefault(); markl.designer.stop(); });
+    this.hide_button.addEventListener('click', (e) => { e.preventDefault(); markl.designer.toggle(); });
 
     host.appendChild(this.el)
     this.input_el.addEventListener('keydown', () => { markl.designer.update(); });
@@ -136,10 +136,12 @@ function Designer()
 
   this.next = function()
   {
-    if(!this.history || this.index == this.history.length-1 ){ console.warn("No history, or at end"); this.stop(); return; }
+    if(!this.history || this.index == this.history.length-1 ){ console.warn("No history, or at end"); this.pause(); return; }
+    if(this.history[this.index].state.players[0].hp < 0){ console.warn("Player is dead"); this.pause(); return; }
 
     this.index += this.index <= this.history.length ? 1 : 0;
     this.update();
+    markl.renderer.animator.start()
     markl.renderer.update(this.history[this.index].state);
   }
 
@@ -273,6 +275,6 @@ function Designer()
       rune = "-"
     }
 
-    return `<line class='${reaction && reaction.actions && reaction.actions[0].line == id ? 'selected' : ""}'><span class='rune'>${rune}</span><span class='number'>${id}</span><span class='content'>${line}</span></line>`;
+    return `<line class='${reaction && reaction.actions && reaction.actions[(this.index-1) % reaction.actions.length].line == id ? 'selected' : ""}'><span class='rune'>${rune}</span><span class='number'>${id}</span><span class='content'>${line}</span></line>`;
   }
 }

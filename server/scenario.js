@@ -26,7 +26,7 @@ function Scenario()
 
   this.run = function()
   {
-    console.log(`Running ${this.name}`)
+    console.log(`Running ${this.name}(${this.state.players.length})`)
     this.history = supervisor.render(this.state);
     console.log(`Completed ${this.name}, in ${this.history.length} turns`)
     return this.history;

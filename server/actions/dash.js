@@ -19,8 +19,6 @@ function DASH(host,attr,target = null)
       this.host.status = "recovery";
       return;
     }
-    
-    this.host.status = "idle";
 
     var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
     var vector = null;
@@ -33,6 +31,9 @@ function DASH(host,attr,target = null)
       var offset = host_pos.offset(this.target.pos).invert();
       vector = new Vector(offset.x,offset.y);
     }
+    else if(this.attr == "ANY"){
+      vector = this.find_any_vector();
+    }
     else{
       vector = new Vector().from_name(this.attr);
     }
@@ -41,6 +42,8 @@ function DASH(host,attr,target = null)
     while(this.can_move_to(target_position)){
       this.host.pos = {x:target_position.x,y:target_position.y};
       target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
+      this.host.status = "dash";
+      this.host.vector = vector.name;
     }
   }
 
@@ -66,6 +69,25 @@ function DASH(host,attr,target = null)
       return vector.rotate(-1);
     }
 
+    return null;
+  }
+
+  this.find_any_vector = function()
+  {
+
+    const UP = new Vector(0,1);
+    const DOWN = new Vector(0,-1);
+    const LEFT = new Vector(-1,0);
+    const RIGHT = new Vector(1,0);
+
+    var vectors = [UP, RIGHT, DOWN, LEFT];
+    for(id in vectors){
+      var vector = vectors[(id + this.state.turn) % vectors.length];
+      var target_pos = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
+      if(this.can_move_to(target_pos)){
+        return vector;
+      } 
+    }
     return null;
   }
 

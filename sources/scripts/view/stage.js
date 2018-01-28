@@ -31,7 +31,6 @@ function Stage_Screen()
     // Center
     this.stage.style.left = `calc(50% - ${(5 * STAGE.tile)/2}px)`;
     this.stage.style.top = `calc(55% - ${(5 * STAGE.tile)/2}px)`;
-
     this.stage.className = markl.scenario.name;
   }
 

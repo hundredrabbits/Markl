@@ -5,6 +5,7 @@ function Renderer()
 
   this.screens = {menu: new Menu_Screen(),character:new Character_Screen(), arena: new World_Screen(), stage: new Stage_Screen()};
   this.screen = null;
+  this.animator = new Animator(this.el);
 
   this.install = function(host)
   {
