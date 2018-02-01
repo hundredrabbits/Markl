@@ -40,6 +40,7 @@ function ATTACK(host,attr,target = null)
         collider.hp -= 1;
         collider.status = collider.hp < 1 ? "kill" : "hit";
         this.host.status = this.name;
+        this.host.vector = vector.name;
         this.host.score.hits += 1;
         this.knockback(collider,vector);
       }
