@@ -27,7 +27,7 @@ function ATTACK(host,attr,target = null)
     var collider = this.player_at(target_position);
 
     if(collider){
-      if(collider.sp - 5 > this.host.sp && collider.status == "moving"){
+      if(collider.sp - 5 > this.host.sp && collider.status == "idle"){
         state.effects.push({name:"shield",pos:target_position})
         this.host.status = "stasis";
         collider.status = "blocking";

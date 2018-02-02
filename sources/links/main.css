@@ -84,10 +84,13 @@ yu { display: block; }
 #renderer stage sprite sheet.attack.left { background-position-y:-1080px; transform: scaleX(-1); }
 
 #renderer stage sprite sheet.confused { background-position-y:-1200px; }
-#renderer stage sprite sheet.hit { background-position-y:-1200px; }
+#renderer stage sprite sheet.hit { background-position-y:-1320px; }
 #renderer stage sprite sheet.fire { background-position-y:-720px; }
-#renderer stage sprite sheet.kill { background-position-y:-1320px; }
-#renderer stage sprite sheet.dead { background-position-y:-1320px; }
+#renderer stage sprite sheet.kill { background-position-y:-1440px; }
+#renderer stage sprite sheet.stasis { background-position-y:-1800px; }
+#renderer stage sprite sheet.dead { background-position-y:-1440px; }
+#renderer stage sprite sheet.recovery { background-position-y:-1560px; }
+
 
 #renderer stage sprite sheet.dead { background-position-x:-480px !important; margin-top:-100px; transition:margin-top 500ms; }
 
