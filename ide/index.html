@@ -1,0 +1,20 @@
+<html>
+<head>
+  <script type="text/javascript" src="scripts/rune.js"></script>
+  <script type="text/javascript" src="scripts/commander.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="links/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="links/main.css"/>
+
+  <title>Markl - IDE</title>
+</head>
+<body>
+  <script>
+    var cmd = new Commander()
+    cmd.install(document.body);
+    cmd.add(new Rune(["SIGHT","FIGHTER","DISTANCE IS 4","MOVE RIGHT"]))
+    cmd.add(new Rune(["SIGHT","FIGHTER","DISTANCE IS 4","MOVE LEFT"]))
+    cmd.add(new Rune(["SIGHT","FIGHTER","DISTANCE IS 3","MOVE UP"]))
+  </script>
+</body>
+</html>
