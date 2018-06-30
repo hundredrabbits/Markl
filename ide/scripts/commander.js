@@ -24,6 +24,13 @@ function Commander()
   this.buttons.push(new Fragment(this,"CONDITION","DISTANCE IS 2"))
   this.buttons.push(new Fragment(this,"ACTION","MOVE LEFT"))
 
+  this.save_button = document.createElement('button')
+  this.save_button.innerHTML = "SAVE"
+
+  this.save_button.onclick = () => {
+    this.add_rune(new Rune(this.construction))
+  }
+
   this.install = function(host)
   {
     host.appendChild(this.preview);
@@ -33,6 +40,7 @@ function Commander()
       var button = this.buttons[id]
       this.el.appendChild(button.el)
     }
+    this.el.appendChild(this.save_button)
   }
 
   this.add_rune = function(rune)
@@ -43,16 +51,20 @@ function Commander()
 
   this.add_fragment = function(fragment)
   {
-    
-    this.construction[fragment.depth] = fragment;
+    this.construction[fragment.depth] = fragment.text;
     this.update();
     console.log(this.construction);
   }
 
   this.update = function()
   {
-    this.preview.innerHTML = this.fightscript.render();
-    console.log(this.fightscript.runes());
+    var html = this.fightscript.render();
+    html += "\n\n"+this.construction;
+
+    if(this.construction.length == 4){
+      html += " [ OK ] "
+    }
+    this.preview.innerHTML = html;
   }
 }
 
