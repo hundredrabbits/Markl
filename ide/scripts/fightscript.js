@@ -7,6 +7,7 @@ function FightScript(style = {})
     if(!this.style[rune.trigger]){ this.style[rune.trigger] = {}}
     if(!this.style[rune.trigger][rune.event]){ this.style[rune.trigger][rune.event] = {}}
     if(!this.style[rune.trigger][rune.event][rune.condition]){ this.style[rune.trigger][rune.event][rune.condition] = []}
+    if(this.style[rune.trigger][rune.event][rune.condition].indexOf(rune.action) > -1){ console.warn("Rune is already present"); return; }
     this.style[rune.trigger][rune.event][rune.condition].push(rune.action)
   }
 
@@ -47,5 +48,21 @@ function FightScript(style = {})
       }
     }
     return text
+  }
+
+  this.runes = function()
+  {
+    var a = [];
+    for(trigger in this.style){
+      for(event in this.style[trigger]){
+        for(condition in this.style[trigger][event]){
+          for(id in this.style[trigger][event][condition]){
+            var action = this.style[trigger][event][condition][id];
+            a.push(new Rune([trigger,event,condition,action]))
+          }
+        }
+      }
+    }
+    return a
   }
 }

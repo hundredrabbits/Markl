@@ -26,5 +26,6 @@ function Commander()
   {
     this.el.innerHTML = `${this.runes.length} runes`;
     this.preview.innerHTML = this.fightscript.render();
+    console.log(this.fightscript.runes());
   }
 }
