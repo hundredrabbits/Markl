@@ -17,6 +17,20 @@
     cmd.add(new Rune(["SIGHT","FIGHTER","DISTANCE IS 4","MOVE LEFT"]))
     cmd.add(new Rune(["SIGHT","FIGHTER","DISTANCE IS 3","MOVE UP"]))
     cmd.add(new Rune(["DEFAULT","FIGHTER","DISTANCE IS 3","MOVE UP"]))
+
+    var test = `
+SIGHT
+  FIGHTER
+    DISTANCE IS 4
+      MOVE RIGHT
+      MOVE LEFT
+    DISTANCE IS 3
+      MOVE UP
+DEFAULT
+  FIGHTER
+    DISTANCE IS 3
+      MOVE UP`
+    console.log(new FightScript().parse(test))
   </script>
 </body>
 </html>

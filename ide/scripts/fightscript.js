@@ -10,7 +10,28 @@ function FightScript(style = {})
     this.style[rune.trigger][rune.event][rune.condition].push(rune.action)
   }
 
-  this.export = function()
+  this.parse = function(text)
+  {
+    var style = {};
+    var lines = text.toUpperCase().split("\n");
+    var stash = null;
+    var trigger = null;
+    var event = null;
+    var condition = null;
+    var action = null;
+    for(id in lines){
+      var pad = lines[id].search(/\S|$/);
+      var line = lines[id].trim();
+      if(line == "" || line.substr(0,1) == "#"){ continue; }
+      if(pad == 0){ trigger = line ; style[line] = {}; }
+      if(pad == 2){ event = line ; style[trigger][event] = {}; }
+      if(pad == 4){ condition = line ; style[trigger][event][condition] = []; }
+      if(pad == 6){ action = line ; style[trigger][event][condition].push(line); }
+    }
+    return style;
+  }
+
+  this.render = function()
   {
     var text = ""
     for(trigger in this.style){
