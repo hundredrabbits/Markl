@@ -6,6 +6,9 @@ function Commander()
   this.preview = document.createElement('pre');
   this.preview.id = "preview";
 
+  this.collection = document.createElement('yu');
+  this.collection.id = "collection";
+
   this.fightscript = new FightScript();
 
   this.runes = []
@@ -82,7 +85,10 @@ function Commander()
   this.install = function(host)
   {
     host.appendChild(this.preview);
+    host.appendChild(this.collection);
+    host.appendChild(this.rune.el);
     host.appendChild(this.el);
+
 
     for(id in this.buttons){
       var button = this.buttons[id]
@@ -105,7 +111,7 @@ function Commander()
 
   this.clear_rune = function(rune)
   {
-    this.rune = new Rune()
+    this.rune.clear()
     this.update()
   }
 
@@ -118,29 +124,18 @@ function Commander()
   this.update = function()
   {
     var html = this.fightscript.render();
-    html += "\n\n"+this.rune;
 
-    if(this.rune.is_complete()){
-      html += " [ OK ] "
-    }
     this.preview.innerHTML = html;
+
+    // Update collection
+    html = ""
+    var runes = this.fightscript.runes()
+    this.collection.innerHTML = ""
+    for(id in runes){
+      var rune = runes[id]
+      rune.update()
+      this.collection.innerHTML += rune.el.outerHTML;
+    }
   }
 }
 
-function Fragment(host,type,text)
-{
-  this.host = host;
-  this.type = type;
-  this.text = text;
-  this.depth = ["TRIGGER","EVENT","CONDITION","ACTION"].indexOf(this.type)
-  this.el = document.createElement('button');
-  this.el.className = type.toLowerCase();
-  this.el.innerHTML = `${text}`;
-
-  this.el.onclick = () => { this.construct(); }
-
-  this.construct = function()
-  {
-    this.host.add_fragment(this)
-  }
-}
