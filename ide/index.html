@@ -1,8 +1,9 @@
 <html>
 <head>
   <script type="text/javascript" src="scripts/rune.js"></script>
-  <script type="text/javascript" src="scripts/commander.js"></script>
+  <script type="text/javascript" src="scripts/editor.js"></script>
   <script type="text/javascript" src="scripts/fightscript.js"></script>
+  <script type="text/javascript" src="scripts/fightlang.js"></script>
 
   <link rel="stylesheet" type="text/css" href="links/reset.css"/>
   <link rel="stylesheet" type="text/css" href="links/main.css"/>
@@ -11,8 +12,9 @@
 </head>
 <body>
   <script>
-    var cmd = new Commander()
-    cmd.install(document.body);
+    var editor = new Editor()
+    editor.install(document.body);
+    editor.start();
   </script>
 </body>
 </html>

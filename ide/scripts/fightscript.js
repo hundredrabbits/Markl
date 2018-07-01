@@ -11,6 +11,11 @@ function FightScript(style = {})
     this.style[rune.trigger][rune.event][rune.condition].push(rune.action)
   }
 
+  this.remove = function(rune)
+  {
+    console.warn("TODO")
+  }
+
   this.parse = function(text)
   {
     var style = {};

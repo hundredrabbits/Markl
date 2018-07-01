@@ -1,5 +1,12 @@
 # TODOs
 
+- Create Button() and remove interaction from fragment.
 - Preview rune
 - Remove rune from fighting style
-- Implement all runes
+
+## FIGHTSCRIPT
+
+## FIGHTLANG
+
+- Rune
+  - Fragment
