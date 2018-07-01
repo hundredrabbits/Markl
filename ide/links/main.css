@@ -1,6 +1,6 @@
 body pre { background:#ccc; padding:10px; font-family: 'courier'; font-size:12px; }
 
-body button { display: inline-block; padding:5px 10px; border:1px solid black; border-radius:20px; margin:5px; font-family: arial; font-size:11px; }
+body button { display: inline-block; padding:5px 10px; border-radius:20px; margin:5px; font-family: arial; font-size:11px; font-weight: bold }
 body button:hover { background:red !important; cursor: pointer; }
 body button.trigger { background:cyan; }
 body button.event { background:yellow; }
