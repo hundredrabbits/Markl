@@ -1,37 +1,53 @@
 
 body yu { display: block }
 
-body #editor { color:white; max-height: 50vh; position: fixed;bottom: 0; left:0px; width:100vw; height:100vh; background:#222;}
+body #editor { color:white; max-height: 50vh; position: fixed;bottom: 0; left:0px; width:100vw; height:100vh; background:#222; transition: bottom 250ms}
 
 body #editor #tabs { font-family:courier; font-size:12px; padding-left:10px; margin-top:-30px;}
 body #editor #tabs a { color:white; display: inline-block; padding:0px 15px; line-height: 30px; margin-right:5px; margin-bottom:-1px; background:#999; border-top-left-radius: 5px; border-top-right-radius: 5px; }
 body #editor #tabs a:hover { background:#555; cursor: pointer; text-decoration: underline;}
+body #editor #tabs a.hide { float:right; margin-right:10px; }
 
-body #editor #collection { border-bottom:1px solid grey; min-height:30px; padding:10px; }
-body #editor #collection rune { width:25px; height:25px; display: inline-block; margin-right:5px; }
+body #editor #collection { border-bottom:1px solid grey; min-height:30px; padding:15px; }
+body #editor #collection rune { width:50px; height:50px; display: inline-block; margin-right:10px; }
 
-body #editor #preview { background:#000; padding:10px; font-family: 'courier'; font-size:12px; margin-bottom:30px; color:white; border-bottom:1px solid grey; min-height: 30px}
+body #editor #preview { padding:10px; font-family: 'courier'; font-size:12px; margin-bottom:30px; color:white; min-height: 30px}
 
-body #editor #runeview { padding-left:120px; position: relative; }
-body #editor #runeview rune { background:grey; margin-bottom: 30px; position: absolute; left:10px; top:10px;}
-body #editor #runeview button { display: inline-block; padding:5px 10px; border-radius:20px; margin:5px; font-family: arial; font-size:11px; font-weight: bold; width:60px; max-height: 20px }
+body #editor #runeview { padding:15px 0px; padding-left:140px; position: relative;  }
+body #editor #runeview rune { background:grey; margin-bottom: 30px; position: absolute; left:15px; top:15px;width:50px;height:50px;}
+body #editor #runeview .preview { font-family: 'courier'; margin-bottom:15px; }
+body #editor #runeview button { display: inline-block; padding:5px 10px; border-radius:20px; margin-right:5px; margin-bottom:5px; font-family: arial; font-size:11px; font-weight: bold; width:60px; max-height: 20px; text-transform: uppercase;}
 body #editor #runeview button:hover { background:red !important; cursor: pointer; }
 body #editor #runeview button.trigger { background:cyan; }
 body #editor #runeview button.event { background:yellow; }
 body #editor #runeview button.condition { background:orange; }
 body #editor #runeview button.action { background:pink; }
+body #editor #runeview button.save { position: absolute; left:15px; top:130px; border-radius:3px; width:100px; }
+body #editor #runeview button.clear { position: absolute; left:15px; top:160px;border-radius:3px; width:100px }
 
 body #editor rune { width:100px; height:100px; display: block;  position: relative; border-radius: 5px; overflow: hidden; }
-body #editor rune .fragment { width:50px; background:blue; display: block; height:50px; position: absolute; top:0px; left:0px; }
+body #editor rune .fragment { width:50%; background:blue; display: block; height:50%; position: absolute; top:0px; left:0px; }
 body #editor rune .fragment.trigger { background:cyan; top:0%; left:0%; }
 body #editor rune .fragment.event { background:yellow; top:0%; left:50%; }
 body #editor rune .fragment.condition { background:orange; top:50%; left:0%; }
 body #editor rune .fragment.action { background:pink; top:50%; left:50%; }
 
+/* Modes */
+
+body #editor.hide { bottom:-50vh; }
+
+body #editor.home #tabs a.home { background:#222; }
+body #editor.home #preview { display: none }
+body #editor.home #runeview { display: none }
+body #editor.home #collection { display: block }
+
 body #editor.code #tabs a.code { background:#222; }
 body #editor.code #preview { display:block; }
 body #editor.code #runeview { display:none; }
+body #editor.code #collection { display: none }
 
 body #editor.rune #tabs a.rune { background:#222; }
 body #editor.rune #preview { display:none; }
 body #editor.rune #runeview { display:block; }
+body #editor.rune #collection { display: none }
+

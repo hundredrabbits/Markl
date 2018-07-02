@@ -47,6 +47,18 @@ function Rune(characters = [])
   {
     return this.trigger && this.event && this.condition && this.action;
   }
+
+  this.preview = function()
+  {
+    var html = ""
+
+    if(this.trigger){ html += `WHEN ${this.trigger} ` }
+    if(this.event){ html += `OF ${this.event} ` }
+    if(this.condition){ html += `IF ${this.condition} ` }
+    if(this.action){ html += `THEN ${this.action} ` }
+
+    return html.trim()
+  }
 }
 
 function Fragment(type,name)
