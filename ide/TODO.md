@@ -4,6 +4,11 @@
 - Preview rune
 - Remove rune from fighting style
 
+## EDITOR
+
+- Make code view editable.
+- Add compile button to code view.
+
 ## FIGHTSCRIPT
 
 ## FIGHTLANG

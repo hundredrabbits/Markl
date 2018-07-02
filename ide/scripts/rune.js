@@ -1,6 +1,6 @@
 function Rune(characters = [])
 {
-  this.el = document.createElement('yu');
+  this.el = document.createElement('rune');
   this.el.className = "rune"
   this.characters = characters;
   
@@ -9,9 +9,9 @@ function Rune(characters = [])
   this.condition = null;
   this.action = null;
 
-  this.build = function(depth,value)
+  this.build = function(fragment)
   {
-    this.characters[depth] = value;
+    this.characters[fragment.depth] = fragment.name;
     this.update();
   }
 
@@ -23,7 +23,6 @@ function Rune(characters = [])
 
   this.update = function()
   {
-    console.log(this.characters)
     this.trigger = this.characters[0] ? this.characters[0].toUpperCase() : null
     this.event = this.characters[1] ? this.characters[1].toUpperCase() : null
     this.condition = this.characters[2] ? this.characters[2].toUpperCase() : null
@@ -50,20 +49,10 @@ function Rune(characters = [])
   }
 }
 
-function Fragment(host,type,text)
+function Fragment(type,name)
 {
-  this.host = host;
   this.type = type;
-  this.text = text;
+  this.name = name;
   this.depth = ["TRIGGER","EVENT","CONDITION","ACTION"].indexOf(this.type)
-  this.el = document.createElement('button');
-  this.el.className = type.toLowerCase();
-  this.el.innerHTML = `${text}`;
-
-  this.el.onclick = () => { this.construct(); }
-
-  this.construct = function()
-  {
-    this.host.add_fragment(this)
-  }
 }
+

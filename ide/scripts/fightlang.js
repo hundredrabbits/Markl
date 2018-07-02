@@ -63,4 +63,15 @@ function FightLang()
       "WAIT"
     ]
   }
+
+  this.fragments = function()
+  {
+    var a = []
+    for(type in this.spec){
+      for(id in this.spec[type]){
+        a.push(new Fragment(type,this.spec[type][id]))
+      }
+    }
+    return a;
+  }
 }
