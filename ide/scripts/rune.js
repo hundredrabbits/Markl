@@ -35,10 +35,10 @@ function Rune(characters = [])
   { 
     var html = ""
 
-    if(this.trigger){ html += "<yu class='fragment trigger'></yu>" }
-    if(this.event){ html += "<yu class='fragment event'></yu>" }
-    if(this.condition){ html += "<yu class='fragment condition'></yu>" }
-    if(this.action){ html += "<yu class='fragment action'></yu>" }
+    if(this.trigger){ html += `<yu class='fragment trigger' style='background-image:url(media/runes/fragments/${this.trigger.toLowerCase().replace(/ /g,'.')}.png)'></yu>` }
+    if(this.event){ html += `<yu class='fragment event' style='background-image:url(media/runes/fragments/${this.event.toLowerCase().replace(/ /g,'.')}.png)'></yu>` }
+    if(this.condition){ html += `<yu class='fragment condition' style='background-image:url(media/runes/fragments/${this.condition.toLowerCase().replace(/ /g,'.')}.png)'></yu>` }
+    if(this.action){ html += `<yu class='fragment action' style='background-image:url(media/runes/fragments/${this.action.toLowerCase().replace(/ /g,'.')}.png)'></yu>` }
 
     this.el.innerHTML = html
   }

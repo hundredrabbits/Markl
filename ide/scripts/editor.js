@@ -124,7 +124,7 @@ function Editor()
 
     this.el = document.createElement('button');
     this.el.className = fragment.type.toLowerCase();
-    this.el.innerHTML = `${fragment.name}`;
+    this.el.style.backgroundImage = `url(media/runes/fragments/${fragment.name.toLowerCase().replace(/ /g,'.')}.png)`;
 
     this.el.onclick = () => { this.construct(); }
 

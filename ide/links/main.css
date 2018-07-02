@@ -19,27 +19,28 @@ body #editor #codeview t.condition { color:orange; }
 body #editor #codeview t.action { color:pink; }
 
 body #editor #runeview { padding:15px 0px; padding-left:140px; position: relative;  }
-body #editor #runeview rune { background:grey; margin-bottom: 30px; position: absolute; left:15px; top:15px;width:50px;height:50px;}
+body #editor #runeview rune { margin-bottom: 30px; position: absolute; left:15px; top:15px;width:50px;height:50px;}
 body #editor #runeview .preview { font-family: 'courier';margin-bottom: 15px;line-height:50px;min-height: 50px }
 body #editor #runeview .preview t.trigger { color:cyan; }
 body #editor #runeview .preview t.event { color:yellow; }
 body #editor #runeview .preview t.condition { color:orange; }
 body #editor #runeview .preview t.action { color:pink; }
-body #editor #runeview button { display: inline-block; padding:5px 10px; border-radius:20px; margin-right:5px; margin-bottom:5px; font-family: arial; font-size:11px; font-weight: bold; width:60px; max-height: 20px; text-transform: uppercase; color:black;}
-body #editor #runeview button:hover { background:red !important; cursor: pointer; }
-body #editor #runeview button.trigger { background:cyan; }
-body #editor #runeview button.event { background:yellow; }
-body #editor #runeview button.condition { background:orange; }
-body #editor #runeview button.action { background:pink; }
+body #editor #runeview button { display: inline-block; border-radius:2px; margin-right:5px; margin-bottom:5px; width:40px; height: 40px; background-size:25px 25px; background-position: center; background-repeat: no-repeat; background-size}
+body #editor #runeview button:hover { background-color: :red !important; cursor: pointer; }
+body #editor #runeview button.trigger { background-color:cyan; }
+body #editor #runeview button.event { background-color:yellow; }
+body #editor #runeview button.condition { background-color:orange; }
+body #editor #runeview button.action { background-color:pink; }
 body #editor #runeview button.save { position: absolute; left:15px; top:130px; border-radius:3px; width:100px; background:green; }
 body #editor #runeview button.clear { position: absolute; left:15px; top:160px;border-radius:3px; width:100px; background:red; }
 
 body #editor rune { width:100px; height:100px; display: block;  position: relative; border-radius: 5px; overflow: hidden; }
-body #editor rune .fragment { width:50%; background:blue; display: block; height:50%; position: absolute; top:0px; left:0px; }
-body #editor rune .fragment.trigger { background:cyan; top:0%; left:0%; }
-body #editor rune .fragment.event { background:yellow; top:0%; left:50%; }
-body #editor rune .fragment.condition { background:orange; top:50%; left:0%; }
-body #editor rune .fragment.action { background:pink; top:50%; left:50%; }
+body #editor rune .fragment { width:50%; display: block; height:50%; position: absolute; top:0px; left:0px; background-position: center; background-size:90%; background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1);}
+
+body #editor rune .fragment.trigger { top:0%; left:0%; }
+body #editor rune .fragment.event { top:0%; left:50%; }
+body #editor rune .fragment.condition { top:50%; left:0%; }
+body #editor rune .fragment.action { top:50%; left:50%; }
 
 /* Modes */
 
