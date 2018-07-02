@@ -52,10 +52,10 @@ function Rune(characters = [])
   {
     var html = ""
 
-    if(this.trigger){ html += `WHEN ${this.trigger} ` }
-    if(this.event){ html += `OF ${this.event} ` }
-    if(this.condition){ html += `IF ${this.condition} ` }
-    if(this.action){ html += `THEN ${this.action} ` }
+    if(this.trigger){ html += `<t class='trigger'>ON ${this.trigger}</t> ` }
+    if(this.event){ html += `<t class='event'>OF ${this.event}</t> ` }
+    if(this.condition){ html += `<t class='condition'>AND ${this.condition}</t> ` }
+    if(this.action){ html += `<t class='action'>THEN ${this.action}</t> ` }
 
     return html.trim()
   }

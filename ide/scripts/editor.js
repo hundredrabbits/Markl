@@ -3,8 +3,8 @@ function Editor()
   this.el = document.createElement('yu');
   this.el.id = "editor";
   this.el.className = "home"
-  this.preview = document.createElement('pre');
-  this.preview.id = "preview";
+  this.codeview = document.createElement('pre');
+  this.codeview.id = "codeview";
   this.runeview = document.createElement('yu');
   this.runeview.id = "runeview";
   this.collection = document.createElement('yu');
@@ -60,7 +60,7 @@ function Editor()
     this.el.appendChild(this.collection)
 
 
-    this.el.appendChild(this.preview)
+    this.el.appendChild(this.codeview)
     this.el.appendChild(this.runeview)
     this.runeview.appendChild(this.rune.el)
     this.runeview.appendChild(this.rune_preview)
@@ -104,9 +104,9 @@ function Editor()
 
   this.update = function()
   {
-    this.preview.innerHTML = this.fightscript.render();
+    this.codeview.innerHTML = this.fightscript.render();
 
-    this.rune_preview.innerHTML = this.rune.preview()
+    this.rune_preview.innerHTML = this.rune.preview() ? this.rune.preview() : ">"
 
     var runes = this.fightscript.runes()
     this.collection.innerHTML = ""

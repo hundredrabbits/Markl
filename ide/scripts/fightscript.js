@@ -41,13 +41,13 @@ function FightScript(style = {})
   {
     var text = ""
     for(trigger in this.style){
-      text += `${trigger}\n`
+      text += `<t class='trigger'>${trigger}</t>\n`
       for(event in this.style[trigger]){
-        text += `  ${event}\n`
+        text += `  <t class='event'>${event}</t>\n`
         for(condition in this.style[trigger][event]){
-          text += `    ${condition}\n`
+          text += `    <t class='condition'>${condition}</t>\n`
           for(id in this.style[trigger][event][condition]){
-            text += `      ${this.style[trigger][event][condition][id]}\n`
+            text += `      <t class='action'>${this.style[trigger][event][condition][id]}</t>\n`
           }
         }
       }
