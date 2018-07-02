@@ -2,13 +2,13 @@ function Editor()
 {
   this.el = document.createElement('yu');
   this.el.id = "editor";
-  this.el.className = "home"
-  this.codeview = document.createElement('pre');
+  this.el.className = "rune"
+  this.codeview = document.createElement('div');
   this.codeview.id = "codeview";
-  this.runeview = document.createElement('yu');
+  this.runeview = document.createElement('div');
   this.runeview.id = "runeview";
-  this.collection = document.createElement('yu');
-  this.collection.id = "collection";
+  this.homeview = document.createElement('div');
+  this.homeview.id = "homeview";
 
   // Tabs
   this.tabs = document.createElement('yu');
@@ -57,7 +57,7 @@ function Editor()
     this.tabs.appendChild(this.rune_tab)
     this.tabs.appendChild(this.code_tab)
     this.tabs.appendChild(this.hide_tab)
-    this.el.appendChild(this.collection)
+    this.el.appendChild(this.homeview)
 
 
     this.el.appendChild(this.codeview)
@@ -78,7 +78,7 @@ function Editor()
 
   this.start = function()
   {
-
+    this.update();
   }
 
   this.add_fragment = function(fragment)
@@ -104,16 +104,20 @@ function Editor()
 
   this.update = function()
   {
-    this.codeview.innerHTML = this.fightscript.render();
+    var code_preview = this.fightscript.render()
+    var rune_preview = this.rune.render()
 
-    this.rune_preview.innerHTML = this.rune.preview() ? this.rune.preview() : ">"
+    this.codeview.innerHTML = code_preview ? code_preview : '> Nothing.' ;
+    this.rune_preview.innerHTML = rune_preview ? rune_preview : '> Begin.'
+
+    this.home_tab.style.display = this.fightscript.runes().length < 1 ? "none" : "inline-block"
 
     var runes = this.fightscript.runes()
-    this.collection.innerHTML = ""
+    this.homeview.innerHTML = ""
     for(id in runes){
       var rune = runes[id]
       rune.update()
-      this.collection.innerHTML += rune.el.outerHTML;
+      this.homeview.innerHTML += rune.el.outerHTML;
     }
   }
 

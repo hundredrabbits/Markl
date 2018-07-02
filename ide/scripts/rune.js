@@ -48,7 +48,7 @@ function Rune(characters = [])
     return this.trigger && this.event && this.condition && this.action;
   }
 
-  this.preview = function()
+  this.render = function()
   {
     var html = ""
 
