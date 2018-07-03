@@ -32,44 +32,43 @@ function Editor()
   this.rune_tab.onclick = () => { this.el.className = "rune" }
   this.hide_tab.onclick = () => { this.el.className = "hide" }
 
-  // Runeview
+  // Menu
 
-  this.rune_preview = document.createElement('yu')
-  this.rune_preview.innerHTML = ">"
-  this.rune_preview.className = "preview"
-
+  this.menu = document.createElement('yu');
+  this.menu.id = "menu";
   this.save_button = document.createElement('button')
   this.save_button.innerHTML = "add"
   this.save_button.className = "save"
   this.clear_button = document.createElement('button')
   this.clear_button.innerHTML = "clear"
   this.clear_button.className = "clear"
+  this.run_button = document.createElement('button')
+  this.run_button.innerHTML = "run"
+  this.run_button.className = "run"
+  this.refresh_button = document.createElement('button')
+  this.refresh_button.innerHTML = "refresh"
+  this.refresh_button.className = "refresh"
+  this.export_button = document.createElement('button')
+  this.export_button.innerHTML = "export"
+  this.export_button.className = "export"
+
+  this.save_button.onclick = () => { this.add_rune(this.rune); }
+  this.clear_button.onclick = () => { this.clear_rune(); }
+
+  // Runeview
+
+  this.rune_preview = document.createElement('yu')
+  this.rune_preview.innerHTML = ">"
+  this.rune_preview.className = "preview"
 
   // Codeview
 
   this.textbox = document.createElement('textarea')
 
-  this.code_menu = document.createElement('div')
-  this.code_menu.className = "menu"
-  this.run_button = document.createElement('button')
-  this.run_button.innerHTML = "run"
-  this.run_button.className = "run"
-
-  this.refresh_button = document.createElement('button')
-  this.refresh_button.innerHTML = "refresh"
-  this.refresh_button.className = "refresh"
-
-  this.export_button = document.createElement('button')
-  this.export_button.innerHTML = "export"
-  this.export_button.className = "export"
-
-
   this.lang        = new FightLang();
   this.fightscript = new FightScript();
   this.rune        = new Rune();
 
-  this.save_button.onclick = () => { this.add_rune(this.rune); }
-  this.clear_button.onclick = () => { this.clear_rune(); }
 
   this.install = function(host)
   {
@@ -78,27 +77,27 @@ function Editor()
     this.tabs.appendChild(this.rune_tab)
     this.tabs.appendChild(this.code_tab)
     this.tabs.appendChild(this.hide_tab)
-    this.el.appendChild(this.homeview)
 
+    this.el.appendChild(this.menu)
+    this.menu.appendChild(this.run_button)
+    this.menu.appendChild(this.refresh_button)
+    this.menu.appendChild(this.export_button)
+    this.menu.appendChild(this.save_button)
+    this.menu.appendChild(this.clear_button)
+
+    this.el.appendChild(this.homeview)
     this.el.appendChild(this.runeview)
     this.runeview.appendChild(this.rune.el)
     this.runeview.appendChild(this.rune_preview)
 
     // Codeview
     this.codeview.appendChild(this.textbox)
-    this.codeview.appendChild(this.code_menu)
-    this.code_menu.appendChild(this.run_button)
-    this.code_menu.appendChild(this.refresh_button)
-    this.code_menu.appendChild(this.export_button)
     this.el.appendChild(this.codeview)
 
     var fragments = this.lang.fragments();
     for(id in fragments){
-      this.runeview.appendChild(new Button(this,fragments[id]).el)
+      this.runeview.appendChild(new RuneButton(this,fragments[id]).el)
     }
-
-    this.runeview.appendChild(this.save_button)
-    this.runeview.appendChild(this.clear_button)
 
     host.appendChild(this.el);
   }
@@ -149,13 +148,13 @@ function Editor()
     }
   }
 
-  function Button(host,fragment)
+  function RuneButton(host,fragment)
   {
     this.host = host;
     this.fragment = fragment;
 
     this.el = document.createElement('button');
-    this.el.className = fragment.type.toLowerCase();
+    this.el.className = "rune "+fragment.type.toLowerCase();
     this.el.style.backgroundImage = `url(media/runes/fragments/${fragment.name.toLowerCase().replace(/ /g,'.')}.png)`;
 
     this.el.onclick = () => { this.construct(); }
