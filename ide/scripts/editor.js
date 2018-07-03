@@ -16,16 +16,16 @@ function Editor()
   this.tabs.id = "tabs";
   this.home_tab = document.createElement('a')
   this.home_tab.className = "tab home"
-  this.home_tab.innerHTML = "home"
+  this.home_tab.innerHTML = "H"
   this.code_tab = document.createElement('a')
   this.code_tab.className = "tab code"
-  this.code_tab.innerHTML = "code"
+  this.code_tab.innerHTML = "C"
   this.rune_tab = document.createElement('a')
   this.rune_tab.className = "tab rune"
-  this.rune_tab.innerHTML = "rune"
+  this.rune_tab.innerHTML = "R"
   this.hide_tab = document.createElement('a')
   this.hide_tab.className = "tab hide"
-  this.hide_tab.innerHTML = "hide"
+  this.hide_tab.innerHTML = ">"
 
   this.home_tab.onclick = () => { this.el.className = "home" }
   this.code_tab.onclick = () => { this.el.className = "code" }
@@ -61,9 +61,10 @@ function Editor()
   // Codeview
 
   this.textbox = document.createElement('textarea')
+  this.hint = document.createElement('hint')
   this.status = document.createElement('t')
   this.status.id = "status"
-  this.textbox.onchange = () => { this.reload_code(); }
+  this.textbox.onchange = () => { this.reload_code(); console.log("!!!"); }
 
   this.lang        = new FightLang();
   this.fightscript = new FightScript();
@@ -91,6 +92,7 @@ function Editor()
     this.runeview.appendChild(this.rune_preview)
 
     // Codeview
+    this.codeview.appendChild(this.hint)
     this.codeview.appendChild(this.textbox)
     this.el.appendChild(this.codeview)
 
@@ -122,8 +124,11 @@ function Editor()
 
     var is_valid = updated.validate();
 
+    if(!is_valid){ console.warn("Invalid fightscript",rune); return;}
+
     this.fightscript.add(rune)
     this.clear_rune();
+    this.textbox.value = this.fightscript.render()
     this.el.className = "home"
   }
 
@@ -136,6 +141,7 @@ function Editor()
   this.reload_code = function()
   {
     this.validate();
+    this.update();
   }
 
   this.validate = function()
