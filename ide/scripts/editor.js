@@ -30,7 +30,7 @@ function Editor()
   this.home_tab.onclick = () => { this.el.className = "home" }
   this.code_tab.onclick = () => { this.el.className = "code" }
   this.rune_tab.onclick = () => { this.el.className = "rune" }
-  this.hide_tab.onclick = () => { this.el.className = "hide" }
+  this.hide_tab.onclick = () => { this.el.className += " hide" }
 
   // Menu
 
