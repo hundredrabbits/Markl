@@ -43,9 +43,39 @@ function Rune(characters = [])
     this.el.innerHTML = html
   }
 
-  this.is_complete = function()
+  this.validate = function()
   {
-    return this.trigger && this.event && this.condition && this.action;
+    this.update()
+    if(!this.trigger || !this.event || !this.condition || !this.action){ return false; }
+
+    var lang = new FightLang();
+
+    if(lang.spec.TRIGGER.indexOf(this.trigger) < 0){
+      return false;
+    }
+    if(lang.spec.EVENT.indexOf(this.event) < 0){
+      return false;
+    }
+    if(lang.spec.CONDITION.indexOf(this.condition) < 0){
+      return false;
+    }
+    if(lang.spec.ACTION.indexOf(this.action) < 0){
+      return false;
+    }
+
+    return true
+  }
+
+  this.fragments = function()
+  {
+    var a = []
+
+    if(this.trigger){ a.push(this.trigger); }
+    if(this.event){ a.push(this.event); }
+    if(this.condition){ a.push(this.condition); }
+    if(this.action){ a.push(this.action); }
+
+    return a
   }
 
   this.render = function()

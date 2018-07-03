@@ -75,4 +75,21 @@ function FightScript(style = {})
     }
     return text
   }
+
+  this.copy = function()
+  {
+    var style = JSON.parse(JSON.stringify(this.style))
+    return new FightScript(style)
+  }
+
+  this.validate = function()
+  {
+    var runes = this.runes()
+    for(id in runes){
+      var rune = runes[id];
+      var is_valid = rune.validate();
+      if(!is_valid){ return false; }
+    }
+    return true;
+  }
 }

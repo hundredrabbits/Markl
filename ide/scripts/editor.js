@@ -36,25 +36,21 @@ function Editor()
 
   this.menu = document.createElement('yu');
   this.menu.id = "menu";
-  this.save_button = document.createElement('button')
-  this.save_button.innerHTML = "add"
-  this.save_button.className = "save"
+  this.add_button = document.createElement('button')
+  this.add_button.innerHTML = "add"
   this.clear_button = document.createElement('button')
   this.clear_button.innerHTML = "clear"
-  this.clear_button.className = "clear"
   this.run_button = document.createElement('button')
   this.run_button.innerHTML = "run"
-  this.run_button.className = "run"
   this.refresh_button = document.createElement('button')
-  this.refresh_button.innerHTML = "refresh"
   this.refresh_button.className = "refresh"
+  this.refresh_button.innerHTML = "refresh"
   this.export_button = document.createElement('button')
   this.export_button.innerHTML = "export"
-  this.export_button.className = "export"
 
-  this.save_button.onclick = () => { this.add_rune(this.rune); }
+  this.add_button.onclick = () => { this.add_rune(this.rune); }
   this.clear_button.onclick = () => { this.clear_rune(); }
-  this.refresh_button.onclick = () => { this.fightscript.replace(this.textbox.value); this.update(); }
+  this.refresh_button.onclick = () => { this.reload_code(); }
 
   // Runeview
 
@@ -65,7 +61,9 @@ function Editor()
   // Codeview
 
   this.textbox = document.createElement('textarea')
-  this.textbox.onchange = () => { this.fightscript.replace(this.textbox.value); this.update(); }
+  this.status = document.createElement('t')
+  this.status.id = "status"
+  this.textbox.onchange = () => { this.reload_code(); }
 
   this.lang        = new FightLang();
   this.fightscript = new FightScript();
@@ -83,8 +81,9 @@ function Editor()
     this.menu.appendChild(this.run_button)
     this.menu.appendChild(this.refresh_button)
     this.menu.appendChild(this.export_button)
-    this.menu.appendChild(this.save_button)
+    this.menu.appendChild(this.add_button)
     this.menu.appendChild(this.clear_button)
+    this.menu.appendChild(this.status)
 
     this.el.appendChild(this.homeview)
     this.el.appendChild(this.runeview)
@@ -116,7 +115,12 @@ function Editor()
 
   this.add_rune = function(rune)
   {
-    if(!this.rune.is_complete()){ console.warn("Incomplete rune",rune); return; }
+    if(!this.rune.validate()){ console.warn("Invalid rune",rune); return; }
+
+    var updated = this.fightscript.copy();
+    updated.add(rune);
+
+    var is_valid = updated.validate();
 
     this.fightscript.add(rune)
     this.clear_rune();
@@ -129,16 +133,41 @@ function Editor()
     this.update()
   }
 
+  this.reload_code = function()
+  {
+    this.validate();
+  }
+
+  this.validate = function()
+  {
+    var code = this.textbox.value
+    var parsed = new FightScript().parse(code)
+    var fightscript = new FightScript(parsed)
+    var is_valid = fightscript.validate();
+
+    if(is_valid){
+      this.fightscript.replace(this.textbox.value); 
+      this.status.innerHTML = "Valid code!"
+    }
+    else{
+      this.status.innerHTML = "Invalid code."
+    }
+  }
+
   this.update = function()
   {
     var code_preview = this.fightscript.render()
     var rune_preview = this.rune.render()
 
     this.textbox.innerHTML = code_preview ? code_preview : '' ;
-    this.rune_preview.innerHTML = rune_preview ? rune_preview : '> Begin.'
+    this.rune_preview.innerHTML = rune_preview ? rune_preview : ''
 
     this.home_tab.style.display = this.fightscript.runes().length < 1 ? "none" : "inline-block"
-    this.code_tab.style.display = this.fightscript.runes().length < 1 ? "none" : "inline-block"
+
+    // Menu
+    this.run_button.className = this.fightscript.runes().length < 1 ? "disabled run" : "run"
+    this.clear_button.className = !this.rune.fragments().length > 0 ? "disabled clear" : "clear"
+    this.add_button.className = !this.rune.validate() ? "disabled add" : "add"
 
     var runes = this.fightscript.runes()
     this.homeview.innerHTML = ""
