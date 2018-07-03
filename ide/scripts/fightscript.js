@@ -16,6 +16,11 @@ function FightScript(style = {})
     console.warn("TODO")
   }
 
+  this.replace = function(text)
+  {
+    this.style = this.parse(text)
+  }
+
   this.parse = function(text)
   {
     var style = {};

@@ -54,6 +54,7 @@ function Editor()
 
   this.save_button.onclick = () => { this.add_rune(this.rune); }
   this.clear_button.onclick = () => { this.clear_rune(); }
+  this.refresh_button.onclick = () => { this.fightscript.replace(this.textbox.value); this.update(); }
 
   // Runeview
 
@@ -64,11 +65,11 @@ function Editor()
   // Codeview
 
   this.textbox = document.createElement('textarea')
+  this.textbox.onchange = () => { this.fightscript.replace(this.textbox.value); this.update(); }
 
   this.lang        = new FightLang();
   this.fightscript = new FightScript();
   this.rune        = new Rune();
-
 
   this.install = function(host)
   {

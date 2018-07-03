@@ -13,5 +13,5 @@
 
 ## FIGHTLANG
 
-- Rune
-  - Fragment
+- Rune/Fragment
+- Add phonetics to runes
