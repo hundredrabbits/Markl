@@ -1,7 +1,7 @@
 
 body yu { display: block }
 
-body #editor { color:white; max-height: 50vh; position: fixed;bottom: 0; left:0px; width:100vw; height:100vh; background:#222; transition: bottom 250ms, height 250ms}
+body #editor { color:white; position: fixed;bottom: 0; left:0px; width:100vw; height:300px; background:#222; transition: bottom 250ms, height 250ms}
 
 body #editor > div { padding:15px; margin:15px; }
 
@@ -10,11 +10,11 @@ body #editor #tabs a { color:white; display: inline-block; padding:0px 15px; lin
 body #editor #tabs a:hover { background:#555; cursor: pointer; text-decoration: underline;}
 body #editor #tabs a.hide { float:right; margin-right:25px; }
 
-/* HOME */
+/* HOMEVIEW */
 body #editor #homeview { min-height:30px; padding:15px; }
 body #editor #homeview rune { width:50px; height:50px; display: inline-block; margin-right:10px; }
 
-/* RUNE*/
+/* RUNEVIEW */
 body #editor #runeview { position: relative; max-width: 700px  }
 body #editor #runeview rune { margin-bottom: 30px; position: absolute; left:15px; top:15px;width:50px;height:50px;}
 body #editor #runeview .preview { font-family: 'courier';margin-bottom: 15px;line-height:25px;min-height: 50px; padding-left:70px; }
@@ -31,12 +31,15 @@ body #editor #runeview button.action { background-color:pink; }
 body #editor #runeview button.save { }
 body #editor #runeview button.clear {  }
 
-/* CODE */
-body #editor #codeview { padding:10px; font-family: 'courier'; font-size:12px; margin-bottom:30px; color:white; min-height: 30px}
+/* CODEVIEW */
+body #editor #codeview { padding:10px; font-family: 'courier'; font-size:12px; margin-bottom:30px; color:white; min-height: 30px; position: relative;}
 body #editor #codeview t.trigger { color:cyan; }
 body #editor #codeview t.event { color:yellow; }
 body #editor #codeview t.condition { color:orange; }
 body #editor #codeview t.action { color:pink; }
+body #editor #codeview textarea { background: transparent;width:100%;height:calc(100% - 75px); white-space: pre }
+body #editor #codeview div.menu { position: relative; }
+body #editor #codeview div.menu button { padding:0px 10px; line-height: 30px; margin-right:10px; border-radius: 5px; background:#555; }
 
 body #editor rune { width:100px; height:100px; display: block;  position: relative; border-radius: 5px; overflow: hidden; }
 body #editor rune .fragment { width:50%; display: block; height:50%; position: absolute; top:0px; left:0px; background-position: center; background-size:90%; background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1);}

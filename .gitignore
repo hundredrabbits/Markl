@@ -3,5 +3,3 @@ builds/
 .DS_Store
 */.DS_Store
 *.log
-*.png
-ide/media/rune/fragments/sight.png

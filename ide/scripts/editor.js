@@ -11,6 +11,7 @@ function Editor()
   this.homeview.id = "homeview";
 
   // Tabs
+
   this.tabs = document.createElement('yu');
   this.tabs.id = "tabs";
   this.home_tab = document.createElement('a')
@@ -32,6 +33,7 @@ function Editor()
   this.hide_tab.onclick = () => { this.el.className = "hide" }
 
   // Runeview
+
   this.rune_preview = document.createElement('yu')
   this.rune_preview.innerHTML = ">"
   this.rune_preview.className = "preview"
@@ -42,6 +44,25 @@ function Editor()
   this.clear_button = document.createElement('button')
   this.clear_button.innerHTML = "clear"
   this.clear_button.className = "clear"
+
+  // Codeview
+
+  this.textbox = document.createElement('textarea')
+
+  this.code_menu = document.createElement('div')
+  this.code_menu.className = "menu"
+  this.run_button = document.createElement('button')
+  this.run_button.innerHTML = "run"
+  this.run_button.className = "run"
+
+  this.refresh_button = document.createElement('button')
+  this.refresh_button.innerHTML = "refresh"
+  this.refresh_button.className = "refresh"
+
+  this.export_button = document.createElement('button')
+  this.export_button.innerHTML = "export"
+  this.export_button.className = "export"
+
 
   this.lang        = new FightLang();
   this.fightscript = new FightScript();
@@ -59,11 +80,17 @@ function Editor()
     this.tabs.appendChild(this.hide_tab)
     this.el.appendChild(this.homeview)
 
-
-    this.el.appendChild(this.codeview)
     this.el.appendChild(this.runeview)
     this.runeview.appendChild(this.rune.el)
     this.runeview.appendChild(this.rune_preview)
+
+    // Codeview
+    this.codeview.appendChild(this.textbox)
+    this.codeview.appendChild(this.code_menu)
+    this.code_menu.appendChild(this.run_button)
+    this.code_menu.appendChild(this.refresh_button)
+    this.code_menu.appendChild(this.export_button)
+    this.el.appendChild(this.codeview)
 
     var fragments = this.lang.fragments();
     for(id in fragments){
@@ -107,10 +134,11 @@ function Editor()
     var code_preview = this.fightscript.render()
     var rune_preview = this.rune.render()
 
-    this.codeview.innerHTML = code_preview ? code_preview : '> Nothing.' ;
+    this.textbox.innerHTML = code_preview ? code_preview : '' ;
     this.rune_preview.innerHTML = rune_preview ? rune_preview : '> Begin.'
 
     this.home_tab.style.display = this.fightscript.runes().length < 1 ? "none" : "inline-block"
+    this.code_tab.style.display = this.fightscript.runes().length < 1 ? "none" : "inline-block"
 
     var runes = this.fightscript.runes()
     this.homeview.innerHTML = ""

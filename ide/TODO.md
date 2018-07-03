@@ -8,7 +8,6 @@
 
 - Make code view editable.
 - Add compile button to code view.
-- Hide home when empty
 
 ## FIGHTSCRIPT
 
