@@ -171,7 +171,7 @@ function Editor()
 
     this.textbox.innerHTML = code_preview ? code_preview : '' ;
     this.rune_preview.innerHTML = rune_preview ? rune_preview : ''
-    this.rune_name.innerHTML = this.rune.name()
+    this.rune_name.innerHTML = this.rune.name
 
     this.home_tab.style.display = this.fightscript.runes().length < 1 ? "none" : "inline-block"
 

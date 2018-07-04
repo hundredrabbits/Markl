@@ -3,6 +3,7 @@ function Rune(characters = [])
   this.el = document.createElement('rune');
   this.el.className = "rune"
   this.characters = characters;
+  this.name = "unknown"
   
   this.trigger = null;
   this.event = null;
@@ -27,6 +28,7 @@ function Rune(characters = [])
     this.event = this.characters[1] ? this.characters[1].toUpperCase() : null
     this.condition = this.characters[2] ? this.characters[2].toUpperCase() : null
     this.action = this.characters[3] ? this.characters[3].toUpperCase() : null
+    this.name = new FightLang().phonetic(this);
 
     this.draw()
   }
@@ -88,36 +90,6 @@ function Rune(characters = [])
     if(this.action){ html += `<t class='action'>THEN ${this.action}</t> ` }
 
     return html.trim()
-  }
-
-  this.name = function()
-  {
-    var lang = new FightLang();
-
-    var s1 = lang.spec.TRIGGER.indexOf(this.trigger) + 2
-    var s2 = lang.spec.EVENT.indexOf(this.event) + 2
-    var s3 = lang.spec.CONDITION.indexOf(this.condition) + 2
-    var s4 = lang.spec.ACTION.indexOf(this.action) + 2
-
-    var vowels = ["a","e","i","o","u"]
-    var cons_w = ["r","s","f","h","j","l","z","v","n","m","y"]
-    var cons_s = ["t","p","d","g","b"]
-
-    var s = ""
-
-    s += s1 > -1 ? vowels[(s1+s2*s3+s4) % vowels.length] : "" 
-    s += s2 > 1 ? vowels[(s1*s2+s3*s4) % vowels.length] + cons_w[(s1+s2*s3+s4) % cons_w.length] : ""
-    s += s3 > 1 ? "'"+ vowels[(s1*s2*s3*s4) % vowels.length] + cons_w[(s1+s2+s3+s4) % cons_w.length] : ""
-    s += s4 > 1 ? vowels[((s1+s2+s3*s4)) % vowels.length] + cons_s[((s1*s2*s3+s4)) % cons_s.length] : ""
-    
-    s = s.replace(/aa/g,"ä")
-    s = s.replace(/ee/g,"ë")
-    s = s.replace(/ii/g,"ï")
-    s = s.replace(/oo/g,"ö")
-    s = s.replace(/uu/g,"ü")
-    s = s.replace(/yy/g,"ÿ")
-
-    return s.trim().capitalize()
   }
 }
 
