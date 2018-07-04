@@ -94,13 +94,30 @@ function Rune(characters = [])
   {
     var lang = new FightLang();
 
-    var s1 = lang.spec.TRIGGER.indexOf(this.trigger)
-    var s2 = lang.spec.EVENT.indexOf(this.event)
-    var s3 = lang.spec.CONDITION.indexOf(this.condition)
-    var s4 = lang.spec.ACTION.indexOf(this.action)
+    var s1 = lang.spec.TRIGGER.indexOf(this.trigger) + 2
+    var s2 = lang.spec.EVENT.indexOf(this.event) + 2
+    var s3 = lang.spec.CONDITION.indexOf(this.condition) + 2
+    var s4 = lang.spec.ACTION.indexOf(this.action) + 2
 
-    console.log(s1,s2,s3,s4)
-    return "Kaelh"
+    var vowels = ["a","e","i","o","u"]
+    var cons_w = ["r","s","f","h","j","l","z","v","n","m","y"]
+    var cons_s = ["t","p","d","g","b"]
+
+    var s = ""
+
+    s += s1 > -1 ? vowels[(s1+s2*s3+s4) % vowels.length] : "" 
+    s += s2 > 1 ? vowels[(s1*s2+s3*s4) % vowels.length] + cons_w[(s1+s2*s3+s4) % cons_w.length] : ""
+    s += s3 > 1 ? "'"+ vowels[(s1*s2*s3*s4) % vowels.length] + cons_w[(s1+s2+s3+s4) % cons_w.length] : ""
+    s += s4 > 1 ? vowels[((s1+s2+s3*s4)) % vowels.length] + cons_s[((s1*s2*s3+s4)) % cons_s.length] : ""
+    
+    s = s.replace(/aa/g,"ä")
+    s = s.replace(/ee/g,"ë")
+    s = s.replace(/ii/g,"ï")
+    s = s.replace(/oo/g,"ö")
+    s = s.replace(/uu/g,"ü")
+    s = s.replace(/yy/g,"ÿ")
+
+    return s.trim().capitalize()
   }
 }
 
@@ -111,3 +128,7 @@ function Fragment(type,name)
   this.depth = ["TRIGGER","EVENT","CONDITION","ACTION"].indexOf(this.type)
 }
 
+String.prototype.capitalize = function()
+{
+  return this.charAt(0).toUpperCase() + this.slice(1).toLowerCase();
+}
