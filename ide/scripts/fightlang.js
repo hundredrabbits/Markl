@@ -77,11 +77,11 @@ function FightLang()
 
   this.phonetic = function(rune)
   {
-    var k1 = this.spec.TRIGGER.indexOf(rune.trigger)
-    var k2 = this.spec.EVENT.indexOf(rune.event)
+    var k1 = this.spec.TRIGGER.indexOf(rune.trigger)+1
+    var k2 = this.spec.EVENT.indexOf(rune.event)+1
 
     var k_p = rune.condition ? rune.condition.split(" ") : 0
-    var k3 = this.spec.CONDITION.indexOf(rune.condition)
+    var k3 = this.spec.CONDITION.indexOf(rune.condition)+1
     var k4 = rune.condition ? word_value(k_p[0]) : 0
     var k5 = rune.condition ? word_value(k_p[k_p.length-1]) : 0
 
@@ -98,8 +98,8 @@ function FightLang()
     s += k1 > -1 ? vowels[k1 % vowels.length] : ''
     s += k2+k1 > -1 ? vowels[((k1*vowels.length)+k2) % vowels.length] + cons_w[((k1*vowels.length)+k2) % cons_w.length] : ''
     
-    s += k3 > -1 ? vowels[k3 % vowels.length] : ''
-    s += k4+k3 > -1 ? vowels[(Math.floor(k3/vowels.length)+k4) % vowels.length] : ''
+    s += k3 > 0 ? vowels[k3 % vowels.length] : ''
+    s += k4+k3 > 0 ? vowels[(Math.floor(k3/vowels.length)+k4) % vowels.length] : ''
     s += k5 > 0 ? cons_w[k5 % cons_w.length] : ''
 
     s += k6 > -1 ? vowels[k6 % vowels.length] : ''
