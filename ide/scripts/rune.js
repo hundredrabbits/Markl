@@ -89,6 +89,19 @@ function Rune(characters = [])
 
     return html.trim()
   }
+
+  this.name = function()
+  {
+    var lang = new FightLang();
+
+    var s1 = lang.spec.TRIGGER.indexOf(this.trigger)
+    var s2 = lang.spec.EVENT.indexOf(this.event)
+    var s3 = lang.spec.CONDITION.indexOf(this.condition)
+    var s4 = lang.spec.ACTION.indexOf(this.action)
+
+    console.log(s1,s2,s3,s4)
+    return "Kaelh"
+  }
 }
 
 function Fragment(type,name)

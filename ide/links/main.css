@@ -23,7 +23,7 @@ body #editor #homeview rune { width:50px; height:50px; display: inline-block; ma
 /* RUNEVIEW */
 body #editor #runeview {  }
 body #editor #runeview rune { margin: 0px auto;margin-bottom: 30px;width: 80px;height: 80px; margin-top:15px;}
-body #editor #runeview .preview { font-family: 'times';margin-bottom: 15px;line-height: 25px;min-height: 50px;text-transform: lowercase ;text-align: center;font-size:14px;width:150px;margin:0px auto 30px;border-top:1px solid #555;padding-top:15px }
+body #editor #runeview .preview { font-family: 'times';margin-bottom: 15px;line-height: 25px;text-transform: lowercase ;text-align: center;font-size:14px;margin:0px auto 30px;border-top:1px solid #555;padding-top:15px }
 body #editor #runeview .preview t.trigger { color:#72dec2; }
 body #editor #runeview .preview t.event { color:red; }
 body #editor #runeview .preview t.condition { color:white; }
