@@ -49,6 +49,7 @@ function Editor()
   this.export_button.innerHTML = "export"
 
   this.add_button.onclick = () => { this.add_rune(this.rune); }
+  this.run_button.onclick = () => { this.run(); }
   this.clear_button.onclick = () => { this.clear_rune(); }
   this.refresh_button.onclick = () => { this.reload_code(); }
 
@@ -69,6 +70,12 @@ function Editor()
 
   this.lang        = new FightLang();
   this.fightscript = new FightScript();
+
+  this.is_paused = false;
+  this.is_playing = false;
+  this.history = null;
+  this.index = 0;
+  this.timer = null;
 
   this.install = function(host)
   {
@@ -103,11 +110,79 @@ function Editor()
     }
 
     host.appendChild(this.el);
+    this.update();
+  }
+
+  this.run = function()
+  {
+    markl.scenario.reload()
+    markl.scenario.inject_style(this.fightscript.render());
+
+    this.history = markl.scenario.run();
+    this.index = 0;
+
+    this.update();
+    markl.renderer.update(this.history[this.index].state);
+
+    this.stop();
+    setTimeout(() => { this.start(); }, TIMING.delayed_start)
   }
 
   this.start = function()
   {
+    this.is_paused = false;
+    this.is_playing = true;
+    this.timer = setInterval(() => { this.next(); },TIMING.turn);
+  }
+
+  this.pause = function()
+  {
+    if(this.is_paused){ this.resume(); return; }
+
+    this.is_paused = true;
+    clearInterval(this.timer);
     this.update();
+    markl.renderer.update(this.history[this.index].state);
+  }
+
+  this.resume = function()
+  {
+    this.is_paused = false;
+    this.timer = setInterval(() => { this.next(); },TIMING.turn);
+    this.update();
+    markl.renderer.update(this.history[this.index].state);
+  }
+
+  this.stop = function()
+  {
+    this.is_paused = false;
+    this.is_playing = false;
+    this.index = 0;
+    clearInterval(this.timer);
+    this.update();
+    if(this.history){
+      markl.renderer.update(this.history[this.index].state);  
+    }
+  }
+
+  this.next = function()
+  {
+    if(!this.history || this.index == this.history.length-1 ){ console.warn("No history, or at end"); this.pause(); return; }
+    if(this.history[this.index].state.players[0].hp < 0){ console.warn("Player is dead"); this.pause(); return; }
+
+    this.index += this.index <= this.history.length ? 1 : 0;
+    this.update();
+    markl.renderer.animator.start()
+    markl.renderer.update(this.history[this.index].state);
+  }
+
+  this.prev = function()
+  {
+    if(!this.history || this.index == 0){ console.warn("No history, or at beginning"); return; }
+
+    this.index -= this.index >= 0 ? 1 : 0;
+    this.update();
+    markl.renderer.update(this.history[this.index].state);
   }
 
   this.add_fragment = function(fragment)

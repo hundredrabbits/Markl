@@ -1,5 +1,4 @@
-## TODOs
-
+# TODOs
 
 ## EDITOR
 
@@ -9,11 +8,13 @@
 
 ### RUNE
 
+- Validate runes, don't allow to input runes twice.
+- Disable buttons on duplicate.
+
 ### CODE
 
 - Validate code as it changes.
 - Add line numbers
-
 
 ### Immediate
 

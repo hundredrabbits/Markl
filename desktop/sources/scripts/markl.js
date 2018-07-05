@@ -49,7 +49,6 @@ function Markl()
   
   this.start = function()
   {
-    this.editor.start();
     this.scenario.load("dojo");
     this.renderer.start();
   }

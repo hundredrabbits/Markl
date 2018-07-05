@@ -69,6 +69,8 @@ wrapper { display: block; }
 #renderer stage sprite sheet.sin { background-image: url(../media/fighters/sin.png); }
 #renderer stage sprite sheet.patience { background-image: url(../media/fighters/patience.png); }
 #renderer stage sprite sheet.pest { background-image: url(../media/fighters/pest.png); }
+#renderer stage sprite sheet.dummy { background-image: url(../media/fighters/dummy.png); }
+#renderer stage sprite sheet.goat { background-image: url(../media/fighters/goat.png); }
 
 /* Status */
 
