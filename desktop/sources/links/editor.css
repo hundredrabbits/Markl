@@ -1,17 +1,22 @@
 
-body yu { display: block }
+body #editor { color: white;position: fixed;top: 0;right: 0px;width: 420px;height: 100vh;background: #222;transition: right 250ms, width 250ms; font-family: 'input_mono_regular'; font-size:11px;}
 
-body #editor { color: white;position: fixed;top: 0;right: 0px;width: 420px;height: 100vh;background: #222;transition: right 250ms, width 250ms}
+body #editor > div { padding: 30px;margin-bottom: 30px;color: white;min-height: 30px;position: relative; height:calc(100% - 10px); }
 
-body #editor > div { padding: 30px;font-family: 'courier';font-size: 12px;margin-bottom: 30px;color: white;min-height: 30px;position: relative; height:calc(100% - 10px); }
+body #editor rune { width:100px; height:100px; display: block;  position: relative; border-radius: 5px; overflow: hidden; }
+body #editor rune .fragment { width:50%; display: block; height:50%; position: absolute; top:0px; left:0px; background-position: center; background-size:90%; background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1);}
+body #editor rune .fragment.trigger { top:0%; left:0%; }
+body #editor rune .fragment.event { top:0%; left:50%; }
+body #editor rune .fragment.condition { top:50%; left:0%; }
+body #editor rune .fragment.action { top:50%; left:50%; }
 
-body #editor #tabs { font-family: courier;font-size: 12px;position: absolute;top:0px;left:-40px; height:100vh}
-body #editor #tabs a { color: white;display: block;margin-right: 5px;margin-bottom: -1px;background: #999;border-top-left-radius: 5px;border-bottom-left-radius: 5px;width:40px;height:40px;overflow: hidden; text-align: center; vertical-align: middle; font-size:20px; line-height: 40px; margin-top: 5px}
+body #editor #tabs { position: absolute;top:0px;left:-40px; height:100vh}
+body #editor #tabs a { color: white;display: block;margin-right: 5px;margin-bottom: -1px;background: #999;border-top-left-radius: 5px;border-bottom-left-radius: 5px;width:40px;height:40px;overflow: hidden; text-align: center; vertical-align: middle; line-height: 40px; margin-top: 10px}
 body #editor #tabs a:hover { background:#555; cursor: pointer; text-decoration: underline;}
 body #editor #tabs a.hide { float:right; margin-right:25px; background:transparent; color:black; position: absolute;bottom: 0px}
 
 body #editor #menu { position: absolute; bottom:30px; left:30px; z-index: 9000 }
-body #editor #menu button { padding:0px 10px; line-height: 30px; margin-right:10px; border-radius: 5px; background:#555; font-family: courier; font-size:11px; }
+body #editor #menu button { padding:0px 10px; line-height: 30px; margin-right:10px; border-radius: 5px; background:#555;  }
 body #editor #menu button:hover { background:white; cursor: pointer; color:black; }
 body #editor #menu button.disabled { background:#333; color:#aaa;}
 body #editor #menu button.disabled:hover { cursor: default; }
@@ -22,15 +27,17 @@ body #editor #homeview rune { width:50px; height:50px; display: inline-block; ma
 
 /* RUNEVIEW */
 body #editor #runeview {  }
-body #editor #runeview rune { margin: 0px auto;margin-bottom: 30px;width: 80px;height: 80px; margin-top:15px;}
-body #editor #runeview .name { font-family: 'times';font-size:30px; font-style: italic; text-align: center; margin-bottom: 15px }
-body #editor #runeview .preview { font-family: 'courier';margin-bottom: 0px;margin: 0px auto 30px;padding-top: 15px;padding: 0px 30px;font-size: 12px;line-height: 18px;text-align: center;min-height: 35px; }
+body #editor #runeview wrapper { border-bottom: 1px solid #333;margin-bottom: 15px; }
+body #editor #runeview rune { width: 60px;height: 60px;margin: 0px auto 30px; }
+body #editor #runeview rune .fragment { background-size:80%; }
+body #editor #runeview .name {  text-align: center; margin-bottom: 15px }
+body #editor #runeview .preview { margin-bottom: 0px;margin: 0px auto 30px;padding-top: 15px;padding: 0px 30px;line-height: 18px;text-align: center;min-height: 35px; }
 body #editor #runeview .preview t.trigger { color:#72dec2; }
 body #editor #runeview .preview t.event { color:red; }
 body #editor #runeview .preview t.condition { color:white; }
 body #editor #runeview .preview t.action { color:pink; }
 body #editor #runeview button:hover { background-color:#ccc !important; }
-body #editor #runeview button.rune { display: inline-block; border-radius:2px; margin-right:5px; margin-bottom:5px; width:40px; height: 40px; background-size:25px 25px; background-position: center; background-repeat: no-repeat; background-size}
+body #editor #runeview button.rune { display: inline-block; border-radius:2px; margin-right:5px; margin-bottom:5px; width:40px; height: 40px; background-size:55%; background-position: center; background-repeat: no-repeat; background-size}
 body #editor #runeview button.rune:hover { background-color: :red !important; cursor: pointer; }
 body #editor #runeview button.rune.trigger { background-color:#72dec2; }
 body #editor #runeview button.rune.event { background-color:red; }
@@ -48,15 +55,7 @@ body #editor #codeview t.action { color:pink; }
 body #editor #codeview textarea { background: transparent;width:100%;height:calc(100% - 90px); white-space: pre; margin-bottom:15px; position: relative; }
 body #editor #codeview hint { display: block;width: calc(100vw - 60px);height: 240px;white-space: pre;margin-bottom: 15px;position: absolute;}
 
-body #editor rune { width:100px; height:100px; display: block;  position: relative; border-radius: 5px; overflow: hidden; }
-body #editor rune .fragment { width:50%; display: block; height:50%; position: absolute; top:0px; left:0px; background-position: center; background-size:90%; background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1);}
-body #editor rune .fragment.trigger { top:0%; left:0%; }
-body #editor rune .fragment.event { top:0%; left:50%; }
-body #editor rune .fragment.condition { top:50%; left:0%; }
-body #editor rune .fragment.action { top:50%; left:50%; }
-
-/* Modes(Tabs) */
-
+/* MODES(Tabs) */
 body #editor.hide { right: -375px; }
 body #editor #menu button { display: none }
 

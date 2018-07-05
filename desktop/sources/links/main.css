@@ -1,6 +1,7 @@
 body { font-size:11px; font-family: 'input_mono_regular'; overflow:hidden; background: white }
 
 yu { display: block; }
+wrapper { display: block; }
 
 #designer { position: fixed;left: 60vw;width: 40vw;background: #000;height: 100vh;color: white; transition:left 250ms; }
 #designer textarea { color:white; margin:15px; width:calc(100% - 60px); height:calc(100% - 85px); background:none; padding:15px; border-radius:3px; position: relative; z-index:900; margin-left: 45px; line-height:20px; text-transform: uppercase;}

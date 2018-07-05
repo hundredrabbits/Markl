@@ -3,7 +3,7 @@ function FightLang()
   this.spec = {
     TRIGGER : [
       "SIGHT",
-      "COLLIDE",
+      "COLLISION",
       "HIT",
       "ANY"],
     EVENT : [
@@ -12,23 +12,22 @@ function FightLang()
       "PROJECTILE", 
       "ANY"],
     CONDITION : [
-      "DISTANCE IS 1",
-      "DISTANCE IS 2",
-      "DISTANCE IS 3",
-      "DISTANCE IS 4",
-      "TURN IS 1",
-      "TURN IS 2",
-      "TURN IS 3",
-      "TURN IS 4",
-      "HEALTH IS 1",
-      "HEALTH IS 2",
-      "HEALTH IS 3",
-      "HEALTH IS 4",
-      "CHAR IS SIN",
-      "CHAR IS PEST",
-      "CHAR IS PATIENCE",
-      "CHAR IS LANCER",
-      "CHAR IS GOAT",
+      "DISTANCE OF 1",
+      "DISTANCE OF 2",
+      "DISTANCE OF 3",
+      "DISTANCE OF 4",
+      "HEALTH OF 1",
+      "HEALTH OF 2",
+      "HEALTH OF 3",
+      "HEALTH OF 4",
+      "STAMINA OF 1",
+      "STAMINA OF 2",
+      "STAMINA OF 3",
+      "STAMINA OF 4",
+      "CHAR OF SIN",
+      "CHAR OF PEST",
+      "CHAR OF PATIENCE",
+      "CHAR OF LANCER",
       "ANY"],
     ACTION : [
       "MOVE UP",
@@ -60,7 +59,8 @@ function FightLang()
       "FIRE TOWARD",
       "FIRE AWAY",
       "FIRE ANY",
-      "WAIT"
+      "WAIT",
+      "TAUNT"
     ]
   }
 

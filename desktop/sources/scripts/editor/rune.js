@@ -37,10 +37,10 @@ function Rune(characters = [])
   { 
     var html = ""
 
-    if(this.trigger){ html += `<yu class='fragment trigger' style='background-image:url(media/runes/fragments/${this.trigger.toLowerCase().replace(/ /g,'.')}.png)'></yu>` }
-    if(this.event){ html += `<yu class='fragment event' style='background-image:url(media/runes/fragments/${this.event.toLowerCase().replace(/ /g,'.')}.png)'></yu>` }
-    if(this.condition){ html += `<yu class='fragment condition' style='background-image:url(media/runes/fragments/${this.condition.toLowerCase().replace(/ /g,'.')}.png)'></yu>` }
-    if(this.action){ html += `<yu class='fragment action' style='background-image:url(media/runes/fragments/${this.action.toLowerCase().replace(/ /g,'.')}.png)'></yu>` }
+    html += `<yu class='fragment trigger' style='background-image:url(media/runes/fragments/${this.trigger ? this.trigger.toLowerCase().replace(/ /g,'.') : 'blank'}.png)'></yu>`
+    html += `<yu class='fragment event' style='background-image:url(media/runes/fragments/${this.event ? this.event.toLowerCase().replace(/ /g,'.') : 'blank'}.png)'></yu>` 
+    html += `<yu class='fragment condition' style='background-image:url(media/runes/fragments/${this.condition ? this.condition.toLowerCase().replace(/ /g,'.') : 'blank'}.png)'></yu>` 
+    html += `<yu class='fragment action' style='background-image:url(media/runes/fragments/${this.action ? this.action.toLowerCase().replace(/ /g,'.') : 'blank'}.png)'></yu>` 
 
     this.el.innerHTML = html
   }
@@ -84,9 +84,9 @@ function Rune(characters = [])
   {
     var html = ""
 
-    if(this.trigger){ html += `<t class='trigger'>ON ${this.trigger}</t> ` }
-    if(this.event){ html += `<t class='event'>OF ${this.event}</t> ` }
-    if(this.condition){ html += `<t class='condition'>AND ${this.condition}</t> ` }
+    if(this.trigger){ html += `<t class='trigger'>WHEN ${this.trigger}</t>` }
+    if(this.event){ html += ` <t class='event'>OF ${this.event}</t> ` }
+    if(this.condition){ html += `<t class='condition'>WITH ${this.condition}</t> ` }
     if(this.action){ html += `<t class='action'>THEN ${this.action}</t> ` }
 
     return html.trim()

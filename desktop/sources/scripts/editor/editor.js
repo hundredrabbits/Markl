@@ -54,12 +54,9 @@ function Editor()
 
   // Runeview
 
+  this.preview_wrapper = document.createElement('wrapper')
   this.rune_preview = document.createElement('yu')
-  this.rune_preview.innerHTML = ">"
   this.rune_preview.className = "preview"
-  this.rune_name = document.createElement('yu')
-  this.rune_name.innerHTML = "??"
-  this.rune_name.className = "name"
   this.rune        = new Rune();
 
   // Codeview
@@ -91,9 +88,9 @@ function Editor()
 
     this.el.appendChild(this.homeview)
     this.el.appendChild(this.runeview)
-    this.runeview.appendChild(this.rune.el)
-    this.runeview.appendChild(this.rune_name)
-    this.runeview.appendChild(this.rune_preview)
+    this.runeview.appendChild(this.preview_wrapper)
+    this.preview_wrapper.appendChild(this.rune.el)
+    this.preview_wrapper.appendChild(this.rune_preview)
 
     // Codeview
     this.codeview.appendChild(this.hint)
@@ -171,7 +168,6 @@ function Editor()
 
     this.textbox.innerHTML = code_preview ? code_preview : '' ;
     this.rune_preview.innerHTML = rune_preview ? rune_preview : ''
-    this.rune_name.innerHTML = this.rune.name
 
     this.home_tab.style.display = this.fightscript.runes().length < 1 ? "none" : "inline-block"
 
