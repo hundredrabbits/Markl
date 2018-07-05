@@ -37,7 +37,7 @@ body #editor #runeview .preview t.event { color:red; }
 body #editor #runeview .preview t.condition { color:white; }
 body #editor #runeview .preview t.action { color:pink; }
 body #editor #runeview button:hover { background-color:#ccc !important; }
-body #editor #runeview button.rune { display: inline-block; border-radius:2px; margin-right:5px; margin-bottom:5px; width:40px; height: 40px; background-size:55%; background-position: center; background-repeat: no-repeat; background-size}
+body #editor #runeview button.rune { display: inline-block; border-radius:2px; margin-right:5px; margin-bottom:5px; width:40px; height: 40px; background-size:55%; background-position: center; background-repeat: no-repeat; transition: all 250ms}
 body #editor #runeview button.rune:hover { background-color: :red !important; cursor: pointer; }
 body #editor #runeview button.rune.trigger { background-color:#72dec2; }
 body #editor #runeview button.rune.event { background-color:red; }
@@ -45,6 +45,8 @@ body #editor #runeview button.rune.condition { background-color:white; }
 body #editor #runeview button.rune.action { background-color:pink; }
 body #editor #runeview button.rune.add { }
 body #editor #runeview button.rune.clear {  }
+body #editor #runeview button.rune.disabled { background-color:#777; }
+body #editor #runeview button.rune.disabled:hover { background-color:#777 !important; }
 
 /* CODEVIEW */
 body #editor #codeview { }

@@ -59,6 +59,7 @@ function Editor()
   this.rune_preview = document.createElement('yu')
   this.rune_preview.className = "preview"
   this.rune        = new Rune();
+  this.buttons     = []
 
   // Codeview
 
@@ -103,7 +104,9 @@ function Editor()
     this.preview_wrapper.appendChild(this.rune_preview)
     var fragments = this.lang.fragments();
     for(id in fragments){
-      this.runeview.appendChild(new RuneButton(this,fragments[id]).el)
+      var button = new RuneButton(this,fragments[id])
+      this.runeview.appendChild(button.el)
+      this.buttons.push(button)
     }
 
     // Codeview
@@ -257,28 +260,60 @@ function Editor()
 
     var runes = this.fightscript.runes()
     this.homeview.innerHTML = ""
+
     for(id in runes){
       var rune = runes[id]
       rune.update()
       this.homeview.innerHTML += rune.el.outerHTML;
     }
+
+    // Disable selected buttons
+    for(id in this.buttons){
+      var button = this.buttons[id];
+      var fragment = button.fragment;
+      if(this.rune[fragment.type.toLowerCase()] == fragment.name){
+        button.disable();
+      }
+      else{
+        button.enable()
+      }
+    }
+  }
+}
+
+function RuneButton(host,fragment)
+{
+  this.host = host;
+  this.fragment = fragment;
+
+  this.is_enabled = true;
+
+  this.el = document.createElement('button');
+  this.el.className = "rune "+fragment.type.toLowerCase();
+  this.el.style.backgroundImage = `url(media/runes/fragments/${fragment.name.toLowerCase().replace(/ /g,'.')}.png)`;
+  this.el.onclick = () => { this.construct(); }
+
+  this.construct = function()
+  {
+    if(!this.is_enabled){ return; }
+    this.host.add_fragment(this.fragment)
   }
 
-  function RuneButton(host,fragment)
+  this.enable = function()
   {
-    this.host = host;
-    this.fragment = fragment;
+    this.is_enabled = true;
+    this.update();
+  }
 
-    this.el = document.createElement('button');
-    this.el.className = "rune "+fragment.type.toLowerCase();
-    this.el.style.backgroundImage = `url(media/runes/fragments/${fragment.name.toLowerCase().replace(/ /g,'.')}.png)`;
+  this.disable = function()
+  {
+    this.is_enabled = false;
+    this.update();
+  }
 
-    this.el.onclick = () => { this.construct(); }
-
-    this.construct = function()
-    {
-      this.host.add_fragment(this.fragment)
-    }
+  this.update = function()
+  {
+    this.el.className = `rune ${fragment.type.toLowerCase()} ${!this.is_enabled ? 'disabled' : ''}`
   }
 }
 
