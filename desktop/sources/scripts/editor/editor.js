@@ -16,16 +16,16 @@ function Editor()
   this.tabs.id = "tabs";
   this.home_tab = document.createElement('a')
   this.home_tab.className = "tab home"
-  this.home_tab.innerHTML = "H"
+  this.home_tab.innerHTML = "<icon/>"
   this.code_tab = document.createElement('a')
   this.code_tab.className = "tab code"
-  this.code_tab.innerHTML = "C"
+  this.code_tab.innerHTML = "<icon/>"
   this.rune_tab = document.createElement('a')
   this.rune_tab.className = "tab rune"
-  this.rune_tab.innerHTML = "R"
+  this.rune_tab.innerHTML = "<icon/>"
   this.hide_tab = document.createElement('a')
   this.hide_tab.className = "tab hide"
-  this.hide_tab.innerHTML = ">"
+  this.hide_tab.innerHTML = "<icon/>"
 
   this.home_tab.onclick = () => { this.el.className = "home" }
   this.code_tab.onclick = () => { this.el.className = "code" }
