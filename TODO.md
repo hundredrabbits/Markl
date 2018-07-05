@@ -1,16 +1,23 @@
 ## TODOs
 
+
+## EDITOR
+
+### HOME
+
+- Remove rune on click.
+
+### RUNE
+
+### CODE
+
+- Validate code as it changes.
+- Add line numbers
+
+
 ### Immediate
 
 - Scores
-
-
-
-
-
-
-
-
 
 ### Designer
 
