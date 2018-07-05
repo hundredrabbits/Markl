@@ -93,22 +93,26 @@ function Editor()
     this.menu.appendChild(this.clear_button)
     this.menu.appendChild(this.status)
 
+    // Homeview
     this.el.appendChild(this.homeview)
+
+    // Runeview
     this.el.appendChild(this.runeview)
     this.runeview.appendChild(this.preview_wrapper)
     this.preview_wrapper.appendChild(this.rune.el)
     this.preview_wrapper.appendChild(this.rune_preview)
-
-    // Codeview
-    this.codeview.appendChild(this.hint)
-    this.codeview.appendChild(this.textbox)
-    this.el.appendChild(this.codeview)
-
     var fragments = this.lang.fragments();
     for(id in fragments){
       this.runeview.appendChild(new RuneButton(this,fragments[id]).el)
     }
 
+    // Codeview
+    this.el.appendChild(this.codeview)
+    this.codeview.appendChild(this.hint)
+    this.codeview.appendChild(this.textbox)
+
+    // Runeview
+    
     host.appendChild(this.el);
     this.update();
   }

@@ -105,7 +105,7 @@ function Style(host)
     return {trigger:trigger,event:event,condition:condition,target:triggers[trigger][event][condition]};
   }
 
-  function parse(text)
+  function parse(text = "")
   {
     var a = [];
     var lines = text.toUpperCase().split("\n");

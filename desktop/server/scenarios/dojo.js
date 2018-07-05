@@ -17,7 +17,7 @@ let dummy = {
   id:1,
   hp:3,
   sp:0,
-  name:"CPU1",
+  name:"DUMMY",
   type:"FIGHTER",
   character: "dummy",
   status:"idle",
