@@ -7,14 +7,12 @@ function Stage_Screen()
 
   var STAGE = {padding:{x:15,y:15},tile:80}
 
-  this.interface = new Interface();
   this.sprites = { players:{}, events:{}, effects:[] };
 
   this.install = function(host)
   {
     this.stage.appendChild(this.background);
     this.el.appendChild(this.stage);
-    this.interface.install(this.el);
 
     host.appendChild(this.el)
 
@@ -42,8 +40,10 @@ function Stage_Screen()
     this.verify_sprites(state);
     this.update_sprites(state);
     this.add_effects(state);
-    this.interface.update(state);
     this.focus(state);
+
+    markl.interface.update(state);
+    markl.editor.update(state);
   }
 
   this.verify_sprites = function(state)
