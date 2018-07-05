@@ -3,18 +3,18 @@ function Markl()
   this.el = document.createElement('yu');
   this.el.className = "screen";
 
-  this.designer   = new Designer();
+  this.editor     = new Editor();
   this.renderer   = new Renderer();
   this.controller = new Controller();
   this.keyboard = new Keyboard();
-  this.supervisor = require('../server/supervisor')
-  this.scenario = require('../server/scenario')
+  this.supervisor = require('../server/core/supervisor')
+  this.scenario = require('../server/core/scenario')
 
   this.install = function()
   {
     document.body.appendChild(this.el);
 
-    this.designer.install(this.el);
+    this.editor.install(this.el);
     this.renderer.install(this.el);
 
     this.controller.add("default","*","About",() => { require('electron').shell.openExternal('https://github.com/hundredrabbits/Dotgrid'); },"CmdOrCtrl+,");
@@ -33,14 +33,14 @@ function Markl()
     this.controller.add_role("default","Edit","delete");
     this.controller.add_role("default","Edit","selectall");
     
-    this.controller.add("default","Designer","Play",() => { markl.designer.run(); },"CmdOrCtrl+R");
-    this.controller.add("default","Designer","Pause/Resume",() => { markl.designer.pause(); },"CmdOrCtrl+P");
-    this.controller.add("default","Designer","Stop",() => { markl.designer.pause(); },"CmdOrCtrl+W");
-    this.controller.add("default","Designer","Next Turn",() => { markl.designer.next(); },"CmdOrCtrl+Right");
-    this.controller.add("default","Designer","Prev Turn",() => { markl.designer.prev(); },"CmdOrCtrl+Left");
-    this.controller.add("default","Designer","Toggle View",() => { markl.designer.toggle(); },"CmdOrCtrl+D");
-    this.controller.add("default","Designer","Save",() => { markl.designer.save(); },"CmdOrCtrl+S");
-    this.controller.add("default","Designer","Export",() => { markl.designer.export(); },"CmdOrCtrl+E");
+    this.controller.add("default","Editor","Play",() => { markl.editor.run(); },"CmdOrCtrl+R");
+    this.controller.add("default","Editor","Pause/Resume",() => { markl.editor.pause(); },"CmdOrCtrl+P");
+    this.controller.add("default","Editor","Stop",() => { markl.editor.pause(); },"CmdOrCtrl+W");
+    this.controller.add("default","Editor","Next Turn",() => { markl.editor.next(); },"CmdOrCtrl+Right");
+    this.controller.add("default","Editor","Prev Turn",() => { markl.editor.prev(); },"CmdOrCtrl+Left");
+    this.controller.add("default","Editor","Toggle View",() => { markl.editor.toggle(); },"CmdOrCtrl+D");
+    this.controller.add("default","Editor","Save",() => { markl.editor.save(); },"CmdOrCtrl+S");
+    this.controller.add("default","Editor","Export",() => { markl.editor.export(); },"CmdOrCtrl+E");
 
     this.controller.commit();
 
@@ -49,17 +49,18 @@ function Markl()
   
   this.start = function()
   {
+    this.editor.start();
     this.scenario.load("dojo");
     this.renderer.start();
   }
 
   this.reset = function()
   {
-    this.designer.reset();
+    this.editor.reset();
   }
 
   this.update = function()
   {
-    this.el.className = `${this.designer.is_visible ? "designer_on" : "designer_off"}`;
+    this.el.className = `${this.editor.is_visible ? "designer_on" : "designer_off"}`;
   }
 }
