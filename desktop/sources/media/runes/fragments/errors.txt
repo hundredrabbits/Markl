@@ -1,9 +1,0 @@
-[7/4/2018, 10:47:37 AM] layer "512 x 512 attack.any.png copy": Expected end of input but "c" found.
-[7/4/2018, 10:47:25 AM] layer "512 x 512 attack.any.png copy 2": Expected end of input but "c" found.
-[7/4/2018, 10:47:35 AM] layer "512 x 512 attack.any.png copy 2": Expected end of input but "c" found.
-[7/4/2018, 10:55:19 AM] layer "512 x 512 char.is.patience.png copy": Expected end of input but "c" found.
-[7/4/2018, 10:56:42 AM] layer "512 x 512 char.is.lancer.png copy": Expected end of input but "c" found.
-[7/4/2018, 10:59:32 AM] layer "512 x 512 char.is.patience.png copy": Expected end of input but "c" found.
-[7/4/2018, 10:59:41 AM] layer "512 x 512 char.is.patience.png copy": Expected end of input but "c" found.
-[7/4/2018, 11:00:31 AM] layer "512 x 512 char.is.patience.png copy": Expected end of input but "c" found.
-[7/4/2018, 11:01:09 AM] layer "512 x 512 char.is.lancer.png copy": Expected end of input but "c" found.
