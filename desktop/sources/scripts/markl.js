@@ -4,6 +4,7 @@ function Markl()
   this.el.className = "screen";
 
   this.editor     = new Editor();
+  this.interface  = new Interface();
   this.renderer   = new Renderer();
   this.controller = new Controller();
   this.keyboard = new Keyboard();
@@ -15,6 +16,7 @@ function Markl()
     document.body.appendChild(this.el);
 
     this.editor.install(this.el);
+    this.interface.install(this.el);
     this.renderer.install(this.el);
 
     this.controller.add("default","*","About",() => { require('electron').shell.openExternal('https://github.com/hundredrabbits/Dotgrid'); },"CmdOrCtrl+,");

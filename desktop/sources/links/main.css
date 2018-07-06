@@ -1,32 +1,11 @@
 body { font-size:11px; font-family: 'input_mono_regular'; overflow:hidden; background: white }
 
 yu { display: block; }
+icon { display: block; }
 wrapper { display: block; }
 
-#designer { position: fixed;left: 60vw;width: 40vw;background: #000;height: 100vh;color: white; transition:left 250ms; }
-#designer textarea { color:white; margin:15px; width:calc(100% - 60px); height:calc(100% - 85px); background:none; padding:15px; border-radius:3px; position: relative; z-index:900; margin-left: 45px; line-height:20px; text-transform: uppercase;}
-#designer .hint { color: black;margin: 15px;width: calc(100% - 60px);height: calc(100% - 85px);background: none;padding: 15px;border-radius: 3px;position: absolute;top: 0px;left: 0px;z-index: 0;white-space: pre; z-index:0; margin-left: 30px; line-height:20px;}
-#designer .hint line { display: block; position: relative; }
-#designer .hint line span.number { position: absolute;left: -30px;color: #666; }
-#designer .hint line span.content { opacity: 0 }
-#designer .hint line span.rune { position: absolute;left: -5px; color:#ccc; }
-#designer .hint line.selected { background:#333; }
-#designer .controls  { margin-left:15px; border-top:1px solid #333; padding-top:15px; -webkit-user-select: none;-webkit-app-region: drag; }
-#designer .controls .button { background: #333;display: inline-block;border-radius: 3px;padding: 0px 10px;margin-right: 15px;line-height: 25px; }
-#designer .controls .button:hover { background:black; color:white; cursor: pointer }
-#designer .controls .turn { line-height: 25px; float: right; padding:0px 15px; }
-#designer .controls .button.pause { display: none; background:white; color:black; }
-#designer .controls .button.resume { display: none; background:white; color:black; }
-#designer .reaction { position: absolute;bottom: 70px;left: 15px;color: #999; }
-
-#designer.playing .controls .button.run { display: none; }
-#designer.playing .controls .button.pause { display: inline-block; }
-#designer.paused .controls .button.run { display: none; }
-#designer.paused .controls .button.pause { display: none; }
-#designer.paused .controls .button.resume { display: inline-block; }
-
 #renderer { position: relative; height: 100vh;width: 60vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden; transition: width 250ms;}
-#renderer view { display: block; position: relative; }
+#renderer view { display: block;position: fixed;left: calc(50vw - (420px/2));top: 50vh;}
 #renderer stage { display:block; position:absolute; transition:all 250ms; }
 #renderer stage background { display: block;position: absolute;transition: all 150ms;width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
 #renderer stage sprite { display: block; position:absolute; transition:all 150ms;}
@@ -106,29 +85,3 @@ wrapper { display: block; }
 #renderer stage sprite.depth4 { z-index:100; }
 
 /* Interface */
-
-#renderer interface { display: block;margin: 20px;width: calc(100% - 40px);height: calc(100vh - 40px);position: relative; }
-#renderer interface div.ui { position: absolute; width:40px; }
-#renderer interface div.ui t {  }
-#renderer interface div.ui t.name { font-size: 12px;display: block;position: absolute;left: 55px;top: -2px; }
-#renderer interface div.ui t.health {  display:none; }
-#renderer interface div.ui t.stamina { display:none; }
-#renderer interface div.ui wr { display: block;width: 100%;height: 4px;border-radius: 40px;margin-bottom: 1px;overflow: hidden;}
-#renderer interface div.ui wr bar { height: 100%;width: 0%;background: white; transition:width 250ms; display: block; border-radius: 10px; min-width: 4px }
-#renderer interface div.ui wr.health bar { background:red;}
-#renderer interface div.ui wr.stamina bar {  background:#000; }
-#renderer interface div.ui.player0 { bottom:0px; left:0px; }
-#renderer interface div.ui.player1 { bottom:0px; right:0px; }
-#renderer interface div.ui.player2 { top:0px; right:0px; }
-#renderer interface div.ui.player3 { top:0px; left:0px; }
-#renderer interface div.ui.player1 t.name { left:auto; right:55px; }
-#renderer interface div.ui.player2 t.name { left:auto; right:55px; }
-
-/* Modes */
-
-.designer_on #designer { left:60vw; }
-.designer_off #designer { left:100vw; }
-.designer_on #renderer { width:60vw; }
-.designer_off #renderer { width:100vw; }
-
-

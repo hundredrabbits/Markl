@@ -1,5 +1,5 @@
 
-body #editor { color: white;position: fixed;top: 0;right: 0px;width: 420px;height: 100vh;background: #222;transition: right 250ms, width 250ms; font-family: 'input_mono_regular'; font-size:11px;}
+body #editor { color: white;position: fixed;top: 0;right: 0px;width: 420px;height: 100vh;background: #222;transition: right 250ms, width 250ms; font-family: 'input_mono_regular'; font-size:11px; z-index: 9000}
 
 body #editor > div { padding: 30px;margin-bottom: 30px;color: white;min-height: 30px;position: relative; height:calc(100% - 10px); }
 
@@ -10,16 +10,27 @@ body #editor rune .fragment.event { top:0%; left:50%; }
 body #editor rune .fragment.condition { top:50%; left:0%; }
 body #editor rune .fragment.action { top:50%; left:50%; }
 
-body #editor #tabs { position: absolute;top:0px;left:-40px; height:100vh}
-body #editor #tabs a { color: white;display: block;margin-right: 5px;margin-bottom: -1px;background: #999;border-top-left-radius: 5px;border-bottom-left-radius: 5px;width:40px;height:40px;overflow: hidden; text-align: center; vertical-align: middle; line-height: 40px; margin-top: 10px}
-body #editor #tabs a:hover { background:#555; cursor: pointer; text-decoration: underline;}
-body #editor #tabs a.hide { float:right; margin-right:25px; background:transparent; color:black; position: absolute;bottom: 0px}
+body #editor #tabs { position: absolute;top: 0px;left: -35px;height: 100vh;margin-top: 30px;width: 35px;overflow: hidden;}
+body #editor #tabs .tab { color: white;display: block;margin-bottom: -1px;background: #999;overflow: hidden;text-align: center;vertical-align: middle;margin-top: 5px; border-radius:100px; padding-right:100px;}
+body #editor #tabs .tab:hover { background:#555; cursor: pointer; text-decoration: underline;}
+body #editor #tabs .tab icon { width: 35px;height: 35px;background-size: 50%;background-position: center center;background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1); margin-left:4px;}
+body #editor #tabs .tab.home icon { background-image:url(../media/editor/home.tab.png); }
+body #editor #tabs .tab.rune icon { background-image:url(../media/editor/rune.tab.png); }
+body #editor #tabs .tab.code icon { background-image:url(../media/editor/code.tab.png); }
+body #editor #tabs .tab.hide icon { background-image:url(../media/editor/hide.tab.png); }
 
 body #editor #menu { position: absolute; bottom:30px; left:30px; z-index: 9000 }
-body #editor #menu button { padding:0px 10px; line-height: 30px; margin-right:10px; border-radius: 5px; background:#555;  }
-body #editor #menu button:hover { background:white; cursor: pointer; color:black; }
+body #editor #menu button { line-height: 30px; margin-right:10px; border-radius: 100px; background:#555;  }
+body #editor #menu button:hover { background:#ccc; cursor: pointer; color:black; }
 body #editor #menu button.disabled { background:#333; color:#aaa;}
 body #editor #menu button.disabled:hover { cursor: default; }
+body #editor #menu button.disabled icon { opacity: 0.5 }
+body #editor #menu button icon { width: 35px;height: 35px;background-size: 50%;background-position: center center;background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1); }
+body #editor #menu button.add icon { background-image:url(../media/editor/menu.add.png); }
+body #editor #menu button.clear icon { background-image:url(../media/editor/menu.clear.png); }
+body #editor #menu button.run icon { background-image:url(../media/editor/menu.run.png); }
+body #editor #menu button.export icon { background-image:url(../media/editor/menu.export.png); }
+body #editor #menu button.refresh icon { background-image:url(../media/editor/menu.refresh.png); }
 
 /* HOMEVIEW */
 body #editor #homeview {  }

@@ -16,16 +16,16 @@ function Editor()
   this.tabs.id = "tabs";
   this.home_tab = document.createElement('a')
   this.home_tab.className = "tab home"
-  this.home_tab.innerHTML = "H"
+  this.home_tab.innerHTML = "<icon/>"
   this.code_tab = document.createElement('a')
   this.code_tab.className = "tab code"
-  this.code_tab.innerHTML = "C"
+  this.code_tab.innerHTML = "<icon/>"
   this.rune_tab = document.createElement('a')
   this.rune_tab.className = "tab rune"
-  this.rune_tab.innerHTML = "R"
+  this.rune_tab.innerHTML = "<icon/>"
   this.hide_tab = document.createElement('a')
   this.hide_tab.className = "tab hide"
-  this.hide_tab.innerHTML = ">"
+  this.hide_tab.innerHTML = "<icon/>"
 
   this.home_tab.onclick = () => { this.el.className = "home" }
   this.code_tab.onclick = () => { this.el.className = "code" }
@@ -37,16 +37,20 @@ function Editor()
   this.menu = document.createElement('yu');
   this.menu.id = "menu";
   this.add_button = document.createElement('button')
-  this.add_button.innerHTML = "add"
+  this.add_button.innerHTML = "<icon/>"
+  this.add_button.className = "add"
   this.clear_button = document.createElement('button')
-  this.clear_button.innerHTML = "clear"
+  this.clear_button.innerHTML = "<icon/>"
+  this.clear_button.className = "clear"
   this.run_button = document.createElement('button')
-  this.run_button.innerHTML = "run"
+  this.run_button.innerHTML = "<icon/>"
+  this.run_button.className = "run"
   this.refresh_button = document.createElement('button')
   this.refresh_button.className = "refresh"
-  this.refresh_button.innerHTML = "refresh"
+  this.refresh_button.innerHTML = "<icon/>"
   this.export_button = document.createElement('button')
-  this.export_button.innerHTML = "export"
+  this.export_button.innerHTML = "<icon/>"
+  this.export_button.className = "export"
 
   this.add_button.onclick = () => { this.add_rune(this.rune); }
   this.run_button.onclick = () => { this.run(); }

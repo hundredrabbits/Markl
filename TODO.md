@@ -1,83 +1,29 @@
 # TODOs
 
-## EDITOR
 
-### HOME
-
-- Remove rune on click.
-
-### RUNE
-
-### CODE
-
-- Validate code as it changes.
-- Add line numbers
-
-### Immediate
-
-- Scores
-
-### Designer
-
-- Show/Hide
+## Editor
 - Lock input when running
 
-### Splash Screen
+### Home
+- Remove rune on click.
+- Add rune name.
 
-- Design logo
-- Start/Option selector
+### Rune
+-
 
-### Character Selection Screen
+### Code
+- Validate code as it changes.
+- Add line numbers.
 
-- Cursor
-- Statistics
-- Loadout(?)
 
-### Campaign
+## Arena
+  
+### Interface
+- Display Character rune next to names.
+- DIsplay reaction rune.
 
-- Tutorial
-- Worldmap
-- Campaign flow(Stages, Enemies, duels, etc..)
-- Battle ROUNDS
-- Stage Progression(Death?)
+### Sprites
+- 
 
-#### The Dojo
-
-- Tatami theme
-- Totem actions
-- Move totem on circuit
-
-### Arena Screen
-
-- Holes
-- Doodads
-- Parallax
-- Wall tiles
-
-#### Characters
-
-- Effects
-
-### Actions
-
-- Block
-- Cast
-- Taunt
-- Move/Flank
-- COUNTER systems
-- Add stun sprite Wait penality
-
-### Objects
-
-- Implement
-- Missle sprite
-
-### Extras
-
-- Soundtrack
-- Sound Effects
-
-## Fighting Style
-
-- Inline syntax (MENU -> CHARACTER -> NAME IS PEST -> SELECT)
-
+### Background
+-
