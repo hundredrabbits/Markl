@@ -37,16 +37,20 @@ function Editor()
   this.menu = document.createElement('yu');
   this.menu.id = "menu";
   this.add_button = document.createElement('button')
-  this.add_button.innerHTML = "add"
+  this.add_button.innerHTML = "<icon/>"
+  this.add_button.className = "add"
   this.clear_button = document.createElement('button')
-  this.clear_button.innerHTML = "clear"
+  this.clear_button.innerHTML = "<icon/>"
+  this.clear_button.className = "clear"
   this.run_button = document.createElement('button')
-  this.run_button.innerHTML = "run"
+  this.run_button.innerHTML = "<icon/>"
+  this.run_button.className = "run"
   this.refresh_button = document.createElement('button')
   this.refresh_button.className = "refresh"
-  this.refresh_button.innerHTML = "refresh"
+  this.refresh_button.innerHTML = "<icon/>"
   this.export_button = document.createElement('button')
-  this.export_button.innerHTML = "export"
+  this.export_button.innerHTML = "<icon/>"
+  this.export_button.className = "export"
 
   this.add_button.onclick = () => { this.add_rune(this.rune); }
   this.run_button.onclick = () => { this.run(); }
