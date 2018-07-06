@@ -262,13 +262,14 @@ function Editor()
     this.clear_button.className = !this.rune.fragments().length > 0 ? "disabled clear" : "clear"
     this.add_button.className = !this.rune.validate() ? "disabled add" : "add"
 
+    // Homeview
     var runes = this.fightscript.runes()
     this.homeview.innerHTML = ""
 
     for(id in runes){
       var rune = runes[id]
       rune.update()
-      this.homeview.innerHTML += rune.el.outerHTML;
+      this.homeview.innerHTML += `<ln>${rune.el.outerHTML}<t class='name'>${rune.name}</t><t class='value'>${rune.render()}</t></ln>`;
     }
 
     // Disable selected buttons

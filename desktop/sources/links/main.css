@@ -3,6 +3,7 @@ body { font-size:11px; font-family: 'input_mono_regular'; overflow:hidden; backg
 yu { display: block; }
 icon { display: block; }
 wrapper { display: block; }
+ln { display: block; }
 
 #renderer { position: relative; height: 100vh;width: 60vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden; transition: width 250ms;}
 #renderer view { display: block;position: fixed;left: calc(50vw - (420px/2));top: 50vh;}
