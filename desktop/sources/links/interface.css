@@ -1,22 +1,22 @@
 #interface { position: fixed;width: calc(100vw - 420px);height: 100vh; }
 
-#interface .player.ui { position: absolute; width:40px; width:100px; padding-left:40px;}
+#interface .player.ui { position: absolute; width:40px; width:100px; padding-left:45px;}
 #interface .player.ui.player0 { bottom:30px; left:30px; }
 #interface .player.ui.player1 { bottom:30px; right:30px; }
 #interface .player.ui.player2 { top:30px; right:30px; }
 #interface .player.ui.player3 { top:30px; left:30px; }
 
-#interface .player.ui.player1 { padding-left: 0px;padding-right: 40px;text-align: right; }
+#interface .player.ui.player1 { padding-left: 0px;padding-right: 45px;text-align: right; }
 #interface .player.ui.player1 t { text-align: right }
 #interface .player.ui.player1 rune { right:0px; left:auto; }
 
-#interface .player.ui t { line-height: 16px; display: inline-block;}
+#interface .player.ui t { line-height: 18px; display: inline-block;}
 #interface .player.ui t.name { font-size: 11px;display: block; font-family: 'input_mono_medium'}
 #interface .player.ui t.health { margin-right:5px; }
 
-#interface rune { width:30px; height:30px; display: block;  position: relative; border-radius: 5px; overflow: hidden; position: absolute; top:0px; left:0px; -webkit-filter: invert(1); filter: invert(1);}
-#interface rune .fragment { width:50%; display: block; height:50%; position: absolute; top:0px; left:0px; background-position: center; background-size:90%; background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1);}
-#interface rune .fragment.trigger { top:0%; left:0%; }
-#interface rune .fragment.event { top:0%; left:50%; }
-#interface rune .fragment.condition { top:50%; left:0%; }
-#interface rune .fragment.action { top:50%; left:50%; }
+#interface .player.ui rune { width:35px; height:35px; display: block;  position: relative; border-radius: 5px; overflow: hidden; position: absolute; top:-2px; left:0px; -webkit-filter: invert(1); filter: invert(1);}
+#interface .player.ui rune .fragment { width:50%; display: block; height:50%; position: absolute; top:0px; left:0px; background-position: center; background-size:100%; background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1);}
+#interface .player.ui rune .fragment.trigger { top:0%; left:0%; }
+#interface .player.ui rune .fragment.event { top:0%; left:50%; }
+#interface .player.ui rune .fragment.condition { top:50%; left:0%; }
+#interface .player.ui rune .fragment.action { top:50%; left:50%; }
