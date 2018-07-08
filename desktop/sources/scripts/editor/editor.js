@@ -133,10 +133,10 @@ function Editor()
     this.index = 0;
 
     this.update();
-    markl.renderer.update(this.history[this.index].state);
+    // markl.renderer.update(this.history[this.index].state);
 
-    this.stop();
-    setTimeout(() => { this.start(); }, TIMING.delayed_start)
+    // this.stop();
+    // setTimeout(() => { this.start(); }, TIMING.delayed_start)
   }
 
   this.start = function()
@@ -247,8 +247,20 @@ function Editor()
     }
   }
 
-  this.update = function()
+  this.update = function(state)
   {
+    // Status
+    console.log(this.history)
+
+    if(this.history){
+      this.status.innerHTML = `${this.index}/${this.history.length}`
+    }
+    else{
+      this.status.innerHTML = "Idle."  
+    }
+
+
+    
     var code_preview = this.fightscript.render()
     var rune_preview = this.rune.render()
 
