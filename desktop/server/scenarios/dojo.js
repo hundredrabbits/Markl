@@ -26,9 +26,9 @@ let dummy = {
     y:3
   },
   style: `
-DEFAULT
-  DEFAULT
-    DEFAULT
+ANY
+  ANY
+    ANY
       WAIT`
 }
 

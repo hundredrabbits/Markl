@@ -20,7 +20,7 @@ function Style(host)
 
   this.find_triggers = function()
   {
-    var h = {"SIGHT":{"FIGHTER":{},"BLOCKER":{},"MISSILE":{}},"DEFAULT":{"DEFAULT":{"DEFAULT":{}}}};
+    var h = {"SIGHT":{"FIGHTER":{},"BLOCKER":{},"MISSILE":{}},"ANY":{"ANY":{"ANY":{}}}};
 
     var sights = this.find_sights();
 
@@ -30,7 +30,7 @@ function Style(host)
       var sight_type = sight.type.toUpperCase();
       var sight_pos = new Pos(sight.pos.x,sight.pos.y);
       var sight_distance = sight_pos.distance_from(this.host.pos);
-      h["SIGHT"][sight_type]["DEFAULT"] = sight;
+      h["SIGHT"][sight_type]["ANY"] = sight;
       h["SIGHT"][sight_type]["DISTANCE IS "+sight_distance] = sight;
       if(sight.character){
         var sight_character = sight.character.toUpperCase().trim();
@@ -94,7 +94,7 @@ function Style(host)
       }
     }
     // Throw default case
-    return {trigger: "DEFAULT", event: "DEFAULT", condition: "DEFAULT", actions:[{name:"idle",attr:"??",line:"0"}]};
+    return {trigger: "ANY", event: "ANY", condition: "ANY", actions:[{name:"idle",attr:"??",line:"0"}]};
   }
 
   this.make_reaction = function(triggers, trigger = null,event = null,condition = null)

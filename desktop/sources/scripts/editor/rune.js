@@ -1,33 +1,28 @@
-function Rune(characters = [])
+function Rune(parts = {trigger:null,event:null,condition:null,action:null})
 {
   this.el = document.createElement('rune');
   this.el.className = "rune"
-  this.characters = characters;
-  this.name = "unknown"
   
-  this.trigger = null;
-  this.event = null;
-  this.condition = null;
-  this.action = null;
+  this.trigger = parts.trigger
+  this.event = parts.event
+  this.condition = parts.condition
+  this.action = parts.action
+  this.name = new FightLang().phonetic(parts)
 
   this.build = function(fragment)
   {
-    this.characters[fragment.depth] = fragment.name;
+    this[fragment.type.toLowerCase()] = fragment.name;
     this.update();
   }
 
   this.clear = function()
   {
-    this.characters = []
+    this.characters = {trigger:null,event:null,condition:null,action:null}
     this.update()
   }
 
   this.update = function()
   {
-    this.trigger = this.characters[0] ? this.characters[0].toUpperCase() : null
-    this.event = this.characters[1] ? this.characters[1].toUpperCase() : null
-    this.condition = this.characters[2] ? this.characters[2].toUpperCase() : null
-    this.action = this.characters[3] ? this.characters[3].toUpperCase() : null
     this.name = new FightLang().phonetic(this);
 
     this.draw()
@@ -48,20 +43,25 @@ function Rune(characters = [])
   this.validate = function()
   {
     this.update()
-    if(!this.trigger || !this.event || !this.condition || !this.action){ return false; }
+
+    if(!this.trigger || !this.event || !this.condition || !this.action){ console.warn("Incomplete rune",this); return false; }
 
     var lang = new FightLang();
 
     if(lang.spec.TRIGGER.indexOf(this.trigger) < 0){
+      console.warn("Unknown Trigger",this.trigger)
       return false;
     }
     if(lang.spec.EVENT.indexOf(this.event) < 0){
+      console.warn("Unknown Event",this.trigger)
       return false;
     }
     if(lang.spec.CONDITION.indexOf(this.condition) < 0){
+      console.warn("Unknown Condition",this.trigger)
       return false;
     }
     if(lang.spec.ACTION.indexOf(this.action) < 0){
+      console.warn("Unknown Action",this.trigger)
       return false;
     }
 
@@ -97,7 +97,6 @@ function Fragment(type,name)
 {
   this.type = type;
   this.name = name;
-  this.depth = ["TRIGGER","EVENT","CONDITION","ACTION"].indexOf(this.type)
 }
 
 String.prototype.capitalize = function()

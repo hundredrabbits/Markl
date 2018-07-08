@@ -1,6 +1,5 @@
 # TODOs
 
-
 ## Editor
 - Lock input when running
 
@@ -15,9 +14,11 @@
 - Validate code as it changes.
 - Add line numbers.
 
-
 ## Arena
-  
+
+### Battle
+- Skip wait turns
+
 ### Interface
 - Display Character rune next to names.
 - DIsplay reaction rune.

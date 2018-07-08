@@ -121,7 +121,19 @@ function Editor()
     // Runeview
     
     host.appendChild(this.el);
+
     this.update();
+
+    // setTimeout(()=>{
+    //   console.log("Ready.")
+
+    //   var some_rune = new Rune(["SIGHT","FIGHTER","DISTANCE OF 2","MOVE TOWARD"])
+    //   some_rune.update()
+    //   this.fightscript.add(some_rune)
+    //   this.update()
+
+    //   console.log("Done.")
+    // },2000)
   }
 
   this.run = function()
@@ -133,10 +145,7 @@ function Editor()
     this.index = 0;
 
     this.update();
-    // markl.renderer.update(this.history[this.index].state);
-
-    // this.stop();
-    // setTimeout(() => { this.start(); }, TIMING.delayed_start)
+    markl.renderer.update(this.history[this.index].state);
   }
 
   this.start = function()
@@ -148,6 +157,7 @@ function Editor()
 
   this.pause = function()
   {
+    if(!this.history){ return; }
     if(this.is_paused){ this.resume(); return; }
 
     this.is_paused = true;
@@ -178,7 +188,7 @@ function Editor()
 
   this.next = function()
   {
-    if(!this.history || this.index == this.history.length-1 ){ console.warn("No history, or at end"); this.pause(); return; }
+    if(!this.history || this.history.length < 1 ){ console.warn("No history, or at end"); this.pause(); return; }
     if(this.history[this.index].state.players[0].hp < 0){ console.warn("Player is dead"); this.pause(); return; }
 
     this.index += this.index <= this.history.length ? 1 : 0;
@@ -189,7 +199,7 @@ function Editor()
 
   this.prev = function()
   {
-    if(!this.history || this.index == 0){ console.warn("No history, or at beginning"); return; }
+    if(!this.history || this.history.length < 1 || this.index == 0){ console.warn("No history, or at beginning"); return; }
 
     this.index -= this.index >= 0 ? 1 : 0;
     this.update();
@@ -250,16 +260,14 @@ function Editor()
   this.update = function(state)
   {
     // Status
-    console.log(this.history)
-
-    if(this.history){
+    
+    if(this.history && this.history.length > 0 && this.index > 0){
+      console.log(`Playing: ${this.history[this.index].player.id}`,this.history[this.index].reaction)
       this.status.innerHTML = `${this.index}/${this.history.length}`
     }
     else{
       this.status.innerHTML = "Idle."  
     }
-
-
     
     var code_preview = this.fightscript.render()
     var rune_preview = this.rune.render()
@@ -313,6 +321,7 @@ function RuneButton(host,fragment)
   this.construct = function()
   {
     if(!this.is_enabled){ return; }
+
     this.host.add_fragment(this.fragment)
   }
 
