@@ -52,7 +52,7 @@ function Editor()
   this.export_button.innerHTML = "<icon/>"
   this.export_button.className = "export"
 
-  this.add_button.onclick = () => { this.add_rune(this.rune); }
+  this.add_button.onclick = () => { this.merge_rune(this.rune); }
   this.run_button.onclick = () => { this.run(); }
   this.clear_button.onclick = () => { this.clear_rune(); }
   this.refresh_button.onclick = () => { this.reload_code(); }
@@ -212,19 +212,14 @@ function Editor()
     this.update();
   }
 
-  this.add_rune = function(rune)
+  this.merge_rune = function(rune)
   {
     if(!this.rune.validate()){ console.warn("Invalid rune",rune); return; }
 
-    var updated = this.fightscript.copy();
-    updated.add(rune);
-
-    var is_valid = updated.validate();
-
-    if(!is_valid){ console.warn("Invalid fightscript",rune); return;}
-
-    this.fightscript.add(rune)
+    console.info("Crafting..",rune)
+    this.fightscript.add(rune.copy())
     this.clear_rune();
+
     this.textbox.value = this.fightscript.render()
     this.el.className = "home"
   }

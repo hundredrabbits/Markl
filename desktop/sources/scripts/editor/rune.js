@@ -17,7 +17,10 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
 
   this.clear = function()
   {
-    this.characters = {trigger:null,event:null,condition:null,action:null}
+    this.trigger = null;
+    this.event = null;
+    this.condition = null;
+    this.action = null;
     this.update()
   }
 
@@ -90,6 +93,11 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
     if(this.action){ html += `<t class='action'>THEN ${this.action}</t> ` }
 
     return html.trim()
+  }
+
+  this.copy = function()
+  {
+    return new Rune({trigger:this.trigger,event:this.event,condition:this.condition,action:this.action});
   }
 }
 

@@ -44,13 +44,14 @@ function FightScript(style = {})
 
   this.runes = function()
   {
+    console.log(this.style)
     var a = [];
     for(trigger in this.style){
       for(event in this.style[trigger]){
         for(condition in this.style[trigger][event]){
           for(id in this.style[trigger][event][condition]){
             var action = this.style[trigger][event][condition][id];
-            a.push(new Rune([trigger,event,condition,action]))
+            a.push(new Rune({trigger:trigger,event:event,condition:condition,action:action}))
           }
         }
       }

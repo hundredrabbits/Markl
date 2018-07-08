@@ -6,7 +6,7 @@ function Player_UI(id)
   this.health_el = document.createElement('t'); this.health_el.className = "health";
   this.stamina_el = document.createElement('t'); this.stamina_el.className = "stamina";
 
-  this.rune = new Rune(["SIGHT","FIGHTER","DISTANCE OF 2","ATTACK UP"])
+  this.rune = new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 2",action:"ATTACK UP"})
 
   this.el.appendChild(this.name_el);
   this.el.appendChild(this.health_el);
