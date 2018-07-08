@@ -44,7 +44,6 @@ function FightScript(style = {})
 
   this.runes = function()
   {
-    console.log(this.style)
     var a = [];
     for(trigger in this.style){
       for(event in this.style[trigger]){

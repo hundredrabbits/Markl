@@ -47,7 +47,7 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
   {
     this.update()
 
-    if(!this.trigger || !this.event || !this.condition || !this.action){ console.warn("Incomplete rune",this); return false; }
+    if(!this.trigger || !this.event || !this.condition || !this.action){ return false; }
 
     var lang = new FightLang();
 

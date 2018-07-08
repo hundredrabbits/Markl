@@ -124,16 +124,8 @@ function Editor()
 
     this.update();
 
-    // setTimeout(()=>{
-    //   console.log("Ready.")
-
-    //   var some_rune = new Rune(["SIGHT","FIGHTER","DISTANCE OF 2","MOVE TOWARD"])
-    //   some_rune.update()
-    //   this.fightscript.add(some_rune)
-    //   this.update()
-
-    //   console.log("Done.")
-    // },2000)
+    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 2",action:"ATTACK UP"}))
+    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"ATTACK UP"}))
   }
 
   this.run = function()
@@ -216,7 +208,7 @@ function Editor()
   {
     if(!this.rune.validate()){ console.warn("Invalid rune",rune); return; }
 
-    console.info("Crafting..",rune)
+    console.info(`Crafting ${rune.name}..`)
     this.fightscript.add(rune.copy())
     this.clear_rune();
 
