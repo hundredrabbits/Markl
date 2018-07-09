@@ -88,13 +88,14 @@ function Style(host)
           var r = this.make_reaction(triggers,trigger.name,event.name,condition.name);
           if(r){
             r.actions = condition.actions;
+            r.action = condition.actions[0]
             return r;
           }
         }
       }
     }
     // Throw default case
-    return {trigger: "ANY", event: "ANY", condition: "ANY", actions:[{name:"idle",attr:"??",line:"0"}]};
+    return {trigger: "ANY", event: "ANY", condition: "ANY", actions:["WAIT"]};
   }
 
   this.make_reaction = function(triggers, trigger = null,event = null,condition = null)
@@ -131,8 +132,7 @@ function Style(host)
         event.conditions.push(condition);
       }
       if(pad == 6){
-        var action_obj = {name:line.trim().indexOf(" ") > -1 ? line.trim().split(" ")[0] : line.trim(), attr:line.trim().indexOf(" ") > -1 ? line.trim().split(" ")[1] : null, line:id};
-        condition.actions.push(action_obj);
+        condition.actions.push(line.trim());
       }
     }
     if(trigger){ a.push(trigger); }

@@ -125,7 +125,8 @@ function Editor()
     this.update();
 
     this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 2",action:"ATTACK UP"}))
-    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"ATTACK UP"}))
+    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE ANY"}))
+    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE RIGHT"}))
   }
 
   this.run = function()
@@ -137,7 +138,7 @@ function Editor()
     this.index = 0;
 
     this.update();
-    markl.renderer.update(this.history[this.index].state);
+    markl.renderer.update(this.history[this.index].state,this.history[this.index].reaction);
   }
 
   this.start = function()
@@ -246,11 +247,13 @@ function Editor()
 
   this.update = function(state)
   {
-    // Status
-    
+    // Status 
     if(this.history && this.history.length > 0 && this.index > 0){
-      console.log(`Playing: ${this.history[this.index].player.id}`,this.history[this.index].reaction)
+      var rune = new Rune(this.history[this.index].reaction)
+      console.log(`Playing: Player ${this.history[this.index].player.id}`,rune.toString())
       this.status.innerHTML = `${this.index}/${this.history.length}`
+      // Update Player UI
+      markl.interface.ui.players[this.history[this.index].player.id].rune.replace(rune);
     }
     else{
       this.status.innerHTML = "Idle."  

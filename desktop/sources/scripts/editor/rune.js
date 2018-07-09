@@ -9,6 +9,15 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
   this.action = parts.action
   this.name = new FightLang().phonetic(parts)
 
+  this.replace = function(rune)
+  {
+    this.trigger = rune.trigger;
+    this.event = rune.event;
+    this.condition = rune.condition;
+    this.action = rune.action;
+    this.update()
+  }
+
   this.build = function(fragment)
   {
     this[fragment.type.toLowerCase()] = fragment.name;
@@ -98,6 +107,18 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
   this.copy = function()
   {
     return new Rune({trigger:this.trigger,event:this.event,condition:this.condition,action:this.action});
+  }
+
+  this.toString = function()
+  {
+    var html = ""
+
+    if(this.trigger){ html += `WHEN ${this.trigger}` }
+    if(this.event){ html += ` OF ${this.event} ` }
+    if(this.condition){ html += `WITH ${this.condition} ` }
+    if(this.action){ html += `THEN ${this.action} ` }
+
+    return html.trim()
   }
 }
 

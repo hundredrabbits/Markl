@@ -32,7 +32,7 @@ function Stage_Screen()
     this.stage.className = markl.scenario.name;
   }
 
-  this.update = function(state)
+  this.update = function(state,reaction)
   {
     if(!state){ return; }
 
@@ -42,7 +42,7 @@ function Stage_Screen()
     this.add_effects(state);
     this.focus(state);
 
-    markl.interface.update(state);
+    markl.interface.update(state,reaction);
     markl.editor.update(state);
   }
 

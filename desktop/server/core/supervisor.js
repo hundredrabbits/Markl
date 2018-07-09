@@ -27,10 +27,16 @@ module.exports = {
   },
 
   act: function(player,reaction,state){
-    var action = reaction.actions[state.turn % reaction.actions.length];
-    var a = actions[action.name] ? new actions[action.name](player,action.attr,reaction.target) : new actions.IDLE(player,action.attr,reaction.target);
+    // Run Stage Events
     this.stage(state);
-    a.run(state);
+    // Run Player Action
+    var action = reaction.actions[state.turn % reaction.actions.length];
+    if(action){
+      var name = action.split(" ")[0].trim();
+      var attr = action.replace(name,"").trim()
+      var a = actions[name] ? new actions[name](player,attr,reaction.target) : new actions.IDLE(player,attr,reaction.target);
+      a.run(state);  
+    }
     this.record(state,player,reaction,action);
   },
 

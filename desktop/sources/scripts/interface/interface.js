@@ -10,12 +10,12 @@ function Interface()
     host.appendChild(this.el);
   }
 
-  this.update = function(state)
+  this.update = function(state,reaction)
   {
     if(!state){ return; }
 
     this.verify_ui(state);
-    this.update_ui(state);
+    this.update_ui(state,reaction);
   }
 
   this.verify_ui = function(state)
@@ -30,7 +30,7 @@ function Interface()
     }
   }
 
-  this.update_ui = function(state)
+  this.update_ui = function(state,reaction)
   {
     var speed_ranges = {min:null,max:null};
 
