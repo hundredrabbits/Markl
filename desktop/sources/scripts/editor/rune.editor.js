@@ -62,6 +62,11 @@ function RuneEditor()
     this.rune.clear()
     this.update()
   }
+  
+  this.status = function(history)
+  {
+    return "[??]"
+  }
 }
 
 function RuneButton(host,fragment)

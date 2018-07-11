@@ -76,6 +76,27 @@ function FightScript(style = {})
     return text
   }
 
+  this.find = function(reaction)
+  {
+    var line = 0
+    var text = ""
+    for(trigger in this.style){
+      line += 1
+      for(event in this.style[trigger]){
+        line += 1
+        for(condition in this.style[trigger][event]){
+          line += 1
+          for(id in this.style[trigger][event][condition]){
+            var action = this.style[trigger][event][condition][id]
+            if(trigger == reaction.trigger && event == reaction.event && condition == reaction.condition && action == reaction.action){ return line; }
+            line += 1
+          }
+        }
+      }
+    }
+    return null
+  }
+
   this.copy = function()
   {
     var style = JSON.parse(JSON.stringify(this.style))

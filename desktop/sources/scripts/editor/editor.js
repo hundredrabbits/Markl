@@ -195,10 +195,11 @@ function Editor()
       this.status.innerHTML = "Idle."  
     }
     
+    var state = this.history && this.history.length > 0 && this.index > 0 ? this.history[this.index] : null;
 
-    this.code_editor.update();
-    this.rune_editor.update();
-    this.list_editor.update();
+    this.code_editor.update(state);
+    this.rune_editor.update(state);
+    this.list_editor.update(state);
 
     this.home_tab.style.display = this.fightscript.runes().length < 1 ? "none" : "inline-block"
 
@@ -207,6 +208,7 @@ function Editor()
     this.clear_button.className = !this.rune_editor.rune.fragments().length > 0 ? "disabled clear" : "clear"
     this.add_button.className = !this.rune_editor.rune.validate() ? "disabled add" : "add"
 
+    this.status.innerHTML = `${this.code_editor.status(state)} ${this.rune_editor.status(state)} ${this.list_editor.status(state)}`
   }
 }
 
