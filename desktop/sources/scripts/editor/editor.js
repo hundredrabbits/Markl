@@ -25,10 +25,10 @@ function Editor()
   this.hide_tab.className = "tab hide"
   this.hide_tab.innerHTML = "<icon/>"
 
-  this.home_tab.onclick = () => { this.el.className = "home" }
-  this.code_tab.onclick = () => { this.el.className = "code" }
-  this.rune_tab.onclick = () => { this.el.className = "rune" }
-  this.hide_tab.onclick = () => { this.el.className += " hide" }
+  this.home_tab.onclick = () => { this.select("list") }
+  this.code_tab.onclick = () => { this.select("code") }
+  this.rune_tab.onclick = () => { this.select("rune") }
+  this.hide_tab.onclick = () => { this.select("hide") }
 
   // Menu
 
@@ -50,9 +50,9 @@ function Editor()
   this.export_button.innerHTML = "<icon/>"
   this.export_button.className = "export"
 
-  this.add_button.onclick = () => { this.merge_rune(this.rune); }
+  this.add_button.onclick = () => { this.rune_editor.merge(); }
   this.run_button.onclick = () => { this.run(); }
-  this.clear_button.onclick = () => { this.clear_rune(); }
+  this.clear_button.onclick = () => { this.rune_editor.clear(); }
   this.refresh_button.onclick = () => { this.reload_code(); }
 
   this.status = document.createElement('t')
@@ -179,6 +179,12 @@ function Editor()
     else{
       this.status.innerHTML = "Invalid code."
     }
+  }
+
+  this.select = function(name)
+  {
+    this.el.className = name;
+    markl.editor.update();
   }
 
   this.update = function(state)

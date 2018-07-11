@@ -7,6 +7,8 @@ function ListEditor()
   {
     var runes = markl.editor.fightscript.runes();
 
+    this.el.innerHTML = ""
+    
     for(id in runes){
       var rune = runes[id]
       rune.update()

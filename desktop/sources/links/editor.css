@@ -76,12 +76,12 @@ body #editor #code_editor #highlighter { position: absolute;background: #333;top
 body #editor.hide { right: -375px; }
 body #editor #menu button { display: none }
 
-body #editor.home #tabs a.home { background:#222; }
-body #editor.home #code_editor { display: none }
-body #editor.home #rune_editor { display: none }
-body #editor.home #list_editor { display: block }
-body #editor.home #menu button.run { display: inline-block; }
-body #editor.home #menu button.export { display: inline-block; }
+body #editor.list #tabs a.home { background:#222; }
+body #editor.list #code_editor { display: none }
+body #editor.list #rune_editor { display: none }
+body #editor.list #list_editor { display: block }
+body #editor.list #menu button.run { display: inline-block; }
+body #editor.list #menu button.export { display: inline-block; }
 
 body #editor.rune #tabs a.rune { background:#222; }
 body #editor.rune #code_editor { display:none; }

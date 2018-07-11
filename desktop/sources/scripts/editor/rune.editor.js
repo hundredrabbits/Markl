@@ -21,6 +21,22 @@ function RuneEditor()
     this.buttons.push(button)
   }
 
+  this.merge = function()
+  {
+    if(!this.rune.validate()){ console.warn("Invalid rune",this.rune); return; }
+
+    console.info(`Crafting ${this.rune.name}..`)
+    markl.editor.fightscript.add(this.rune.copy())
+    this.clear();
+    markl.editor.select("list");
+  }
+
+  this.clear = function(rune)
+  {
+    this.rune.clear()
+    this.update()
+  }
+
   this.update = function()
   {
     this.update_buttons();
@@ -43,26 +59,9 @@ function RuneEditor()
   this.add_fragment = function(fragment)
   {
     this.rune.build(fragment);
-    this.update();
+    markl.editor.update();
   }
 
-  this.merge_rune = function(rune)
-  {
-    if(!this.rune.validate()){ console.warn("Invalid rune",rune); return; }
-
-    console.info(`Crafting ${rune.name}..`)
-    markl.editor.fightscript.add(rune.copy())
-    this.clear_rune();
-
-    this.el.className = "home"
-  }
-
-  this.clear_rune = function(rune)
-  {
-    this.rune.clear()
-    this.update()
-  }
-  
   this.status = function(history)
   {
     return "[??]"
