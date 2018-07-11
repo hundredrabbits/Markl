@@ -41,59 +41,59 @@ body #editor #homeview ln t.value { display: block;color: #777;max-width: 250px;
 body #editor #homeview ln rune { width:50px; height:50px; display: inline-block; margin-right:10px; position: absolute; left: 0px;}
 
 /* RUNEVIEW */
-body #editor #runeview {  }
-body #editor #runeview wrapper { border-bottom: 1px solid #333;margin-bottom: 15px; }
-body #editor #runeview rune { width: 60px;height: 60px;margin: 0px auto 30px; }
-body #editor #runeview rune .fragment { background-size:80%; }
-body #editor #runeview .name {  text-align: center; margin-bottom: 15px }
-body #editor #runeview .preview { margin-bottom: 0px;margin: 0px auto 30px;padding-top: 15px;padding: 0px 30px;line-height: 18px;text-align: center;min-height: 35px; }
-body #editor #runeview .preview t.trigger { color:#72dec2; }
-body #editor #runeview .preview t.event { color:red; }
-body #editor #runeview .preview t.condition { color:white; }
-body #editor #runeview .preview t.action { color:pink; }
-body #editor #runeview button:hover { background-color:#ccc !important; }
-body #editor #runeview button.rune { display: inline-block; border-radius:2px; margin-right:5px; margin-bottom:5px; width:40px; height: 40px; background-size:55%; background-position: center; background-repeat: no-repeat; transition: all 250ms}
-body #editor #runeview button.rune:hover { background-color: :red !important; cursor: pointer; }
-body #editor #runeview button.rune.trigger { background-color:#72dec2; }
-body #editor #runeview button.rune.event { background-color:red; }
-body #editor #runeview button.rune.condition { background-color:white; }
-body #editor #runeview button.rune.action { background-color:pink; }
-body #editor #runeview button.rune.add { }
-body #editor #runeview button.rune.clear {  }
-body #editor #runeview button.rune.disabled { background-color:#777; }
-body #editor #runeview button.rune.disabled:hover { background-color:#777 !important; }
+body #editor #rune_editor {  }
+body #editor #rune_editor wrapper { border-bottom: 1px solid #333;margin-bottom: 15px; }
+body #editor #rune_editor rune { width: 60px;height: 60px;margin: 0px auto 30px; }
+body #editor #rune_editor rune .fragment { background-size:80%; }
+body #editor #rune_editor .name {  text-align: center; margin-bottom: 15px }
+body #editor #rune_editor .preview { margin-bottom: 0px;margin: 0px auto 30px;padding-top: 15px;padding: 0px 30px;line-height: 18px;text-align: center;min-height: 35px; }
+body #editor #rune_editor .preview t.trigger { color:#72dec2; }
+body #editor #rune_editor .preview t.event { color:red; }
+body #editor #rune_editor .preview t.condition { color:white; }
+body #editor #rune_editor .preview t.action { color:pink; }
+body #editor #rune_editor button:hover { background-color:#ccc !important; }
+body #editor #rune_editor button.rune { display: inline-block; border-radius:2px; margin-right:5px; margin-bottom:5px; width:40px; height: 40px; background-size:55%; background-position: center; background-repeat: no-repeat; transition: all 250ms}
+body #editor #rune_editor button.rune:hover { background-color: :red !important; cursor: pointer; }
+body #editor #rune_editor button.rune.trigger { background-color:#72dec2; }
+body #editor #rune_editor button.rune.event { background-color:red; }
+body #editor #rune_editor button.rune.condition { background-color:white; }
+body #editor #rune_editor button.rune.action { background-color:pink; }
+body #editor #rune_editor button.rune.add { }
+body #editor #rune_editor button.rune.clear {  }
+body #editor #rune_editor button.rune.disabled { background-color:#777; }
+body #editor #rune_editor button.rune.disabled:hover { background-color:#777 !important; }
 
 /* CODEVIEW */
-body #editor #codeview { }
-body #editor #codeview t.trigger { color:cyan; }
-body #editor #codeview t.event { color:yellow; }
-body #editor #codeview t.condition { color:orange; }
-body #editor #codeview t.action { color:pink; }
-body #editor #codeview textarea { background: transparent;width:100%;height:calc(100% - 90px); white-space: pre; margin-bottom:15px; position: relative; }
-body #editor #codeview hint { display: block;width: calc(100vw - 60px);height: 240px;white-space: pre;margin-bottom: 15px;position: absolute;}
+body #editor #code_editor { }
+body #editor #code_editor t.trigger { color:cyan; }
+body #editor #code_editor t.event { color:yellow; }
+body #editor #code_editor t.condition { color:orange; }
+body #editor #code_editor t.action { color:pink; }
+body #editor #code_editor textarea { background: transparent;width:100%;height:calc(100% - 90px); white-space: pre; margin-bottom:15px; position: relative; }
+body #editor #code_editor hint { display: block;width: calc(100vw - 60px);height: 240px;white-space: pre;margin-bottom: 15px;position: absolute;}
 
 /* MODES(Tabs) */
 body #editor.hide { right: -375px; }
 body #editor #menu button { display: none }
 
 body #editor.home #tabs a.home { background:#222; }
-body #editor.home #codeview { display: none }
-body #editor.home #runeview { display: none }
+body #editor.home #code_editor { display: none }
+body #editor.home #rune_editor { display: none }
 body #editor.home #homeview { display: block }
 body #editor.home #menu button.run { display: inline-block; }
 body #editor.home #menu button.export { display: inline-block; }
 
 body #editor.rune #tabs a.rune { background:#222; }
-body #editor.rune #codeview { display:none; }
-body #editor.rune #runeview { display:block; }
+body #editor.rune #code_editor { display:none; }
+body #editor.rune #rune_editor { display:block; }
 body #editor.rune #homeview { display: none }
 body #editor.rune #menu button.add { display: inline-block; }
 body #editor.rune #menu button.clear { display: inline-block; }
 body #editor.rune #menu button.run { display: inline-block; }
 
 body #editor.code #tabs a.code { background:#222; }
-body #editor.code #codeview { display:block; }
-body #editor.code #runeview { display:none; }
+body #editor.code #code_editor { display:block; }
+body #editor.code #rune_editor { display:none; }
 body #editor.code #homeview { display: none }
 body #editor.code #menu button.refresh { display: inline-block; }
 body #editor.code #menu button.run { display: inline-block; }

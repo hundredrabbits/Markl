@@ -1,12 +1,12 @@
 function Editor()
 {
+  this.code_editor = new CodeEditor();
+  this.rune_editor = new RuneEditor();
+
   this.el = document.createElement('yu');
   this.el.id = "editor";
   this.el.className = "rune"
-  this.codeview = document.createElement('div');
-  this.codeview.id = "codeview";
-  this.runeview = document.createElement('div');
-  this.runeview.id = "runeview";
+
   this.homeview = document.createElement('div');
   this.homeview.id = "homeview";
 
@@ -57,21 +57,8 @@ function Editor()
   this.clear_button.onclick = () => { this.clear_rune(); }
   this.refresh_button.onclick = () => { this.reload_code(); }
 
-  // Runeview
-
-  this.preview_wrapper = document.createElement('wrapper')
-  this.rune_preview = document.createElement('yu')
-  this.rune_preview.className = "preview"
-  this.rune        = new Rune();
-  this.buttons     = []
-
-  // Codeview
-
-  this.textbox = document.createElement('textarea')
-  this.hint = document.createElement('hint')
   this.status = document.createElement('t')
   this.status.id = "status"
-  this.textbox.onchange = () => { this.reload_code(); console.log("!!!"); }
 
   this.lang        = new FightLang();
   this.fightscript = new FightScript();
@@ -102,21 +89,10 @@ function Editor()
     this.el.appendChild(this.homeview)
 
     // Runeview
-    this.el.appendChild(this.runeview)
-    this.runeview.appendChild(this.preview_wrapper)
-    this.preview_wrapper.appendChild(this.rune.el)
-    this.preview_wrapper.appendChild(this.rune_preview)
-    var fragments = this.lang.fragments();
-    for(id in fragments){
-      var button = new RuneButton(this,fragments[id])
-      this.runeview.appendChild(button.el)
-      this.buttons.push(button)
-    }
-
+    this.el.appendChild(this.rune_editor.el)
+    
     // Codeview
-    this.el.appendChild(this.codeview)
-    this.codeview.appendChild(this.hint)
-    this.codeview.appendChild(this.textbox)
+    this.el.appendChild(this.code_editor.el)
 
     // Runeview
     
@@ -199,36 +175,6 @@ function Editor()
     markl.renderer.update(this.history[this.index].state);
   }
 
-  this.add_fragment = function(fragment)
-  {
-    this.rune.build(fragment);
-    this.update();
-  }
-
-  this.merge_rune = function(rune)
-  {
-    if(!this.rune.validate()){ console.warn("Invalid rune",rune); return; }
-
-    console.info(`Crafting ${rune.name}..`)
-    this.fightscript.add(rune.copy())
-    this.clear_rune();
-
-    this.textbox.value = this.fightscript.render()
-    this.el.className = "home"
-  }
-
-  this.clear_rune = function(rune)
-  {
-    this.rune.clear()
-    this.update()
-  }
-
-  this.reload_code = function()
-  {
-    this.validate();
-    this.update();
-  }
-
   this.validate = function()
   {
     var code = this.textbox.value
@@ -259,77 +205,26 @@ function Editor()
       this.status.innerHTML = "Idle."  
     }
     
-    var code_preview = this.fightscript.render()
-    var rune_preview = this.rune.render()
-
-    this.textbox.innerHTML = code_preview ? code_preview : '' ;
-    this.rune_preview.innerHTML = rune_preview ? rune_preview : ''
-
-    this.home_tab.style.display = this.fightscript.runes().length < 1 ? "none" : "inline-block"
-
-    // Menu
-    this.run_button.className = this.fightscript.runes().length < 1 ? "disabled run" : "run"
-    this.clear_button.className = !this.rune.fragments().length > 0 ? "disabled clear" : "clear"
-    this.add_button.className = !this.rune.validate() ? "disabled add" : "add"
-
-    // Homeview
-    var runes = this.fightscript.runes()
-    this.homeview.innerHTML = ""
-
     for(id in runes){
       var rune = runes[id]
       rune.update()
       this.homeview.innerHTML += `<ln>${rune.el.outerHTML}<t class='name'>${rune.name}</t><t class='value'>${rune.render()}</t></ln>`;
     }
 
-    // Disable selected buttons
-    for(id in this.buttons){
-      var button = this.buttons[id];
-      var fragment = button.fragment;
-      if(this.rune[fragment.type.toLowerCase()] == fragment.name){
-        button.disable();
-      }
-      else{
-        button.enable()
-      }
-    }
+    this.code_editor.update();
+    this.rune_editor.update();
+
+    this.home_tab.style.display = this.fightscript.runes().length < 1 ? "none" : "inline-block"
+
+    // Menu
+    this.run_button.className = this.fightscript.runes().length < 1 ? "disabled run" : "run"
+    this.clear_button.className = !this.rune_editor.rune.fragments().length > 0 ? "disabled clear" : "clear"
+    this.add_button.className = !this.rune_editor.rune.validate() ? "disabled add" : "add"
+
+    // Homeview
+    var runes = this.fightscript.runes()
+    this.homeview.innerHTML = ""
   }
 }
 
-function RuneButton(host,fragment)
-{
-  this.host = host;
-  this.fragment = fragment;
-
-  this.is_enabled = true;
-
-  this.el = document.createElement('button');
-  this.el.className = "rune "+fragment.type.toLowerCase();
-  this.el.style.backgroundImage = `url(media/runes/fragments/${fragment.name.toLowerCase().replace(/ /g,'.')}.png)`;
-  this.el.onclick = () => { this.construct(); }
-
-  this.construct = function()
-  {
-    if(!this.is_enabled){ return; }
-
-    this.host.add_fragment(this.fragment)
-  }
-
-  this.enable = function()
-  {
-    this.is_enabled = true;
-    this.update();
-  }
-
-  this.disable = function()
-  {
-    this.is_enabled = false;
-    this.update();
-  }
-
-  this.update = function()
-  {
-    this.el.className = `rune ${fragment.type.toLowerCase()} ${!this.is_enabled ? 'disabled' : ''}`
-  }
-}
 
