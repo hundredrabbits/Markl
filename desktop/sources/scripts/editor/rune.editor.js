@@ -23,7 +23,11 @@ function RuneEditor()
 
   this.update = function()
   {
-    // Disable selected buttons
+    this.update_buttons();
+  }
+
+  this.update_buttons = function()
+  {
     for(id in this.buttons){
       var button = this.buttons[id];
       var fragment = button.fragment;

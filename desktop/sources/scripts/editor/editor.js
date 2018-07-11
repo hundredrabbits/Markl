@@ -2,13 +2,11 @@ function Editor()
 {
   this.code_editor = new CodeEditor();
   this.rune_editor = new RuneEditor();
+  this.list_editor = new ListEditor();
 
   this.el = document.createElement('yu');
   this.el.id = "editor";
   this.el.className = "rune"
-
-  this.homeview = document.createElement('div');
-  this.homeview.id = "homeview";
 
   // Tabs
 
@@ -60,7 +58,6 @@ function Editor()
   this.status = document.createElement('t')
   this.status.id = "status"
 
-  this.lang        = new FightLang();
   this.fightscript = new FightScript();
 
   this.is_paused = false;
@@ -85,16 +82,9 @@ function Editor()
     this.menu.appendChild(this.clear_button)
     this.menu.appendChild(this.status)
 
-    // Homeview
-    this.el.appendChild(this.homeview)
-
-    // Runeview
-    this.el.appendChild(this.rune_editor.el)
-    
-    // Codeview
     this.el.appendChild(this.code_editor.el)
-
-    // Runeview
+    this.el.appendChild(this.list_editor.el)    
+    this.el.appendChild(this.rune_editor.el)
     
     host.appendChild(this.el);
 
@@ -205,14 +195,10 @@ function Editor()
       this.status.innerHTML = "Idle."  
     }
     
-    for(id in runes){
-      var rune = runes[id]
-      rune.update()
-      this.homeview.innerHTML += `<ln>${rune.el.outerHTML}<t class='name'>${rune.name}</t><t class='value'>${rune.render()}</t></ln>`;
-    }
 
     this.code_editor.update();
     this.rune_editor.update();
+    this.list_editor.update();
 
     this.home_tab.style.display = this.fightscript.runes().length < 1 ? "none" : "inline-block"
 
@@ -221,9 +207,6 @@ function Editor()
     this.clear_button.className = !this.rune_editor.rune.fragments().length > 0 ? "disabled clear" : "clear"
     this.add_button.className = !this.rune_editor.rune.validate() ? "disabled add" : "add"
 
-    // Homeview
-    var runes = this.fightscript.runes()
-    this.homeview.innerHTML = ""
   }
 }
 

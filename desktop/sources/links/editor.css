@@ -34,11 +34,11 @@ body #editor #menu button.export icon { background-image:url(../media/editor/men
 body #editor #menu button.refresh icon { background-image:url(../media/editor/menu.refresh.png); }
 
 /* HOMEVIEW */
-body #editor #homeview {  }
-body #editor #homeview ln { border-bottom: 1px solid #444;padding: 15px 0px; position: relative; height:60px; padding-left: 70px;}
-body #editor #homeview ln t.name { display: block;font-family: 'input_mono_medium';line-height: 25px; }
-body #editor #homeview ln t.value { display: block;color: #777;max-width: 250px; }
-body #editor #homeview ln rune { width:50px; height:50px; display: inline-block; margin-right:10px; position: absolute; left: 0px;}
+body #editor #list_editor {  }
+body #editor #list_editor ln { border-bottom: 1px solid #444;padding: 15px 0px; position: relative; height:60px; padding-left: 70px;}
+body #editor #list_editor ln t.name { display: block;font-family: 'input_mono_medium';line-height: 25px; }
+body #editor #list_editor ln t.value { display: block;color: #777;max-width: 250px; }
+body #editor #list_editor ln rune { width:50px; height:50px; display: inline-block; margin-right:10px; position: absolute; left: 0px;}
 
 /* RUNEVIEW */
 body #editor #rune_editor {  }
@@ -79,14 +79,14 @@ body #editor #menu button { display: none }
 body #editor.home #tabs a.home { background:#222; }
 body #editor.home #code_editor { display: none }
 body #editor.home #rune_editor { display: none }
-body #editor.home #homeview { display: block }
+body #editor.home #list_editor { display: block }
 body #editor.home #menu button.run { display: inline-block; }
 body #editor.home #menu button.export { display: inline-block; }
 
 body #editor.rune #tabs a.rune { background:#222; }
 body #editor.rune #code_editor { display:none; }
 body #editor.rune #rune_editor { display:block; }
-body #editor.rune #homeview { display: none }
+body #editor.rune #list_editor { display: none }
 body #editor.rune #menu button.add { display: inline-block; }
 body #editor.rune #menu button.clear { display: inline-block; }
 body #editor.rune #menu button.run { display: inline-block; }
@@ -94,7 +94,7 @@ body #editor.rune #menu button.run { display: inline-block; }
 body #editor.code #tabs a.code { background:#222; }
 body #editor.code #code_editor { display:block; }
 body #editor.code #rune_editor { display:none; }
-body #editor.code #homeview { display: none }
+body #editor.code #list_editor { display: none }
 body #editor.code #menu button.refresh { display: inline-block; }
 body #editor.code #menu button.run { display: inline-block; }
 body #editor.code #menu button.export { display: inline-block; }
