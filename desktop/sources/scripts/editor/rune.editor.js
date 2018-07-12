@@ -64,7 +64,7 @@ function RuneEditor()
 
   this.status = function(history)
   {
-    return "[??]"
+    return ""
   }
 }
 

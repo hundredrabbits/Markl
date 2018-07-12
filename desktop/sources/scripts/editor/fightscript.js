@@ -79,7 +79,7 @@ function FightScript(style = {})
 
   this.find = function(reaction)
   {
-    var line = 0
+    var line = 1
     var text = ""
     for(trigger in this.style){
       line += 1
@@ -89,8 +89,8 @@ function FightScript(style = {})
           line += 1
           for(id in this.style[trigger][event][condition]){
             var action = this.style[trigger][event][condition][id]
-            if(trigger == reaction.trigger && event == reaction.event && condition == reaction.condition && action == reaction.action){ return line; }
             line += 1
+            if(trigger == reaction.trigger && event == reaction.event && condition == reaction.condition && action == reaction.action){ return line; }
           }
         }
       }

@@ -39,9 +39,11 @@ body #editor #menu button.refresh icon { background-image:url(../media/editor/me
 /* HOMEVIEW */
 body #editor #list_editor {  }
 body #editor #list_editor ln { border-bottom: 1px solid #444;padding: 15px 0px; position: relative; height:60px; padding-left: 70px;}
+body #editor #list_editor ln.selected t.value { color:white; }
 body #editor #list_editor ln t.name { display: block;font-family: 'input_mono_medium';line-height: 25px; }
 body #editor #list_editor ln t.value { display: block;color: #777;max-width: 250px; }
 body #editor #list_editor ln rune { width:50px; height:50px; display: inline-block; margin-right:10px; position: absolute; left: 0px;}
+
 
 /* RUNEVIEW */
 body #editor #rune_editor {  }
@@ -72,8 +74,12 @@ body #editor #code_editor t.trigger { color:cyan; }
 body #editor #code_editor t.event { color:yellow; }
 body #editor #code_editor t.condition { color:orange; }
 body #editor #code_editor t.action { color:pink; }
-body #editor #code_editor textarea { background: transparent;width:100%;height:calc(100% - 90px); white-space: pre; margin-bottom:15px; position: relative; line-height: 15px; z-index: 300}
-body #editor #code_editor #highlighter { position: absolute;background: #333;top: 0px;left: 0px;width: 200px;height: 15px;transition: top 250ms;width: 100%;}
+body #editor #code_editor textarea { background: transparent;width:100%;height:calc(100% - 90px); white-space: pre; margin-bottom:15px; position: relative; line-height: 15px; z-index: 300; padding-left:45px;}
+body #editor #code_editor #highlighter { position: absolute;background: #333;top: 0px;left: 0px;width: 200px;height: 15px;transition: all 250ms;width: 100%; opacity: 1}
+body #editor #code_editor #highlighter.disabled { opacity: 0 }
+body #editor #code_editor #hint { position: absolute;top: 30px;left: 30px;color: #777; }
+body #editor #code_editor #hint t.number { border-right: 1px solid #333;text-align: right;display: inline-block;width: 20px;padding-right: 15px;margin-left: -10px; line-height: 15px }
+
 
 /* MODES(Tabs) */
 body #editor.hide { right: -375px; }
