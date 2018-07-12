@@ -17,7 +17,6 @@
 ## Arena
 
 ### Battle
-- Skip wait turns
 
 ### Interface
 - Display Character rune next to names.

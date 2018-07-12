@@ -39,7 +39,8 @@ function FightScript(style = {})
       if(pad == 4){ condition = line ; style[trigger][event][condition] = []; }
       if(pad == 6){ action = line ; style[trigger][event][condition].push(line); }
     }
-    return style;
+    this.style = style;
+    return this;
   }
 
   this.runes = function()

@@ -9,12 +9,23 @@ function CodeEditor()
   this.el.appendChild(this.textbox)
   this.el.appendChild(this.highlighter)
 
-  this.textbox.onchange = () => { this.reload_code(); console.log("!!!"); }
+  this.textbox.onchange = () => { this.reload(); }
 
   this.update = function(history)
   {    
     this.textbox.value = markl.editor.fightscript.render()
     this.highlight(history)
+  }
+
+  this.reload = function()
+  {
+    var fightscript = new FightScript().parse(this.textbox.value)
+    console.log(fightscript)
+    var is_valid = fightscript.validate()
+
+    if(!is_valid){ console.warn("Invalid fightscript"); return; }
+
+    markl.editor.fightscript = fightscript;
   }
 
   this.highlight = function(history)

@@ -31,12 +31,13 @@ function Style(host)
       var sight_pos = new Pos(sight.pos.x,sight.pos.y);
       var sight_distance = sight_pos.distance_from(this.host.pos);
       h["SIGHT"][sight_type]["ANY"] = sight;
-      h["SIGHT"][sight_type]["DISTANCE IS "+sight_distance] = sight;
+      h["SIGHT"][sight_type]["DISTANCE OF "+sight_distance] = sight;
       if(sight.character){
         var sight_character = sight.character.toUpperCase().trim();
-        h["SIGHT"][sight_type]["CHARACTER IS "+sight_character] = sight;
+        h["SIGHT"][sight_type]["CHARACTER OF "+sight_character] = sight;
       }
     }
+
     return h;
   }
 

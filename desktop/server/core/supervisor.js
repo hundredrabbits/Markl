@@ -93,6 +93,7 @@ module.exports = {
   },
 
   render:function(state){
+    console.log("Rendering..")
     this.history = [];
     this.initial_state = state;
     this.record(state);
@@ -107,6 +108,7 @@ module.exports = {
       this.run(state);
       i += 1;
     }
+    console.log(`Completed in ${this.history.length} steps`)
 
     return this.history;
   }

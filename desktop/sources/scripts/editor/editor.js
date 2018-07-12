@@ -49,11 +49,14 @@ function Editor()
   this.export_button = document.createElement('button')
   this.export_button.innerHTML = "<icon/>"
   this.export_button.className = "export"
+  this.import_button = document.createElement('button')
+  this.import_button.innerHTML = "<icon/>"
+  this.import_button.className = "import"
 
   this.add_button.onclick = () => { this.rune_editor.merge(); }
   this.run_button.onclick = () => { this.run(); }
   this.clear_button.onclick = () => { this.rune_editor.clear(); }
-  this.refresh_button.onclick = () => { this.reload_code(); }
+  this.refresh_button.onclick = () => { this.code_editor.reload(); }
 
   this.status = document.createElement('t')
   this.status.id = "status"
@@ -77,6 +80,7 @@ function Editor()
     this.el.appendChild(this.menu)
     this.menu.appendChild(this.run_button)
     this.menu.appendChild(this.refresh_button)
+    this.menu.appendChild(this.import_button)
     this.menu.appendChild(this.export_button)
     this.menu.appendChild(this.add_button)
     this.menu.appendChild(this.clear_button)
@@ -90,9 +94,9 @@ function Editor()
 
     this.update();
 
-    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 2",action:"ATTACK UP"}))
-    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE ANY"}))
-    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE RIGHT"}))
+    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE TOWARD"}))
+    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 1",action:"ATTACK TOWARD"}))
+    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"WAIT"}))
   }
 
   this.run = function()
@@ -147,8 +151,15 @@ function Editor()
 
   this.next = function()
   {
-    if(!this.history || this.history.length < 1 ){ console.warn("No history, or at end"); this.pause(); return; }
+    if(!this.history){ console.warn("No history"); this.pause(); return; }
+    if(this.history.length <= 1){ console.warn("Reached the beginning"); this.pause(); return; }
+    if(this.index >= this.history.length-1){ console.warn("Reached the End"); this.pause(); return; }
     if(this.history[this.index].state.players[0].hp < 0){ console.warn("Player is dead"); this.pause(); return; }
+
+    // Skip Wait turns
+    while(this.history[this.index].action == "WAIT"){
+      this.index += 1;
+    }
 
     this.index += this.index <= this.history.length ? 1 : 0;
     this.update();
@@ -158,7 +169,14 @@ function Editor()
 
   this.prev = function()
   {
-    if(!this.history || this.history.length < 1 || this.index == 0){ console.warn("No history, or at beginning"); return; }
+    if(!this.history){ console.warn("No history"); this.pause(); return; }
+    if(this.history.length <= 1){ console.warn("Reached the beginning"); this.pause(); return; }
+    if(this.index >= this.history.length-1){ console.warn("Reached the End"); this.pause(); return; }
+
+    // Skip Wait turns
+    while(this.history[this.index].action == "WAIT"){
+      this.index -= 1;
+    }
 
     this.index -= this.index >= 0 ? 1 : 0;
     this.update();
@@ -168,8 +186,7 @@ function Editor()
   this.validate = function()
   {
     var code = this.textbox.value
-    var parsed = new FightScript().parse(code)
-    var fightscript = new FightScript(parsed)
+    var fightscript = new FightScript().parse(code)
     var is_valid = fightscript.validate();
 
     if(is_valid){
@@ -214,7 +231,12 @@ function Editor()
     this.clear_button.className = !this.rune_editor.rune.fragments().length > 0 ? "disabled clear" : "clear"
     this.add_button.className = !this.rune_editor.rune.validate() ? "disabled add" : "add"
 
-    this.status.innerHTML = `${this.code_editor.status(state)} ${this.rune_editor.status(state)} ${this.list_editor.status(state)}`
+    this.update_status(state);
+  }
+
+  this.update_status = function(state)
+  {
+    this.status.innerHTML = this.history && this.history.length > 0 && this.index > 0 ? `${this.index}/${this.history.length} ${this.code_editor.status(state)} ${this.rune_editor.status(state)} ${this.list_editor.status(state)}` : 'Idle.'
   }
 }
 

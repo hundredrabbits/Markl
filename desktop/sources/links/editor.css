@@ -19,18 +19,21 @@ body #editor #tabs .tab.rune icon { background-image:url(../media/editor/rune.ta
 body #editor #tabs .tab.code icon { background-image:url(../media/editor/code.tab.png); }
 body #editor #tabs .tab.hide icon { background-image:url(../media/editor/hide.tab.png); }
 
-body #editor #menu { position: absolute; bottom:30px; left:30px; z-index: 9000 }
+body #editor #menu { position: absolute; bottom:30px; left:30px; z-index: 9000; width: calc(100% - 60px); }
 body #editor #menu #status { line-height: 35px; display: inline-block; color: #999;margin-left: 10px; }
 body #editor #menu button { line-height: 30px; margin-right:10px; border-radius: 100px; background:#555; vertical-align: middle }
 body #editor #menu button:hover { background:#ccc; cursor: pointer; color:black; }
 body #editor #menu button.disabled { background:#333; color:#aaa;}
 body #editor #menu button.disabled:hover { cursor: default; }
 body #editor #menu button.disabled icon { opacity: 0.5 }
+body #editor #menu button.export { float:right; }
+body #editor #menu button.import { float:right; }
 body #editor #menu button icon { width: 35px;height: 35px;background-size: 50%;background-position: center center;background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1); }
 body #editor #menu button.add icon { background-image:url(../media/editor/menu.add.png); }
 body #editor #menu button.clear icon { background-image:url(../media/editor/menu.clear.png); }
 body #editor #menu button.run icon { background-image:url(../media/editor/menu.run.png); }
 body #editor #menu button.export icon { background-image:url(../media/editor/menu.export.png); }
+body #editor #menu button.import icon { background-image:url(../media/editor/menu.import.png); }
 body #editor #menu button.refresh icon { background-image:url(../media/editor/menu.refresh.png); }
 
 /* HOMEVIEW */
@@ -82,6 +85,7 @@ body #editor.list #rune_editor { display: none }
 body #editor.list #list_editor { display: block }
 body #editor.list #menu button.run { display: inline-block; }
 body #editor.list #menu button.export { display: inline-block; }
+body #editor.list #menu button.import { display: inline-block; }
 
 body #editor.rune #tabs a.rune { background:#222; }
 body #editor.rune #code_editor { display:none; }
@@ -90,6 +94,8 @@ body #editor.rune #list_editor { display: none }
 body #editor.rune #menu button.add { display: inline-block; }
 body #editor.rune #menu button.clear { display: inline-block; }
 body #editor.rune #menu button.run { display: inline-block; }
+body #editor.rune #menu button.export { display: none; }
+body #editor.rune #menu button.import { display: none; }
 
 body #editor.code #tabs a.code { background:#222; }
 body #editor.code #code_editor { display:block; }
@@ -98,4 +104,5 @@ body #editor.code #list_editor { display: none }
 body #editor.code #menu button.refresh { display: inline-block; }
 body #editor.code #menu button.run { display: inline-block; }
 body #editor.code #menu button.export { display: inline-block; }
+body #editor.code #menu button.import { display: inline-block; }
 
