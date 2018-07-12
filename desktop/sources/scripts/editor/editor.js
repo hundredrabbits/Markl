@@ -94,8 +94,8 @@ function Editor()
 
     this.update();
 
-    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE TOWARD"}))
     this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 1",action:"ATTACK TOWARD"}))
+    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE TOWARD"}))
     this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"WAIT"}))
   }
 
@@ -157,9 +157,9 @@ function Editor()
     if(this.history[this.index].state.players[0].hp < 0){ console.warn("Player is dead"); this.pause(); return; }
 
     // Skip Wait turns
-    while(this.history[this.index].action == "WAIT"){
-      this.index += 1;
-    }
+    // while(this.history[this.index].action == "WAIT" && this.history[this.index].player.id != 0){
+    //   this.index += 1;
+    // }
 
     this.index += this.index <= this.history.length ? 1 : 0;
     this.update();
@@ -174,9 +174,9 @@ function Editor()
     if(this.index >= this.history.length-1){ console.warn("Reached the End"); this.pause(); return; }
 
     // Skip Wait turns
-    while(this.history[this.index].action == "WAIT"){
-      this.index -= 1;
-    }
+    // while(this.history[this.index].action == "WAIT"){
+    //   this.index -= 1;
+    // }
 
     this.index -= this.index >= 0 ? 1 : 0;
     this.update();

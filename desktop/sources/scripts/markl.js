@@ -53,9 +53,6 @@ function Markl()
   {
     this.scenario.load("dojo");
     this.renderer.start();
-    markl.scenario.reload()
-
-    markl.renderer.update(markl.scenario.run()[0].state);
   }
 
   this.reset = function()
