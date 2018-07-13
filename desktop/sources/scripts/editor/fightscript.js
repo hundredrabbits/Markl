@@ -13,7 +13,12 @@ function FightScript(style = {})
 
   this.remove = function(rune)
   {
-    console.warn("TODO")
+    var index = this.style[rune.trigger][rune.event][rune.condition].indexOf(rune.action);
+
+    if(index < 0){ console.warn("Cannot find rune",rune.action); return; 
+  }
+    console.log(`Removing ${rune.name} at ${index}`)
+    this.style[rune.trigger][rune.event][rune.condition].splice(index,1)
   }
 
   this.replace = function(text)
@@ -75,6 +80,24 @@ function FightScript(style = {})
       }
     }
     return text
+  }
+
+  this.toString = function()
+  {
+    var text = ""
+    for(trigger in this.style){
+      text += trigger+' '
+      for(event in this.style[trigger]){
+        text += event+' '
+        for(condition in this.style[trigger][event]){
+          text += condition+' '
+          for(id in this.style[trigger][event][condition]){
+            text += this.style[trigger][event][condition][id]
+          }
+        }
+      }
+    }
+    return text.trim()
   }
 
   this.find = function(reaction)

@@ -1,0 +1,81 @@
+#renderer { position: relative; height: 100vh;width: 60vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden; transition: width 250ms;}
+#renderer view { display: block;position: fixed;left: calc(50vw - (420px/2));top: 50vh;}
+#renderer stage { display:block; position:absolute; transition:all 250ms; }
+#renderer stage background { display: block;position: absolute;transition: all 150ms;width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
+#renderer stage sprite { display: block; position:absolute; transition:all 150ms;}
+#renderer stage sprite sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 35%;background-size: 600px;background-position: 0px -360px;left: -25%; }
+#renderer stage sprite marker { display: none;width: 50px;height: 50px;z-index: 900;position: absolute;top: -80px;left: 50%;margin-left: -25px; background-size:50%; background-position: center center; background-repeat: no-repeat; }
+#renderer stage sprite marker.active { display:block; background-image:url(../media/interface/arrow.svg); }
+#renderer stage sprite shadow { display: block;width: 150%;height: 150%;position: absolute;bottom: 30%;background-size: 600px;background-position: 0px 0px;left: -25%;background-image: url(../media/fighters/effects.png);opacity: 0.5; }
+#renderer stage effect { display: block; position:absolute; transition:all 150ms; }
+#renderer stage effect sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 30%;background-size: 600px;background-position: 0px 0px;left: -25%;background-image: url(../media/fighters/effects.png);z-index: 200; filter:brightness(0); }
+
+#renderer stage.dojo background { background-image: url(../media/arenas/dojo.png); }
+#renderer stage.temple background { background-image: url(../media/arenas/temple.png); }
+#renderer stage.garden background { background-image: url(../media/arenas/garden.png); }
+#renderer stage.rooftop background { background-image: url(../media/arenas/rooftop.png); }
+#renderer stage.wood background { background-image: url(../media/arenas/wood.png); }
+
+#renderer stage effect sheet.shadow { background-position-y:0px; }
+#renderer stage effect sheet.puff { background-position-y:-120px; }
+#renderer stage effect sheet.explosion { background-position-y:-240px; }
+#renderer stage effect sheet.shield { background-position-y:-360px; }
+#renderer stage effect sheet.hit { background-position-y:-480px; }
+
+/* Frames */
+
+#renderer.frame0 stage sprite sheet { background-position-x:-0px; }
+#renderer.frame1 stage sprite sheet { background-position-x:-120px; }
+#renderer.frame2 stage sprite sheet { background-position-x:-240px; }
+#renderer.frame3 stage sprite sheet { background-position-x:-360px; }
+#renderer.frame4 stage sprite sheet { background-position-x:-480px; }
+
+#renderer.frame0 stage effect sheet { background-position-x:-0px; }
+#renderer.frame1 stage effect sheet { background-position-x:-120px; }
+#renderer.frame2 stage effect sheet { background-position-x:-240px; }
+#renderer.frame3 stage effect sheet { background-position-x:-360px; }
+#renderer.frame4 stage effect sheet { background-position-x:-480px; }
+
+/* Characters */
+
+#renderer stage sprite sheet.lancer { background-image: url(../media/fighters/lancer.png); }
+#renderer stage sprite sheet.sin { background-image: url(../media/fighters/sin.png); }
+#renderer stage sprite sheet.patience { background-image: url(../media/fighters/patience.png); }
+#renderer stage sprite sheet.pest { background-image: url(../media/fighters/pest.png); }
+#renderer stage sprite sheet.dummy { background-image: url(../media/fighters/dummy.png); }
+#renderer stage sprite sheet.goat { background-image: url(../media/fighters/goat.png); }
+
+/* Status */
+
+#renderer stage sprite sheet.idle { background-position-y:0px; }
+#renderer stage sprite sheet.moving { background-position-y:-120px; }
+#renderer stage sprite sheet.moving.up { background-position-y:-240px; }
+#renderer stage sprite sheet.moving.right { background-position-y:-360px; }
+#renderer stage sprite sheet.moving.left { background-position-y:-360px; transform: scaleX(-1); }
+#renderer stage sprite sheet.dash { background-position-y:-480px; }
+#renderer stage sprite sheet.dash.right { background-position-y:-600px; }
+#renderer stage sprite sheet.dash.left { background-position-y:-600px; transform: scaleX(-1); }
+#renderer stage sprite sheet.attack { background-position-y:-960px; }
+#renderer stage sprite sheet.attack.right { background-position-y:-1080px; }
+#renderer stage sprite sheet.attack.left { background-position-y:-1080px; transform: scaleX(-1); }
+
+#renderer stage sprite sheet.confused { background-position-y:-1200px; }
+#renderer stage sprite sheet.hit { background-position-y:-1320px; }
+#renderer stage sprite sheet.fire { background-position-y:-720px; }
+#renderer stage sprite sheet.kill { background-position-y:-1440px; }
+#renderer stage sprite sheet.stasis { background-position-y:-1800px; }
+#renderer stage sprite sheet.dead { background-position-y:-1440px; }
+#renderer stage sprite sheet.recovery { background-position-y:-1560px; }
+
+
+#renderer stage sprite sheet.dead { background-position-x:-480px !important; margin-top:-100px; transition:margin-top 500ms; }
+
+/* ZIndex*/
+
+#renderer stage sprite.depth0 { z-index:104; }
+#renderer stage sprite.depth1 { z-index:103; }
+#renderer stage sprite.depth2 { z-index:102; }
+#renderer stage sprite.depth3 { z-index:101; }
+#renderer stage sprite.depth4 { z-index:100; }
+
+/* Interface */
