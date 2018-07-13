@@ -47,8 +47,10 @@ body #editor #list_editor ln { border-bottom: 1px solid #444;padding: 15px 0px; 
 body #editor #list_editor ln.selected t.value { color:white; }
 body #editor #list_editor ln t.name { display: block;font-family: 'input_mono_medium';line-height: 25px; }
 body #editor #list_editor ln t.value { display: block;color: #777;max-width: 250px; }
-body #editor #list_editor ln t.option { background:red; float:right; padding:0px 10px; line-height: 20px; display: inline-block; margin-left:5px; border-radius: 100px }
-body #editor #list_editor ln rune { width:50px; height:50px; display: inline-block; margin-right:10px; position: absolute; left: 0px;}
+body #editor #list_editor ln t.option { background:#333; float:right; padding:0px 10px; line-height: 20px; display: inline-block; margin-left:5px; border-radius: 100px }
+body #editor #list_editor ln t.option:hover { cursor: pointer; background:#fff; color:black; }
+body #editor #list_editor ln rune { width:50px; height:50px; display: inline-block; margin-right:10px; position: absolute; left: 0px; opacity: 0.5; transition: all 250ms}
+body #editor #list_editor ln:hover rune { opacity: 1.0 }
 
 /* RUNEVIEW */
 

@@ -18,32 +18,44 @@ function ListEditor()
         <t class='name'>
           ${rune.name}
           <t class='option' onclick='markl.editor.list_editor.remove(\"${rune.name}\")'>remove</t>
-          ${id > 0 ? "<t class='option'>up</t>" : ''}
-          ${id < runes.length-1 ? "<t class='option'>down</t>" : ''}
+          ${id > 0 ? `<t class='option' onclick='markl.editor.list_editor.move(\"${rune.name}\",1)'>up</t>` : ''}
+          ${id < runes.length-1 ? `<t class='option' onclick='markl.editor.list_editor.move(\"${rune.name}\",-1)'>down</t>` : ''}
         </t>
         <t class='value'>${rune.render()}</t>
       </ln>`;
     }
   }
 
-  this.remove = function(target_name)
+  this.remove = function(name)
+  {
+    var target = this.select_rune(name)
+    
+    if(!target){ console.warn("Cannot find rune",target); return; }
+    
+    markl.editor.fightscript.remove(target);
+    this.update();
+  }
+
+  this.move = function(name,direction)
+  {
+    var target = this.select_rune(name)
+    
+    if(!target){ console.warn("Cannot find rune",target); return; }
+
+    markl.editor.fightscript.move(target,direction);
+    this.update();
+  }
+
+  this.select_rune = function(target_name)
   {
     var runes = markl.editor.fightscript.runes();
-    var target = null
-    this.el.innerHTML = ""
-    
+
     for(var id in runes){
       var rune = runes[id]
       if(rune.name != target_name){ continue; }
-      target = rune;
+      return rune;
     }
-    if(target){
-      markl.editor.fightscript.remove(target);
-      this.update();
-    }
-    else{
-      console.warn("Cannot find rune",target)  
-    }
+    return null
   }
 
   this.status = function(state)

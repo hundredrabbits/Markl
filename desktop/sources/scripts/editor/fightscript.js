@@ -15,10 +15,32 @@ function FightScript(style = {})
   {
     var index = this.style[rune.trigger][rune.event][rune.condition].indexOf(rune.action);
 
-    if(index < 0){ console.warn("Cannot find rune",rune.action); return; 
-  }
-    console.log(`Removing ${rune.name} at ${index}`)
+    if(index < 0){ console.warn("Cannot find rune",rune.action); return; }
+
     this.style[rune.trigger][rune.event][rune.condition].splice(index,1)
+  }
+
+  this.move = function(target,direction)
+  {
+    console.log(target.name,direction)
+
+    var runes = this.runes()
+    var position = -1
+
+    // // Find rune ID
+    for(var id in runes){
+      var rune = runes[id]
+      if(rune.name == target.name){ position = id }
+    }
+
+    console.log("First, remove")
+    this.remove(target);
+
+    console.log("Then, inject",this.runes().length,position)
+    var new_runes = this.runes().splice(position, 0, rune);
+
+    console.log(new_runes.lenght)
+    // var complete = new FightScript(runes).style()
   }
 
   this.replace = function(text)
