@@ -18,8 +18,8 @@ function ListEditor()
         <t class='name'>
           ${rune.name}
           <t class='option' onclick='markl.editor.list_editor.remove(\"${rune.name}\")'>remove</t>
-          ${id > 0 ? `<t class='option' onclick='markl.editor.list_editor.move(\"${rune.name}\",1)'>up</t>` : ''}
-          ${id < runes.length-1 ? `<t class='option' onclick='markl.editor.list_editor.move(\"${rune.name}\",-1)'>down</t>` : ''}
+          ${id > 0 ? `<t class='option' onclick='markl.editor.list_editor.move(\"${rune.name}\",-1)'>up</t>` : ''}
+          ${id < runes.length-1 ? `<t class='option' onclick='markl.editor.list_editor.move(\"${rune.name}\",1)'>down</t>` : ''}
         </t>
         <t class='value'>${rune.render()}</t>
       </ln>`;

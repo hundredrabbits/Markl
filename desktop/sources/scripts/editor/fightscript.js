@@ -22,8 +22,6 @@ function FightScript(style = {})
 
   this.move = function(target,direction)
   {
-    console.log(target.name,direction)
-
     var runes = this.runes()
     var position = -1
 
@@ -32,15 +30,24 @@ function FightScript(style = {})
       var rune = runes[id]
       if(rune.name == target.name){ position = id }
     }
+    var destination = parseInt(position) + parseInt(direction)
 
-    console.log("First, remove")
+    // TODO: Clean that mess, what the fuck!?
+    console.log(`Move ${position} at ${destination}`,target)
     this.remove(target);
 
-    console.log("Then, inject",this.runes().length,position)
-    var new_runes = this.runes().splice(position, 0, rune);
+    this.style = this.copy().style
 
-    console.log(new_runes.lenght)
-    // var complete = new FightScript(runes).style()
+    var runes = this.runes();
+    runes.splice(destination, 0, target);
+
+    var complete = new FightScript()
+    for(id in runes){
+      var rune = runes[id]
+      complete.add(rune);
+    }
+
+    this.style = complete.style;
   }
 
   this.replace = function(text)

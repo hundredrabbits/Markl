@@ -2,6 +2,7 @@
 
 ## Editor
 - Lock input when running
+- Drag and drop runes in list interface.
 
 ### Home
 - Remove rune on click.
