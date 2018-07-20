@@ -163,13 +163,14 @@ function Editor()
     if(this.index >= this.history.length-1){ console.warn("Reached the End"); this.pause(); return; }
     if(this.history[this.index].state.players[0].hp < 0){ console.warn("Player is dead"); this.pause(); return; }
 
-    this.index += this.index <= this.history.length ? 1 : 0;
-    markl.renderer.update(this.history[this.index].state);
+    this.index += 1;
 
     // Skip Wait turns
-    // while(this.history[this.index].action == "WAIT" && this.history[this.index].player.id != 0){
-    //   this.index += 1;
-    // }
+    while(this.should_skip() == true && this.index < this.history.length-1){
+      this.index += 1;
+    }
+
+    markl.renderer.update(this.history[this.index].state);
   }
 
   this.prev = function()
@@ -178,13 +179,19 @@ function Editor()
     if(this.index < 1){ console.warn("Reached the beginning"); this.pause(); return; }
     if(this.history[this.index].state.players[0].hp < 0){ console.warn("Player is dead"); this.pause(); return; }
 
-    this.index -= this.index >= 0 ? 1 : 0;
-    markl.renderer.update(this.history[this.index].state);
+    this.index -= 1;
 
     // Skip Wait turns
-    // while(this.history[this.index].action == "WAIT"){
-    //   this.index -= 1;
-    // }
+    while(this.should_skip() == true && this.index > 0){
+      this.index -= 1;
+    }
+
+    markl.renderer.update(this.history[this.index].state);
+  }
+
+  this.should_skip = function()
+  {
+    return this.history[this.index] && this.history[this.index-1] && this.history[this.index].action == "WAIT" && this.history[this.index-1].action == "WAIT" ? true : false;
   }
 
   this.validate = function()
