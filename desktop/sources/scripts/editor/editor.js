@@ -64,7 +64,7 @@ function Editor()
   this.fightscript = new FightScript();
 
   this.is_paused = false;
-  this.is_playing = false;
+  this.is_running = false;
   this.history = null;
   this.index = 0;
   this.timer = null;
@@ -101,11 +101,14 @@ function Editor()
 
   this.run = function()
   {
+    console.info("run");
     markl.scenario.reload()
     markl.scenario.inject_style(this.fightscript.render());
 
     this.history = markl.scenario.run();
     this.index = 0;
+    this.is_paused = false;
+    this.is_running = true;
 
     this.update();
     markl.renderer.update(this.history[this.index].state,this.history[this.index].reaction);
@@ -113,13 +116,15 @@ function Editor()
 
   this.start = function()
   {
+    console.info("start");
     this.is_paused = false;
-    this.is_playing = true;
+    this.is_running = true;
     this.timer = setInterval(() => { this.next(); },TIMING.turn);
   }
 
   this.pause = function()
   {
+    console.info("pause");
     if(!this.history){ return; }
     if(this.is_paused){ this.resume(); return; }
 
@@ -131,6 +136,7 @@ function Editor()
 
   this.resume = function()
   {
+    console.info("resume");
     this.is_paused = false;
     this.timer = setInterval(() => { this.next(); },TIMING.turn);
     this.update();
@@ -139,8 +145,9 @@ function Editor()
 
   this.stop = function()
   {
+    console.info("stop");
     this.is_paused = false;
-    this.is_playing = false;
+    this.is_running = false;
     this.index = 0;
     clearInterval(this.timer);
     this.update();
@@ -210,12 +217,8 @@ function Editor()
     if(this.history && this.history.length > 0 && this.index > 0){
       var rune = new Rune(this.history[this.index].reaction)
       console.log(`Playing: Player ${this.history[this.index].player.id}`,rune.toString())
-      this.status.innerHTML = `${this.index}/${this.history.length}`
       // Update Player UI
       markl.interface.ui.players[this.history[this.index].player.id].rune.replace(rune);
-    }
-    else{
-      this.status.innerHTML = "Idle."  
     }
     
     var state = this.history && this.history.length > 0 && this.index > 0 ? this.history[this.index] : null;
@@ -236,7 +239,9 @@ function Editor()
 
   this.update_status = function(state)
   {
-    this.status.innerHTML = this.history && this.history.length > 0 && this.index > 0 ? `${this.index}/${this.history.length} ${this.code_editor.status(state)} ${this.rune_editor.status(state)} ${this.list_editor.status(state)}` : 'Idle.'
+    var html = this.is_running ? "Running. " : "Idle. "
+    html += this.history && this.history.length > 0 && this.index > 0 ? `${this.index}/${this.history.length} ${this.code_editor.status(state)} ${this.rune_editor.status(state)} ${this.list_editor.status(state)}` : ''
+    this.status.innerHTML = html
   }
 }
 

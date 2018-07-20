@@ -11,48 +11,55 @@ function FightScript(style = {})
     this.style[rune.trigger][rune.event][rune.condition].push(rune.action)
   }
 
-  this.remove = function(rune)
+  this.insert = function(target,index)
   {
-    var index = this.style[rune.trigger][rune.event][rune.condition].indexOf(rune.action);
+    console.log(`Insert ${target.name} at ${index}`);
 
-    if(index < 0){ console.warn("Cannot find rune",rune.action); return; }
+    var runes = this.runes();
+    runes.splice(index, 0, target);
 
-    this.style[rune.trigger][rune.event][rune.condition].splice(index,1)
+    var temp = new FightScript()
+    for(id in runes){
+      var rune = runes[id]
+      temp.add(rune);
+    }
+    this.parse(temp.render())
+    this.refresh();
+  }
+
+  this.remove = function(target)
+  {
+    var runes = this.runes()
+
+    var temp = new FightScript()
+    for(id in runes){
+      var rune = runes[id]
+      if(target.name == rune.name){ console.log(`Removed ${target.name} at ${id}.`); continue; }
+      temp.add(rune);
+    }
+    this.parse(temp.render())
+    this.refresh();
   }
 
   this.move = function(target,direction)
   {
-    var runes = this.runes()
-    var position = -1
+    var position = this.indexOf(target)
+    var index = parseInt(position) + parseInt(direction)
 
-    // // Find rune ID
-    for(var id in runes){
-      var rune = runes[id]
-      if(rune.name == target.name){ position = id }
-    }
-    var destination = parseInt(position) + parseInt(direction)
+    console.log(`Move ${target.name}[@${position}] toward ${direction} at ${index}`)
 
-    // TODO: Clean that mess, what the fuck!?
-    console.log(`Move ${position} at ${destination}`,target)
     this.remove(target);
-
-    this.style = this.copy().style
-
-    var runes = this.runes();
-    runes.splice(destination, 0, target);
-
-    var complete = new FightScript()
-    for(id in runes){
-      var rune = runes[id]
-      complete.add(rune);
-    }
-
-    this.style = complete.style;
+    this.insert(target,index)
   }
 
   this.replace = function(text)
   {
     this.style = this.parse(text)
+  }
+
+  this.refresh = function()
+  {
+    this.style = this.copy().style
   }
 
   this.parse = function(text)
@@ -148,6 +155,16 @@ function FightScript(style = {})
       }
     }
     return null
+  }
+
+  this.indexOf = function(target)
+  {
+    var runes = this.runes();
+    for(var id in runes){
+      var rune = runes[id]
+      if(rune.name == target.name){ return parseInt(id); }
+    }
+    return -1
   }
 
   this.copy = function()
