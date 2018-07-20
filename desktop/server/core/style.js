@@ -39,8 +39,6 @@ function Style(host)
       }
     }
 
-    console.log(h)
-
     return h;
   }
 

@@ -160,38 +160,31 @@ function Editor()
   this.next = function()
   {
     if(!this.history || !this.history[this.index]){ console.warn("No history"); this.pause(); return; }
-    if(this.history.length <= 1){ console.warn("Reached the beginning"); this.pause(); return; }
     if(this.index >= this.history.length-1){ console.warn("Reached the End"); this.pause(); return; }
     if(this.history[this.index].state.players[0].hp < 0){ console.warn("Player is dead"); this.pause(); return; }
+
+    this.index += this.index <= this.history.length ? 1 : 0;
+    markl.renderer.update(this.history[this.index].state);
 
     // Skip Wait turns
     // while(this.history[this.index].action == "WAIT" && this.history[this.index].player.id != 0){
     //   this.index += 1;
     // }
-
-    console.info("Moved to ",this.index)
-
-    this.index += this.index <= this.history.length ? 1 : 0;
-    this.update();
-    markl.renderer.animator.start()
-    markl.renderer.update(this.history[this.index].state);
   }
 
   this.prev = function()
   {
     if(!this.history || !this.history[this.index]){ console.warn("No history"); this.pause(); return; }
     if(this.index < 1){ console.warn("Reached the beginning"); this.pause(); return; }
-    if(this.index >= this.history.length-1){ console.warn("Reached the End"); this.pause(); return; }
+    if(this.history[this.index].state.players[0].hp < 0){ console.warn("Player is dead"); this.pause(); return; }
+
+    this.index -= this.index >= 0 ? 1 : 0;
+    markl.renderer.update(this.history[this.index].state);
 
     // Skip Wait turns
     // while(this.history[this.index].action == "WAIT"){
     //   this.index -= 1;
     // }
-
-    console.info("Moved to ",this.index)
-    this.index -= this.index >= 0 ? 1 : 0;
-    this.update();
-    markl.renderer.update(this.history[this.index].state);
   }
 
   this.validate = function()
@@ -211,12 +204,14 @@ function Editor()
 
   this.select = function(name)
   {
+    console.log("Select",name)
     this.el.className = name;
     markl.editor.update();
   }
 
   this.update = function(state)
   {
+    console.info(`===================== ${this.index}`)
     // Status 
     if(this.history && this.history.length > 0 && this.index > 0){
       var rune = new Rune(this.history[this.index].reaction)

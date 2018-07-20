@@ -58,6 +58,7 @@ function RuneEditor()
 
   this.add_fragment = function(fragment)
   {
+    console.log("Add fragment")
     this.rune.build(fragment);
     markl.editor.update();
   }
