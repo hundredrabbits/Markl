@@ -96,6 +96,7 @@ function Editor()
 
     this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 1",action:"ATTACK TOWARD"}))
     this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE TOWARD"}))
+    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE ANY"}))
     this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"WAIT"}))
   }
 
@@ -126,7 +127,7 @@ function Editor()
   {
     console.info("pause");
     if(!this.history){ return; }
-    if(this.is_paused){ this.resume(); return; }
+    if(this.is_paused){ return; }
 
     this.is_paused = true;
     clearInterval(this.timer);
@@ -158,7 +159,7 @@ function Editor()
 
   this.next = function()
   {
-    if(!this.history){ console.warn("No history"); this.pause(); return; }
+    if(!this.history || !this.history[this.index]){ console.warn("No history"); this.pause(); return; }
     if(this.history.length <= 1){ console.warn("Reached the beginning"); this.pause(); return; }
     if(this.index >= this.history.length-1){ console.warn("Reached the End"); this.pause(); return; }
     if(this.history[this.index].state.players[0].hp < 0){ console.warn("Player is dead"); this.pause(); return; }
@@ -168,6 +169,8 @@ function Editor()
     //   this.index += 1;
     // }
 
+    console.info("Moved to ",this.index)
+
     this.index += this.index <= this.history.length ? 1 : 0;
     this.update();
     markl.renderer.animator.start()
@@ -176,8 +179,8 @@ function Editor()
 
   this.prev = function()
   {
-    if(!this.history){ console.warn("No history"); this.pause(); return; }
-    if(this.history.length <= 1){ console.warn("Reached the beginning"); this.pause(); return; }
+    if(!this.history || !this.history[this.index]){ console.warn("No history"); this.pause(); return; }
+    if(this.index < 1){ console.warn("Reached the beginning"); this.pause(); return; }
     if(this.index >= this.history.length-1){ console.warn("Reached the End"); this.pause(); return; }
 
     // Skip Wait turns
@@ -185,6 +188,7 @@ function Editor()
     //   this.index -= 1;
     // }
 
+    console.info("Moved to ",this.index)
     this.index -= this.index >= 0 ? 1 : 0;
     this.update();
     markl.renderer.update(this.history[this.index].state);
