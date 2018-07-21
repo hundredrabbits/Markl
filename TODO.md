@@ -4,6 +4,9 @@
 
 - Lock input when running
 - Drag and drop runes in list interface.
+- Implement player.tp in list editor.
+- Update fight style, and re-run battle.
+- 
 
 ### List Editor
 
