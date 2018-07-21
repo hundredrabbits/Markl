@@ -79,16 +79,16 @@ body #editor #rune_editor button.rune.disabled:hover { background-color:#777 !im
 
 /* CODEVIEW */
 
-body #editor #code_editor { }
+body #editor #code_editor { font-size: 12px;max-height: calc(100% - 165px);overflow: hidden;}
 body #editor #code_editor t.trigger { color:cyan; }
 body #editor #code_editor t.event { color:yellow; }
 body #editor #code_editor t.condition { color:orange; }
 body #editor #code_editor t.action { color:pink; }
-body #editor #code_editor textarea { background: transparent;width:100%;height:calc(100% - 90px); white-space: pre; margin-bottom:15px; position: relative; line-height: 15px; z-index: 300; padding-left:45px;}
-body #editor #code_editor #highlighter { position: absolute;background: #333;top: 0px;left: 0px;width: 200px;height: 15px;transition: all 250ms;width: 100%; opacity: 1}
+body #editor #code_editor textarea { background: transparent;width:100%;height:calc(100% - 90px); white-space: pre; margin-bottom:15px; position: relative; line-height: 20px; z-index: 300; padding-left:45px;}
+body #editor #code_editor #highlighter { position: absolute;background: #333;top: 0px;left: 0px;width: 200px;height: 20px;transition: all 250ms;width: 100%; opacity: 1; margin-top:-10px;}
 body #editor #code_editor #highlighter.disabled { opacity: 0 }
 body #editor #code_editor #hint { position: absolute;top: 30px;left: 30px;color: #777; }
-body #editor #code_editor #hint t.number { border-right: 1px solid #333;text-align: right;display: inline-block;width: 20px;padding-right: 15px;margin-left: -10px; line-height: 15px }
+body #editor #code_editor #hint t.number { border-right: 1px solid #333;text-align: right;display: inline-block;width: 20px;padding-right: 15px;margin-left: -10px; line-height: 20px;  }
 
 /* MODES(Tabs) */
 

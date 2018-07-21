@@ -29,8 +29,18 @@ module.exports = {
   act: function(player,reaction,state){
     // Run Stage Events
     this.stage(state);
+
+    // Check if player should continue
+    if(reaction && player.reaction && reaction.trigger == player.reaction.trigger && reaction.event == player.reaction.event && reaction.condition == player.reaction.condition){
+      player.tp += 1; 
+    }
+    else{
+      player.tp = 0
+    }
+    player.reaction = reaction
+
     // Run Player Action
-    var action = reaction.actions[state.turn % reaction.actions.length];
+    var action = reaction.actions[player.tp % reaction.actions.length];
     if(action){
       var name = action.split(" ")[0].trim();
       var attr = action.replace(name,"").trim()

@@ -30,7 +30,6 @@ function Style(host)
       var sight_type = sight.type.toUpperCase();
       var sight_pos = new Pos(sight.pos.x,sight.pos.y);
       var sight_distance = sight_pos.distance_from(this.host.pos);
-      console.log(this.host.name,sight.name,sight_distance)
       h["SIGHT"][sight_type]["ANY"] = sight;
       h["SIGHT"][sight_type][`DISTANCE OF ${sight_distance}`] = sight;
       if(sight.character){

@@ -12,6 +12,7 @@
 ### Code Editor
 
 - Validate code as it changes.
+- Display line type.
 
 ## Arena
 

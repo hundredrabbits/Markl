@@ -60,7 +60,7 @@ function ListEditor()
 
   this.status = function(state)
   {
-    if(state.player.id != 0){ return ""; }
+    if(!state || !state.player || state.player.id != 0){ return ""; }
 
     return `${new Rune(state.reaction).name}`
   }

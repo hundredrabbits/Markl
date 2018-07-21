@@ -1,39 +1,14 @@
+var Dummy = require('../core/fighters/dummy')
+var Lancer = require('../core/fighters/lancer')
 
-let player = {
-  id:0,
-  hp:5,
-  sp:0,
-  name:"USER",
-  type:"FIGHTER",
-  character: "lancer",
-  status:"idle",
-  pos:{
-    x:2,
-    y:1
-  }
-}
+let player = new Lancer(0,"USER",{x:2,y:1})
+let dummy = new Dummy(1,"DUMMY",{x:2,y:3});
 
-let dummy = {
-  id:1,
-  hp:3,
-  sp:0,
-  name:"DUMMY",
-  type:"FIGHTER",
-  character: "dummy",
-  status:"idle",
-  pos:{
-    x:2,
-    y:3
-  },
-  style: `
+dummy.style = `
 ANY
   ANY
     ANY
       WAIT`
-}
-
-player.score = {hits:0,blocks:0}
-dummy.score = {hits:0,blocks:0}
 
 module.exports = {
   players : [player,dummy],

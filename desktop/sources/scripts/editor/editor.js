@@ -94,10 +94,13 @@ function Editor()
 
     this.update();
 
-    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 1",action:"ATTACK TOWARD"}))
-    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE TOWARD"}))
-    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE ANY"}))
-    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"WAIT"}))
+    // this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 1",action:"ATTACK TOWARD"}))
+    // this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE TOWARD"}))
+    // this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE ANY"}))
+    this.fightscript.add(new Rune({trigger:"ANY",event:"ANY",condition:"ANY",action:"MOVE UP"}))
+    this.fightscript.add(new Rune({trigger:"ANY",event:"ANY",condition:"ANY",action:"MOVE LEFT"}))
+    this.fightscript.add(new Rune({trigger:"ANY",event:"ANY",condition:"ANY",action:"MOVE DOWN"}))
+    this.fightscript.add(new Rune({trigger:"ANY",event:"ANY",condition:"ANY",action:"MOVE RIGHT"}))
   }
 
   this.run = function()
@@ -257,8 +260,11 @@ function Editor()
 
   this.update_status = function(state)
   {
-    var html = this.is_running ? "Running. " : "Idle. "
-    html += this.history && this.history.length > 0 && this.index > 0 ? `${this.index}/${this.history.length} ${this.code_editor.status(state)} ${this.rune_editor.status(state)} ${this.list_editor.status(state)}` : ''
+    var html = this.is_running ? "" : "Idle. "
+    html += this.history && this.history.length > 0 && this.index > 0 ? `${this.index}/${this.history.length}` : ''
+    html += this.code_editor.status(state)+" "
+    html += this.rune_editor.status(state)+" "
+    html += this.list_editor.status(state)+" "
     this.status.innerHTML = html
   }
 }

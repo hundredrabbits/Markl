@@ -136,8 +136,10 @@ function FightScript(style = {})
     return text.trim()
   }
 
-  this.find = function(reaction)
+  this.find = function(reaction,player)
   {
+    if(!player){ return null; }
+    
     var line = 1
     var text = ""
     for(trigger in this.style){
@@ -149,6 +151,7 @@ function FightScript(style = {})
           for(id in this.style[trigger][event][condition]){
             var action = this.style[trigger][event][condition][id]
             line += 1
+            line += player.tp % this.style[trigger][event][condition].length
             if(trigger == reaction.trigger && event == reaction.event && condition == reaction.condition && action == reaction.action){ return line; }
           }
         }

@@ -40,6 +40,7 @@ function RuneEditor()
   this.update = function()
   {
     this.update_buttons();
+    this.rune_preview.innerHTML = this.rune.render()
   }
 
   this.update_buttons = function()
@@ -65,7 +66,7 @@ function RuneEditor()
 
   this.status = function(history)
   {
-    return ""
+    return this.rune.fragments().length > 0 ? `Crafting ${this.rune.name}..` : ''
   }
 }
 

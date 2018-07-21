@@ -50,16 +50,16 @@ function CodeEditor()
     if(history.player.id != 0){
       this.highlighter.className = "disabled"
     }
-    else{
+    else if(history.player && history.player.tp){
       this.highlighter.className = ""
-      var line = markl.editor.fightscript.find(history.reaction)
-      this.highlighter.style.top = `${line * 15}px`
+      var line = markl.editor.fightscript.find(history.reaction,history.player)
+      this.highlighter.style.top = `${line * 20}px`
     }    
   }
 
   this.status = function(history)
   {
-    if(!history){ return; }
+    if(!history){ return ""; }
     if(history.player.id != 0){ return ""; }
 
     var line = markl.editor.fightscript.find(history.reaction)
