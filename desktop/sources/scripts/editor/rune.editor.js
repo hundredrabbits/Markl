@@ -78,6 +78,7 @@ function RuneButton(host,fragment)
 
   this.el = document.createElement('button');
   this.el.className = "rune "+fragment.type.toLowerCase();
+  this.el.title = fragment.name;
   this.el.style.backgroundImage = `url(media/runes/fragments/${fragment.name.toLowerCase().replace(/ /g,'.')}.png)`;
   this.el.onclick = () => { this.construct(); }
 

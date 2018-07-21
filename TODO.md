@@ -19,6 +19,8 @@
 
 ### Interface
 
+- Camera follows cursor.
+
 ### Sprites
 
 ### Background

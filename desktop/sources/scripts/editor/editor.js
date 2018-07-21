@@ -28,7 +28,7 @@ function Editor()
   this.home_tab.onclick = () => { this.select("list") }
   this.code_tab.onclick = () => { this.select("code") }
   this.rune_tab.onclick = () => { this.select("rune") }
-  this.hide_tab.onclick = () => { this.select("hide") }
+  this.hide_tab.onclick = () => { this.toggle() }
 
   // Menu
 
@@ -214,6 +214,18 @@ function Editor()
     console.log("Select",name)
     this.el.className = name;
     markl.editor.update();
+  }
+
+  this.toggle = function()
+  {
+    if(this.el.className.indexOf("hide") > -1){
+      console.log("show")
+      this.el.className = this.el.className.replace("hide","").trim();      
+    }
+    else{
+      console.log("hide")
+      this.el.className += " hide"
+    }
   }
 
   this.update = function(state)

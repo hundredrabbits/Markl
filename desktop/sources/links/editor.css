@@ -20,6 +20,7 @@ body #editor #tabs .tab.home icon { background-image:url(../media/editor/home.ta
 body #editor #tabs .tab.rune icon { background-image:url(../media/editor/rune.tab.png); }
 body #editor #tabs .tab.code icon { background-image:url(../media/editor/code.tab.png); }
 body #editor #tabs .tab.hide icon { background-image:url(../media/editor/hide.tab.png); }
+body #editor.hide #tabs .tab.hide icon { background-image:url(../media/editor/show.tab.png); }
 
 /* MENU */
 
@@ -55,7 +56,7 @@ body #editor #list_editor ln:hover rune { opacity: 1.0 }
 /* RUNEVIEW */
 
 body #editor #rune_editor {  }
-body #editor #rune_editor wrapper { border-bottom: 1px solid #333;margin-bottom: 15px; }
+body #editor #rune_editor wrapper { margin-bottom: 15px; }
 body #editor #rune_editor rune { width: 60px;height: 60px;margin: 0px auto 30px; }
 body #editor #rune_editor rune .fragment { background-size:80%; }
 body #editor #rune_editor .name {  text-align: center; margin-bottom: 15px }
@@ -67,10 +68,10 @@ body #editor #rune_editor .preview t.action { color:pink; }
 body #editor #rune_editor button:hover { background-color:#ccc !important; }
 body #editor #rune_editor button.rune { display: inline-block; border-radius:2px; margin-right:5px; margin-bottom:5px; width:40px; height: 40px; background-size:55%; background-position: center; background-repeat: no-repeat; transition: all 250ms}
 body #editor #rune_editor button.rune:hover { background-color: :red !important; cursor: pointer; }
-body #editor #rune_editor button.rune.trigger { background-color:#72dec2; }
-body #editor #rune_editor button.rune.event { background-color:red; }
-body #editor #rune_editor button.rune.condition { background-color:white; }
-body #editor #rune_editor button.rune.action { background-color:pink; }
+body #editor #rune_editor button.rune.trigger { background-color:#fff; -webkit-filter: invert(1); filter: invert(1); }
+body #editor #rune_editor button.rune.event { background-color:#bbb; -webkit-filter: invert(1); filter: invert(1); }
+body #editor #rune_editor button.rune.condition { background-color:#aaa; }
+body #editor #rune_editor button.rune.action { background-color:#fff; }
 body #editor #rune_editor button.rune.add { }
 body #editor #rune_editor button.rune.clear {  }
 body #editor #rune_editor button.rune.disabled { background-color:#777; }
@@ -91,7 +92,7 @@ body #editor #code_editor #hint t.number { border-right: 1px solid #333;text-ali
 
 /* MODES(Tabs) */
 
-body #editor.hide { right: -375px; }
+body #editor.hide { right: -420px; }
 body #editor #menu button { display: none }
 
 body #editor.list #tabs a.home { background:#222; }
