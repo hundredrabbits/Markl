@@ -31,10 +31,13 @@
 ### Interface
 
 - Camera follows cursor.
+- Camera centers on character.
+- Display health bars.
 
 ### Sprites
 
 - Animation timer
 - Animate sprite
+- Keep orientation
 
 ### Background

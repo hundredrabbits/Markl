@@ -1,6 +1,6 @@
 #renderer { position: relative; height: 100vh;width: 60vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden; transition: width 250ms;}
 #renderer view { display: block;position: fixed;left: calc(50vw - (420px/2));top: 50vh;}
-#renderer stage { display:block; position:absolute; transition:all 250ms; }
+#renderer stage { display:block; position:absolute; transition:all 500ms; }
 #renderer stage background { display: block;position: absolute;transition: all 150ms;width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
 #renderer stage sprite { display: block; position:absolute; transition:all 150ms;}
 #renderer stage sprite sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 35%;background-size: 600px;background-position: 0px -360px;left: -25%; }
@@ -78,4 +78,4 @@
 #renderer stage sprite.depth3 { z-index:101; }
 #renderer stage sprite.depth4 { z-index:100; }
 
-/* Interface */
+

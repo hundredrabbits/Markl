@@ -110,9 +110,10 @@ function Stage_Screen()
       sum.x += positions[id].x;
       sum.y += positions[id].y;
     }
+    var average = {x:sum.x/positions.length,y:sum.y/positions.length};
     var stage_center = (STAGE.tile * 4)/2;
-    var offset = {x:sum.x/positions.length,y:sum.y/positions.length};
-    this.stage.style.marginLeft = positions.length > 1 ? `-${(offset.x * STAGE.tile) - stage_center}px` : "0px";
-    this.stage.style.marginTop = positions.length > 1 ? `${(offset.y * STAGE.tile) - stage_center}px` : "0px";
+
+    this.stage.style.marginLeft = positions.length > 1 ? `-${(average.x * STAGE.tile) - stage_center}px` : "0px";
+    this.stage.style.marginTop = positions.length > 1 ? `${(average.y * STAGE.tile) - stage_center}px` : "0px";
   }
 }

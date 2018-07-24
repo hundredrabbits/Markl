@@ -1,6 +1,11 @@
 var Pos = require('./units/pos.js')
 var Vector = require('./units/vector.js')
 
+const UP = new Vector(0,1);
+const DOWN = new Vector(0,-1);
+const LEFT = new Vector(-1,0);
+const RIGHT = new Vector(1,0);
+
 function Action(host,attr,target)
 {
   this.host = host;
@@ -42,7 +47,7 @@ function Action(host,attr,target)
   {
     var vectors = [UP, RIGHT, DOWN, LEFT];
     for(id in vectors){
-      var vector = vectors[(id + this.state.turn) % vectors.length];
+      var vector = vectors[(id + this.host.tp) % vectors.length];
       var target_pos = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
       if(this.can_move_to(target_pos)){
         return vector;
