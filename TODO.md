@@ -10,7 +10,11 @@
 
 ### List Editor
 
+- Remove?
+
 ### Rune Editor
+
+- Display rune use on hover.
 
 ### Code Editor
 
@@ -21,10 +25,16 @@
 
 ### Battle
 
+- Check stasis state.
+- Don't animate wait? Maybe display an effect?
+
 ### Interface
 
 - Camera follows cursor.
 
 ### Sprites
+
+- Animation timer
+- Animate sprite
 
 ### Background

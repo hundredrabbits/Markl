@@ -28,7 +28,7 @@ function CodeEditor()
 
     if(!is_valid){ console.warn("Invalid fightscript"); return; }
 
-    markl.editor.fightscript = fightscript;
+    markl.editor.replace(fightscript);
   }
 
   this.update_hint = function()
@@ -45,24 +45,15 @@ function CodeEditor()
 
   this.update_highlight = function(history)
   {
-    if(!history){ return; }
+    if(!history || !history.player || history.player.id != 0){ this.highlighter.className = "disabled"; return; }
 
-    if(history.player.id != 0){
-      this.highlighter.className = "disabled"
-    }
-    else if(history.player && history.player.tp){
-      this.highlighter.className = ""
-      var line = markl.editor.fightscript.find(history.reaction,history.player)
-      this.highlighter.style.top = `${line * 20}px`
-    }    
+    this.highlighter.className = ""
+    var line = markl.editor.fightscript.find(history.reaction,history.player)
+    this.highlighter.style.top = `${line * 20}px`
   }
 
   this.status = function(history)
   {
-    if(!history){ return ""; }
-    if(history.player.id != 0){ return ""; }
-
-    var line = markl.editor.fightscript.find(history.reaction)
-    return `L${line}`
+    return ""
   }
 }

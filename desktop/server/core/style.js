@@ -37,7 +37,6 @@ function Style(host)
         h["SIGHT"][sight_type][`CHARACTER OF ${sight_character}`] = sight;
       }
     }
-
     return h;
   }
 

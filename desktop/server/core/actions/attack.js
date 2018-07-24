@@ -19,35 +19,25 @@ function ATTACK(host,attr,target = null)
       return;
     }
 
-    var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
-    var offset = host_pos.offset(this.target.pos).invert();
-    var vector = new Vector(offset.x,offset.y);
-  
+    var vector = this.find_vector(this.attr);
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     var collider = this.player_at(target_position);
 
+    console.log(collider)
     if(collider){
-      if(collider.sp - 5 > this.host.sp && collider.status == "idle"){
-        state.effects.push({name:"shield",pos:target_position})
-        this.host.status = "stasis";
-        collider.status = "blocking";
-        console.log("BLOCKED!")
-        collider.score.blocks += 1;
-        this.knockback(this.host,vector.invert());
-      }
-      else{
-        state.effects.push({name:"hit",pos:target_position})
-        collider.hp -= 1;
-        collider.status = collider.hp < 1 ? "kill" : "hit";
-        this.host.status = this.name;
-        this.host.vector = vector.name;
-        this.host.score.hits += 1;
-        this.knockback(collider,vector);
-      }
+      state.effects.push({name:"hit",pos:target_position})
+      collider.hp -= 1;
+      collider.status = collider.hp < 1 ? "kill" : "hit";
+      this.host.status = this.name;
+      this.host.vector = vector.name;
+      this.host.score.hits += 1;
+      this.knockback(collider,vector);
     }
     else{
+      console.log("Attack missed!")
       this.host.status = "idle";
     }
+
   }
 
   this.knockback = function(host,vector)
