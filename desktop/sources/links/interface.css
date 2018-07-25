@@ -1,4 +1,4 @@
-#interface { position: fixed;width: calc(100vw - 420px);height: 100vh; }
+#interface { position: fixed;width: calc(100vw - 420px);height: 100vh; z-index: 8888}
 
 #interface .player.ui { position: absolute; width:40px; width:100px; padding-left:45px;}
 #interface .player.ui.player0 { bottom:30px; left:30px; }
@@ -6,17 +6,22 @@
 #interface .player.ui.player2 { top:30px; right:30px; }
 #interface .player.ui.player3 { top:30px; left:30px; }
 
-#interface .player.ui.player1 { padding-left: 0px;padding-right: 45px;text-align: right; }
-#interface .player.ui.player1 t { text-align: right }
-#interface .player.ui.player1 rune { right:0px; left:auto; }
-
-#interface .player.ui t { line-height: 18px; display: inline-block;}
-#interface .player.ui t.name { font-size: 11px;display: block; font-family: 'input_mono_medium'}
+#interface .player.ui t { line-height: 15px; display: inline-block;}
+#interface .player.ui t.name { font-size: 11px;display: block;font-family: 'input_mono_medium';margin-top: 5px;}
 #interface .player.ui t.health { margin-right:5px; }
 
-#interface .player.ui rune { width:35px; height:35px; display: block;  position: relative; border-radius: 5px; overflow: hidden; position: absolute; top:-2px; left:0px; -webkit-filter: invert(1); filter: invert(1);}
+#interface .player.ui rune { width:35px; height:35px; display: block;  position: relative; border-radius: 5px; overflow: hidden; position: absolute; top:-2px; left:0px; -webkit-filter: invert(1); filter: invert(1); display: none}
 #interface .player.ui rune .fragment { width:50%; display: block; height:50%; position: absolute; top:0px; left:0px; background-position: center; background-size:100%; background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1);}
 #interface .player.ui rune .fragment.trigger { top:0%; left:0%; }
 #interface .player.ui rune .fragment.event { top:0%; left:50%; }
 #interface .player.ui rune .fragment.condition { top:50%; left:0%; }
 #interface .player.ui rune .fragment.action { top:50%; left:50%; }
+
+#interface .player.ui svg { stroke: red;stroke-width: 7.5px;fill:none;position: absolute;left: 0px;top: 0px;width: 40px;height: 40px;transform: rotate(-90deg); }
+#interface .player.ui svg .bg  { stroke:#222; }
+#interface .player.ui svg .fg  { stroke:#fff; stroke-width:3px; stroke-linecap: round; transition: stroke-dashoffset 0.5s linear;}
+
+#interface .player.ui.player1 { padding-left: 0px;padding-right: 45px;text-align: right; }
+#interface .player.ui.player1 t { text-align: right }
+#interface .player.ui.player1 rune { right:0px; left:auto; }
+#interface .player.ui.player1 svg { right:0px; left:auto; }

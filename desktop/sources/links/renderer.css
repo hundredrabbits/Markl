@@ -1,4 +1,4 @@
-#renderer { position: relative; height: 100vh;width: 60vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden; transition: width 250ms;}
+#renderer { position: relative; height: 100vh;width: 100vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden; transition: width 250ms; background:#ccc;}
 #renderer view { display: block;position: fixed;left: calc(50vw - (420px/2));top: 50vh;}
 #renderer stage { display:block; position:absolute; transition:all 500ms; }
 #renderer stage background { display: block;position: absolute;transition: all 150ms;width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
