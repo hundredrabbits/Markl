@@ -24,7 +24,7 @@ function Interface()
       var player = state.players[id];
       if(this.ui.players[player.id]){ continue; }
       console.log("Creating ui for ",player.id)
-      var ui = new Player_UI(player.id)
+      var ui = new Player_UI(player)
       this.ui.players[player.id] = ui;
       this.el.appendChild(ui.el);
     }
