@@ -37,7 +37,7 @@ function Markl()
     
     this.controller.add("default","Editor","Play",() => { markl.editor.run(); },"CmdOrCtrl+R");
     this.controller.add("default","Editor","Pause/Resume",() => { markl.editor.pause(); },"CmdOrCtrl+P");
-    this.controller.add("default","Editor","Stop",() => { markl.editor.pause(); },"CmdOrCtrl+W");
+    this.controller.add("default","Editor","Stop",() => { markl.editor.stop(); },"CmdOrCtrl+W");
     this.controller.add("default","Editor","Next Turn",() => { markl.editor.next(); },"CmdOrCtrl+Right");
     this.controller.add("default","Editor","Prev Turn",() => { markl.editor.prev(); },"CmdOrCtrl+Left");
     this.controller.add("default","Editor","Toggle View",() => { markl.editor.toggle(); },"CmdOrCtrl+D");

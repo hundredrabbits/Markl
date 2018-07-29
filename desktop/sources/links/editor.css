@@ -24,8 +24,8 @@ body #editor.hide #tabs .tab.hide icon { background-image:url(../media/editor/ta
 
 /* MENU */
 
-body #editor #menu { position: absolute; bottom:30px; left:30px; z-index: 9000; width: calc(100% - 60px); }
-body #editor #menu #status { line-height: 35px; display: inline-block; color: #999;margin-left: 10px; }
+body #editor #menu { position: absolute; bottom:30px; left:30px; z-index: 9000; width: calc(100% - 60px); overflow: hidden; }
+body #editor #menu #status { line-height: 35px; display: inline-block; color: #999;margin-left: 10px;position: absolute;top: 0px; }
 body #editor #menu button { line-height: 30px; margin-right:10px; border-radius: 100px; background:#555; vertical-align: middle }
 body #editor #menu button:hover { background:#ccc; cursor: pointer; color:black; }
 body #editor #menu button.disabled { background:#333; color:#aaa;}
@@ -122,3 +122,4 @@ body #editor.code #menu button.run { display: inline-block; }
 body #editor.code #menu button.export { display: inline-block; }
 body #editor.code #menu button.import { display: inline-block; }
 
+body #editor.running #code_editor textarea { color:#aaa; }

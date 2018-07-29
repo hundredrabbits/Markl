@@ -2,7 +2,6 @@
 
 ## Editor
 
-- Lock input when running
 - Drag and drop runes in list interface.
 - Implement player.tp in list editor.
 - Update fight style, and re-run battle.
@@ -14,7 +13,7 @@
 
 ### Rune Editor
 
-- Display rune use on hover.
+- Display rune usage on hover.
 
 ### Code Editor
 

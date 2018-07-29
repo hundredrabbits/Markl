@@ -63,6 +63,7 @@ function Editor()
 
   this.fightscript = new FightScript();
 
+  this.mode = "rune";
   this.is_paused = false;
   this.is_running = false;
   this.history = null;
@@ -138,7 +139,6 @@ function Editor()
 
     this.is_paused = true;
     clearInterval(this.timer);
-    this.update();
     markl.renderer.update(this.history[this.index].state);
   }
 
@@ -147,7 +147,6 @@ function Editor()
     console.info("resume");
     this.is_paused = false;
     this.timer = setInterval(() => { this.next(); },TIMING.turn);
-    this.update();
     markl.renderer.update(this.history[this.index].state);
   }
 
@@ -226,7 +225,7 @@ function Editor()
   this.select = function(name)
   {
     console.log("Select",name)
-    this.el.className = name;
+    this.mode = name;
     markl.editor.update();
   }
 
@@ -249,9 +248,9 @@ function Editor()
     if(this.history && this.history.length > 0 && this.index > 0){
       var rune = new Rune(this.history[this.index].reaction)
       console.log(`Playing: Player ${this.history[this.index].player.id}`,rune.toString())
-      // Update Player UI
-      markl.interface.ui.players[this.history[this.index].player.id].rune.replace(rune);
     }
+
+    this.el.className = `${this.mode} ${this.is_running ? 'running' : ''}`
     
     var state = this.history && this.history.length > 0 && this.index > 0 ? this.history[this.index] : null;
 
