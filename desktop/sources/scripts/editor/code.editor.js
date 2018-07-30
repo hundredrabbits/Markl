@@ -16,6 +16,7 @@ function CodeEditor()
 
   this.update = function(history)
   {    
+    this.textbox.disabled = markl.editor.is_running;
     this.textbox.value = markl.editor.fightscript.render()
     this.update_hint(history);
     this.update_highlight(history)

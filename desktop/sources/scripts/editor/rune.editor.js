@@ -3,12 +3,15 @@ function RuneEditor()
   this.el = document.createElement('div');
   this.el.id = "rune_editor";
 
+  this.buttons_wrapper = document.createElement('yu')
+  this.buttons_wrapper.className = "buttons"
   this.preview_wrapper = document.createElement('wrapper')
   this.rune_preview = document.createElement('yu')
   this.rune_preview.className = "preview"
   this.rune        = new Rune();
   this.buttons     = []
 
+  this.el.appendChild(this.buttons_wrapper)
   this.el.appendChild(this.preview_wrapper)
   this.preview_wrapper.appendChild(this.rune.el)
   this.preview_wrapper.appendChild(this.rune_preview)
@@ -17,7 +20,7 @@ function RuneEditor()
 
   for(id in fragments){
     var button = new RuneButton(this,fragments[id])
-    this.el.appendChild(button.el)
+    this.buttons_wrapper.appendChild(button.el)
     this.buttons.push(button)
   }
 

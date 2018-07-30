@@ -1,4 +1,4 @@
-body { font-size:11px; font-family: 'input_mono_regular'; overflow:hidden; background: white }
+body { font-size:11px; font-family: 'input_mono_regular'; overflow:hidden; background: white; -webkit-user-select: none; }
 
 yu { display: block; }
 icon { display: block; }

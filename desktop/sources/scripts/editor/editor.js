@@ -115,11 +115,10 @@ function Editor()
     markl.scenario.inject_style(this.fightscript.render());
 
     this.history = markl.scenario.run();
-    this.index = 0;
+    this.index = 1;
     this.is_paused = false;
     this.is_running = true;
 
-    this.update();
     markl.renderer.update(this.history[this.index].state,this.history[this.index].reaction);
   }
 

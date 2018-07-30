@@ -15,9 +15,9 @@ function Markl()
   {
     document.body.appendChild(this.el);
 
-    this.editor.install(this.el);
-    this.interface.install(this.el);
     this.renderer.install(this.el);
+    this.interface.install(this.el);
+    this.editor.install(this.el);
 
     this.controller.add("default","*","About",() => { require('electron').shell.openExternal('https://github.com/hundredrabbits/Dotgrid'); },"CmdOrCtrl+,");
     this.controller.add("default","*","Fullscreen",() => { app.toggle_fullscreen(); },"CmdOrCtrl+Enter");
