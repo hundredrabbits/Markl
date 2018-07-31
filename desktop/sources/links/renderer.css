@@ -24,17 +24,17 @@
 
 /* Frames */
 
-#renderer.frame0 stage sprite sheet { background-position-x:-0px; }
-#renderer.frame1 stage sprite sheet { background-position-x:-120px; }
-#renderer.frame2 stage sprite sheet { background-position-x:-240px; }
-#renderer.frame3 stage sprite sheet { background-position-x:-360px; }
-#renderer.frame4 stage sprite sheet { background-position-x:-480px; }
+#renderer view.f0 stage sprite sheet { background-position-x:-0px !important; }
+#renderer view.f1 stage sprite sheet { background-position-x:-120px !important; }
+#renderer view.f2 stage sprite sheet { background-position-x:-240px !important; }
+#renderer view.f3 stage sprite sheet { background-position-x:-360px !important; }
+#renderer view.f4 stage sprite sheet { background-position-x:-480px !important; }
 
-#renderer.frame0 stage effect sheet { background-position-x:-0px; }
-#renderer.frame1 stage effect sheet { background-position-x:-120px; }
-#renderer.frame2 stage effect sheet { background-position-x:-240px; }
-#renderer.frame3 stage effect sheet { background-position-x:-360px; }
-#renderer.frame4 stage effect sheet { background-position-x:-480px; }
+#renderer view.f0 stage effect sheet { background-position-x:-0px !important; }
+#renderer view.f1 stage effect sheet { background-position-x:-120px !important; }
+#renderer view.f2 stage effect sheet { background-position-x:-240px !important; }
+#renderer view.f3 stage effect sheet { background-position-x:-360px !important; }
+#renderer view.f4 stage effect sheet { background-position-x:-480px !important; }
 
 /* Characters */
 

@@ -4,6 +4,7 @@ function Stage_Screen()
 
   this.stage = document.createElement('stage');
   this.background = document.createElement('background');
+  this.animator = new Animator(this.el);
 
   var STAGE = {padding:{x:15,y:15},tile:80}
 
@@ -41,6 +42,8 @@ function Stage_Screen()
     this.update_sprites(state);
     this.add_effects(state);
     this.focus(state);
+
+    this.animator.start();
 
     markl.interface.update(state,reaction);
     markl.editor.update(state);

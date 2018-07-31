@@ -7,6 +7,7 @@ function Animator(host)
   this.start = function()
   {
     this.stop();
+
     this.frame = 0;
     this.timer = setInterval(() => { this.update(); },TIMING.frame);
   }
@@ -15,7 +16,7 @@ function Animator(host)
   {
     if(this.frame > 4){ this.stop(); }
 
-    this.host.className = `frame${this.frame % 5}`;
+    this.host.className = `f${this.frame % 5}`;
     this.frame += 1;    
   }
 
