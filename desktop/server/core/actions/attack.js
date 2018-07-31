@@ -23,7 +23,6 @@ function ATTACK(host,attr,target = null)
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     var collider = this.player_at(target_position);
 
-    console.log(collider)
     if(collider){
       state.effects.push({name:"hit",pos:target_position})
       collider.hp -= 1;
@@ -37,7 +36,6 @@ function ATTACK(host,attr,target = null)
       console.log("Attack missed!")
       this.host.status = "idle";
     }
-
   }
 
   this.knockback = function(host,vector)

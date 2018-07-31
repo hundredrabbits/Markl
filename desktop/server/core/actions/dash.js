@@ -7,8 +7,7 @@ function DASH(host,attr,target = null)
   Action.call(this,host,attr,target);
   
   this.name = "dash";
-  this.cost = 7;
-  this.state = null;
+  this.cost = 5;
 
   this.run = function(state)
   {
@@ -19,76 +18,15 @@ function DASH(host,attr,target = null)
       this.host.status = "recovery";
       return;
     }
-
-    var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
-    var vector = null;
-
-    if(this.attr == "AWAY"){
-      var offset = host_pos.offset(this.target.pos).invert();
-      vector = this.find_away_vector(new Vector(offset.x,offset.y));
-    }
-    else if(this.attr == "TOWARD"){
-      var offset = host_pos.offset(this.target.pos).invert();
-      vector = new Vector(offset.x,offset.y);
-    }
-    else if(this.attr == "ANY"){
-      vector = this.find_any_vector();
-    }
-    else{
-      vector = new Vector().from_name(this.attr);
-    }
-
+    
+    var vector = this.find_vector(this.attr);
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
+
     while(this.can_move_to(target_position)){
       this.host.pos = {x:target_position.x,y:target_position.y};
-      target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
       this.host.status = "dash";
       this.host.vector = vector.name;
     }
-  }
-
-  this.find_away_vector = function(vector)
-  {
-    // backward
-    var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.invert());
-
-    if(this.can_move_to(target_position)){
-      return vector.invert();
-    }
-
-    // Sideways
-    var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.rotate(1));
-
-    if(this.can_move_to(target_position)){
-      return vector.rotate(1);
-    }
-    // Sideways
-    var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.rotate(-1));
-
-    if(this.can_move_to(target_position)){
-      return vector.rotate(-1);
-    }
-
-    return null;
-  }
-
-  this.find_any_vector = function()
-  {
-
-    const UP = new Vector(0,1);
-    const DOWN = new Vector(0,-1);
-    const LEFT = new Vector(-1,0);
-    const RIGHT = new Vector(1,0);
-
-    var vectors = [UP, RIGHT, DOWN, LEFT];
-    for(id in vectors){
-      var vector = vectors[(id + this.state.turn) % vectors.length];
-      var target_pos = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
-      if(this.can_move_to(target_pos)){
-        return vector;
-      } 
-    }
-    return null;
   }
 
   this.can_move_to = function(pos)

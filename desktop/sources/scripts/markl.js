@@ -35,7 +35,7 @@ function Markl()
     this.controller.add_role("default","Edit","delete");
     this.controller.add_role("default","Edit","selectall");
     
-    this.controller.add("default","Editor","Play",() => { markl.editor.run(); },"CmdOrCtrl+R");
+    this.controller.add("default","Editor","Play",() => { markl.editor.play(); },"CmdOrCtrl+R");
     this.controller.add("default","Editor","Pause/Resume",() => { markl.editor.pause(); },"CmdOrCtrl+P");
     this.controller.add("default","Editor","Stop",() => { markl.editor.stop(); },"CmdOrCtrl+W");
     this.controller.add("default","Editor","Next Turn",() => { markl.editor.next(); },"CmdOrCtrl+Right");
@@ -51,7 +51,7 @@ function Markl()
   
   this.start = function()
   {
-    this.scenario.load("dojo");
+    this.scenario.load("garden");
     this.renderer.start();
   }
 

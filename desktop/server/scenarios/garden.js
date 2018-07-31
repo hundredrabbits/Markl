@@ -1,35 +1,15 @@
-let player1 = {
-  id:0,
-  hp:4,
-  sp:0,
-  name:"USER",
-  type:"FIGHTER",
-  character: "lancer",
-  status:"idle",
-  pos:{
-    x:0,
-    y:0
-  },
-  style: `
-DEFAULT
-  DEFAULT
-    DEFAULT
-      WAIT`
-}
 
-let player2 = {
-  id:1,
-  hp:4,
-  sp:0,
-  name:"CPU1",
-  type:"FIGHTER",
-  character: "sin",
-  status:"idle",
-  pos:{
-    x:0,
-    y:4
-  },
-  style: `
+var Lancer = require('../core/fighters/lancer')
+var Patience = require('../core/fighters/patience')
+var Pest = require('../core/fighters/pest')
+var Sin = require('../core/fighters/sin')
+
+let player = new Lancer(0,"USER",{x:4,y:0})
+let patience = new Patience(1,"CPU1",{x:0,y:0});
+let sin = new Sin(2,"CPU2",{x:4,y:4});
+let pest = new Pest(3,"CPU3",{x:0,y:4});
+
+patience.style = `
 SIGHT
   FIGHTER
     DISTANCE IS 4
@@ -40,77 +20,69 @@ SIGHT
       MOVE TOWARD
     DISTANCE IS 1
       ATTACK TOWARD
-    DEFAULT
+    ANY
       MOVE TOWARD
   OBJECT
     DISTANCE IS 1
       ATTACK TOWARD
   PROJECTILE
-    DEFAULT
+    ANY
       STEP
-DEFAULT
-  DEFAULT
-    DEFAULT
-      DASH LEFT`
-}
+ANY
+  ANY
+    ANY
+      MOVE ANY`
 
-let player3 = {
-  id:2,
-  hp:4,
-  sp:0,
-  name:"CPU2",
-  type:"FIGHTER",
-  character: "pest",
-  status:"idle",
-  pos:{
-    x:4,
-    y:4
-  },
-  style: `
+sin.style = `
 SIGHT
   FIGHTER
+    DISTANCE IS 4
+      MOVE RIGHT
+    DISTANCE IS 3
+      FIRE TOWARD
+    DISTANCE IS 2
+      MOVE TOWARD
     DISTANCE IS 1
       ATTACK TOWARD
-    DEFAULT
+    ANY
       MOVE TOWARD
-DEFAULT
-  DEFAULT
-    DEFAULT
+  OBJECT
+    DISTANCE IS 1
+      ATTACK TOWARD
+  PROJECTILE
+    ANY
+      STEP
+ANY
+  ANY
+    ANY
       MOVE ANY`
-}
 
-let player4 = {
-  id:3,
-  hp:4,
-  sp:0,
-  name:"CPU3",
-  type:"FIGHTER",
-  character: "patience",
-  status:"idle",
-  pos:{
-    x:4,
-    y:0
-  },
-  style: `
+pest.style = `
 SIGHT
   FIGHTER
+    DISTANCE IS 4
+      MOVE RIGHT
+    DISTANCE IS 3
+      FIRE TOWARD
+    DISTANCE IS 2
+      MOVE TOWARD
     DISTANCE IS 1
       ATTACK TOWARD
-    DEFAULT
+    ANY
       MOVE TOWARD
-DEFAULT
-  DEFAULT
-    DEFAULT
+  OBJECT
+    DISTANCE IS 1
+      ATTACK TOWARD
+  PROJECTILE
+    ANY
+      STEP
+ANY
+  ANY
+    ANY
       MOVE ANY`
-}
-
-player1.score = {hits:0,blocks:0}
-player2.score = {hits:0,blocks:0}
-player3.score = {hits:0,blocks:0}
-player4.score = {hits:0,blocks:0}
 
 module.exports = {
-  players : [player1,player2,player3,player4],
+  players : [player,patience,sin,pest],
   events  : [],
   effects : []
 }

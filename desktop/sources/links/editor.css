@@ -124,3 +124,5 @@ body #editor.code #menu button.export { display: inline-block; }
 body #editor.code #menu button.import { display: inline-block; }
 
 body #editor.running #code_editor textarea { color:#aaa; }
+body #editor.running #menu button.export { display: none; }
+body #editor.running #menu button.import { display: none; }
