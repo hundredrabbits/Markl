@@ -8,7 +8,7 @@ function WAIT(host,attr = null,target = null)
   this.name = "wait";
   this.cost = 1;
 
-  this.run = function()
+  this.run = function(state,target)
   {
     this.host.sp -= this.cost;
     this.host.status = "idle";

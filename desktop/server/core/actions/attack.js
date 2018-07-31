@@ -2,14 +2,14 @@ var Pos = require('../units/pos.js')
 const Vector = require('../units/vector.js')
 var Action = require('../action.js')
 
-function ATTACK(host,attr,target = null)
+function ATTACK(host,attr)
 {
-  Action.call(this,host,attr,target);
+  Action.call(this,host,attr);
 
   this.name = "attack";
   this.cost = 10;
 
-  this.run = function(state)
+  this.run = function(state,target)
   {
     this.state = state;
     this.host.sp -= this.cost;
@@ -19,7 +19,7 @@ function ATTACK(host,attr,target = null)
       return;
     }
 
-    var vector = this.find_vector(this.attr);
+    var vector = this.find_vector(this.attr,target);
     var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     var collider = this.player_at(target_position);
 

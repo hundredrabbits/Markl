@@ -2,14 +2,14 @@ var Pos = require('../units/pos.js')
 const Vector = require('../units/vector.js')
 var Action = require('../action.js')
 
-function PUSH(host,attr,target = null)
+function PUSH(host,attr)
 {
-  Action.call(this,host,attr,target);
+  Action.call(this,host,attr);
 
   this.name = "push";
   this.cost = 8;
 
-  this.run = function(state)
+  this.run = function(state,state,target)
   {
     this.state = state;
     this.host.sp -= this.cost;
@@ -20,7 +20,7 @@ function PUSH(host,attr,target = null)
     }
 
     var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
-    var offset = host_pos.offset(this.target.pos).invert();
+    var offset = host_pos.offset(target.pos).invert();
     var vector = new Vector(offset.x,offset.y);
     this.host.status = this.name;
 

@@ -96,45 +96,47 @@ function Editor()
     this.update();
 
     this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 1",action:"ATTACK TOWARD"}))
+    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 2",action:"DASH AWAY"}))
+    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 3",action:"DASH TOWARD"}))
     this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE TOWARD"}))
-
-    // this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE TOWARD"}))
-    // this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE ANY"}))
-
-    // this.fightscript.add(new Rune({trigger:"ANY",event:"ANY",condition:"ANY",action:"MOVE UP"}))
-    // // this.fightscript.add(new Rune({trigger:"ANY",event:"ANY",condition:"ANY",action:"ATTACK UP"}))
-    // this.fightscript.add(new Rune({trigger:"ANY",event:"ANY",condition:"ANY",action:"MOVE LEFT"}))
-    // this.fightscript.add(new Rune({trigger:"ANY",event:"ANY",condition:"ANY",action:"MOVE DOWN"}))
-    // this.fightscript.add(new Rune({trigger:"ANY",event:"ANY",condition:"ANY",action:"MOVE RIGHT"}))
+    this.fightscript.add(new Rune({trigger:"ANY",event:"ANY",condition:"ANY",action:"MOVE ANY"}))
   }
 
   this.run = function()
   {
-    console.info("run");
+    console.info("Running");
     markl.scenario.reload()
     markl.scenario.inject_style(this.fightscript.render());
+    markl.editor.history = markl.scenario.run();
 
-    this.history = markl.scenario.run();
-    this.index = 1;
+    this.index = 0;
     this.is_paused = false;
     this.is_running = true;
 
     markl.renderer.update(this.history[this.index].state,this.history[this.index].reaction);
   }
 
-  this.start = function()
+  this.play = function(delay = 0)
   {
-    console.info("start");
-    this.is_paused = false;
-    this.is_running = true;
-    this.timer = setInterval(() => { this.next(); },TIMING.turn);
+    console.info("Playing..");
+
+    setTimeout(()=>{
+      this.run();
+    },500);
+
+    setTimeout(()=>{
+      this.timer = setInterval(() => { this.next(); },TIMING.turn);
+    },2000);
   }
 
   this.pause = function()
   {
-    console.info("pause");
+    console.info("trying to pause");
+    if(!this.is_running){ this.run();  }
     if(!this.history){ return; }
     if(this.is_paused){ return; }
+
+    console.info("paused");
 
     this.is_paused = true;
     clearInterval(this.timer);

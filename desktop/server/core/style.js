@@ -1,4 +1,5 @@
 var Pos = require('./units/pos.js')
+var Sight = require('./sight.js')
 
 // Trigger
 // Event
@@ -71,7 +72,7 @@ function Style(host)
       var player = this.state.players[id];
       var player_pos = new Pos(player.pos.x,player.pos.y);
       if(player.hp > 0 && player_pos.is_equal(pos)){
-        e.push(player)
+        e.push(new Sight(player).make())
       }
     }
     return e;

@@ -6,11 +6,10 @@ const DOWN = new Vector(0,-1);
 const LEFT = new Vector(-1,0);
 const RIGHT = new Vector(1,0);
 
-function Action(host,attr,target)
+function Action(host,attr)
 {
   this.host = host;
   this.attr = attr;
-  this.target = target;
   this.cost = 1;
 
   this.run = function()
@@ -28,12 +27,12 @@ function Action(host,attr,target)
 
   }
 
-  this.find_vector = function(attr)
+  this.find_vector = function(attr,target)
   {
     switch(attr)
     {
-      case "AWAY":   return this.find_away_vector();   break;
-      case "TOWARD": return this.find_toward_vector(); break;
+      case "AWAY":   return this.find_away_vector(target);   break;
+      case "TOWARD": return this.find_toward_vector(target); break;
       case "ANY":    return this.find_any_vector();    break;
       case "UP":     return new Vector(0,1);           break;
       case "DOWN":   return new Vector(0,-1);          break;
@@ -56,17 +55,21 @@ function Action(host,attr,target)
     return null;
   }
 
-  this.find_toward_vector = function()
+  this.find_toward_vector = function(target)
   {
+    if(!target){ console.warn(this.name,"Missing target!"); return; }
+
     var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
-    var offset = host_pos.offset(this.target.pos).invert();
+    var offset = host_pos.offset(target.pos).invert();
     return new Vector(offset.x,offset.y);
   }
 
-  this.find_away_vector = function()
+  this.find_away_vector = function(target)
   {
+    if(!target){ console.warn(this.name,"Missing target!"); return; }
+
     var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
-    var offset = host_pos.offset(this.target.pos).invert();
+    var offset = host_pos.offset(target.pos).invert();
     var vector = new Vector(offset.x,offset.y);
 
     // backward

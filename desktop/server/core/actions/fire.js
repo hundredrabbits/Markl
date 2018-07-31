@@ -3,14 +3,14 @@ const Vector = require('../units/vector.js')
 var Action = require('../action.js')
 var Missle = require('../missle.js')
 
-function FIRE(host,attr,target = null)
+function FIRE(host,attr)
 {
-  Action.call(this,host,attr,target);
+  Action.call(this,host,attr);
 
   this.name = "fire";
   this.cost = 20;
 
-  this.run = function(state)
+  this.run = function(state,target)
   {
     this.state = state;
     this.host.sp -= this.cost;

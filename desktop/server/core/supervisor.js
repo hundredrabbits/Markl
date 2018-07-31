@@ -44,8 +44,8 @@ module.exports = {
     if(action){
       var name = action.split(" ")[0].trim();
       var attr = action.replace(name,"").trim()
-      var a = actions[name] ? new actions[name](player,attr,reaction.target) : new actions.IDLE(player,attr,reaction.target);
-      a.run(state);  
+      var a = actions[name] ? new actions[name](player,attr) : new actions.IDLE(player,attr);
+      a.run(state,reaction.target);  
     }
     this.record(state,player,reaction,action);
   },
