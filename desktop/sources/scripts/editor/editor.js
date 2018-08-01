@@ -272,7 +272,12 @@ function Editor()
   this.update_status = function(state)
   {
     var html = this.is_running ? "" : "Idle. "
-    html += this.history && this.history.length > 0 && this.index > 0 ? `${this.index}/${this.history.length} ` : ''
+
+    if(this.is_running && this.history && this.history.length > 0 && this.index > 0 && state){
+      html += `${this.index}/${this.history.length} `
+      // html += `<t class='trigger'>${state.reaction.trigger}</t>(<t class='event'>${state.reaction.event}</t>).<t class='condition'>${state.reaction.condition}</t> `  
+    }
+    
     html += this.code_editor.status(state)+" "
     html += this.rune_editor.status(state)+" "
     html += this.list_editor.status(state)+" "

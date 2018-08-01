@@ -53,8 +53,8 @@ function CodeEditor()
     this.highlighter.style.top = `${line * 20}px`
   }
 
-  this.status = function(history)
+  this.status = function(state)
   {
-    return ""
+    return ''
   }
 }
