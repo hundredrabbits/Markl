@@ -1,9 +1,9 @@
 # Spritesheet
 
 - IDLE
-- WALK down
-- WALK up
-- WALK left/right
+- MOVE down
+- MOVE up
+- MOVE left/right
 
 - DASH down
 - DASH up
@@ -22,3 +22,12 @@
 - RECOVER
 - TAUNT
 - STASIS
+
+
+
+
+
+
+
+
+

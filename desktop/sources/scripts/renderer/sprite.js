@@ -28,8 +28,7 @@ function Sprite(type,id)
   this.to = function(pos)
   {
     this.pos = pos;
-    this.el.style.left = `${pos.x * STAGE.tile}px`;
-    this.el.style.bottom = `${pos.y * STAGE.tile}px`;
+    this.el.style.transform = `translate(${pos.x * STAGE.tile}px, ${pos.y * STAGE.tile}px)`
   }
 
   this.animate_to = function(pos)

@@ -47,25 +47,33 @@
 
 /* Status */
 
-#renderer stage sprite sheet.idle { background-position-y:0px; }
-#renderer stage sprite sheet.moving { background-position-y:-120px; }
-#renderer stage sprite sheet.moving.up { background-position-y:-240px; }
-#renderer stage sprite sheet.moving.right { background-position-y:-360px; }
-#renderer stage sprite sheet.moving.left { background-position-y:-360px; transform: scaleX(-1); }
-#renderer stage sprite sheet.dash { background-position-y:-480px; }
-#renderer stage sprite sheet.dash.right { background-position-y:-600px; }
-#renderer stage sprite sheet.dash.left { background-position-y:-600px; transform: scaleX(-1); }
-#renderer stage sprite sheet.attack { background-position-y:-960px; }
-#renderer stage sprite sheet.attack.right { background-position-y:-1080px; }
-#renderer stage sprite sheet.attack.left { background-position-y:-1080px; transform: scaleX(-1); }
+#renderer stage sprite sheet.idle          { background-position-y:calc(0 * 120px); }
 
-#renderer stage sprite sheet.confused { background-position-y:-1200px; }
-#renderer stage sprite sheet.hit { background-position-y:-1320px; }
-#renderer stage sprite sheet.fire { background-position-y:-720px; }
-#renderer stage sprite sheet.kill { background-position-y:-1440px; }
-#renderer stage sprite sheet.stasis { background-position-y:-1800px; }
-#renderer stage sprite sheet.dead { background-position-y:-1440px; }
-#renderer stage sprite sheet.recovery { background-position-y:-1560px; }
+#renderer stage sprite sheet.move          { background-position-y:calc(2 * -120px); }
+#renderer stage sprite sheet.move.up       { background-position-y:calc(1 * -120px); }
+#renderer stage sprite sheet.move.right    { background-position-y:calc(3 * -120px); }
+#renderer stage sprite sheet.moving.left   { background-position-y:calc(3 * -120px); transform: scaleX(-1); }
+
+#renderer stage sprite sheet.dash          { background-position-y:calc(5 * -120px); }
+#renderer stage sprite sheet.dash.up       { background-position-y:calc(4 * -120px); }
+#renderer stage sprite sheet.dash.right    { background-position-y:calc(6 * -120px); }
+#renderer stage sprite sheet.dash.left     { background-position-y:calc(6 * -120px); transform: scaleX(-1); }
+
+#renderer stage sprite sheet.attack        { background-position-y:calc(8 * -120px); }
+#renderer stage sprite sheet.attack.up     { background-position-y:calc(7 * -120px); }
+#renderer stage sprite sheet.attack.right  { background-position-y:calc(9 * -120px); }
+#renderer stage sprite sheet.attack.left   { background-position-y:calc(9 * -120px); transform: scaleX(-1); }
+
+#renderer stage sprite sheet.fire          { background-position-y:calc(11 * -120px); }
+#renderer stage sprite sheet.fire.up       { background-position-y:calc(7 * -120px); } /* Same as Attack Up */
+#renderer stage sprite sheet.fire.right    { background-position-y:calc(12 * -120px); }
+#renderer stage sprite sheet.fire.left     { background-position-y:calc(12 * -120px); transform: scaleX(-1); }
+
+#renderer stage sprite sheet.hit           { background-position-y:calc(12 * -120px); }
+#renderer stage sprite sheet.dead          { background-position-y:calc(13 * -120px); }
+#renderer stage sprite sheet.recovery      { background-position-y:calc(14 * -120px); }
+#renderer stage sprite sheet.taunt         { background-position-y:calc(15 * -120px); }
+#renderer stage sprite sheet.stasis        { background-position-y:calc(16 * -120px); }
 
 
 #renderer stage sprite sheet.dead { background-position-x:-480px !important; margin-top:-100px; transition:margin-top 500ms; }

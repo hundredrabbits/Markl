@@ -24,7 +24,7 @@ function MOVE(host,attr)
 
     if(this.can_move_to(target_position)){
       this.host.pos = {x:target_position.x,y:target_position.y};
-      this.host.status = "moving";
+      this.host.status = "move";
       this.host.vector = vector.name;
     }
   }
