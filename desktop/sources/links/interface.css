@@ -1,4 +1,4 @@
-#interface { position: fixed;width: calc(100vw - 420px);height: 100vh; z-index: 8888}
+#interface { position: fixed;width: calc(100vw - 420px);height: 100vh; z-index: 8888; top: 0px;}
 
 #interface .player.ui { position: absolute; width:100px; height:30px; padding-left:45px;}
 #interface .player.ui.player0 { bottom:30px; left:30px; }

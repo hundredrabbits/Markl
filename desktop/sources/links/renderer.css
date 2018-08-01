@@ -24,17 +24,11 @@
 
 /* Frames */
 
-#renderer view.f0 stage sprite sheet { background-position-x:-0px !important; }
-#renderer view.f1 stage sprite sheet { background-position-x:-120px !important; }
-#renderer view.f2 stage sprite sheet { background-position-x:-240px !important; }
-#renderer view.f3 stage sprite sheet { background-position-x:-360px !important; }
-#renderer view.f4 stage sprite sheet { background-position-x:-480px !important; }
-
-#renderer view.f0 stage effect sheet { background-position-x:-0px !important; }
-#renderer view.f1 stage effect sheet { background-position-x:-120px !important; }
-#renderer view.f2 stage effect sheet { background-position-x:-240px !important; }
-#renderer view.f3 stage effect sheet { background-position-x:-360px !important; }
-#renderer view.f4 stage effect sheet { background-position-x:-480px !important; }
+#renderer view.f0 stage sprite sheet, #renderer view.f0 stage effect sheet { background-position-x:-0px; }
+#renderer view.f1 stage sprite sheet, #renderer view.f1 stage effect sheet { background-position-x:-120px; }
+#renderer view.f2 stage sprite sheet, #renderer view.f2 stage effect sheet { background-position-x:-240px; }
+#renderer view.f3 stage sprite sheet, #renderer view.f3 stage effect sheet { background-position-x:-360px; }
+#renderer view.f4 stage sprite sheet, #renderer view.f4 stage effect sheet { background-position-x:-480px; }
 
 /* Characters */
 
@@ -76,14 +70,14 @@
 #renderer stage sprite sheet.stasis        { background-position-y:calc(16 * -120px); }
 
 
-#renderer stage sprite sheet.dead { background-position-x:-480px !important; margin-top:-100px; transition:margin-top 500ms; }
+#renderer stage sprite sheet.dead          { background-position-y:calc(13 * -120px); background-position-x:-480px !important; }
 
 /* ZIndex*/
 
-#renderer stage sprite.depth0 { z-index:104; }
-#renderer stage sprite.depth1 { z-index:103; }
+#renderer stage sprite.depth0 { z-index:100; }
+#renderer stage sprite.depth1 { z-index:101; }
 #renderer stage sprite.depth2 { z-index:102; }
-#renderer stage sprite.depth3 { z-index:101; }
-#renderer stage sprite.depth4 { z-index:100; }
+#renderer stage sprite.depth3 { z-index:103; }
+#renderer stage sprite.depth4 { z-index:104; }
 
 
