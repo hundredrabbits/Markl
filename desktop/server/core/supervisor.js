@@ -10,23 +10,26 @@ var actions = {
    FIRE: require('./actions/fire.js'),
 };
 
-module.exports = {
+function Supervisor()
+{
+  this.initial_state =  null;
+  this.history = [];
 
-  initial_state: null,
-  history:[],
-
-  run: function(state){
+  this.run = function(state)
+  {
     var player = this.next_player(state);
     this.play(player,state);
     state.turn += 1;
-  },
+  }
 
-  play: function(player,state){
+  this.play = function(player,state)
+  {
     let reaction = new Style(player).run(state)
     this.act(player,reaction,state);
-  },
+  }
 
-  act: function(player,reaction,state){
+  this.act = function(player,reaction,state)
+  {
     // Run Stage Events
     this.stage(state);
 
@@ -48,9 +51,10 @@ module.exports = {
       a.run(state,reaction.target);  
     }
     this.record(state,player,reaction,action);
-  },
+  }
 
-  stage: function(state){
+  this.stage = function(state)
+  {
     var a = []
     for(id in state.events){
       var event = state.events[id];
@@ -58,17 +62,20 @@ module.exports = {
       if(event.life >= 0){ a.push(event); } // Remove dead events
     }
     state.events = a;
-  },
+  }
 
-  record: function(state,player = {},reaction = {},action = {}){
+  this.record = function(state,player = {},reaction = {},action = {})
+  {
     this.history.push({state:this.copy(state),player:this.copy(player),reaction:this.copy(reaction),action:this.copy(action)});
-  },
+  }
 
-  copy: function(obj){
+  this.copy = function(obj)
+  {
     return JSON.parse(JSON.stringify(obj));
-  },
+  }
 
-  clean: function(state){
+  this.clean = function(state)
+  {
     state.effects = [];
     for(id in state.players){
       var player = state.players[id];
@@ -77,9 +84,10 @@ module.exports = {
       }
       player.status = player.status == "stasis" || player.status == "dead" ? player.status : "idle";
     }
-  },
+  }
 
-  next_player: function(state){
+  this.next_player = function(state)
+  {
     let players = this.players_alive(state);
     let p = players[0];
     for(id in players){
@@ -87,22 +95,25 @@ module.exports = {
       p = player.sp > p.sp ? player : p;
     }
     return p;
-  },
+  }
 
-  players_alive: function(state){
+  this.players_alive = function(state)
+  {
     let p = [];
     for(id in state.players){
       var player = state.players[id];
       if(player.hp > 0){ p.push(player); }
     }
     return p;
-  },
+  }
 
-  has_winner: function(state){
+  this.has_winner = function(state)
+  {
     return this.players_alive(state).length < 2;
-  },
+  }
 
-  render:function(state){
+  this.render = function(state)
+  {
     console.log("Rendering..")
     this.history = [];
     this.initial_state = state;
@@ -112,6 +123,7 @@ module.exports = {
     var i = 0;
     while(i < max_turns){
       if(this.has_winner(state)){
+
         break;
       }
       this.clean(state);
@@ -123,3 +135,6 @@ module.exports = {
     return this.history;
   }
 }
+
+module.exports = new Supervisor();
+
