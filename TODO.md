@@ -20,6 +20,7 @@
 ### Rune Editor
 
 - Display rune usage on hover.
+- Improve design.
 
 ### Code Editor
 
@@ -43,13 +44,10 @@
 
 - Camera follows cursor.
 - Camera centers on character.
-- Migrate camera animation to translate.
-- Display health bars.
 
 ### Sprites
 
-- Animation timer
-- Animate sprite
-- Keep orientation
+- Keep orientation after turn
 
 ### Background
+

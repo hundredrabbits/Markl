@@ -116,7 +116,9 @@ function Stage_Screen()
     var average = {x:sum.x/positions.length,y:sum.y/positions.length};
     var stage_center = (STAGE.tile * 4)/2;
 
-    this.stage.style.marginLeft = positions.length > 1 ? `-${(average.x * STAGE.tile) - stage_center}px` : "0px";
-    this.stage.style.marginTop = positions.length > 1 ? `${(average.y * STAGE.tile) - stage_center}px` : "0px";
+    var x = positions.length > 1 ? -1 * (average.x * STAGE.tile) + stage_center : 0
+    var y = positions.length > 1 ? -1 * (average.y * STAGE.tile) + stage_center : 0
+
+    this.stage.style.transform = `translate(${parseInt(x)}px, ${parseInt(y)}px)`
   }
 }
