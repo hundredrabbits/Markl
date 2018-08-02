@@ -66,12 +66,7 @@ function Supervisor()
 
   this.record = function(state,player = {},reaction = {},action = {})
   {
-    this.history.push({state:this.copy(state),player:this.copy(player),reaction:this.copy(reaction),action:this.copy(action)});
-  }
-
-  this.copy = function(obj)
-  {
-    return JSON.parse(JSON.stringify(obj));
+    this.history.push({state:copy(state),player:copy(player),reaction:copy(reaction),action:copy(action)});
   }
 
   this.clean = function(state)
@@ -84,6 +79,14 @@ function Supervisor()
       }
       player.status = player.status == "stasis" || player.status == "dead" ? player.status : "idle";
     }
+  }
+
+  this.end = function(state)
+  {
+    this.clean(state);
+    var player = this.next_player(state);
+
+    this.record(state,player);
   }
 
   this.next_player = function(state)
@@ -123,7 +126,7 @@ function Supervisor()
     var i = 0;
     while(i < max_turns){
       if(this.has_winner(state)){
-
+        this.end(state);
         break;
       }
       this.clean(state);
@@ -134,6 +137,8 @@ function Supervisor()
 
     return this.history;
   }
+
+  function copy(o){ return JSON.parse(JSON.stringify(o)); }
 }
 
 module.exports = new Supervisor();

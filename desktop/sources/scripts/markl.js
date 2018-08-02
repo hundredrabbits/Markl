@@ -40,6 +40,8 @@ function Markl()
     this.controller.add("default","Editor","Stop",() => { markl.editor.stop(); },"CmdOrCtrl+W");
     this.controller.add("default","Editor","Next Turn",() => { markl.editor.next(); },"CmdOrCtrl+Right");
     this.controller.add("default","Editor","Prev Turn",() => { markl.editor.prev(); },"CmdOrCtrl+Left");
+    this.controller.add("default","Editor","Last Turn",() => { markl.editor.last(); },"CmdOrCtrl+Shift+Right");
+    this.controller.add("default","Editor","First Turn",() => { markl.editor.first(); },"CmdOrCtrl+Shift+Left");
     this.controller.add("default","Editor","Toggle View",() => { markl.editor.toggle(); },"CmdOrCtrl+D");
     this.controller.add("default","Editor","Save",() => { markl.editor.save(); },"CmdOrCtrl+S");
     this.controller.add("default","Editor","Export",() => { markl.editor.export(); },"CmdOrCtrl+E");

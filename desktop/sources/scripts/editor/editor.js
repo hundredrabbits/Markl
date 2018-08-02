@@ -195,6 +195,22 @@ function Editor()
     markl.renderer.update(this.history[this.index].state);
   }
 
+  this.first = function()
+  {
+    if(!this.history || !this.history[this.index]){ console.warn("No history"); this.pause(); return; }
+
+    this.index = 0;
+    markl.renderer.update(this.history[this.index].state);
+  }
+
+  this.last = function()
+  {
+    if(!this.history || !this.history[this.index]){ console.warn("No history"); this.pause(); return; }
+
+    this.index = this.history.length-1;
+    markl.renderer.update(this.history[this.index].state);
+  }
+
   this.replace = function(fightscript)
   {
     console.log("Replacing Fightscript")
