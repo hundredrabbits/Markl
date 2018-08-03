@@ -46,7 +46,7 @@
 #renderer stage sprite sheet.move          { background-position-y:calc(2 * -120px); }
 #renderer stage sprite sheet.move.up       { background-position-y:calc(1 * -120px); }
 #renderer stage sprite sheet.move.right    { background-position-y:calc(3 * -120px); }
-#renderer stage sprite sheet.moving.left   { background-position-y:calc(3 * -120px); transform: scaleX(-1); }
+#renderer stage sprite sheet.move.left   { background-position-y:calc(3 * -120px); transform: scaleX(-1); }
 
 #renderer stage sprite sheet.dash          { background-position-y:calc(5 * -120px); }
 #renderer stage sprite sheet.dash.up       { background-position-y:calc(4 * -120px); }

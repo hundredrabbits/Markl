@@ -26,9 +26,7 @@ function DASH(host,attr)
       this.host.pos = {x:target_position.x,y:target_position.y};
       this.host.status = "dash";
       this.host.vector = vector.name;
-
       // Update
-      vector = this.find_vector(this.attr,target);
       target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     }
   }

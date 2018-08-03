@@ -11,7 +11,7 @@ function Effect(name,pos)
 
   this.el.style.width = `${STAGE.tile}px`;
   this.el.style.height = `${STAGE.tile}px`;
-  this.el.style.left = `${this.pos.x * STAGE.tile}px`;
-  this.el.style.bottom = `${this.pos.y * STAGE.tile}px`;
+
+  this.el.style.transform = `translate(${this.pos.x * STAGE.tile}px, ${this.pos.y * STAGE.tile}px)`
   this.sheet.className = this.name;
 }
