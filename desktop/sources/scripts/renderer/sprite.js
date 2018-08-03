@@ -2,10 +2,10 @@ function Sprite(type,id)
 {
   this.el = document.createElement('sprite');
   this.sheet = document.createElement('sheet');
-  this.shadow = document.createElement('shadow');
+  this.shade = document.createElement('shade');
   this.marker = document.createElement('marker');
-  this.el.appendChild(this.shadow)
   this.el.appendChild(this.sheet)
+  this.el.appendChild(this.shade)
   this.el.appendChild(this.marker)
 
   this.pos = {x:0,y:0};
@@ -53,7 +53,6 @@ function Sprite(type,id)
 
   this.update = function()
   {
-    this.sheet.className = `${this.character} ${this.status} ${this.vector ? this.vector : ""}`;
-    this.el.className = `depth${this.pos.y}`;
+    this.el.className = `depth${this.pos.y} ${this.character} ${this.status} ${this.vector ? this.vector : ""}`;
   }
 }

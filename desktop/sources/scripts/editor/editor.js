@@ -122,11 +122,11 @@ function Editor()
 
     setTimeout(()=>{
       this.run();
-    },500);
+    },TIMING.delayed_start/2);
 
     setTimeout(()=>{
       this.timer = setInterval(() => { this.next(); },TIMING.turn);
-    },2000);
+    },TIMING.delayed_start);
   }
 
   this.pause = function()
