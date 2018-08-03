@@ -33,10 +33,14 @@ body #editor #menu button.disabled:hover { cursor: default; }
 body #editor #menu button.disabled icon { opacity: 0.5 }
 body #editor #menu button.export { float:right; }
 body #editor #menu button.import { float:right; }
+body #editor #menu button.pause { display: none; }
+body #editor #menu button.stop { display: none; }
 body #editor #menu button icon { width: 35px;height: 35px;background-size: 50%;background-position: center center;background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1); }
 body #editor #menu button.add icon { background-image:url(../media/editor/menu/add.png); }
 body #editor #menu button.clear icon { background-image:url(../media/editor/menu/clear.png); }
 body #editor #menu button.run icon { background-image:url(../media/editor/menu/run.png); }
+body #editor #menu button.pause icon { background-image:url(../media/editor/menu/pause.png); }
+body #editor #menu button.stop icon { background-image:url(../media/editor/menu/stop.png); }
 body #editor #menu button.export icon { background-image:url(../media/editor/menu/export.png); }
 body #editor #menu button.import icon { background-image:url(../media/editor/menu/import.png); }
 body #editor #menu button.refresh icon { background-image:url(../media/editor/menu/pause.png); }
@@ -86,7 +90,7 @@ body #editor #code_editor t.event { color:yellow; }
 body #editor #code_editor t.condition { color:orange; }
 body #editor #code_editor t.action { color:pink; }
 body #editor #code_editor textarea { background: transparent;width:100%;height:calc(100% - 90px); white-space: pre; margin-bottom:15px; position: relative; line-height: 20px; z-index: 300; padding-left:45px;}
-body #editor #code_editor #highlighter { position: absolute;background: #333;top: 0px;left: 0px;width: 200px;height: 20px;transition: all 250ms;width: 100%; opacity: 1; margin-top:-10px;}
+body #editor #code_editor #highlighter { position: absolute;background: #333;top: 0px;left: 0px;width: 200px;height: 20px;transition: opacity 250ms;width: 100%; opacity: 1; margin-top:-10px;}
 body #editor #code_editor #highlighter.disabled { opacity: 0 }
 body #editor #code_editor #hint { position: absolute;top: 30px;left: 30px;color: #777; }
 body #editor #code_editor #hint t.number { border-right: 1px solid #333;text-align: right;display: inline-block;width: 20px;padding-right: 15px;margin-left: -10px; line-height: 20px;  }
@@ -126,3 +130,6 @@ body #editor.code #menu button.import { display: inline-block; }
 body #editor.running #code_editor textarea { color:#aaa; }
 body #editor.running #menu button.export { display: none; }
 body #editor.running #menu button.import { display: none; }
+body #editor.running #menu button.run { display: none; }
+body #editor.running #menu button.pause { display: inline-block; }
+body #editor.running #menu button.stop { display: inline-block; }

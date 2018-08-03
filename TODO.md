@@ -15,8 +15,6 @@
 
 ## Arena
 
-- Animate death -> dead status
-
 - Migrate to canvas?
 - Check stasis state.
 - Don't animate wait? Maybe display an effect?

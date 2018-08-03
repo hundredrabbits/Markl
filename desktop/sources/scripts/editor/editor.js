@@ -43,9 +43,12 @@ function Editor()
   this.run_button = document.createElement('button')
   this.run_button.innerHTML = "<icon/>"
   this.run_button.className = "run"
-  this.refresh_button = document.createElement('button')
-  this.refresh_button.className = "refresh"
-  this.refresh_button.innerHTML = "<icon/>"
+  this.pause_button = document.createElement('button')
+  this.pause_button.innerHTML = "<icon/>"
+  this.pause_button.className = "pause"
+  this.stop_button = document.createElement('button')
+  this.stop_button.innerHTML = "<icon/>"
+  this.stop_button.className = "stop"
   this.export_button = document.createElement('button')
   this.export_button.innerHTML = "<icon/>"
   this.export_button.className = "export"
@@ -55,8 +58,9 @@ function Editor()
 
   this.add_button.onclick = () => { this.rune_editor.merge(); }
   this.run_button.onclick = () => { this.run(); }
+  this.pause_button.onclick = () => { this.pause(); }
+  this.stop_button.onclick = () => { this.stop(); }
   this.clear_button.onclick = () => { this.rune_editor.clear(); }
-  this.refresh_button.onclick = () => { this.code_editor.reload(); }
 
   this.status = document.createElement('t')
   this.status.id = "status"
@@ -80,7 +84,8 @@ function Editor()
 
     this.el.appendChild(this.menu)
     this.menu.appendChild(this.run_button)
-    this.menu.appendChild(this.refresh_button)
+    this.menu.appendChild(this.pause_button)
+    this.menu.appendChild(this.stop_button)
     this.menu.appendChild(this.import_button)
     this.menu.appendChild(this.export_button)
     this.menu.appendChild(this.add_button)

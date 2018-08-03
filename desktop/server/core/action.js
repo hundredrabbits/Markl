@@ -44,7 +44,7 @@ function Action(host,attr)
 
   this.find_any_vector = function()
   {
-    var vectors = [UP, RIGHT, DOWN, LEFT];
+    var vectors = [UP, RIGHT, DOWN, LEFT, DOWN, RIGHT];
     for(id in vectors){
       var vector = vectors[(id + this.host.tp) % vectors.length];
       var target_pos = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
