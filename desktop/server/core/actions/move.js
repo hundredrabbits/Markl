@@ -28,27 +28,6 @@ function MOVE(host,attr)
       this.host.vector = vector.name;
     }
   }
-
-  this.can_move_to = function(pos)
-  {
-    if(pos.x > 4){ return false; }
-    if(pos.y > 4){ return false; }
-    if(pos.x < 0){ return false; }
-    if(pos.y < 0){ return false; }
-    return !this.player_at(pos) ? true : false;
-  }
-
-  this.player_at = function(pos)
-  {
-    for(id in this.state.players){
-      var player = this.state.players[id];
-      var player_pos = new Pos(player.pos.x,player.pos.y);
-      if(player.hp > 0 && player_pos.is_equal(pos)){
-        return player;
-      }
-    }
-    return null;
-  }
 }
 
 module.exports = MOVE;

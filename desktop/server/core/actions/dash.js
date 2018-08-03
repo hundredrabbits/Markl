@@ -7,7 +7,7 @@ function DASH(host,attr)
   Action.call(this,host,attr);
   
   this.name = "dash";
-  this.cost = 5;
+  this.cost = 7;
 
   this.run = function(state,target)
   {
@@ -26,28 +26,11 @@ function DASH(host,attr)
       this.host.pos = {x:target_position.x,y:target_position.y};
       this.host.status = "dash";
       this.host.vector = vector.name;
-    }
-  }
 
-  this.can_move_to = function(pos)
-  {
-    if(pos.x > 4){ return false; }
-    if(pos.y > 4){ return false; }
-    if(pos.x < 0){ return false; }
-    if(pos.y < 0){ return false; }
-    return !this.player_at(pos) ? true : false;
-  }
-
-  this.player_at = function(pos)
-  {
-    for(id in this.state.players){
-      var player = this.state.players[id];
-      var player_pos = new Pos(player.pos.x,player.pos.y);
-      if(player.hp > 0 && player_pos.is_equal(pos)){
-        return player;
-      }
+      // Update
+      vector = this.find_vector(this.attr,target);
+      target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     }
-    return null;
   }
 }
 

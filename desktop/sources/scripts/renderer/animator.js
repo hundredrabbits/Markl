@@ -14,10 +14,10 @@ function Animator(host)
 
   this.update = function()
   {
-    if(this.frame > 4){ this.stop(); }
-
     this.host.className = `f${this.frame % 5}`;
     this.frame += 1;    
+
+    if(this.frame > 4){ this.stop(); }
   }
 
   this.stop = function()
