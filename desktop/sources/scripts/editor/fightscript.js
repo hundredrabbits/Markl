@@ -1,3 +1,5 @@
+"use strict";
+
 function FightScript(style = {})
 {
   this.style = style;
@@ -15,12 +17,12 @@ function FightScript(style = {})
   {
     console.log(`Insert ${target.name} at ${index}`);
 
-    var runes = this.runes();
+    let runes = this.runes();
     runes.splice(index, 0, target);
 
-    var temp = new FightScript()
-    for(id in runes){
-      var rune = runes[id]
+    let temp = new FightScript()
+    for(let id in runes){
+      let rune = runes[id]
       temp.add(rune);
     }
     this.parse(temp.render())
@@ -29,11 +31,11 @@ function FightScript(style = {})
 
   this.remove = function(target)
   {
-    var runes = this.runes()
+    let runes = this.runes()
 
-    var temp = new FightScript()
-    for(id in runes){
-      var rune = runes[id]
+    let temp = new FightScript()
+    for(let id in runes){
+      let rune = runes[id]
       if(target.name == rune.name){ console.log(`Removed ${target.name} at ${id}.`); continue; }
       temp.add(rune);
     }
@@ -43,8 +45,8 @@ function FightScript(style = {})
 
   this.move = function(target,direction)
   {
-    var position = this.indexOf(target)
-    var index = parseInt(position) + parseInt(direction)
+    let position = this.indexOf(target)
+    let index = parseInt(position) + parseInt(direction)
 
     console.log(`Move ${target.name}[@${position}] toward ${direction} at ${index}`)
 
@@ -64,16 +66,16 @@ function FightScript(style = {})
 
   this.parse = function(text)
   {
-    var style = {};
-    var lines = text.toUpperCase().split("\n");
-    var stash = null;
-    var trigger = null;
-    var event = null;
-    var condition = null;
-    var action = null;
-    for(id in lines){
-      var pad = lines[id].search(/\S|$/);
-      var line = lines[id].trim();
+    let style = {};
+    let lines = text.toUpperCase().split("\n");
+    let stash = null;
+    let trigger = null;
+    let event = null;
+    let condition = null;
+    let action = null;
+    for(let id in lines){
+      let pad = lines[id].search(/\S|$/);
+      let line = lines[id].trim();
       if(line == "" || line.substr(0,1) == "#"){ continue; }
       if(pad == 0){ trigger = line ; style[line] = {}; }
       if(pad == 2){ event = line ; style[trigger][event] = {}; }
@@ -86,12 +88,12 @@ function FightScript(style = {})
 
   this.runes = function()
   {
-    var a = [];
-    for(trigger in this.style){
-      for(event in this.style[trigger]){
-        for(condition in this.style[trigger][event]){
-          for(id in this.style[trigger][event][condition]){
-            var action = this.style[trigger][event][condition][id];
+    let a = [];
+    for(let trigger in this.style){
+      for(let event in this.style[trigger]){
+        for(let condition in this.style[trigger][event]){
+          for(let id in this.style[trigger][event][condition]){
+            let action = this.style[trigger][event][condition][id];
             a.push(new Rune({trigger:trigger,event:event,condition:condition,action:action}))
           }
         }
@@ -102,14 +104,14 @@ function FightScript(style = {})
   
   this.render = function()
   {
-    var text = ""
-    for(trigger in this.style){
+    let text = ""
+    for(let trigger in this.style){
       text += `${trigger}\n`
-      for(event in this.style[trigger]){
+      for(let event in this.style[trigger]){
         text += `  ${event}\n`
-        for(condition in this.style[trigger][event]){
+        for(let condition in this.style[trigger][event]){
           text += `    ${condition}\n`
-          for(id in this.style[trigger][event][condition]){
+          for(let id in this.style[trigger][event][condition]){
             text += `      ${this.style[trigger][event][condition][id]}\n`
           }
         }
@@ -120,14 +122,14 @@ function FightScript(style = {})
 
   this.toString = function()
   {
-    var text = ""
-    for(trigger in this.style){
+    let text = ""
+    for(let trigger in this.style){
       text += trigger+' '
-      for(event in this.style[trigger]){
+      for(let event in this.style[trigger]){
         text += event+' '
-        for(condition in this.style[trigger][event]){
+        for(let condition in this.style[trigger][event]){
           text += condition+' '
-          for(id in this.style[trigger][event][condition]){
+          for(let id in this.style[trigger][event][condition]){
             text += this.style[trigger][event][condition][id]
           }
         }
@@ -140,16 +142,16 @@ function FightScript(style = {})
   {
     if(!player){ return null; }
     
-    var line = 1
-    var text = ""
-    for(trigger in this.style){
+    let line = 1
+    let text = ""
+    for(let trigger in this.style){
       line += 1
-      for(event in this.style[trigger]){
+      for(let event in this.style[trigger]){
         line += 1
-        for(condition in this.style[trigger][event]){
+        for(let condition in this.style[trigger][event]){
           line += 1
-          for(id in this.style[trigger][event][condition]){
-            var action = this.style[trigger][event][condition][id]
+          for(let id in this.style[trigger][event][condition]){
+            let action = this.style[trigger][event][condition][id]
             line += 1
             line += player.tp % this.style[trigger][event][condition].length
             if(trigger == reaction.trigger && event == reaction.event && condition == reaction.condition && action == reaction.action){ return line; }
@@ -162,9 +164,9 @@ function FightScript(style = {})
 
   this.indexOf = function(target)
   {
-    var runes = this.runes();
-    for(var id in runes){
-      var rune = runes[id]
+    let runes = this.runes();
+    for(let id in runes){
+      let rune = runes[id]
       if(rune.name == target.name){ return parseInt(id); }
     }
     return -1
@@ -172,16 +174,16 @@ function FightScript(style = {})
 
   this.copy = function()
   {
-    var style = JSON.parse(JSON.stringify(this.style))
+    let style = JSON.parse(JSON.stringify(this.style))
     return new FightScript(style)
   }
 
   this.validate = function()
   {
-    var runes = this.runes()
-    for(id in runes){
-      var rune = runes[id];
-      var is_valid = rune.validate();
+    let runes = this.runes()
+    for(let id in runes){
+      let rune = runes[id];
+      let is_valid = rune.validate();
       if(!is_valid){ return false; }
     }
     return true;

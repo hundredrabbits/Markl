@@ -1,3 +1,5 @@
+"use strict";
+
 function Rune(parts = {trigger:null,event:null,condition:null,action:null})
 {
   this.el = document.createElement('rune');
@@ -42,7 +44,7 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
 
   this.draw = function()
   { 
-    var html = ""
+    let html = ""
 
     html += `<yu class='fragment trigger' style='background-image:url(media/runes/fragments/${this.trigger ? this.trigger.toLowerCase().replace(/ /g,'.') : 'blank'}.png)'></yu>`
     html += `<yu class='fragment event' style='background-image:url(media/runes/fragments/${this.event ? this.event.toLowerCase().replace(/ /g,'.') : 'blank'}.png)'></yu>` 
@@ -58,7 +60,7 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
 
     if(!this.trigger || !this.event || !this.condition || !this.action){ return false; }
 
-    var lang = new FightLang();
+    let lang = new FightLang();
 
     if(lang.spec.TRIGGER.indexOf(this.trigger) < 0){
       console.warn("Unknown Trigger",this.trigger)
@@ -82,7 +84,7 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
 
   this.fragments = function()
   {
-    var a = []
+    let a = []
 
     if(this.trigger){ a.push(this.trigger); }
     if(this.event){ a.push(this.event); }
@@ -94,7 +96,7 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
 
   this.render = function()
   {
-    var html = ""
+    let html = ""
 
     if(this.trigger){ html += `<t class='trigger'>WHEN ${this.trigger}</t>` }
     if(this.event){ html += ` <t class='event'>IS ${this.event}</t> ` }
@@ -111,7 +113,7 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
 
   this.toString = function()
   {
-    var html = ""
+    let html = ""
 
     if(this.trigger){ html += `WHEN ${this.trigger}` }
     if(this.event){ html += ` IS ${this.event} ` }

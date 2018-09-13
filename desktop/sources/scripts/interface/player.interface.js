@@ -1,3 +1,5 @@
+"use strict";
+
 function Player_UI(host)
 {
   this.host = host;
@@ -13,10 +15,10 @@ function Player_UI(host)
 
   this.update = function(h,speed_ranges)
   {
-    var relative_speed = h.sp - speed_ranges.max;
-    var sum_speed = speed_ranges.min - speed_ranges.max
-    var actual_speed = (sum_speed - relative_speed) * -1
-    var ratio_speed = actual_speed/-sum_speed;
+    let relative_speed = h.sp - speed_ranges.max;
+    let sum_speed = speed_ranges.min - speed_ranges.max
+    let actual_speed = (sum_speed - relative_speed) * -1
+    let ratio_speed = actual_speed/-sum_speed;
 
     this.monitor.update((h.hp/3)*100);
   }

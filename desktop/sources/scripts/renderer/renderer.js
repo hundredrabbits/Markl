@@ -1,3 +1,5 @@
+"use strict";
+
 function Renderer()
 {
   this.el = document.createElement('yu');

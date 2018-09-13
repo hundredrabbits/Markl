@@ -1,3 +1,5 @@
+"use strict";
+
 function Vector(x,y)
 {
   this.x = clamp(x,-1,1);
@@ -20,7 +22,7 @@ function Vector(x,y)
 
   this.from_name = function(s)
   {
-    var name = s.toLowerCase();
+    let name = s.toLowerCase();
     if(name == "up"){ return new Vector(0,1); }
     else if(name == "down"){ return new Vector(0,-1); }
     else if(name == "left"){ return new Vector(-1,0); }

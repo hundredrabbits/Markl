@@ -1,6 +1,8 @@
-var Style = require('./style.js')
+"use strict";
 
-var actions = {
+let Style = require('./style.js')
+
+let actions = {
    MOVE: require('./actions/move.js'),
    DASH: require('./actions/dash.js'),
    ATTACK: require('./actions/attack.js'),
@@ -17,7 +19,7 @@ function Supervisor()
 
   this.run = function(state)
   {
-    var player = this.next_player(state);
+    let player = this.next_player(state);
     this.play(player,state);
     state.turn += 1;
   }
@@ -43,11 +45,11 @@ function Supervisor()
     player.reaction = reaction
 
     // Run Player Action
-    var action = reaction.actions[player.tp % reaction.actions.length];
+    let action = reaction.actions[player.tp % reaction.actions.length];
     if(action){
-      var name = action.split(" ")[0].trim();
-      var attr = action.replace(name,"").trim()
-      var a = actions[name] ? new actions[name](player,attr) : new actions.IDLE(player,attr);
+      let name = action.split(" ")[0].trim();
+      let attr = action.replace(name,"").trim()
+      let a = actions[name] ? new actions[name](player,attr) : new actions.IDLE(player,attr);
       a.run(state,reaction.target);  
     }
     this.record(state,player,reaction,action);
@@ -55,9 +57,9 @@ function Supervisor()
 
   this.stage = function(state)
   {
-    var a = []
-    for(id in state.events){
-      var event = state.events[id];
+    let a = []
+    for(let id in state.events){
+      let event = state.events[id];
       event.run(state);
       if(event.life >= 0){ a.push(event); } // Remove dead events
     }
@@ -72,8 +74,8 @@ function Supervisor()
   this.clean = function(state)
   {
     state.effects = [];
-    for(id in state.players){
-      var player = state.players[id];
+    for(let id in state.players){
+      let player = state.players[id];
       if(player.status == "kill"){
         player.status = "dead";
       }
@@ -84,7 +86,7 @@ function Supervisor()
   this.end = function(state)
   {
     this.clean(state);
-    var player = this.next_player(state);
+    let player = this.next_player(state);
 
     this.record(state,player);
   }
@@ -93,8 +95,8 @@ function Supervisor()
   {
     let players = this.players_alive(state);
     let p = players[0];
-    for(id in players){
-      var player = players[id];
+    for(let id in players){
+      let player = players[id];
       p = player.sp > p.sp ? player : p;
     }
     return p;
@@ -103,8 +105,8 @@ function Supervisor()
   this.players_alive = function(state)
   {
     let p = [];
-    for(id in state.players){
-      var player = state.players[id];
+    for(let id in state.players){
+      let player = state.players[id];
       if(player.hp > 0){ p.push(player); }
     }
     return p;
@@ -122,8 +124,8 @@ function Supervisor()
     this.initial_state = state;
     this.record(state);
 
-    var max_turns = 100;
-    var i = 0;
+    let max_turns = 100;
+    let i = 0;
     while(i < max_turns){
       if(this.has_winner(state)){
         this.end(state);

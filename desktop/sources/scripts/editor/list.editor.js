@@ -1,3 +1,5 @@
+"use strict";
+
 function ListEditor()
 {
   this.el = document.createElement('div');
@@ -5,12 +7,12 @@ function ListEditor()
 
   this.update = function(state)
   {
-    var runes = markl.editor.fightscript.runes();
+    let runes = markl.editor.fightscript.runes();
 
     this.el.innerHTML = ""
     
-    for(var id in runes){
-      var rune = runes[id]
+    for(let id in runes){
+      let rune = runes[id]
       rune.update()
       this.el.innerHTML += `
       <ln class='${state && rune.name == new Rune(state.reaction).name ? 'selected' : ''}'>
@@ -28,7 +30,7 @@ function ListEditor()
 
   this.remove = function(name)
   {
-    var target = this.select_rune(name)
+    let target = this.select_rune(name)
     
     if(!target){ console.warn("Cannot find rune",target); return; }
     
@@ -38,7 +40,7 @@ function ListEditor()
 
   this.move = function(name,direction)
   {
-    var target = this.select_rune(name)
+    let target = this.select_rune(name)
     
     if(!target){ console.warn("Cannot find rune",target); return; }
 
@@ -48,10 +50,10 @@ function ListEditor()
 
   this.select_rune = function(target_name)
   {
-    var runes = markl.editor.fightscript.runes();
+    let runes = markl.editor.fightscript.runes();
 
-    for(var id in runes){
-      var rune = runes[id]
+    for(let id in runes){
+      let rune = runes[id]
       if(rune.name != target_name){ continue; }
       return rune;
     }

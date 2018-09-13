@@ -1,3 +1,5 @@
+"use strict";
+
 function Effect(name,pos)
 {
   this.el = document.createElement('effect');
@@ -7,7 +9,7 @@ function Effect(name,pos)
   this.name = name;
   this.pos = pos;
 
-  var STAGE = {padding:{x:15,y:15},tile:80}
+  let STAGE = {padding:{x:15,y:15},tile:80}
 
   this.el.style.width = `${STAGE.tile}px`;
   this.el.style.height = `${STAGE.tile}px`;

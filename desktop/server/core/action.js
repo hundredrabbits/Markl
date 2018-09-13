@@ -1,5 +1,7 @@
-var Pos = require('./units/pos.js')
-var Vector = require('./units/vector.js')
+"use strict";
+
+let Pos = require('./units/pos.js')
+let Vector = require('./units/vector.js')
 
 const UP = new Vector(0,1);
 const DOWN = new Vector(0,-1);
@@ -44,10 +46,10 @@ function Action(host,attr)
 
   this.find_any_vector = function()
   {
-    var vectors = [UP, RIGHT, DOWN, LEFT, DOWN, RIGHT];
-    for(id in vectors){
-      var vector = vectors[(id + this.host.tp) % vectors.length];
-      var target_pos = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
+    let vectors = [UP, RIGHT, DOWN, LEFT, DOWN, RIGHT];
+    for(let id in vectors){
+      let vector = vectors[(id + this.host.tp) % vectors.length];
+      let target_pos = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
       if(this.can_move_to(target_pos)){
         return vector;
       } 
@@ -59,8 +61,8 @@ function Action(host,attr)
   {
     if(!target){ console.warn(this.name,"Missing target!"); return; }
 
-    var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
-    var offset = host_pos.offset(target.pos).invert();
+    let host_pos = new Pos(this.host.pos.x,this.host.pos.y);
+    let offset = host_pos.offset(target.pos).invert();
     return new Vector(offset.x,offset.y);
   }
 
@@ -68,25 +70,25 @@ function Action(host,attr)
   {
     if(!target){ console.warn(this.name,"Missing target!"); return; }
 
-    var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
-    var offset = host_pos.offset(target.pos).invert();
-    var vector = new Vector(offset.x,offset.y);
+    let host_pos = new Pos(this.host.pos.x,this.host.pos.y);
+    let offset = host_pos.offset(target.pos).invert();
+    let vector = new Vector(offset.x,offset.y);
 
     // backward
-    var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.invert());
+    let target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.invert());
 
     if(this.can_move_to(target_position)){
       return vector.invert();
     }
 
     // Sideways
-    var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.rotate(1));
+    let target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.rotate(1));
 
     if(this.can_move_to(target_position)){
       return vector.rotate(1);
     }
     // Sideways
-    var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.rotate(-1));
+    let target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.rotate(-1));
 
     if(this.can_move_to(target_position)){
       return vector.rotate(-1);
@@ -106,9 +108,9 @@ function Action(host,attr)
 
   this.player_at = function(pos)
   {
-    for(id in this.state.players){
-      var player = this.state.players[id];
-      var player_pos = new Pos(player.pos.x,player.pos.y);
+    for(let id in this.state.players){
+      let player = this.state.players[id];
+      let player_pos = new Pos(player.pos.x,player.pos.y);
       if(player.hp > 0 && player_pos.is_equal(pos)){
         return player;
       }

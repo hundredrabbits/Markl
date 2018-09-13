@@ -1,3 +1,5 @@
+"use strict";
+
 function RuneEditor()
 {
   this.el = document.createElement('div');
@@ -16,10 +18,10 @@ function RuneEditor()
   this.preview_wrapper.appendChild(this.rune.el)
   this.preview_wrapper.appendChild(this.rune_preview)
 
-  var fragments = new FightLang().fragments();
+  let fragments = new FightLang().fragments();
 
-  for(id in fragments){
-    var button = new RuneButton(this,fragments[id])
+  for(let id in fragments){
+    let button = new RuneButton(this,fragments[id])
     this.buttons_wrapper.appendChild(button.el)
     this.buttons.push(button)
   }
@@ -48,9 +50,9 @@ function RuneEditor()
 
   this.update_buttons = function()
   {
-    for(id in this.buttons){
-      var button = this.buttons[id];
-      var fragment = button.fragment;
+    for(let id in this.buttons){
+      let button = this.buttons[id];
+      let fragment = button.fragment;
       if(this.rune[fragment.type.toLowerCase()] == fragment.name){
         button.disable();
       }

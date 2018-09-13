@@ -1,3 +1,5 @@
+"use strict";
+
 function Editor()
 {
   this.code_editor = new CodeEditor();
@@ -231,9 +233,9 @@ function Editor()
 
   this.validate = function()
   {
-    var code = this.textbox.value
-    var fightscript = new FightScript().parse(code)
-    var is_valid = fightscript.validate();
+    let code = this.textbox.value
+    let fightscript = new FightScript().parse(code)
+    let is_valid = fightscript.validate();
 
     if(is_valid){
       this.fightscript.replace(this.textbox.value); 
@@ -263,18 +265,18 @@ function Editor()
     }
   }
 
-  this.update = function(state)
+  this.update = function()
   {
     console.info(`===================== ${this.index}`)
     // Status 
     if(this.history && this.history.length > 0 && this.index > 0){
-      var rune = new Rune(this.history[this.index].reaction)
+      let rune = new Rune(this.history[this.index].reaction)
       console.log(`Playing: Player ${this.history[this.index].player.id}`,rune.toString())
     }
 
     this.el.className = `${this.mode} ${this.is_running ? 'running' : ''}`
     
-    var state = this.history && this.history.length > 0 && this.index > 0 ? this.history[this.index] : null;
+    let state = this.history && this.history.length > 0 && this.index > 0 ? this.history[this.index] : null;
 
     this.code_editor.update(state);
     this.rune_editor.update(state);
@@ -292,7 +294,7 @@ function Editor()
 
   this.update_status = function(state)
   {
-    var html = this.is_running ? "" : "Idle. "
+    let html = this.is_running ? "" : "Idle. "
 
     if(this.is_running && this.history && this.history.length > 0 && this.index > 0 && state){
       html += `${this.index}/${this.history.length} `

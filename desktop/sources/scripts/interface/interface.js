@@ -1,3 +1,5 @@
+"use strict";
+
 function Interface()
 {
   this.el = document.createElement('yu');
@@ -20,11 +22,11 @@ function Interface()
 
   this.verify_ui = function(state)
   {
-    for(id in state.players){
-      var player = state.players[id];
+    for(let id in state.players){
+      let player = state.players[id];
       if(this.ui.players[player.id]){ continue; }
       console.log("Creating ui for ",player.id)
-      var ui = new Player_UI(player)
+      let ui = new Player_UI(player)
       this.ui.players[player.id] = ui;
       this.el.appendChild(ui.el);
     }
@@ -32,18 +34,18 @@ function Interface()
 
   this.update_ui = function(state,reaction)
   {
-    var speed_ranges = {min:null,max:null};
+    let speed_ranges = {min:null,max:null};
 
-    for(id in state.players){
-      var player = state.players[id];
+    for(let id in state.players){
+      let player = state.players[id];
       if(!speed_ranges.min){ speed_ranges.min = player.sp; }
       if(!speed_ranges.max){ speed_ranges.max = player.sp; }
       if(player.sp < speed_ranges.min){ speed_ranges.min = player.sp; }
       if(player.sp > speed_ranges.max){ speed_ranges.max = player.sp; }
     }
 
-    for(id in this.ui.players){
-      var ui = this.ui.players[id];
+    for(let id in this.ui.players){
+      let ui = this.ui.players[id];
       ui.update(state.players[id],speed_ranges);
     }
   }

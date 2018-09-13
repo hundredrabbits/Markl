@@ -1,3 +1,5 @@
+"use strict";
+
 function Size(width,height)
 {
   Unit.call(this);

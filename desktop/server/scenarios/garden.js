@@ -1,15 +1,15 @@
 
-var Lancer = require('../core/fighters/lancer')
-var Patience = require('../core/fighters/patience')
-var Pest = require('../core/fighters/pest')
-var Sin = require('../core/fighters/sin')
+let Lancer = require('../core/fighters/lancer')
+let Patience = require('../core/fighters/patience')
+let Pest = require('../core/fighters/pest')
+let Sin = require('../core/fighters/sin')
 
 let player = new Lancer(0,"USER",{x:4,y:0})
 let patience = new Patience(1,"CPU1",{x:0,y:0});
 let sin = new Sin(2,"CPU2",{x:4,y:4});
 let pest = new Pest(3,"CPU3",{x:0,y:4});
 
-var aggro = `
+let aggro = `
 SIGHT
   FIGHTER
     DISTANCE OF 1

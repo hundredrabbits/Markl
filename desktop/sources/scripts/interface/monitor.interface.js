@@ -1,3 +1,5 @@
+"use strict";
+
 function Monitor(host, r = 15)
 {
   this.host = host;
@@ -26,9 +28,9 @@ function Monitor(host, r = 15)
 
   this.update = function(val = 50)
   {
-    var r = this.r;
-    var c = Math.PI*(r*2);
-    var pct = ((100-val)/100)*c;
+    let r = this.r;
+    let c = Math.PI*(r*2);
+    let pct = ((100-val)/100)*c;
     
     this.fg.setAttribute('stroke-dashoffset', pct)    
     this.fg.setAttribute('stroke-dasharray', c)   

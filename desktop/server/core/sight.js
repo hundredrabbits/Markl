@@ -1,3 +1,5 @@
+"use strict";
+
 // A shallow copy of an event
 
 function Sight(event)

@@ -1,3 +1,5 @@
+"use strict";
+
 function FightLang() 
 {
   this.spec = {
@@ -66,9 +68,9 @@ function FightLang()
 
   this.fragments = function()
   {
-    var a = []
-    for(type in this.spec){
-      for(id in this.spec[type]){
+    let a = []
+    for(let type in this.spec){
+      for(let id in this.spec[type]){
         a.push(new Fragment(type,this.spec[type][id]))
       }
     }
@@ -77,24 +79,24 @@ function FightLang()
 
   this.phonetic = function(rune)
   {
-    var k1 = this.spec.TRIGGER.indexOf(rune.trigger)+1
-    var k2 = this.spec.EVENT.indexOf(rune.event)+1
+    let k1 = this.spec.TRIGGER.indexOf(rune.trigger)+1
+    let k2 = this.spec.EVENT.indexOf(rune.event)+1
 
-    var k_p = rune.condition ? rune.condition.split(" ") : 0
-    var k3 = this.spec.CONDITION.indexOf(rune.condition)+1
-    var k4 = rune.condition ? word_value(k_p[0]) : 0
-    var k5 = rune.condition ? word_value(k_p[k_p.length-1]) : 0
+    let k_p1 = rune.condition ? rune.condition.split(" ") : 0
+    let k3 = this.spec.CONDITION.indexOf(rune.condition)+1
+    let k4 = rune.condition ? word_value(k_p1[0]) : 0
+    let k5 = rune.condition ? word_value(k_p1[k_p1.length-1]) : 0
 
-    var k_p = rune.action ? rune.action.split(" ") : 0
-    var k6 = this.spec.ACTION.indexOf(rune.action)
-    var k7 = rune.action ? word_value(k_p[0]) : 0
-    var k8 = rune.action ? word_value(k_p[k_p.length-1]) : 0
+    let k_p2 = rune.action ? rune.action.split(" ") : 0
+    let k6 = this.spec.ACTION.indexOf(rune.action)
+    let k7 = rune.action ? word_value(k_p2[0]) : 0
+    let k8 = rune.action ? word_value(k_p2[k_p2.length-1]) : 0
 
-    var vowels = ["a","e","i","o","u"]
-    var cons_w = ["r","s","f","h","j","l","z","v","n","m","y","'"]
-    var cons_s = ["t","p","d","g","b"]
+    let vowels = ["a","e","i","o","u"]
+    let cons_w = ["r","s","f","h","j","l","z","v","n","m","y","'"]
+    let cons_s = ["t","p","d","g","b"]
 
-    var s = ""
+    let s = ""
     s += k1 > -1 ? vowels[k1 % vowels.length] : ''
     s += k2+k1 > -1 ? vowels[((k1*vowels.length)+k2) % vowels.length] + cons_w[((k1*vowels.length)+k2) % cons_w.length] : ''
     
@@ -118,9 +120,9 @@ function FightLang()
 
   function word_value(word)
   {
-    var chars = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-    var val = 0
-    for(id in word){
+    let chars = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+    let val = 0
+    for(let id in word){
       val += chars.indexOf(word.charAt(id).toLowerCase())
     }
     return val

@@ -1,3 +1,5 @@
+"use strict";
+
 const supervisor  = require('./supervisor')
 
 function Scenario()

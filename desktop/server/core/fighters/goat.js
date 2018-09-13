@@ -1,4 +1,6 @@
-var Fighter = require('../fighter.js')
+"use strict";
+
+let Fighter = require('../fighter.js')
 
 function Goat(id,name,pos)
 {

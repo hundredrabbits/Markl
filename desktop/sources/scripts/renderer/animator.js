@@ -1,3 +1,5 @@
+"use strict";
+
 function Animator(host)
 {
   this.host = host;

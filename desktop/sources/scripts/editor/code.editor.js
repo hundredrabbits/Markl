@@ -1,3 +1,5 @@
+"use strict";
+
 function CodeEditor()
 {
   this.el = document.createElement('div');
@@ -24,8 +26,8 @@ function CodeEditor()
 
   this.reload = function()
   {
-    var fightscript = new FightScript().parse(this.textbox.value)
-    var is_valid = fightscript.validate()
+    let fightscript = new FightScript().parse(this.textbox.value)
+    let is_valid = fightscript.validate()
 
     if(!is_valid){ console.warn("Invalid fightscript"); return; }
 
@@ -34,9 +36,9 @@ function CodeEditor()
 
   this.update_hint = function()
   {
-    var html = ""
+    let html = ""
 
-    var i = 1;
+    let i = 1;
     while(i < 30){
       html += `<t class='number'>${i}</t><br/>`
       i += 1
@@ -49,7 +51,7 @@ function CodeEditor()
     if(!history || !history.player || history.player.id != 0){ this.highlighter.className = "disabled"; return; }
 
     this.highlighter.className = ""
-    var line = markl.editor.fightscript.find(history.reaction,history.player)
+    let line = markl.editor.fightscript.find(history.reaction,history.player)
     this.highlighter.style.top = `${line * 20}px`
   }
 

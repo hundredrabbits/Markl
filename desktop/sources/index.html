@@ -48,9 +48,9 @@
     const {dialog,app} = require('electron').remote;
     const fs = require('fs');
     
-    var SPEED = 0.75;
+    let SPEED = 0.75;
 
-    var TIMING = {
+    let TIMING = {
       turn:500 * SPEED,
       sprite:500 * SPEED,
       frame:(750 * SPEED)/5,

@@ -1,3 +1,5 @@
+"use strict";
+
 function Markl()
 {
   this.el = document.createElement('yu');

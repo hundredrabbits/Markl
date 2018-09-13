@@ -1,3 +1,5 @@
+"use strict";
+
 const blessed = require('blessed');
 
 module.exports = {
@@ -41,7 +43,7 @@ module.exports = {
     this.body.append(this.events_el);
     this.style_el.append(this.marker_el);
 
-    for(id in this.history[this.index].state.players){
+    for(let id in this.history[this.index].state.players){
       this.arena_el.append(this.players_el[id]);
     }
     // Close the example on Escape, Q, or Ctrl+C
@@ -72,18 +74,18 @@ module.exports = {
   events_ui: [],
 
   remove_events_ui: function(){
-    for(id in this.events_ui){
-      var el = this.events_ui[id];
+    for(let id in this.events_ui){
+      let el = this.events_ui[id];
       el.destroy();
     }
   },
 
   draw_events(turn){
     this.remove_events_ui();
-    var s = ""
+    let s = ""
     for(i in turn.state.events){
-      var event = turn.state.events[i];
-      var event_ui = blessed.box({left: event.pos.x,top: event.pos.y,height:1,width:1,content:"+",style: {bg: '#fff',fg: '#000'}});
+      let event = turn.state.events[i];
+      let event_ui = blessed.box({left: event.pos.x,top: event.pos.y,height:1,width:1,content:"+",style: {bg: '#fff',fg: '#000'}});
       event_ui.setContent("+")
       this.arena_el.append(event_ui);
       this.events_ui.push(event_ui);
@@ -93,9 +95,9 @@ module.exports = {
   },
   
   draw_timeline(){
-    var s = ""
-    for(id in this.history){
-      var turn = this.history[id];
+    let s = ""
+    for(let id in this.history){
+      let turn = this.history[id];
       if(this.index > id){ s += ">"; continue; }
       if(turn.action.name && (turn.action.name.substr(0,1) == "M" || turn.action.name.substr(0,1) == "W")){ s += "-"; continue; }
       s += turn.action.name ? turn.action.name.substr(0,1) : "-";
@@ -105,29 +107,29 @@ module.exports = {
 
   draw: function(){
 
-    var turn = this.history[this.index];
+    let turn = this.history[this.index];
 
     this.turn_el.setContent(`TURN ${this.index}/${this.history.length-1}`);
 
     this.draw_timeline();
     this.draw_events(turn);
 
-    var reaction = turn.reaction;
+    let reaction = turn.reaction;
     this.reaction_el.setContent(`TRIG ${reaction.trigger}\nEVNT ${reaction.event}\nCOND ${reaction.condition}\nTARG ${reaction.target ? reaction.target.name : ''}`);
 
-    var action = turn.action;
+    let action = turn.action;
     this.action_el.setContent(`NAME ${action.name}\nATTR ${action.attr}\nLINE ${action.line}`);
 
-    var playing = turn.player;
+    let playing = turn.player;
     this.style_el.setContent(playing.style);
     this.player_el.setContent(playing.name+" "+turn.state.events.length);
 
     this.marker_el.top = parseInt(action.line);
 
-    var status_html = "";
+    let status_html = "";
 
-    for(id in turn.state.players){
-      var player = turn.state.players[id];
+    for(let id in turn.state.players){
+      let player = turn.state.players[id];
 
       status_html += `${player.name} ${player.hp}HP ${player.sp}SP ${player.score.hits+player.score.blocks}AP <${player.status}>\n`
 

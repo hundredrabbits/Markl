@@ -1,5 +1,7 @@
-var Pos = require('./units/pos.js')
-var Vector = require('./units/vector.js')
+"use strict";
+
+let Pos = require('./units/pos.js')
+let Vector = require('./units/vector.js')
 
 function Missle(host,settings)
 {
@@ -37,7 +39,7 @@ function Missle(host,settings)
   {
     if(this.life < 0){ return; }
 
-    var collider = this.player_at(state,this.pos);
+    let collider = this.player_at(state,this.pos);
 
     if(!collider){ return; }
 
@@ -51,8 +53,8 @@ function Missle(host,settings)
 
   this.knockback = function(state,host,vector)
   {
-    var host_pos = new Pos(host.pos.x,host.pos.y);
-    var target_position = new Pos(host.pos.x,host.pos.y).add(vector);
+    let host_pos = new Pos(host.pos.x,host.pos.y);
+    let target_position = new Pos(host.pos.x,host.pos.y).add(vector);
     if(this.can_move_to(state,target_position)){
       host.pos = {x:target_position.x,y:target_position.y};  
     }
@@ -69,9 +71,9 @@ function Missle(host,settings)
 
   this.player_at = function(state,pos)
   {
-    for(id in state.players){
-      var player = state.players[id];
-      var player_pos = new Pos(player.pos.x,player.pos.y);
+    for(let id in state.players){
+      let player = state.players[id];
+      let player_pos = new Pos(player.pos.x,player.pos.y);
       if(player.hp > 0 && player_pos.is_equal(pos)){
         return player;
       }

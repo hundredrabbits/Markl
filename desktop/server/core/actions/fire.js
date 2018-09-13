@@ -1,7 +1,9 @@
-var Pos = require('../units/pos.js')
+"use strict";
+
+let Pos = require('../units/pos.js')
 const Vector = require('../units/vector.js')
-var Action = require('../action.js')
-var Missle = require('../missle.js')
+let Action = require('../action.js')
+let Missle = require('../missle.js')
 
 function FIRE(host,attr)
 {
@@ -20,15 +22,15 @@ function FIRE(host,attr)
       return;
     }
 
-    var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
-    var offset = host_pos.offset(this.target.pos).invert();
-    var vector = new Vector(offset.x,offset.y);
+    let host_pos = new Pos(this.host.pos.x,this.host.pos.y);
+    let offset = host_pos.offset(this.target.pos).invert();
+    let vector = new Vector(offset.x,offset.y);
     this.host.status = this.name;
     this.host.sp -= this.cost;
 
     // Add new missle into play
 
-    var missle = new Missle(this.host,{pos:host_pos.add(vector),vector:vector,life:5});
+    let missle = new Missle(this.host,{pos:host_pos.add(vector),vector:vector,life:5});
     state.events.push(missle);
   }
 }

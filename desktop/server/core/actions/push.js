@@ -1,6 +1,8 @@
-var Pos = require('../units/pos.js')
+"use strict";
+
+let Pos = require('../units/pos.js')
 const Vector = require('../units/vector.js')
-var Action = require('../action.js')
+let Action = require('../action.js')
 
 function PUSH(host,attr)
 {
@@ -9,7 +11,7 @@ function PUSH(host,attr)
   this.name = "push";
   this.cost = 8;
 
-  this.run = function(state,state,target)
+  this.run = function(state,target)
   {
     this.state = state;
     this.host.sp -= this.cost;
@@ -19,16 +21,16 @@ function PUSH(host,attr)
       return;
     }
 
-    var host_pos = new Pos(this.host.pos.x,this.host.pos.y);
-    var offset = host_pos.offset(target.pos).invert();
-    var vector = new Vector(offset.x,offset.y);
+    let host_pos = new Pos(this.host.pos.x,this.host.pos.y);
+    let offset = host_pos.offset(target.pos).invert();
+    let vector = new Vector(offset.x,offset.y);
     this.host.status = this.name;
 
-    var target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
-    var collider = this.player_at(target_position);
+    let target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
+    let collider = this.player_at(target_position);
 
     if(!collider){ return; }
-    var slide = 0;
+    let slide = 0;
     while(slide < 5){
       this.knockback(collider,vector);
       slide += 1;
@@ -38,8 +40,8 @@ function PUSH(host,attr)
 
   this.knockback = function(host,vector)
   {
-    var host_pos = new Pos(host.pos.x,host.pos.y);
-    var target_position = new Pos(host.pos.x,host.pos.y).add(vector);
+    let host_pos = new Pos(host.pos.x,host.pos.y);
+    let target_position = new Pos(host.pos.x,host.pos.y).add(vector);
     if(this.can_move_to(target_position)){
       host.pos = {x:target_position.x,y:target_position.y};  
     }
@@ -56,9 +58,9 @@ function PUSH(host,attr)
 
   this.player_at = function(pos)
   {
-    for(id in this.state.players){
-      var player = this.state.players[id];
-      var player_pos = new Pos(player.pos.x,player.pos.y);
+    for(let id in this.state.players){
+      let player = this.state.players[id];
+      let player_pos = new Pos(player.pos.x,player.pos.y);
       if(player.hp > 0 && player_pos.is_equal(pos)){
         return player;
       }

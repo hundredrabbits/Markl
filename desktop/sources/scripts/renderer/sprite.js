@@ -1,3 +1,5 @@
+"use strict";
+
 function Sprite(type,id)
 {
   this.el = document.createElement('sprite');
@@ -13,7 +15,7 @@ function Sprite(type,id)
   this.status = "";
   this.vector = "";
 
-  var STAGE = {padding:{x:15,y:15},tile:80}
+  let STAGE = {padding:{x:15,y:15},tile:80}
 
   this.setup = function(h)
   {

@@ -1,3 +1,5 @@
+"use strict";
+
 function Fighter(id,name,pos)
 {
   this.id = id

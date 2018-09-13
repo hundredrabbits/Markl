@@ -1,5 +1,7 @@
-var Pos = require('../units/pos.js')
-var Action = require('../action.js')
+"use strict";
+
+let Pos = require('../units/pos.js')
+let Action = require('../action.js')
 
 function WAIT(host,attr = null,target = null)
 {
