@@ -2,35 +2,9 @@
 
 function Editor()
 {
-  this.code_editor = new CodeEditor();
-  this.rune_editor = new RuneEditor();
-  this.list_editor = new ListEditor();
-
   this.el = document.createElement('yu');
   this.el.id = "editor";
   this.el.className = "rune"
-
-  // Tabs
-
-  this.tabs = document.createElement('yu');
-  this.tabs.id = "tabs";
-  this.home_tab = document.createElement('a')
-  this.home_tab.className = "tab home"
-  this.home_tab.innerHTML = "<icon/>"
-  this.code_tab = document.createElement('a')
-  this.code_tab.className = "tab code"
-  this.code_tab.innerHTML = "<icon/>"
-  this.rune_tab = document.createElement('a')
-  this.rune_tab.className = "tab rune"
-  this.rune_tab.innerHTML = "<icon/>"
-  this.hide_tab = document.createElement('a')
-  this.hide_tab.className = "tab hide"
-  this.hide_tab.innerHTML = "<icon/>"
-
-  this.home_tab.onclick = () => { this.select("list") }
-  this.code_tab.onclick = () => { this.select("code") }
-  this.rune_tab.onclick = () => { this.select("rune") }
-  this.hide_tab.onclick = () => { this.toggle() }
 
   // Menu
 
@@ -64,10 +38,10 @@ function Editor()
   this.stop_button.onclick = () => { this.stop(); }
   this.clear_button.onclick = () => { this.rune_editor.clear(); }
 
+  this.fightscript = new FightScript();
+
   this.status = document.createElement('t')
   this.status.id = "status"
-
-  this.fightscript = new FightScript();
 
   this.mode = "rune";
   this.is_paused = false;
@@ -78,12 +52,6 @@ function Editor()
 
   this.install = function(host)
   {
-    this.el.appendChild(this.tabs)
-    this.tabs.appendChild(this.home_tab)
-    this.tabs.appendChild(this.rune_tab)
-    this.tabs.appendChild(this.code_tab)
-    this.tabs.appendChild(this.hide_tab)
-
     this.el.appendChild(this.menu)
     this.menu.appendChild(this.run_button)
     this.menu.appendChild(this.pause_button)
@@ -93,20 +61,10 @@ function Editor()
     this.menu.appendChild(this.add_button)
     this.menu.appendChild(this.clear_button)
     this.menu.appendChild(this.status)
-
-    this.el.appendChild(this.code_editor.el)
-    this.el.appendChild(this.list_editor.el)    
-    this.el.appendChild(this.rune_editor.el)
     
     host.appendChild(this.el);
 
     this.update();
-
-    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 1",action:"ATTACK TOWARD"}))
-    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 2",action:"DASH AWAY"}))
-    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"DISTANCE OF 3",action:"DASH TOWARD"}))
-    this.fightscript.add(new Rune({trigger:"SIGHT",event:"FIGHTER",condition:"ANY",action:"MOVE TOWARD"}))
-    this.fightscript.add(new Rune({trigger:"ANY",event:"ANY",condition:"ANY",action:"MOVE ANY"}))
   }
 
   this.run = function()
@@ -278,16 +236,8 @@ function Editor()
     
     let state = this.history && this.history.length > 0 && this.index > 0 ? this.history[this.index] : null;
 
-    this.code_editor.update(state);
-    this.rune_editor.update(state);
-    this.list_editor.update(state);
-
-    this.home_tab.style.display = this.fightscript.runes().length < 1 ? "none" : "inline-block"
-
     // Menu
     this.run_button.className = this.fightscript.runes().length < 1 ? "disabled run" : "run"
-    this.clear_button.className = !this.rune_editor.rune.fragments().length > 0 ? "disabled clear" : "clear"
-    this.add_button.className = !this.rune_editor.rune.validate() ? "disabled add" : "add"
 
     this.update_status(state);
   }
@@ -298,12 +248,9 @@ function Editor()
 
     if(this.is_running && this.history && this.history.length > 0 && this.index > 0 && state){
       html += `${this.index}/${this.history.length} `
-      // html += `<t class='trigger'>${state.reaction.trigger}</t>(<t class='event'>${state.reaction.event}</t>).<t class='condition'>${state.reaction.condition}</t> `  
+      html += `<t class='trigger'>${state.reaction.trigger}</t>(<t class='event'>${state.reaction.event}</t>).<t class='condition'>${state.reaction.condition}</t> `  
     }
-    
-    html += this.code_editor.status(state)+" "
-    html += this.rune_editor.status(state)+" "
-    html += this.list_editor.status(state)+" "
+  
     this.status.innerHTML = html
   }
 }

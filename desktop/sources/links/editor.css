@@ -1,5 +1,5 @@
 
-body #editor { color: white;position: fixed;top: 0;right: 0px;width: 420px;height: 100vh;background: #222;transition: right 500ms, width 250ms; font-family: 'input_mono_regular'; font-size:11px; z-index: 9000; -webkit-app-region: no-drag;}
+body #editor { color: white; position: fixed; bottom: 0; right: calc(50vw - 250px); width: 500px; height: 45px; background: #222; font-family: 'input_mono_regular'; font-size: 11px; z-index: 9000; -webkit-app-region: no-drag; border-top-left-radius: 5px; border-top-right-radius: 5px;}
 
 body #editor > div { padding: 30px;margin-bottom: 30px;color: white;min-height: 30px;position: relative; height:calc(100% - 10px); }
 

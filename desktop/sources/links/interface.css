@@ -1,4 +1,4 @@
-#interface { position: fixed;width: calc(100vw - 420px);height: 100vh; z-index: 8888; top: 0px;}
+#interface { position: fixed;width: 100vw;height: 100vh; z-index: 8888; top: 0px;}
 
 #interface .player.ui { position: absolute; width:100px; height:30px; padding-left:45px;}
 #interface .player.ui.player0 { bottom:30px; left:30px; }
@@ -16,3 +16,7 @@
 #interface .player.ui.player1 { padding-left: 0px;padding-right: 45px;text-align: right; }
 #interface .player.ui.player1 t.name { left:auto; right:32px; }
 #interface .player.ui.player1 svg { right:0px; left:auto; }
+
+#interface .player.ui.player2 { padding-left: 0px;padding-right: 45px;text-align: right; }
+#interface .player.ui.player2 t.name { left:auto; right:32px; }
+#interface .player.ui.player2 svg { right:0px; left:auto; }
