@@ -75,20 +75,21 @@ function Action(host,attr)
     let vector = new Vector(offset.x,offset.y);
 
     // backward
-    let target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.invert());
+    let target_position
+    target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.invert());
 
     if(this.can_move_to(target_position)){
       return vector.invert();
     }
 
     // Sideways
-    let target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.rotate(1));
+    target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.rotate(1));
 
     if(this.can_move_to(target_position)){
       return vector.rotate(1);
     }
     // Sideways
-    let target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.rotate(-1));
+    target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector.rotate(-1));
 
     if(this.can_move_to(target_position)){
       return vector.rotate(-1);
