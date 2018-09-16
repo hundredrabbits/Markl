@@ -5,7 +5,7 @@ function Markl()
   this.el = document.createElement('yu');
   this.el.className = "screen";
 
-  this.editor     = new Editor();
+  this.navigator  = new Navigator();
   this.interface  = new Interface();
   this.renderer   = new Renderer();
   this.controller = new Controller();
@@ -19,7 +19,7 @@ function Markl()
 
     this.renderer.install(this.el);
     this.interface.install(this.el);
-    this.editor.install(this.el);
+    this.navigator.install(this.el);
 
     this.controller.add("default","*","About",() => { require('electron').shell.openExternal('https://github.com/hundredrabbits/Dotgrid'); },"CmdOrCtrl+,");
     this.controller.add("default","*","Fullscreen",() => { app.toggle_fullscreen(); },"CmdOrCtrl+Enter");
@@ -37,16 +37,16 @@ function Markl()
     this.controller.add_role("default","Edit","delete");
     this.controller.add_role("default","Edit","selectall");
     
-    this.controller.add("default","Editor","Play",() => { markl.editor.play(); },"CmdOrCtrl+R");
-    this.controller.add("default","Editor","Pause/Resume",() => { markl.editor.pause(); },"CmdOrCtrl+P");
-    this.controller.add("default","Editor","Stop",() => { markl.editor.stop(); },"CmdOrCtrl+W");
-    this.controller.add("default","Editor","Next Turn",() => { markl.editor.next(); },"CmdOrCtrl+Right");
-    this.controller.add("default","Editor","Prev Turn",() => { markl.editor.prev(); },"CmdOrCtrl+Left");
-    this.controller.add("default","Editor","Last Turn",() => { markl.editor.last(); },"CmdOrCtrl+Shift+Right");
-    this.controller.add("default","Editor","First Turn",() => { markl.editor.first(); },"CmdOrCtrl+Shift+Left");
-    this.controller.add("default","Editor","Toggle View",() => { markl.editor.toggle(); },"CmdOrCtrl+D");
-    this.controller.add("default","Editor","Save",() => { markl.editor.save(); },"CmdOrCtrl+S");
-    this.controller.add("default","Editor","Export",() => { markl.editor.export(); },"CmdOrCtrl+E");
+    this.controller.add("default","Navigator","Play",() => { markl.navigator.play(); },"CmdOrCtrl+R");
+    this.controller.add("default","Navigator","Pause/Resume",() => { markl.navigator.pause(); },"CmdOrCtrl+P");
+    this.controller.add("default","Navigator","Stop",() => { markl.navigator.stop(); },"CmdOrCtrl+W");
+    this.controller.add("default","Navigator","Next Turn",() => { markl.navigator.next(); },"CmdOrCtrl+Right");
+    this.controller.add("default","Navigator","Prev Turn",() => { markl.navigator.prev(); },"CmdOrCtrl+Left");
+    this.controller.add("default","Navigator","Last Turn",() => { markl.navigator.last(); },"CmdOrCtrl+Shift+Right");
+    this.controller.add("default","Navigator","First Turn",() => { markl.navigator.first(); },"CmdOrCtrl+Shift+Left");
+    this.controller.add("default","Navigator","Toggle View",() => { markl.navigator.toggle(); },"CmdOrCtrl+D");
+    this.controller.add("default","Navigator","Save",() => { markl.navigator.save(); },"CmdOrCtrl+S");
+    this.controller.add("default","Navigator","Export",() => { markl.navigator.export(); },"CmdOrCtrl+E");
 
     this.controller.commit();
 
@@ -61,11 +61,11 @@ function Markl()
 
   this.reset = function()
   {
-    this.editor.reset();
+    this.navigator.reset();
   }
 
   this.update = function()
   {
-    this.el.className = `${this.editor.is_visible ? "designer_on" : "designer_off"}`;
+    this.el.className = `${this.navigator.is_visible ? "designer_on" : "designer_off"}`;
   }
 }

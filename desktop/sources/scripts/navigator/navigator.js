@@ -1,9 +1,12 @@
 "use strict";
 
-function Editor()
+function Navigator()
 {
+  this.fightscript = new FightScript();
+  this.timeline = new Timeline();
+
   this.el = document.createElement('yu');
-  this.el.id = "editor";
+  this.el.id = "navigator";
   this.el.className = "rune"
 
   // Menu
@@ -32,13 +35,10 @@ function Editor()
   this.import_button.innerHTML = "<icon/>"
   this.import_button.className = "import"
 
-  this.add_button.onclick = () => { this.rune_editor.merge(); }
   this.run_button.onclick = () => { this.run(); }
   this.pause_button.onclick = () => { this.pause(); }
   this.stop_button.onclick = () => { this.stop(); }
-  this.clear_button.onclick = () => { this.rune_editor.clear(); }
 
-  this.fightscript = new FightScript();
 
   this.status = document.createElement('t')
   this.status.id = "status"
@@ -72,7 +72,7 @@ function Editor()
     console.info("Running");
     markl.scenario.reload()
     markl.scenario.inject_style(this.fightscript.render());
-    markl.editor.history = markl.scenario.run();
+    markl.navigator.history = markl.scenario.run();
 
     this.index = 0;
     this.is_paused = false;
@@ -208,7 +208,7 @@ function Editor()
   {
     console.log("Select",name)
     this.mode = name;
-    markl.editor.update();
+    markl.navigator.update();
   }
 
   this.toggle = function()

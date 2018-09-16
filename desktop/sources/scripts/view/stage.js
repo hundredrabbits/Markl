@@ -48,7 +48,7 @@ function Stage_Screen()
     this.animator.start();
 
     markl.interface.update(state,reaction);
-    markl.editor.update(state);
+    markl.navigator.update(state);
   }
 
   this.verify_sprites = function(state)

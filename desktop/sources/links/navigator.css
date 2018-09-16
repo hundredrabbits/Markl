@@ -1,0 +1,45 @@
+
+body #navigator { color: white; position: fixed; bottom: 0; right: calc(50vw - 250px); width: 500px; height: 45px; background: #222; font-family: 'input_mono_regular'; font-size: 11px; z-index: 9000; -webkit-app-region: no-drag; border-top-left-radius: 5px; border-top-right-radius: 5px;}
+
+body #navigator > div { padding: 30px;margin-bottom: 30px;color: white;min-height: 30px;position: relative; height:calc(100% - 10px); }
+
+body #navigator rune { width:100px; height:100px; display: block;  position: relative; border-radius: 5px; overflow: hidden; }
+body #navigator rune .fragment { width:50%; display: block; height:50%; position: absolute; top:0px; left:0px; background-position: center; background-size:90%; background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1);}
+body #navigator rune .fragment.trigger { top:0%; left:0%; }
+body #navigator rune .fragment.event { top:0%; left:50%; }
+body #navigator rune .fragment.condition { top:50%; left:0%; }
+body #navigator rune .fragment.action { top:50%; left:50%; }
+
+/* Menu */
+
+body #navigator #menu { position: absolute; bottom:30px; left:30px; z-index: 9000; width: calc(100% - 60px); overflow: hidden; -webkit-app-region: no-drag;}
+body #navigator #menu #status { line-height: 35px; display: inline-block; color: #999;margin-left: 10px;position: absolute;top: 0px; }
+body #navigator #menu button { line-height: 30px; margin-right:10px; border-radius: 100px; background:#555; vertical-align: middle }
+body #navigator #menu button:hover { background:#ccc; cursor: pointer; color:black; }
+body #navigator #menu button.disabled { background:#333; color:#aaa;}
+body #navigator #menu button.disabled:hover { cursor: default; }
+body #navigator #menu button.disabled icon { opacity: 0.5 }
+body #navigator #menu button.export { float:right; }
+body #navigator #menu button.import { float:right; }
+body #navigator #menu button.pause { display: none; }
+body #navigator #menu button.stop { display: none; }
+body #navigator #menu button icon { width: 35px;height: 35px;background-size: 50%;background-position: center center;background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1); }
+body #navigator #menu button.add icon { background-image:url(../media/navigator/menu/add.png); }
+body #navigator #menu button.clear icon { background-image:url(../media/navigator/menu/clear.png); }
+body #navigator #menu button.run icon { background-image:url(../media/navigator/menu/run.png); }
+body #navigator #menu button.pause icon { background-image:url(../media/navigator/menu/pause.png); }
+body #navigator #menu button.stop icon { background-image:url(../media/navigator/menu/stop.png); }
+body #navigator #menu button.export icon { background-image:url(../media/navigator/menu/export.png); }
+body #navigator #menu button.import icon { background-image:url(../media/navigator/menu/import.png); }
+body #navigator #menu button.refresh icon { background-image:url(../media/navigator/menu/pause.png); }
+
+/* MODS */
+
+body #navigator.hide { right: -420px; }
+body #navigator #menu button { display: none }
+
+body #navigator.running #menu button.export { display: none; }
+body #navigator.running #menu button.import { display: none; }
+body #navigator.running #menu button.run { display: none; }
+body #navigator.running #menu button.pause { display: inline-block; }
+body #navigator.running #menu button.stop { display: inline-block; }
