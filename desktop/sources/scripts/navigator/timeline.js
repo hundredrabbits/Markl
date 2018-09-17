@@ -1,10 +1,18 @@
 function Timeline()
 {
-  this.el = document.createElement('yu');
+  this._el = document.createElement('div');
+  this._el.id = "timeline";
+  this._el.className = "progress";
+  this._bar = document.createElement('div');
+  this._bar.className = "bar";
+  this._events = document.createElement('div');
+  this._events.className = "events";
 
   this.install = function(host)
   {
-    host.appendChild(this.el);
+    this._el.appendChild(this._bar)
+    this._el.appendChild(this._events)
+    host.appendChild(this._el);
   }
 
   this.start = function()
@@ -12,8 +20,46 @@ function Timeline()
     
   }
 
-  this.update = function()
+  this.update = function(index,history)
   {
-    
+    if(!history){ return; }
+
+    let ratio = clamp(index/history.length,0,1);
+    let perc = ratio * 100
+
+    this._bar.style.width = `${perc}%`
+
+    this.update_events(index,history);
   }
+
+  this.update_events = function(index,history)
+  {
+    if(index >= history.length-2){ return; }
+    // Events
+    let events = this.find_events(index,history);
+
+    let html = ""
+    for(let id in events){
+      let event = events[id];
+      let ratio = clamp(event.index/history.length,0,1);
+      let perc = ratio * 100
+      html += `<div class='event' style='left:${perc}%'></div>`
+    }
+    this._events.innerHTML = html
+  }
+
+  this.find_events = function(index,history)
+  {
+    let a = []
+    for(let id in history){
+      if(parseInt(id) > index){ break; }
+      let state = history[id];
+      if(state.action.indexOf("ATTACK") > -1){
+        a.push({index:id,type:"attack"});
+      }
+    }
+    return a;
+  }
+
+  function clamp(v, min, max){ return v < min ? min : v > max ? max : v; }
 }

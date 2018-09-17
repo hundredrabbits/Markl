@@ -11,39 +11,10 @@ function Navigator()
 
   // Menu
 
-  this.menu = document.createElement('yu');
-  this.menu.id = "menu";
-  this.add_button = document.createElement('button')
-  this.add_button.innerHTML = "<icon/>"
-  this.add_button.className = "add"
-  this.clear_button = document.createElement('button')
-  this.clear_button.innerHTML = "<icon/>"
-  this.clear_button.className = "clear"
   this.run_button = document.createElement('button')
-  this.run_button.innerHTML = "<icon/>"
   this.run_button.className = "run"
-  this.pause_button = document.createElement('button')
-  this.pause_button.innerHTML = "<icon/>"
-  this.pause_button.className = "pause"
-  this.stop_button = document.createElement('button')
-  this.stop_button.innerHTML = "<icon/>"
-  this.stop_button.className = "stop"
-  this.export_button = document.createElement('button')
-  this.export_button.innerHTML = "<icon/>"
-  this.export_button.className = "export"
-  this.import_button = document.createElement('button')
-  this.import_button.innerHTML = "<icon/>"
-  this.import_button.className = "import"
+  this.run_button.onclick = () => { this.toggle(); }
 
-  this.run_button.onclick = () => { this.run(); }
-  this.pause_button.onclick = () => { this.pause(); }
-  this.stop_button.onclick = () => { this.stop(); }
-
-
-  this.status = document.createElement('t')
-  this.status.id = "status"
-
-  this.mode = "rune";
   this.is_paused = false;
   this.is_running = false;
   this.history = null;
@@ -52,15 +23,9 @@ function Navigator()
 
   this.install = function(host)
   {
-    this.el.appendChild(this.menu)
-    this.menu.appendChild(this.run_button)
-    this.menu.appendChild(this.pause_button)
-    this.menu.appendChild(this.stop_button)
-    this.menu.appendChild(this.import_button)
-    this.menu.appendChild(this.export_button)
-    this.menu.appendChild(this.add_button)
-    this.menu.appendChild(this.clear_button)
-    this.menu.appendChild(this.status)
+    this.el.appendChild(this.run_button)
+
+    this.timeline.install(this.el);
     
     host.appendChild(this.el);
 
@@ -69,7 +34,8 @@ function Navigator()
 
   this.run = function()
   {
-    console.info("Running");
+    console.info("Navigator","Run");
+
     markl.scenario.reload()
     markl.scenario.inject_style(this.fightscript.render());
     markl.navigator.history = markl.scenario.run();
@@ -97,6 +63,7 @@ function Navigator()
   this.pause = function()
   {
     console.info("trying to pause");
+
     if(!this.is_running){ this.run();  }
     if(!this.history){ return; }
     if(this.is_paused){ return; }
@@ -105,24 +72,29 @@ function Navigator()
 
     this.is_paused = true;
     clearInterval(this.timer);
+
     markl.renderer.update(this.history[this.index].state);
   }
 
   this.resume = function()
   {
     console.info("resume");
+
     this.is_paused = false;
     this.timer = setInterval(() => { this.next(); },TIMING.turn);
+
     markl.renderer.update(this.history[this.index].state);
   }
 
   this.stop = function()
   {
     console.info("stop");
+
     this.is_paused = false;
     this.is_running = false;
     this.index = 0;
     clearInterval(this.timer);
+
     if(this.history){
       markl.renderer.update(this.history[this.index].state);  
     }
@@ -176,41 +148,10 @@ function Navigator()
     markl.renderer.update(this.history[this.index].state);
   }
 
-  this.replace = function(fightscript)
-  {
-    console.log("Replacing Fightscript")
-
-    this.fightscript = fightscript;
-    this.stop();
-  }
-
   this.should_skip = function()
   {
     return this.history[this.index] && this.history[this.index-1] && this.history[this.index].action == "WAIT" && this.history[this.index-1].action == "WAIT" ? true : false;
   }
-
-  this.validate = function()
-  {
-    let code = this.textbox.value
-    let fightscript = new FightScript().parse(code)
-    let is_valid = fightscript.validate();
-
-    if(is_valid){
-      this.fightscript.replace(this.textbox.value); 
-      this.status.innerHTML = "Valid code!"
-    }
-    else{
-      this.status.innerHTML = "Invalid code."
-    }
-  }
-
-  this.select = function(name)
-  {
-    console.log("Select",name)
-    this.mode = name;
-    markl.navigator.update();
-  }
-
   this.toggle = function()
   {
     if(this.el.className.indexOf("hide") > -1){
@@ -226,6 +167,7 @@ function Navigator()
   this.update = function()
   {
     console.info(`===================== ${this.index}`)
+
     // Status 
     if(this.history && this.history.length > 0 && this.index > 0){
       let rune = new Rune(this.history[this.index].reaction)
@@ -239,19 +181,7 @@ function Navigator()
     // Menu
     this.run_button.className = this.fightscript.runes().length < 1 ? "disabled run" : "run"
 
-    this.update_status(state);
-  }
-
-  this.update_status = function(state)
-  {
-    let html = this.is_running ? "" : "Idle. "
-
-    if(this.is_running && this.history && this.history.length > 0 && this.index > 0 && state){
-      html += `${this.index}/${this.history.length} `
-      html += `<t class='trigger'>${state.reaction.trigger}</t>(<t class='event'>${state.reaction.event}</t>).<t class='condition'>${state.reaction.condition}</t> `  
-    }
-  
-    this.status.innerHTML = html
+    this.timeline.update(this.index,this.history);
   }
 }
 

@@ -122,7 +122,6 @@ function Supervisor()
     console.log("Rendering..")
     this.history = [];
     this.initial_state = state;
-    this.record(state);
 
     let max_turns = 100;
     let i = 0;

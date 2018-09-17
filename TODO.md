@@ -29,3 +29,4 @@
 ## Interface
 
 - Implement leaderboard/score.
+- Hide Player Progress bar on death.
