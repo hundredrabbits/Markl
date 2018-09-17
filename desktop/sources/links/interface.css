@@ -1,10 +1,11 @@
 #interface { position: fixed;width: 100vw;height: 100vh; z-index: 8888; top: 0px;}
 
-#interface .player.ui { position: absolute; width:100px; height:30px; padding-left:45px;}
+#interface .player.ui { position: absolute; width:100px; height:30px; padding-left:45px; transition: opacity 250ms; opacity:1;}
 #interface .player.ui.player0 { bottom:30px; left:30px; }
 #interface .player.ui.player1 { bottom:30px; right:30px; }
 #interface .player.ui.player2 { top:30px; right:30px; }
 #interface .player.ui.player3 { top:30px; left:30px; }
+#interface .player.ui.dead { opacity: 0; }
 
 #interface .player.ui t { line-height: 15px; display: inline-block;}
 #interface .player.ui t.name { font-size: 11px;display: block;font-family: 'input_mono_medium';background: #111;color: white;line-height: 19px;position: absolute;left: 32px;top: 10px;padding: 0px 10px;border-radius: 5px;}

@@ -4,15 +4,6 @@
 
 - Rename Default, or Any, to Else?
 
-## Editor
-
-- [list]Drag and drop runes in list interface.
-- Implement player.tp in list editor.
-- Update fight style, and re-run battle.
-- [rune]Display rune usage on hover.
-- Validate code as it changes.
-- Display line type.
-
 ## Arena
 
 - Migrate to canvas?
@@ -29,4 +20,3 @@
 ## Interface
 
 - Implement leaderboard/score.
-- Hide Player Progress bar on death.

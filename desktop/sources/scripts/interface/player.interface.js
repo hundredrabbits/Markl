@@ -20,6 +20,9 @@ function Player_UI(host)
     let actual_speed = (sum_speed - relative_speed) * -1
     let ratio_speed = actual_speed/-sum_speed;
 
+    if(h.hp == 0){
+      this.el.className = `player ui player${host.id} dead`;
+    }
     this.monitor.update((h.hp/3)*100);
   }
 }

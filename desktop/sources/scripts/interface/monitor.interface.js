@@ -28,11 +28,10 @@ function Monitor(host, r = 15)
 
   this.update = function(val = 50)
   {
-    let r = this.r;
-    let c = Math.PI*(r*2);
+    let c = Math.PI*(this.r*2);
     let pct = ((100-val)/100)*c;
     
     this.fg.setAttribute('stroke-dashoffset', pct)    
-    this.fg.setAttribute('stroke-dasharray', c)   
+    this.fg.setAttribute('stroke-dasharray', c)
   }
 }
