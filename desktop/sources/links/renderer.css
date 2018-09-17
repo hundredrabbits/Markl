@@ -2,6 +2,7 @@
 #renderer view { display: block;position: fixed;left: 50vw;top: 50vh;}
 #renderer stage { display:block; position:absolute; transition:all 500ms; }
 #renderer stage background { display: block;position: absolute;transition: all 150ms;width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
+#renderer stage camera { width:10px; height:10px; background:red; z-index: 9999; display: block; position:fixed; border-radius: 20px; left:50vw; top:50vh; transition: all 250ms; }
 #renderer stage sprite { display: block; position:absolute; transition:all 150ms;}
 #renderer stage sprite sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 35%;background-size: 600px;background-position: 0px -360px;left: -25%; transition: opacity 1s, bottom 1s; z-index: 900}
 #renderer stage sprite shade { display: block;width: 150%;height: 150%;position: absolute;background-size: 600px;background-position: 0px 0px;background-image: url(../media/fighters/effects.png);opacity: 0.5;left: -25%;top: -80%; transition: opacity 3s}
