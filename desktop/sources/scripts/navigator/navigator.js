@@ -1,8 +1,12 @@
 "use strict";
 
+let Fightlang = require('../server/fightlang/fightlang')
+let Fightscript = require('../server/fightlang/fightscript')
+let Fightrune = require('../server/fightlang/fightrune')
+
 function Navigator()
 {
-  this.fightscript = new FightScript();
+  this.fightscript = new Fightscript();
   this.timeline = new Timeline();
 
   this.el = document.createElement('yu');
@@ -170,7 +174,7 @@ function Navigator()
 
     // Status 
     if(this.history && this.history.length > 0 && this.index > 0){
-      let rune = new Rune(this.history[this.index].reaction)
+      let rune = new Fightrune(this.history[this.index].reaction)
       console.log(`Playing: Player ${this.history[this.index].player.id}`,rune.toString())
     }
 
@@ -182,6 +186,38 @@ function Navigator()
     this.run_button.className = this.fightscript.runes().length < 1 ? "disabled run" : "run"
 
     this.timeline.update(this.index,this.history);
+  }
+
+  // Options
+
+  this.new = function()
+  {
+    console.log("New FightStyle")
+  }
+
+  this.open = function()
+  {
+    console.log("Open FightStyle")
+  }
+
+  this.load_path = function(path)
+  {
+    console.log(path)
+
+    let data;
+    try {
+      data = fs.readFileSync(path, 'utf-8');
+    } catch (err) {
+      console.warn(`Could not load ${path}`);
+      return;
+    }
+    this.load(data);
+  }
+
+  this.load = function(script)
+  {
+    this.fightscript = new Fightscript(script);
+    console.log(this.fightscript)
   }
 }
 

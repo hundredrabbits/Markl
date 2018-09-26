@@ -5,7 +5,6 @@
   <script type="text/javascript" src="scripts/markl.js"></script>
   <script type="text/javascript" src="scripts/controller.js"></script>
   <script type="text/javascript" src="scripts/keyboard.js"></script>
-  <script type="text/javascript" src="scripts/project.js"></script>
 
   <script type="text/javascript" src="scripts/view/view.js"></script>
   <script type="text/javascript" src="scripts/view/character.js"></script>
@@ -28,9 +27,6 @@
   <link rel="stylesheet" type="text/css" href="links/navigator.css"/>
   <script type="text/javascript" src="scripts/navigator/navigator.js"></script>
   <script type="text/javascript" src="scripts/navigator/timeline.js"></script>
-  <script type="text/javascript" src="scripts/navigator/rune.js"></script>
-  <script type="text/javascript" src="scripts/navigator/fightscript.js"></script>
-  <script type="text/javascript" src="scripts/navigator/fightlang.js"></script>
 
   <!-- INTERFACE -->
   <link rel="stylesheet" type="text/css" href="links/interface.css"/>
@@ -67,8 +63,8 @@
     markl.controller.add("default","*","Reset",() => { markl.reset(); },"CmdOrCtrl+Backspace");
     markl.controller.add("default","*","Quit",() => { app.exit(); },"CmdOrCtrl+Q");
 
-    markl.controller.add("default","File","New Template",() => { markl.project.new(); },"CmdOrCtrl+N");
-    markl.controller.add("default","File","Open",() => { markl.project.open(); },"CmdOrCtrl+O");
+    markl.controller.add("default","File","New Template",() => { markl.navigator.new(); },"CmdOrCtrl+N");
+    markl.controller.add("default","File","Open",() => { markl.navigator.open(); },"CmdOrCtrl+O");
 
     markl.controller.add_role("default","Edit","undo");
     markl.controller.add_role("default","Edit","redo");

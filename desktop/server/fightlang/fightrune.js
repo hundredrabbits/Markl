@@ -1,6 +1,8 @@
 "use strict";
 
-function Rune(parts = {trigger:null,event:null,condition:null,action:null})
+let Fightlang = require('./fightlang')
+
+function Fightrune(parts = {trigger:null,event:null,condition:null,action:null})
 {
   this.el = document.createElement('rune');
   this.el.className = "rune"
@@ -9,7 +11,7 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
   this.event = parts.event
   this.condition = parts.condition
   this.action = parts.action
-  this.name = new FightLang().phonetic(parts)
+  this.name = new Fightlang().phonetic(parts)
 
   this.replace = function(rune)
   {
@@ -37,7 +39,7 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
 
   this.update = function()
   {
-    this.name = new FightLang().phonetic(this);
+    this.name = new Fightlang().phonetic(this);
 
     this.draw()
   }
@@ -60,7 +62,7 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
 
     if(!this.trigger || !this.event || !this.condition || !this.action){ return false; }
 
-    let lang = new FightLang();
+    let lang = new Fightlang();
 
     if(lang.spec.TRIGGER.indexOf(this.trigger) < 0){
       console.warn("Unknown Trigger",this.trigger)
@@ -108,7 +110,7 @@ function Rune(parts = {trigger:null,event:null,condition:null,action:null})
 
   this.copy = function()
   {
-    return new Rune({trigger:this.trigger,event:this.event,condition:this.condition,action:this.action});
+    return new Fightrune({trigger:this.trigger,event:this.event,condition:this.condition,action:this.action});
   }
 
   this.toString = function()
@@ -134,3 +136,6 @@ String.prototype.capitalize = function()
 {
   return this.charAt(0).toUpperCase() + this.slice(1).toLowerCase();
 }
+
+module.exports = Fightrune
+

@@ -10,7 +10,6 @@ function Markl()
   this.renderer   = new Renderer();
   this.controller = new Controller();
   this.keyboard = new Keyboard();
-  this.project = new Project();
 
   this.supervisor = require('../server/core/supervisor')
   this.scenario = require('../server/core/scenario')
@@ -80,7 +79,7 @@ function Markl()
       let file = files[id];
       if(!file.path){ continue;}
       if(file.type && !file.type.match(/text.*/)) { console.log(`Skipped ${file.type} : ${file.path}`); continue; }
-      console.log(file);
+      markl.navigator.load_path(file.path);
     }
 
     remove_class(markl.el,"dragover");
