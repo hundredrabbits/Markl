@@ -5,6 +5,7 @@
   <script type="text/javascript" src="scripts/markl.js"></script>
   <script type="text/javascript" src="scripts/controller.js"></script>
   <script type="text/javascript" src="scripts/keyboard.js"></script>
+  <script type="text/javascript" src="scripts/project.js"></script>
 
   <script type="text/javascript" src="scripts/view/view.js"></script>
   <script type="text/javascript" src="scripts/view/character.js"></script>
@@ -57,6 +58,39 @@
 
     markl = new Markl();
     markl.install();
+
+    markl.controller.add("default","*","About",() => { require('electron').shell.openExternal('https://github.com/hundredrabbits/Dotgrid'); },"CmdOrCtrl+,");
+    markl.controller.add("default","*","Fullscreen",() => { app.toggle_fullscreen(); },"CmdOrCtrl+Enter");
+    markl.controller.add("default","*","Hide",() => { app.toggle_visible(); },"CmdOrCtrl+H");
+    markl.controller.add("default","*","Inspect",() => { app.inspect(); },"CmdOrCtrl+.");
+    markl.controller.add("default","*","Documentation",() => { markl.controller.docs(); },"CmdOrCtrl+Esc");
+    markl.controller.add("default","*","Reset",() => { markl.reset(); },"CmdOrCtrl+Backspace");
+    markl.controller.add("default","*","Quit",() => { app.exit(); },"CmdOrCtrl+Q");
+
+    markl.controller.add("default","File","New Template",() => { markl.project.new(); },"CmdOrCtrl+N");
+    markl.controller.add("default","File","Open",() => { markl.project.open(); },"CmdOrCtrl+O");
+
+    markl.controller.add_role("default","Edit","undo");
+    markl.controller.add_role("default","Edit","redo");
+    markl.controller.add_role("default","Edit","cut");
+    markl.controller.add_role("default","Edit","copy");
+    markl.controller.add_role("default","Edit","paste");
+    markl.controller.add_role("default","Edit","delete");
+    markl.controller.add_role("default","Edit","selectall");
+    
+    markl.controller.add("default","Navigator","Play",() => { markl.navigator.play(); },"CmdOrCtrl+R");
+    markl.controller.add("default","Navigator","Pause/Resume",() => { markl.navigator.pause(); },"CmdOrCtrl+P");
+    markl.controller.add("default","Navigator","Stop",() => { markl.navigator.stop(); },"CmdOrCtrl+W");
+    markl.controller.add("default","Navigator","Next Turn",() => { markl.navigator.next(); },"CmdOrCtrl+Right");
+    markl.controller.add("default","Navigator","Prev Turn",() => { markl.navigator.prev(); },"CmdOrCtrl+Left");
+    markl.controller.add("default","Navigator","Last Turn",() => { markl.navigator.last(); },"CmdOrCtrl+Shift+Right");
+    markl.controller.add("default","Navigator","First Turn",() => { markl.navigator.first(); },"CmdOrCtrl+Shift+Left");
+    markl.controller.add("default","Navigator","Toggle View",() => { markl.navigator.toggle(); },"CmdOrCtrl+D");
+    markl.controller.add("default","Navigator","Save",() => { markl.navigator.save(); },"CmdOrCtrl+S");
+    markl.controller.add("default","Navigator","Export",() => { markl.navigator.export(); },"CmdOrCtrl+E");
+
+    markl.controller.commit();
+
     markl.start();
 
   </script>

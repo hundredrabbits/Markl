@@ -1,5 +1,5 @@
 
-body #navigator { color: white; position: fixed; bottom: 0; right: calc(50vw - 250px); width: 500px; height: 45px; background: #000; font-family: 'input_mono_regular'; font-size: 11px; z-index: 9000; -webkit-app-region: no-drag; border-top-left-radius: 5px; border-top-right-radius: 5px; overflow: hidden;}
+body #navigator { color: white; position: fixed; bottom: 0; right: calc(50vw - 250px); width: 500px; height: 45px; background: #000; font-family: 'input_mono_regular'; font-size: 11px; z-index: 9000; -webkit-app-region: no-drag; border-top-left-radius: 5px; border-top-right-radius: 5px; overflow: hidden; transition: all 250ms;}
 
 body #navigator rune { width:100px; height:100px; display: block;  position: relative; border-radius: 5px; overflow: hidden; }
 body #navigator rune .fragment { width:50%; display: block; height:50%; position: absolute; top:0px; left:0px; background-position: center; background-size:90%; background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1);}
@@ -22,14 +22,14 @@ body #navigator button.run icon { background-image:url(../media/navigator/menu/r
 body #navigator button.pause icon { background-image:url(../media/navigator/menu/pause.png); }
 body #navigator button.stop icon { background-image:url(../media/navigator/menu/stop.png); }
 
-/* TIMELINE */
+/* Timeline */
 
 body #timeline { background: #444;width: calc(100% - 90px);height: 3px;border-radius: 5px;position: absolute;top: 22px;left: 25px; }
 body #timeline .bar { background:white; border-radius: 5px; background-color:white; width:0px; height:100%; transition: width 250ms; min-width: 3px }
 body #timeline .events {}
 body #timeline .events .event { width: 3px;height: 3px;position: absolute;margin-top: -5px;border-radius: 10px;background: #111;border: 2px solid white; }
 
-/* MODS */
+/* Mods */
 
 body #navigator.hide { right: -420px; }
 body #navigator #menu button { display: none }
@@ -39,3 +39,7 @@ body #navigator.running #menu button.import { display: none; }
 body #navigator.running #menu button.run { display: none; }
 body #navigator.running #menu button.pause { display: inline-block; }
 body #navigator.running #menu button.stop { display: inline-block; }
+
+/* Events */
+
+#app.dragover #navigator { background:#333; }
