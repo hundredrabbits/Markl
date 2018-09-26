@@ -1,68 +1,10 @@
 "use strict";
 
-function FightScript(style = {})
+let Rune = require('./fightrune')
+
+function Fightscript(style = {})
 {
   this.style = style;
-
-  this.add = function(rune)
-  {
-    if(!this.style[rune.trigger]){ this.style[rune.trigger] = {}}
-    if(!this.style[rune.trigger][rune.event]){ this.style[rune.trigger][rune.event] = {}}
-    if(!this.style[rune.trigger][rune.event][rune.condition]){ this.style[rune.trigger][rune.event][rune.condition] = []}
-    if(this.style[rune.trigger][rune.event][rune.condition].indexOf(rune.action) > -1){ console.warn("Rune is already present"); return; }
-    this.style[rune.trigger][rune.event][rune.condition].push(rune.action)
-  }
-
-  this.insert = function(target,index)
-  {
-    console.log(`Insert ${target.name} at ${index}`);
-
-    let runes = this.runes();
-    runes.splice(index, 0, target);
-
-    let temp = new FightScript()
-    for(let id in runes){
-      let rune = runes[id]
-      temp.add(rune);
-    }
-    this.parse(temp.render())
-    this.refresh();
-  }
-
-  this.remove = function(target)
-  {
-    let runes = this.runes()
-
-    let temp = new FightScript()
-    for(let id in runes){
-      let rune = runes[id]
-      if(target.name == rune.name){ console.log(`Removed ${target.name} at ${id}.`); continue; }
-      temp.add(rune);
-    }
-    this.parse(temp.render())
-    this.refresh();
-  }
-
-  this.move = function(target,direction)
-  {
-    let position = this.indexOf(target)
-    let index = parseInt(position) + parseInt(direction)
-
-    console.log(`Move ${target.name}[@${position}] toward ${direction} at ${index}`)
-
-    this.remove(target);
-    this.insert(target,index)
-  }
-
-  this.replace = function(text)
-  {
-    this.style = this.parse(text)
-  }
-
-  this.refresh = function()
-  {
-    this.style = this.copy().style
-  }
 
   this.parse = function(text)
   {
@@ -94,7 +36,7 @@ function FightScript(style = {})
         for(let condition in this.style[trigger][event]){
           for(let id in this.style[trigger][event][condition]){
             let action = this.style[trigger][event][condition][id];
-            a.push(new Rune({trigger:trigger,event:event,condition:condition,action:action}))
+            a.push(new Fightrune({trigger:trigger,event:event,condition:condition,action:action}))
           }
         }
       }
@@ -189,3 +131,5 @@ function FightScript(style = {})
     return true;
   }
 }
+
+module.exports = Fightscript;

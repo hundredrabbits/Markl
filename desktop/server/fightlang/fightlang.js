@@ -1,6 +1,6 @@
 "use strict";
 
-function FightLang() 
+function Fightlang() 
 {
   this.spec = {
     TRIGGER : [
@@ -128,3 +128,5 @@ function FightLang()
     return val
   }
 }
+
+module.exports = Fightlang

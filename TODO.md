@@ -20,3 +20,5 @@
 ## Interface
 
 - Implement leaderboard/score.
+
+## Create syntax highlight file

@@ -1,9 +1,8 @@
-#renderer { position: relative; height: 100vh;width: 100vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden; transition: width 250ms; background:#ccc;}
+#renderer { position: relative; height: 100vh;width: 100vw; -webkit-user-select: none;-webkit-app-region: drag; overflow: hidden; transition: width 250ms; background:#ccc; transition: background-color 250ms;}
 #renderer view { display: block;position: fixed;left: 50vw;top: 50vh;}
 #renderer stage { display:block; position:absolute; transition:all 500ms; }
 #renderer stage background { display: block;position: absolute;transition: all 150ms;width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
-#renderer stage camera { width:10px; height:10px; background:red; z-index: 9999; display: block; position:fixed; border-radius: 20px; left:50vw; top:50vh; transition: all 250ms; }
-#renderer stage sprite { display: block; position:absolute; transition:all 150ms;}
+#renderer stage sprite { display: block; position:absolute; transition:all 150ms; background:red;}
 #renderer stage sprite sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 35%;background-size: 600px;background-position: 0px -360px;left: -25%; transition: opacity 1s, bottom 1s; z-index: 900}
 #renderer stage sprite shade { display: block;width: 150%;height: 150%;position: absolute;background-size: 600px;background-position: 0px 0px;background-image: url(../media/fighters/effects.png);opacity: 0.5;left: -25%;top: -80%; transition: opacity 3s}
 #renderer stage sprite marker { display: none;width: 50px;height: 50px;z-index: 900;position: absolute;top: -80px;left: 50%;margin-left: -25px; background-size:50%; background-position: center center; background-repeat: no-repeat; }
@@ -70,7 +69,6 @@
 #renderer stage sprite.taunt sheet        { background-position-y:calc(15 * -120px); }
 #renderer stage sprite.stasis sheet       { background-position-y:calc(16 * -120px); }
 
-
 #renderer stage sprite.dead sheet          { background-position-y:calc(13 * -120px); background-position-x:-480px !important; opacity: 0; bottom:50%; }
 #renderer stage sprite.dead shade          { opacity: 0; }
 
@@ -81,5 +79,13 @@
 #renderer stage sprite.depth2 { z-index:102; }
 #renderer stage sprite.depth3 { z-index:103; }
 #renderer stage sprite.depth4 { z-index:104; }
+
+/* Events */
+
+#app.dragover #renderer { background:#aaa; }
+
+
+sprite canvas { margin-left: -20px;margin-top: -65px;}
+
 
 

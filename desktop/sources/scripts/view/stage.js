@@ -7,7 +7,6 @@ function Stage_Screen()
   this.stage = document.createElement('stage');
   this.background = document.createElement('background');
   this.animator = new Animator(this.el);
-  this.camera = document.createElement('camera');
 
   let STAGE = {padding:{x:15,y:15},tile:80}
 
@@ -17,7 +16,6 @@ function Stage_Screen()
   {
     this.stage.appendChild(this.background);
     this.el.appendChild(this.stage);
-    this.stage.appendChild(this.camera);
 
     host.appendChild(this.el)
 
@@ -129,7 +127,7 @@ function Stage_Screen()
   this.focus = function(state)
   {
     let center = this.center(state);
-    
-    this.camera.style.transform = `translate(${parseInt(center.x)}px, ${parseInt(center.y)}px)`
+  
+    this.stage.style.transform = `translate(${-parseInt(center.x)}px, ${-parseInt(center.y)}px)`
   }
 }
