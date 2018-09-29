@@ -35,6 +35,11 @@ function Screen(id)
   {
     this.el.className = "screen hidden"
   }
+
+  this.run = function()
+  {
+    console.log(`${this.id} -> Run`)
+  }
 }
 
 module.exports = Screen

@@ -6,12 +6,10 @@ let Fightrune = require('../server/fightlang/fightrune')
 
 function Navigator()
 {
-  this.fightscript = new Fightscript();
   this.timeline = new Timeline();
 
   this.el = document.createElement('yu');
   this.el.id = "navigator";
-  this.el.className = "rune"
 
   // Menu
 
@@ -38,27 +36,31 @@ function Navigator()
 
   this.start = function()
   {
+    this.timeline.start();
+
     this.update();
   }
 
   this.update = function()
   {
-    console.info(`===================== ${this.index}`)
+    console.info(`=====================`)
+
+    this.toggle(markl.fightscript);
 
     // Status 
-    if(this.history && this.history.length > 0 && this.index > 0){
-      let rune = new Fightrune(this.history[this.index].reaction)
-      console.log(`Playing: Player ${this.history[this.index].player.id}`,rune.toString())
-    }
+    // if(this.history && this.history.length > 0 && this.index > 0){
+    //   let rune = new Fightrune(this.history[this.index].reaction)
+    //   console.log(`Playing: Player ${this.history[this.index].player.id}`,rune.toString())
+    // }
 
-    this.el.className = `${this.mode} ${this.is_running ? 'running' : ''}`
+    // this.el.className = `${this.mode} ${this.is_running ? 'running' : ''}`
     
-    let state = this.history && this.history.length > 0 && this.index > 0 ? this.history[this.index] : null;
+    // let state = this.history && this.history.length > 0 && this.index > 0 ? this.history[this.index] : null;
 
-    // Menu
-    this.run_button.className = this.fightscript.runes().length < 1 ? "disabled run" : "run"
+    // // Menu
+    // this.run_button.className = this.fightscript.runes().length < 1 ? "disabled run" : "run"
 
-    this.timeline.update(this.index,this.history);
+    this.timeline.update();
   }
 
   this.run = function()
@@ -183,48 +185,29 @@ function Navigator()
   {
     return this.history[this.index] && this.history[this.index-1] && this.history[this.index].action == "WAIT" && this.history[this.index-1].action == "WAIT" ? true : false;
   }
-  this.toggle = function()
+
+  // Display
+
+  this.show = function()
   {
-    if(this.el.className.indexOf("hide") > -1){
-      console.log("show")
-      this.el.className = this.el.className.replace("hide","").trim();      
+    if(this.el.className == "shown"){ return; }
+    this.el.className = "shown";
+  }
+
+  this.hide = function()
+  {
+    if(this.el.className == "hidden"){ return; }
+    this.el.className = "hidden";
+  }
+
+  this.toggle = function(show)
+  {
+    if(show){
+      this.show()
     }
     else{
-      console.log("hide")
-      this.el.className += " hide"
+      this.hide();
     }
-  }
-
-  // Options
-
-  this.new = function()
-  {
-    console.log("New FightStyle")
-  }
-
-  this.open = function()
-  {
-    console.log("Open FightStyle")
-  }
-
-  this.load_path = function(path)
-  {
-    console.log(path)
-
-    let data;
-    try {
-      data = fs.readFileSync(path, 'utf-8');
-    } catch (err) {
-      console.warn(`Could not load ${path}`);
-      return;
-    }
-    this.load(data);
-  }
-
-  this.load = function(script)
-  {
-    this.fightscript = new Fightscript(script);
-    this.run()
   }
 }
 

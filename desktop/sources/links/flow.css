@@ -4,3 +4,5 @@
 #flow .screen.hidden { opacity: 0; }
 
 #flow #character_screen { background:yellow; }
+#flow #stage_screen { background:pink; }
+#flow #arena_screen { background:cyan; }

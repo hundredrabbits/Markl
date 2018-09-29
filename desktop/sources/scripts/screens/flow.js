@@ -36,6 +36,11 @@ function Flow()
 
   }
 
+  this.run = function()
+  {
+    this.screens[this.active].run();
+  }
+
   this.goto = function(screen_id)
   {
     if(!this.screens[screen_id]){ console.warn(`Unknown screen: ${screen_id}`); return; }

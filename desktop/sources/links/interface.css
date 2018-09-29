@@ -24,3 +24,52 @@
 #interface .player.ui.player2 { padding-left: 0px;padding-right: 45px;text-align: right; }
 #interface .player.ui.player2 t.name { left:auto; right:32px; }
 #interface .player.ui.player2 svg { right:0px; left:auto; }
+
+/* Navigator */
+
+#interface #navigator { color: white; position: fixed; bottom: 0; right: calc(50vw - 250px); width: 500px; height: 45px; background: #000; font-family: 'input_mono_regular'; font-size: 11px; z-index: 9000; -webkit-app-region: no-drag; border-top-left-radius: 5px; border-top-right-radius: 5px; overflow: hidden; transition: all 250ms;}
+#interface #navigator.hidden { bottom:-45px; }
+#interface #navigator.shown { bottom:0px; }
+
+#interface #navigator rune { width:100px; height:100px; display: block;  position: relative; border-radius: 5px; overflow: hidden; }
+#interface #navigator rune .fragment { width:50%; display: block; height:50%; position: absolute; top:0px; left:0px; background-position: center; background-size:90%; background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1);}
+#interface #navigator rune .fragment.trigger { top:0%; left:0%; }
+#interface #navigator rune .fragment.event { top:0%; left:50%; }
+#interface #navigator rune .fragment.condition { top:50%; left:0%; }
+#interface #navigator rune .fragment.action { top:50%; left:50%; }
+
+/* Menu */
+
+#interface #navigator button { line-height: 30px; border-radius: 100px; vertical-align: middle; position: absolute; right: 15px; top: 10px; height: 25px; width: 25px; }
+#interface #navigator button:hover { background:#ccc; cursor: pointer; color:black; }
+#interface #navigator button.disabled { background:#444; color:#aaa;}
+#interface #navigator button.disabled:hover { cursor: default; }
+#interface #navigator button.disabled icon { opacity: 0.5 }
+#interface #navigator button.pause { display: none; }
+#interface #navigator button.stop { display: none; }
+#interface #navigator button icon { width: 35px;height: 35px;background-size: 50%;background-position: center center;background-repeat: no-repeat; -webkit-filter: invert(1); filter: invert(1); }
+#interface #navigator button.run icon { background-image:url(../media/navigator/menu/run.png); }
+#interface #navigator button.pause icon { background-image:url(../media/navigator/menu/pause.png); }
+#interface #navigator button.stop icon { background-image:url(../media/navigator/menu/stop.png); }
+
+/* Timeline */
+
+#interface #timeline { background: #444;width: calc(100% - 90px);height: 3px;border-radius: 5px;position: absolute;top: 22px;left: 25px; }
+#interface #timeline .bar { background:white; border-radius: 5px; background-color:white; width:0px; height:100%; transition: width 250ms; min-width: 3px }
+#interface #timeline .events {}
+#interface #timeline .events .event { width: 3px;height: 3px;position: absolute;margin-top: -5px;border-radius: 10px;background: #111;border: 2px solid white; }
+
+/* Mods */
+
+#interface #navigator.hide { right: -420px; }
+#interface #navigator #menu button { display: none }
+
+#interface #navigator.running #menu button.export { display: none; }
+#interface #navigator.running #menu button.import { display: none; }
+#interface #navigator.running #menu button.run { display: none; }
+#interface #navigator.running #menu button.pause { display: inline-block; }
+#interface #navigator.running #menu button.stop { display: inline-block; }
+
+/* Events */
+
+#app.dragover #navigator { background:#333; }

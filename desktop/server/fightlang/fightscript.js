@@ -2,15 +2,12 @@
 
 let Rune = require('./fightrune')
 
-function Fightscript(style = {})
+function Fightscript(script = "")
 {
-  this.style = style;
-
-  this.parse = function(text)
+  function parse(text)
   {
     let style = {};
     let lines = text.toUpperCase().split("\n");
-    let stash = null;
     let trigger = null;
     let event = null;
     let condition = null;
@@ -19,14 +16,17 @@ function Fightscript(style = {})
       let pad = lines[id].search(/\S|$/);
       let line = lines[id].trim();
       if(line == "" || line.substr(0,1) == "#"){ continue; }
-      if(pad == 0){ trigger = line ; style[line] = {}; }
-      if(pad == 2){ event = line ; style[trigger][event] = {}; }
+      if(pad == 0){ trigger = line ;   style[line] = {}; }
+      if(pad == 2){ event = line ;     style[trigger][event] = {}; }
       if(pad == 4){ condition = line ; style[trigger][event][condition] = []; }
-      if(pad == 6){ action = line ; style[trigger][event][condition].push(line); }
+      if(pad == 6){ action = line ;    style[trigger][event][condition].push(line); }
     }
-    this.style = style;
-    return this;
+    return style;
   }
+
+  this.style = parse(script);
+
+  
 
   this.runes = function()
   {
@@ -102,6 +102,20 @@ function Fightscript(style = {})
       }
     }
     return null
+  }
+
+  this.query = function(trigger,event,condition,action)
+  {
+    if(!this.style[trigger.toUpperCase()]){ return; }
+    if(!this.style[trigger.toUpperCase()][event.toUpperCase()]){ return; }
+    if(!this.style[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()]){ return; }
+
+    const actions = this.style[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()];
+
+    for(const id in actions){
+      if(action.toUpperCase() == actions[id].toUpperCase()){ return action; }
+    }
+    return;
   }
 
   this.indexOf = function(target)

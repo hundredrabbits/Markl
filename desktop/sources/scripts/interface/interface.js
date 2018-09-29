@@ -7,10 +7,14 @@ function Interface()
   this.drag_el = document.createElement('div');
   this.drag_el.id = "drag"
 
+  this.navigator  = new Navigator();
+
   this.ui = { players:{} };
 
   this.install = function(host)
   {
+    this.navigator.install(this.el);
+    
     this.el.appendChild(this.drag_el);
     host.appendChild(this.el);
   }

@@ -5,14 +5,14 @@ function Markl()
   this.el = document.createElement('div');
   this.el.id = "app";
 
-  this.flow       = new Flow();
-  this.navigator  = new Navigator();
-  this.interface  = new Interface();
-  this.controller = new Controller();
-  this.keyboard   = new Keyboard();
-
-  this.supervisor = require('../server/core/supervisor')
-  this.scenario = require('../server/core/scenario')
+  this.fightscript = null;
+  this.flow        = new Flow();
+  this.interface   = new Interface();
+  this.controller  = new Controller();
+  this.keyboard    = new Keyboard();
+ 
+  this.supervisor  = require('../server/core/supervisor')
+  this.scenario    = require('../server/core/scenario')
 
   this.install = function(host)
   {
@@ -20,11 +20,9 @@ function Markl()
 
     this.flow.install(this.el);
     this.interface.install(this.el);
-    this.navigator.install(this.el);
-
-    host.appendChild(this.el);
 
     this.keyboard.install();
+    host.appendChild(this.el);
   }
   
   this.start = function()
@@ -32,10 +30,8 @@ function Markl()
     console.log("Start");
 
     this.flow.start();
-    
-    this.flow.goto("character");
 
-    // this.scenario.load("garden");
+    this.flow.goto("character");
   }
 
   this.reset = function()
@@ -46,6 +42,12 @@ function Markl()
   this.update = function()
   {
     this.el.className = `${this.navigator.is_visible ? "designer_on" : "designer_off"}`;
+  }
+
+  this.run = function()
+  {
+    this.interface.navigator.update();
+    this.flow.run();
   }
 
   function add_class(el,c)
@@ -86,9 +88,41 @@ function Markl()
       let file = files[id];
       if(!file.path){ continue;}
       if(file.type && !file.type.match(/text.*/)) { console.log(`Skipped ${file.type} : ${file.path}`); continue; }
-      markl.navigator.load_path(file.path);
+      markl.load_path(file.path);
     }
 
     remove_class(markl.el,"dragover");
   });
+
+  // Options
+
+  this.new = function()
+  {
+    console.log("New FightStyle")
+  }
+
+  this.open = function()
+  {
+    console.log("Open FightStyle")
+  }
+
+  this.load_path = function(path)
+  {
+    console.log(path)
+
+    let data;
+    try {
+      data = fs.readFileSync(path, 'utf-8');
+    } catch (err) {
+      console.warn(`Could not load ${path}`);
+      return;
+    }
+    markl.load(data);
+  }
+
+  this.load = function(script)
+  {
+    this.fightscript = new Fightscript(script);
+    this.run();
+  }
 }

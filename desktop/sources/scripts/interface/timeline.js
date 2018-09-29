@@ -2,7 +2,6 @@ function Timeline()
 {
   this._el = document.createElement('div');
   this._el.id = "timeline";
-  this._el.className = "progress";
   this._bar = document.createElement('div');
   this._bar.className = "bar";
   this._events = document.createElement('div');
@@ -17,20 +16,19 @@ function Timeline()
 
   this.start = function()
   {
-    
+    this.hide();
   }
 
   this.update = function(index,history)
   {
-    console.log("!!")
-    if(!history){ return; }
+    // if(!history){ return; }
 
-    let ratio = clamp(index/history.length,0,1);
-    let perc = ratio * 100
+    // let ratio = clamp(index/history.length,0,1);
+    // let perc = ratio * 100
 
-    this._bar.style.width = `${perc}%`
+    // this._bar.style.width = `${perc}%`
 
-    this.update_events(index,history);
+    // this.update_events(index,history);
   }
 
   this.update_events = function(index,history)
