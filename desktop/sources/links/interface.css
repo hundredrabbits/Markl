@@ -1,5 +1,8 @@
 #interface { position: fixed;width: 100vw;height: 100vh; z-index: 8888; top: 0px;}
 
+#interface #drag { -webkit-user-select: none;-webkit-app-region: drag;height: 30px;position: fixed;top: 0px;width: 100vw; opacity: 0; background:#000; transition: opacity 250ms}
+#interface #drag:hover { opacity: 0.2 }
+
 #interface .player.ui { position: absolute; width:100px; height:30px; padding-left:45px; transition: opacity 250ms; opacity:1;}
 #interface .player.ui.player0 { bottom:30px; left:30px; }
 #interface .player.ui.player1 { bottom:30px; right:30px; }

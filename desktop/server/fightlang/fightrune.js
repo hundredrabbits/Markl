@@ -138,4 +138,3 @@ String.prototype.capitalize = function()
 }
 
 module.exports = Fightrune
-

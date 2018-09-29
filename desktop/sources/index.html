@@ -6,6 +6,15 @@
   <script type="text/javascript" src="scripts/controller.js"></script>
   <script type="text/javascript" src="scripts/keyboard.js"></script>
 
+  <!-- Screen/Flow -->
+
+  <link rel="stylesheet" type="text/css" href="links/flow.css"/>
+  <script type="text/javascript" src="scripts/screens/flow.js"></script>
+  <script type="text/javascript" src="scripts/screens/screen.js"></script>
+  <script type="text/javascript" src="scripts/screens/character_screen.js"></script>
+  <script type="text/javascript" src="scripts/screens/stage_screen.js"></script>
+  <script type="text/javascript" src="scripts/screens/arena_screen.js"></script>
+
   <script type="text/javascript" src="scripts/view/view.js"></script>
   <script type="text/javascript" src="scripts/view/character.js"></script>
   <script type="text/javascript" src="scripts/view/menu.js"></script>
@@ -53,7 +62,7 @@
     }
 
     markl = new Markl();
-    markl.install();
+    markl.install(document.body);
 
     markl.controller.add("default","*","About",() => { require('electron').shell.openExternal('https://github.com/hundredrabbits/Dotgrid'); },"CmdOrCtrl+,");
     markl.controller.add("default","*","Fullscreen",() => { app.toggle_fullscreen(); },"CmdOrCtrl+Enter");

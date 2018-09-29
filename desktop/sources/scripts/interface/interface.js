@@ -2,13 +2,16 @@
 
 function Interface()
 {
-  this.el = document.createElement('yu');
+  this.el = document.createElement('div');
   this.el.id = "interface"
+  this.drag_el = document.createElement('div');
+  this.drag_el.id = "drag"
 
   this.ui = { players:{} };
 
   this.install = function(host)
   {
+    this.el.appendChild(this.drag_el);
     host.appendChild(this.el);
   }
 

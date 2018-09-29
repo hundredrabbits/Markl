@@ -22,6 +22,7 @@ function Timeline()
 
   this.update = function(index,history)
   {
+    console.log("!!")
     if(!history){ return; }
 
     let ratio = clamp(index/history.length,0,1);

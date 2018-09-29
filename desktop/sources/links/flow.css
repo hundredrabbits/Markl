@@ -1,0 +1,6 @@
+#flow { background:#111; width:100vw; height:100vh; position: fixed; }
+
+#flow .screen { background: red; width:100vw; height:100vh; position: fixed; transition:opacity 250ms; }
+#flow .screen.hidden { opacity: 0; }
+
+#flow #character_screen { background:yellow; }

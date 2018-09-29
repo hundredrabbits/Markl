@@ -1,0 +1,55 @@
+
+# =========================
+# Welcome to Markl
+# =========================
+
+# Markl is played by writing fighting styles.
+# Fighting styles are written in Fightscript.
+# Comments starts with the # character.
+
+# =========================
+# Options
+# =========================
+
+MENU
+  OPTION
+    NAME IS AUDIO
+      SET OFF
+    NAME IS SKIP
+      SET ON
+
+# =========================
+# Character Selection
+# =========================
+
+MENU
+  FIGHTER
+    CHARACTER IS PEST
+      SELECT
+
+# =========================
+# Character Selection
+# =========================
+
+SIGHT
+  FIGHTER
+    DISTANCE IS 4
+      DASH TOWARD
+    DISTANCE IS 3
+      FIRE TOWARD
+    DISTANCE IS 2
+      DASH TOWARD
+    DISTANCE IS 1
+      ATTACK TOWARD
+    DEFAULT
+      MOVE TOWARD
+  OBJECT
+    DISTANCE IS 1
+      ATTACK TOWARD
+  PROJECTILE
+    DEFAULT
+      STEP
+DEFAULT
+  DEFAULT
+    DEFAULT
+      MOVE ANY

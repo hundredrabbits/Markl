@@ -36,19 +36,46 @@ function Navigator()
     this.update();
   }
 
+  this.start = function()
+  {
+    this.update();
+  }
+
+  this.update = function()
+  {
+    console.info(`===================== ${this.index}`)
+
+    // Status 
+    if(this.history && this.history.length > 0 && this.index > 0){
+      let rune = new Fightrune(this.history[this.index].reaction)
+      console.log(`Playing: Player ${this.history[this.index].player.id}`,rune.toString())
+    }
+
+    this.el.className = `${this.mode} ${this.is_running ? 'running' : ''}`
+    
+    let state = this.history && this.history.length > 0 && this.index > 0 ? this.history[this.index] : null;
+
+    // Menu
+    this.run_button.className = this.fightscript.runes().length < 1 ? "disabled run" : "run"
+
+    this.timeline.update(this.index,this.history);
+  }
+
   this.run = function()
   {
     console.info("Navigator","Run");
 
-    markl.scenario.reload()
-    markl.scenario.inject_style(this.fightscript.render());
-    markl.navigator.history = markl.scenario.run();
+    this.update();
 
-    this.index = 0;
-    this.is_paused = false;
-    this.is_running = true;
+    // markl.scenario.reload()
+    // markl.scenario.inject_style(this.fightscript.render());
+    // markl.navigator.history = markl.scenario.run();
 
-    markl.renderer.update(this.history[this.index].state,this.history[this.index].reaction);
+    // this.index = 0;
+    // this.is_paused = false;
+    // this.is_running = true;
+
+    // markl.renderer.update(this.history[this.index].state,this.history[this.index].reaction);
   }
 
   this.play = function(delay = 0)
@@ -168,26 +195,6 @@ function Navigator()
     }
   }
 
-  this.update = function()
-  {
-    console.info(`===================== ${this.index}`)
-
-    // Status 
-    if(this.history && this.history.length > 0 && this.index > 0){
-      let rune = new Fightrune(this.history[this.index].reaction)
-      console.log(`Playing: Player ${this.history[this.index].player.id}`,rune.toString())
-    }
-
-    this.el.className = `${this.mode} ${this.is_running ? 'running' : ''}`
-    
-    let state = this.history && this.history.length > 0 && this.index > 0 ? this.history[this.index] : null;
-
-    // Menu
-    this.run_button.className = this.fightscript.runes().length < 1 ? "disabled run" : "run"
-
-    this.timeline.update(this.index,this.history);
-  }
-
   // Options
 
   this.new = function()
@@ -217,7 +224,7 @@ function Navigator()
   this.load = function(script)
   {
     this.fightscript = new Fightscript(script);
-    console.log(this.fightscript)
+    this.run()
   }
 }
 

@@ -1,5 +1,7 @@
 "use strict";
 
+let Rune = require('./fightrune')
+
 function Fightlang() 
 {
   this.spec = {

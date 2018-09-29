@@ -5,30 +5,37 @@ function Markl()
   this.el = document.createElement('div');
   this.el.id = "app";
 
+  this.flow       = new Flow();
   this.navigator  = new Navigator();
   this.interface  = new Interface();
-  this.renderer   = new Renderer();
   this.controller = new Controller();
-  this.keyboard = new Keyboard();
+  this.keyboard   = new Keyboard();
 
   this.supervisor = require('../server/core/supervisor')
   this.scenario = require('../server/core/scenario')
 
-  this.install = function()
+  this.install = function(host)
   {
-    document.body.appendChild(this.el);
+    console.log("Install");
 
-    this.renderer.install(this.el);
+    this.flow.install(this.el);
     this.interface.install(this.el);
     this.navigator.install(this.el);
+
+    host.appendChild(this.el);
 
     this.keyboard.install();
   }
   
   this.start = function()
   {
-    this.scenario.load("garden");
-    this.renderer.start();
+    console.log("Start");
+
+    this.flow.start();
+    
+    this.flow.goto("character");
+
+    // this.scenario.load("garden");
   }
 
   this.reset = function()
