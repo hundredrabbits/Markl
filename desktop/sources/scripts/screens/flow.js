@@ -33,11 +33,13 @@ function Flow()
 
   this.update = function()
   {
-
+  
   }
 
   this.run = function()
   {
+    if(!markl.fightscript){ return; }
+
     this.screens[this.active].run();
   }
 
@@ -48,6 +50,7 @@ function Flow()
     this.screens[this.active].hide();
     this.active = screen_id;
     this.screens[this.active].show();
+    this.run();
   }
 }
 

@@ -25,8 +25,25 @@ function Fightscript(script = "")
   }
 
   this.style = parse(script);
+  this.character = null;
 
-  
+  // 
+
+  this.query = function(trigger,event,condition,action)
+  {
+    if(!this.style[trigger.toUpperCase()]){ return; }
+    if(!this.style[trigger.toUpperCase()][event.toUpperCase()]){ return; }
+    if(!this.style[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()]){ return; }
+
+    const actions = this.style[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()];
+
+    for(const id in actions){
+      if(action.toUpperCase() == actions[id].toUpperCase()){ return action; }
+    }
+    return;
+  }
+
+  // TO CLEAN
 
   this.runes = function()
   {
@@ -102,20 +119,6 @@ function Fightscript(script = "")
       }
     }
     return null
-  }
-
-  this.query = function(trigger,event,condition,action)
-  {
-    if(!this.style[trigger.toUpperCase()]){ return; }
-    if(!this.style[trigger.toUpperCase()][event.toUpperCase()]){ return; }
-    if(!this.style[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()]){ return; }
-
-    const actions = this.style[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()];
-
-    for(const id in actions){
-      if(action.toUpperCase() == actions[id].toUpperCase()){ return action; }
-    }
-    return;
   }
 
   this.indexOf = function(target)

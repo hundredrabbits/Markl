@@ -4,9 +4,10 @@ function CharacterScreen()
 {
   Screen.call(this,"character");
 
+  const characters = ["pest","lancer","sin","patience"];
+
   this.run = function()
   {
-    const characters = ["pest","lancer","sin","patience"];
     for(const id in characters){
       let response = markl.fightscript.query("menu","character","name is "+characters[id],"select")
       if(response != "select"){ continue; }
@@ -17,6 +18,8 @@ function CharacterScreen()
   this.select = function(character)
   {
     console.log("character",character)
+    markl.fightscript.character = character;
+    markl.flow.goto("stage");
   }
 }
 
