@@ -1,44 +1,27 @@
 'use strict';
 
-function Character(id,pos)
+function Character(id,pos,fightscript)
 {
   this.id = id
-
   this.pos = pos
+  this.fightscript = fightscript;
+  this.fightscript.host = this;
 
-  this.style = "";
+  // Character Overrides
   this.name = "unknown"
   this.type = "FIGHTER"
-  this.status = "idle"
 
   this.hp = 0; // Health Point
   this.sp = 0; // Stamina Point
   this.tp = 0; // Turn Point
 
+  this.status = "idle"
+
   this.score = { hits:0, blocks:0 }
-  this.reaction = null;
 
-  this.ref = `${this.type}:${this.name}:${this.id}`
-
-  this.shallow = function()
+  this.toString = function()
   {
-    return {}
-  }
-
-  this.serialize = function()
-  {
-    return {
-      id:this.id,
-      name:this.name,
-      pos:this.pos,
-      style:this.style,
-      type:this.type,
-      status:this.status,
-      hp: this.hp,
-      sp: this.sp,
-      tp: this.tp,
-      score: this.score
-    }
+    return `${this.name}:${this.type} at ${this.pos.x},${this.pos.y}`
   }
 }
 

@@ -6,8 +6,9 @@ function ArenaScreen()
 
   this.run = function()
   {
-    console.log("arena!")
-    markl.scenario.run();
+    const history = markl.scenario.render();
+
+    console.log(history);
   }
 }
 

@@ -26,16 +26,15 @@ function Scenario()
     this.stage = stage;
   }
 
-  this.run = function()
+  this.render = function()
   {
     if(!this.script){ console.warn("Missing fightscript"); return; }
     if(!this.character){ console.warn("Missing character"); return; }
     if(!this.stage){ console.warn("Missing stage"); return; }
 
-    const character   = new this.character();
-    const stage       = new this.stage();
-    const fightscript = new Fightscript(this.script);
-    const battle      = new Supervisor(fightscript,character,stage);
+    console.log("Rendering history")
+
+    return Supervisor(this.script,this.character,this.stage);
   }
 }
 

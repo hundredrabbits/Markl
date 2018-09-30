@@ -43,8 +43,6 @@ function Navigator()
 
   this.update = function()
   {
-    console.info(`=====================`)
-
     this.toggle(markl.scenario && markl.scenario.script);
 
     // Status 

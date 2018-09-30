@@ -4,6 +4,10 @@ let Rune = require('./fightrune')
 
 function Fightscript(script = "")
 {
+  this.host = null;
+  this.script = script;
+  this.style = parse(script);
+
   function parse(text)
   {
     let style = {};
@@ -16,16 +20,13 @@ function Fightscript(script = "")
       let pad = lines[id].search(/\S|$/);
       let line = lines[id].trim();
       if(line == "" || line.substr(0,1) == "#"){ continue; }
-      if(pad == 0){ trigger = line ;   style[line] = {}; }
-      if(pad == 2){ event = line ;     style[trigger][event] = {}; }
+      if(pad == 0){ trigger = line   ; style[line] = {}; }
+      if(pad == 2){ event = line     ; style[trigger][event] = {}; }
       if(pad == 4){ condition = line ; style[trigger][event][condition] = []; }
-      if(pad == 6){ action = line ;    style[trigger][event][condition].push(line); }
+      if(pad == 6){ action = line    ; style[trigger][event][condition].push(line); }
     }
     return style;
   }
-
-  this.style = parse(script);
-  this.character = null;
 
   // 
 
@@ -43,7 +44,13 @@ function Fightscript(script = "")
     return;
   }
 
-  // TO CLEAN
+  this.react = function(triggers)
+  {
+    // TODO
+    console.log("TRIGGERS",triggers)
+  }
+
+  // TODO: TO CLEAN
 
   this.runes = function()
   {

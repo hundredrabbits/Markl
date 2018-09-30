@@ -27,13 +27,13 @@ function StageScreen()
     this.select(stages[name]);
   }
 
-  this.select = function(stage)
+  this.select = function(stage,speed = 250)
   {
     markl.scenario.set_stage(stage);
 
     setTimeout(() => {
       markl.flow.goto("arena");
-    },500)
+    },speed)
   }
 }
 

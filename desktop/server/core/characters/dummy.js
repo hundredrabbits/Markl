@@ -2,9 +2,9 @@
 
 let Character = require('./character')
 
-function Dummy(id,pos)
+function Dummy(id,pos,fightscript)
 {
-  Character.call(this,id,pos);
+  Character.call(this,id,pos,fightscript);
 
   this.name = "dummy"
   this.hp = 3;

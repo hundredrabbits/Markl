@@ -2,9 +2,9 @@
 
 let Character = require('./character')
 
-function Patience(id,pos)
+function Patience(id,pos,fightscript)
 {
-  Character.call(this,id,pos);
+  Character.call(this,id,pos,fightscript);
 
   this.name = "patience"
   this.hp = 3;

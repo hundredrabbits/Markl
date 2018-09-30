@@ -26,13 +26,13 @@ function CharacterScreen()
     }
   }
 
-  this.select = function(character)
+  this.select = function(character,speed = 250)
   {
     markl.scenario.set_character(character);
 
     setTimeout(() => {
       markl.flow.goto("stage");
-    },500)
+    },speed)
   }
 }
 

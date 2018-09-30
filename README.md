@@ -20,4 +20,5 @@ markl
     fightscript
     character
     stage
+  supervisor.render(stage.serialize) -> arena_screen
 ```

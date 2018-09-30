@@ -53,7 +53,6 @@ function Markl()
 
   this.run = function()
   {
-    this.interface.navigator.update();
     this.flow.run();
   }
 
