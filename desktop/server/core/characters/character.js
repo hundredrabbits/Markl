@@ -19,6 +19,11 @@ function Character(id,pos,fightscript)
 
   this.score = { hits:0, blocks:0 }
 
+  this.is_visible = function()
+  {
+    return true;
+  }
+
   this.toString = function()
   {
     return `${this.name}:${this.type} at ${this.pos.x},${this.pos.y}`
