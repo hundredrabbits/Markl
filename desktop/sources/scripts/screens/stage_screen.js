@@ -24,18 +24,18 @@ function StageScreen()
   this.run = function()
   {
     this.index++;
-    this.select(this.index);
+    this.select(stages[this.index]);
   }
 
-  this.select = function(index)
+  this.select = function(stage)
   {
-    const stage = stages[index];
     console.log("stage",stage)
-    
+
+    markl.scenario.set_stage(stage);
+
     setTimeout(() => {
       markl.flow.goto("arena");
     },500)
-    
   }
 }
 

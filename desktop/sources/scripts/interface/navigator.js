@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 let Fightlang = require('../server/fightlang/fightlang')
 let Fightscript = require('../server/fightlang/fightscript')
@@ -45,7 +45,7 @@ function Navigator()
   {
     console.info(`=====================`)
 
-    this.toggle(markl.fightscript);
+    this.toggle(markl.scenario && markl.scenario.fightscript);
 
     // Status 
     // if(this.history && this.history.length > 0 && this.index > 0){

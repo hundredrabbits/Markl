@@ -1,4 +1,6 @@
-"use strict";
+'use strict';
+
+const Scenario = require('../server/core/scenario');
 
 function Markl()
 {
@@ -12,7 +14,7 @@ function Markl()
   this.keyboard    = new Keyboard();
  
   this.supervisor  = require('../server/core/supervisor')
-  this.scenario    = require('../server/core/scenario')
+  this.scenario    = null;
 
   this.install = function(host)
   {
@@ -29,9 +31,15 @@ function Markl()
   {
     console.log("Start");
 
+    this.scenario = new Scenario();
     this.flow.start();
 
     this.flow.goto("character");
+  }
+
+  this.restart = function()
+  {
+    this.start();
   }
 
   this.reset = function()
@@ -122,7 +130,8 @@ function Markl()
 
   this.load = function(script)
   {
-    this.fightscript = new Fightscript(script);
+    this.restart();
+    this.scenario.set_fightscript(new Fightscript(script));
     this.run();
   }
 }

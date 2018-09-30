@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 function Effect(name,pos)
 {

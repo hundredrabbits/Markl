@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 function Player_UI(host)
 {

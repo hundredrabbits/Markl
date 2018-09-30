@@ -38,7 +38,7 @@ function Flow()
 
   this.run = function()
   {
-    if(!markl.fightscript){ return; }
+    if(!markl.scenario.fightscript){ return; }
 
     this.screens[this.active].run();
   }

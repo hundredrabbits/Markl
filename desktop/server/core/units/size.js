@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 function Size(width,height)
 {

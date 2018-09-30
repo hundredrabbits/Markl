@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 let Style = require('./style.js')
 

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const scenario_name = process.argv[2] ? process.argv[2] : "garden";
 const scenario = require('./core/scenario');

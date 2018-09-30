@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 function Monitor(host, r = 15)
 {

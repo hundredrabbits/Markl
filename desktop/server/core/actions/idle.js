@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 let Pos = require('../units/pos.js')
 let Action = require('../action.js')

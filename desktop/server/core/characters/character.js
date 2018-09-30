@@ -1,15 +1,14 @@
-"use strict";
+'use strict';
 
-function Fighter(id,name,pos)
+function Character(id,pos)
 {
   this.id = id
-  this.name = name
+
   this.pos = pos
 
   this.style = "";
-
+  this.name = "unknown"
   this.type = "FIGHTER"
-  this.character = "unknown"
   this.status = "idle"
 
   this.hp = 0; // Health Point
@@ -34,7 +33,6 @@ function Fighter(id,name,pos)
       pos:this.pos,
       style:this.style,
       type:this.type,
-      character:this.character,
       status:this.status,
       hp: this.hp,
       sp: this.sp,
@@ -44,4 +42,4 @@ function Fighter(id,name,pos)
   }
 }
 
-module.exports = Fighter;
+module.exports = Character;
