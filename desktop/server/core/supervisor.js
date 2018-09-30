@@ -1,10 +1,5 @@
 'use strict';
 
-// 1. stage.triggers
-// 2. fightscript.react
-// 3. fighter.act
-// 4. supervisor.play
-
 function Supervisor(fightscript,fighter,stage)
 {
   const history = [];

@@ -5,12 +5,13 @@ function Flow()
   this.el = document.createElement('div');
   this.el.id = "flow";
 
-  this.active = null;
+  this.active = "splash";
   this.screens = {};
 
   this.install = function(host)
   {
     const screens = {
+      "splash": new SplashScreen(),
       "fighter": new FighterScreen(),
       "stage": new StageScreen(),
       "arena": new ArenaScreen()
@@ -29,6 +30,7 @@ function Flow()
       this.screens[id].start();
       this.active = id;
     }
+    this.goto("splash");
   }
 
   this.update = function()
@@ -38,7 +40,7 @@ function Flow()
 
   this.run = function()
   {
-    if(!markl.scenario.script){ return; }
+    console.log(`Flow: Running screen #${this.active}`)
     this.screens[this.active].run();
     markl.interface.navigator.update();
   }

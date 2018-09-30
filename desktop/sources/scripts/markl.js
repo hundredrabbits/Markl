@@ -2,6 +2,17 @@
 
 const Scenario = require('../server/core/scenario');
 
+// 1. (drag-over)
+// 2. flow.splash
+// 3. flow.fighter
+// 4. flow.stage
+// 5. flow.arena
+// 6. supervisor.play
+// 7. stage.triggers
+// 8. fightscript.react
+// 9. fighter.act
+//10. supervisor.end
+
 function Markl()
 {
   this.el = document.createElement('div');
@@ -30,20 +41,7 @@ function Markl()
   {
     console.log("Start");
 
-    this.scenario = new Scenario();
     this.flow.start();
-
-    this.flow.goto("fighter");
-  }
-
-  this.restart = function()
-  {
-    this.start();
-  }
-
-  this.reset = function()
-  {
-    this.navigator.reset();
   }
 
   this.update = function()
@@ -51,28 +49,24 @@ function Markl()
     this.el.className = `${this.navigator.is_visible ? "designer_on" : "designer_off"}`;
   }
 
+  this.load = function(script)
+  {
+    this.reset();
+    this.scenario.set_script(script);
+    this.run();
+  }
+
   this.run = function()
   {
     this.flow.run();
   }
 
-  function add_class(el,c)
+  this.reset = function()
   {
-    if(has_class(el,c)){ return; }
-    el.className = `${el.className} ${c}`;
+    markl.scenario = new Scenario();
+    markl.flow.goto("splash");
   }
 
-  function remove_class(el,c)
-  {
-    if(!has_class(el,c)){ return; }
-    el.className = `${el.className}`.replace(c,'').trim();
-  }
-
-  function has_class(el,c)
-  {
-    if(el.className.indexOf(c) < 0){ return false; }
-    return true;
-  }
 
   window.addEventListener('dragover',function(e)
   {
@@ -114,7 +108,7 @@ function Markl()
 
   this.load_path = function(path)
   {
-    console.log(path)
+    console.log("Loading path:",path)
 
     let data;
     try {
@@ -126,10 +120,23 @@ function Markl()
     markl.load(data);
   }
 
-  this.load = function(script)
+  // Helpers
+  
+  function add_class(el,c)
   {
-    this.restart();
-    this.scenario.set_script(script);
-    this.run();
+    if(has_class(el,c)){ return; }
+    el.className = `${el.className} ${c}`;
+  }
+
+  function remove_class(el,c)
+  {
+    if(!has_class(el,c)){ return; }
+    el.className = `${el.className}`.replace(c,'').trim();
+  }
+
+  function has_class(el,c)
+  {
+    if(el.className.indexOf(c) < 0){ return false; }
+    return true;
   }
 }
