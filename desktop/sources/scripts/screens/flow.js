@@ -11,7 +11,7 @@ function Flow()
   this.install = function(host)
   {
     const screens = {
-      "character": new CharacterScreen(),
+      "fighter": new FighterScreen(),
       "stage": new StageScreen(),
       "arena": new ArenaScreen()
     }

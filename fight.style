@@ -5,7 +5,7 @@
 
 # Markl is played by writing fighting styles.
 # Fighting styles are written in Fightscript.
-# Comments starts with the # character.
+# Comments starts with the # fighter.
 
 # =========================
 # Options
@@ -19,7 +19,7 @@ MENU
       SET ON
 
 # =========================
-# Character Selection
+# Fighter Selection
 # =========================
 
 MENU
@@ -28,7 +28,7 @@ MENU
       SELECT
 
 # =========================
-# Character Selection
+# Fighter Selection
 # =========================
 
 SIGHT

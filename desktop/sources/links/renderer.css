@@ -30,7 +30,7 @@
 #renderer view.f3 stage sprite sheet, #renderer view.f3 stage effect sheet { background-position-x:-360px; }
 #renderer view.f4 stage sprite sheet, #renderer view.f4 stage effect sheet { background-position-x:-480px; }
 
-/* Characters */
+/* Fighters */
 
 #renderer stage sprite.lancer sheet { background-image: url(../media/fighters/lancer.png); }
 #renderer stage sprite.sin sheet { background-image: url(../media/fighters/sin.png); }

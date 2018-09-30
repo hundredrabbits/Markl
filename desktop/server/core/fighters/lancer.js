@@ -1,10 +1,10 @@
 'use strict';
 
-let Character = require('./character')
+let Fighter = require('./fighter')
 
 function Lancer(id,pos,fightscript)
 {
-  Character.call(this,id,name,pos,fightscript);
+  Fighter.call(this,id,name,pos,fightscript);
 
   this.name = "lancer"
   this.hp = 3;

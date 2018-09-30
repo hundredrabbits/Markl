@@ -8,7 +8,7 @@ function Sprite(type,id)
   this.el.appendChild(this.canvas)
 
   this.pos = {x:0,y:0};
-  this.character = "";
+  this.fighter = "";
   this.status = "";
   this.vector = "";
 
@@ -29,7 +29,7 @@ function Sprite(type,id)
 
   this.setup = function(h)
   {
-    this.load(`./media/fighters/${h.character}.png`);
+    this.load(`./media/fighters/${h.fighter}.png`);
 
     this.el.style.transition = `all ${TIMING.sprite}ms`;
     this.el.style.width = `${STAGE.tile}px`;
@@ -56,9 +56,9 @@ function Sprite(type,id)
     this.status = s;
   }
 
-  this.set_character = function(c)
+  this.set_fighter = function(c)
   {
-    this.character = c;
+    this.fighter = c;
   }
 
   this.set_vector = function(v)
@@ -68,7 +68,7 @@ function Sprite(type,id)
 
   this.update = function()
   {
-    this.el.className = `depth${this.pos.y} ${this.character} ${this.status} ${this.vector ? this.vector : ""}`;
+    this.el.className = `depth${this.pos.y} ${this.fighter} ${this.status} ${this.vector ? this.vector : ""}`;
     this.draw();
   }
 
@@ -109,7 +109,7 @@ function Sprite(type,id)
     var y = this.assoc[this.status] ? this.assoc[this.status] * (STAGE.tile*-1.5) : 0;
 
     console.log(this.assoc[this.status],this.status);
-    console.log(this.status,this.character,this.vector,y);
+    console.log(this.status,this.fighter,this.vector,y);
 
     this.context().drawImage(this.spritesheet,x,y,width,height);    
   }

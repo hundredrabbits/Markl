@@ -1,6 +1,6 @@
 # FightScript Documentation
 
-FightScript is meant to be as simple as possible and allow for flexible fighting behaviours. The preceeding number of characters on a line tells the parser what to expect.
+FightScript is meant to be as simple as possible and allow for flexible fighting behaviours. The preceeding number of fighters on a line tells the parser what to expect.
 
 ```
 {TRIGGER}
@@ -9,7 +9,7 @@ FightScript is meant to be as simple as possible and allow for flexible fighting
 ------{ACTION}
 ```
 
-Here's an example where the character will move away whenever an enemy fighter is at 2 tiles of distance:
+Here's an example where the fighter will move away whenever an enemy fighter is at 2 tiles of distance:
 
 ```
 MENU
@@ -34,7 +34,7 @@ SIGHT
 ### Events
 
 - Menu Events
-  - `CHARACTER` Will trigger when a character is selected in the character selection screen.
+  - `CHARACTER` Will trigger when a fighter is selected in the fighter selection screen.
   - `ARENA` Will trigger when an arena is selected in the arena selection screen.
 - Arena Events
   - `FIGHTER` Will trigger if an enemy fighter is in sight.
@@ -71,7 +71,7 @@ Attacks affect adjacent tiles only.
 
 #### Blocking
 
-A character will automatically block if their available stamina is high enough.
+A fighter will automatically block if their available stamina is high enough.
 
 #### Waiting
 
@@ -99,7 +99,7 @@ Code is not executed.
 
 ## Cast
 
-The `cast` action triggers character abilities, costs `20sp`.
+The `cast` action triggers fighter abilities, costs `20sp`.
 
 ### Leech(Sin)
 

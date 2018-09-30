@@ -35,9 +35,9 @@ function Style(host)
       let sight_distance = sight_pos.distance_from(this.host.pos);
       h["SIGHT"][sight_type]["ANY"] = sight;
       h["SIGHT"][sight_type][`DISTANCE OF ${sight_distance}`] = sight;
-      if(sight.character){
-        let sight_character = sight.character.toUpperCase().trim();
-        h["SIGHT"][sight_type][`CHARACTER OF ${sight_character}`] = sight;
+      if(sight.fighter){
+        let sight_fighter = sight.fighter.toUpperCase().trim();
+        h["SIGHT"][sight_type][`CHARACTER OF ${sight_fighter}`] = sight;
       }
     }
     return h;

@@ -33,7 +33,7 @@ function Markl()
     this.scenario = new Scenario();
     this.flow.start();
 
-    this.flow.goto("character");
+    this.flow.goto("fighter");
   }
 
   this.restart = function()

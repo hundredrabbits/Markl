@@ -1,13 +1,13 @@
 'use strict';
 
-function Character(id,pos,fightscript)
+function Fighter(id,pos,fightscript)
 {
   this.id = id
   this.pos = pos
   this.fightscript = fightscript;
   this.fightscript.host = this;
 
-  // Character Overrides
+  // Fighter Overrides
   this.name = "unknown"
   this.type = "FIGHTER"
 
@@ -30,4 +30,4 @@ function Character(id,pos,fightscript)
   }
 }
 
-module.exports = Character;
+module.exports = Fighter;

@@ -1,27 +1,13 @@
 'use strict';
 
-function Supervisor(fightscript,character,stage)
+// 1. stage.triggers
+// 2. fightscript.react
+// 3. fighter.act
+// 4. supervisor.play
+
+function Supervisor(fightscript,fighter,stage)
 {
   const history = [];
-
-  // Helpers
-
-  function find_alive(stage)
-  {
-    const p = [];
-    for(const id in stage.fighters){
-      if(stage.fighters[id].hp > 0){ p.push(stage.fighters[id]); }
-    }
-    return p;
-  }
-
-  function find_next(stage)
-  {
-    const fighters = find_alive(stage);
-    return fighters.sort((a, b) => {
-      return a.stamina - b.stamina;
-    }).reverse();
-  }
 
   // Turns
 
@@ -56,7 +42,27 @@ function Supervisor(fightscript,character,stage)
     return history
   }
 
-  return render(fightscript,character,stage)
+
+  // Helpers
+
+  function find_alive(stage)
+  {
+    const p = [];
+    for(const id in stage.fighters){
+      if(stage.fighters[id].hp > 0){ p.push(stage.fighters[id]); }
+    }
+    return p;
+  }
+
+  function find_next(stage)
+  {
+    const fighters = find_alive(stage);
+    return fighters.sort((a, b) => {
+      return a.stamina - b.stamina;
+    }).reverse();
+  }
+
+  return render(fightscript,fighter,stage)
 }
 
 module.exports = Supervisor;

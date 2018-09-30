@@ -1,8 +1,8 @@
 'use strict';
 
 let Stage = require('./stage')
-let Character = require('../characters/character')
-let Dummy = require('../characters/dummy')
+let Fighter = require('../fighters/fighter')
+let Dummy = require('../fighters/dummy')
 
 function Dojo1v0(c = [],f = [])
 {

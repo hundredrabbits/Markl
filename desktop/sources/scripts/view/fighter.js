@@ -1,6 +1,6 @@
 'use strict';
 
-function Character_Screen()
+function Fighter_Screen()
 {
   View.call(this);
   

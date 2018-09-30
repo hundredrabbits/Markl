@@ -3,6 +3,6 @@
 #flow .screen { background: red; width:100vw; height:100vh; position: fixed; transition:opacity 250ms; }
 #flow .screen.hidden { opacity: 0; }
 
-#flow #character_screen { background:yellow; }
+#flow #fighter_screen { background:yellow; }
 #flow #stage_screen { background:pink; }
 #flow #arena_screen { background:cyan; }

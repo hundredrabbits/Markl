@@ -5,7 +5,7 @@ let Supervisor = require('./supervisor')
 function Scenario()
 {
   this.script = null;
-  this.character = null;
+  this.fighter = null;
   this.stage = null;
 
   this.set_script = function(script)
@@ -14,10 +14,10 @@ function Scenario()
     this.script = script;
   }
 
-  this.set_character = function(character)
+  this.set_fighter = function(fighter)
   {
-    console.log("set_character")
-    this.character = character;
+    console.log("set_fighter")
+    this.fighter = fighter;
   }
 
   this.set_stage = function(stage)
@@ -29,12 +29,12 @@ function Scenario()
   this.render = function()
   {
     if(!this.script){ console.warn("Missing fightscript"); return; }
-    if(!this.character){ console.warn("Missing character"); return; }
+    if(!this.fighter){ console.warn("Missing fighter"); return; }
     if(!this.stage){ console.warn("Missing stage"); return; }
 
     console.log("Rendering history")
 
-    return Supervisor(this.script,this.character,this.stage);
+    return Supervisor(this.script,this.fighter,this.stage);
   }
 }
 

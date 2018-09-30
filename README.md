@@ -9,7 +9,7 @@
 To run a game, the scenario needs 3 things.
 
 - Fightscript
-- Character
+- Fighter
 - Stage
 
 ### 
@@ -18,7 +18,7 @@ To run a game, the scenario needs 3 things.
 markl
   scenario
     fightscript
-    character
+    fighter
     stage
   supervisor.render(stage.serialize) -> arena_screen
 ```

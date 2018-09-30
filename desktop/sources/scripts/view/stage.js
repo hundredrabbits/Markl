@@ -70,7 +70,7 @@ function Stage_Screen()
       let player = this.sprites.players[id];
       player.animate_to(state.players[id].pos);
       player.set_status(state.players[id].status);
-      player.set_character(state.players[id].character);
+      player.set_fighter(state.players[id].fighter);
       player.set_vector(state.players[id].vector);
       player.update();
     }
