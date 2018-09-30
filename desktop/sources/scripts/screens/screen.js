@@ -24,6 +24,11 @@ function Screen(id)
 
   }
 
+  this.reset = function()
+  {
+    
+  }
+
   // 
 
   this.show = function()

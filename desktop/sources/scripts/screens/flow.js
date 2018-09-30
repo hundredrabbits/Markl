@@ -54,6 +54,13 @@ function Flow()
     this.screens[this.active].show();
     this.run();
   }
+
+  this.reset = function()
+  {
+    for(const id in this.screens){
+      this.screens[id].reset();
+    }
+  }
 }
 
 module.exports = Flow;

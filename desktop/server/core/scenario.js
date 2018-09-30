@@ -7,6 +7,7 @@ function Scenario()
   this.script = null;
   this.fighter = null;
   this.stage = null;
+  this.level = 0;
 
   this.set_script = function(script)
   {

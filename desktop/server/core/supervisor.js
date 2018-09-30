@@ -8,6 +8,8 @@ function Supervisor(fightscript,fighter,stage)
 
   function play(stage)
   {
+    console.log(stage);
+
     const fighter = find_next(stage)[0];
     console.log(`Play Turn: ${fighter.name}`)
 
@@ -27,6 +29,7 @@ function Supervisor(fightscript,fighter,stage)
 
   function render(f,c,s)
   {
+    console.log("Rendering game!")
     const stage = new s([c],[f])
     record(stage);
 

@@ -51,6 +51,7 @@ function Markl()
 
   this.load = function(script)
   {
+    console.log("==================")
     this.reset();
     this.scenario.set_script(script);
     this.run();
@@ -63,7 +64,9 @@ function Markl()
 
   this.reset = function()
   {
+    console.log("New Scenario")
     markl.scenario = new Scenario();
+    markl.flow.reset();
     markl.flow.goto("splash");
   }
 

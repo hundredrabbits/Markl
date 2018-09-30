@@ -10,8 +10,6 @@ function StageScreen()
 {
   Screen.call(this,"stage");
 
-  this.index = -1;
-
   const stages = {
     dojo_1v0: Dojo1v0,
     gardens_1v2: Gardens1v2,
@@ -22,8 +20,7 @@ function StageScreen()
 
   this.run = function()
   {
-    this.index++;
-    const name = Object.keys(stages)[this.index];
+    const name = Object.keys(stages)[markl.scenario.level];
     this.select(stages[name]);
   }
 
