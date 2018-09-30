@@ -29,8 +29,6 @@ function StageScreen()
 
   this.select = function(stage)
   {
-    console.log("stage",stage)
-
     markl.scenario.set_stage(stage);
 
     setTimeout(() => {

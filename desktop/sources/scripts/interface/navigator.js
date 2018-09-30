@@ -45,7 +45,7 @@ function Navigator()
   {
     console.info(`=====================`)
 
-    this.toggle(markl.scenario && markl.scenario.fightscript);
+    this.toggle(markl.scenario && markl.scenario.script);
 
     // Status 
     // if(this.history && this.history.length > 0 && this.index > 0){

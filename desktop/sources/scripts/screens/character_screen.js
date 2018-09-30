@@ -19,14 +19,15 @@ function CharacterScreen()
   this.run = function()
   {
     for(const name in characters){
-      let response = markl.scenario.fightscript.query("menu","character","name is "+name,"select")
+      const fightscript = new Fightscript(markl.scenario.script);
+      const response = fightscript.query("menu","character","name is "+name,"select")
       if(response != "select"){ continue; }
       this.select(characters[name]);
     }
   }
 
   this.select = function(character)
-  {    
+  {
     markl.scenario.set_character(character);
 
     setTimeout(() => {

@@ -7,7 +7,6 @@ function Markl()
   this.el = document.createElement('div');
   this.el.id = "app";
 
-  this.fightscript = null;
   this.flow        = new Flow();
   this.interface   = new Interface();
   this.controller  = new Controller();
@@ -131,7 +130,7 @@ function Markl()
   this.load = function(script)
   {
     this.restart();
-    this.scenario.set_fightscript(new Fightscript(script));
+    this.scenario.set_script(script);
     this.run();
   }
 }
