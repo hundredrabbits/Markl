@@ -49,31 +49,23 @@ function Stage()
     return sights;
   }
 
-  function format_sights(sights)
+  this.triggers = function(host)
   {
-    // TODO
+    const sights = find_sights(host.pos,this)
     const h = {}
     for(const id in sights){
       const sight = sights[id]
       let sight_type = sight.type.toUpperCase();
-      let sight_pos = new Pos(sight.pos.x,sight.pos.y);
-      let sight_distance = sight_pos.distance_from(this.host.pos);
+      let sight_name = sight.name.toUpperCase();
+      let sight_distance = distance(host.pos,sight.pos);
+      if(!h["SIGHT"]){ h["SIGHT"] = {} }
+      if(!h["SIGHT"][sight_type]){ h["SIGHT"][sight_type] = {} }
       h["SIGHT"][sight_type]["ANY"] = sight;
-      h["SIGHT"][sight_type][`DISTANCE OF ${sight_distance}`] = sight;
-      if(sight.character){
-        let sight_character = sight.character.toUpperCase().trim();
-        h["SIGHT"][sight_type][`CHARACTER OF ${sight_character}`] = sight;
-      }
+      h["SIGHT"][sight_type][`DISTANCE IS ${sight_distance}`] = sight;
+      h["SIGHT"][sight_type][`NAME IS ${sight_name}`] = sight;
     }
+    return h
   }
-
-  this.triggers = function(host)
-  {
-    console.log(`Find triggers for ${host}`);
-    const sights = find_sights(host.pos,this)
-    return format_sights(sights);
-  }
-
 
   this.serialize = function()
   {
@@ -92,6 +84,14 @@ function Stage()
       })
     }
     return {fighters:fighters};
+  }
+
+  function distance(a,b)
+  {
+    if(a.x == b.x && a.y == b.y){ return 0; } // Same tile
+    if(a.x != b.x && a.y != b.y){ return null; } // No aligned
+    if(Math.abs(a.x - b.x) > 0){ return Math.abs(a.x - b.x); }
+    if(Math.abs(a.y - b.y) > 0){ return Math.abs(a.y - b.y); }
   }
 }
 
