@@ -42,7 +42,7 @@ function Flow()
   {
     console.log(`Flow: Running screen #${this.active}`)
     this.screens[this.active].run();
-    markl.interface.navigator.update();
+    markl.interface.update();
   }
 
   this.goto = function(screen_id)

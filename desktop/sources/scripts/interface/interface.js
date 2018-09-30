@@ -19,12 +19,9 @@ function Interface()
     host.appendChild(this.el);
   }
 
-  this.update = function(state,reaction)
+  this.update = function()
   {
-    if(!state){ return; }
-
-    this.verify_ui(state);
-    this.update_ui(state,reaction);
+    this.navigator.update();
   }
 
   this.verify_ui = function(state)

@@ -44,6 +44,8 @@ function Navigator()
   this.update = function()
   {
     this.toggle(markl.scenario && markl.scenario.script);
+    this.timeline.update();
+
 
     // Status 
     // if(this.history && this.history.length > 0 && this.index > 0){
@@ -58,7 +60,6 @@ function Navigator()
     // // Menu
     // this.run_button.className = this.fightscript.runes().length < 1 ? "disabled run" : "run"
 
-    this.timeline.update();
   }
 
   this.run = function()

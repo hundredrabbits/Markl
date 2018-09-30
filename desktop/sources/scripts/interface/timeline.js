@@ -19,16 +19,19 @@ function Timeline()
     this.hide();
   }
 
-  this.update = function(index,history)
+  this.update = function()
   {
-    // if(!history){ return; }
+    let state = find_state();
+    let ratio = clamp(state[0]/state[1],0,1);
+    this._bar.style.width = `${ratio * 100}%`
+  }
 
-    // let ratio = clamp(index/history.length,0,1);
-    // let perc = ratio * 100
-
-    // this._bar.style.width = `${perc}%`
-
-    // this.update_events(index,history);
+  function find_state()
+  {
+    if(markl.flow.active == "splash"){ return [0,Object.keys(markl.flow.screens).length]; }
+    if(markl.flow.active == "fighter"){ return [1,Object.keys(markl.flow.screens).length]; }
+    if(markl.flow.active == "stage"){ return [2,Object.keys(markl.flow.screens).length]; }
+    if(markl.flow.active == "arena"){ return [4,4]; }
   }
 
   this.update_events = function(index,history)
