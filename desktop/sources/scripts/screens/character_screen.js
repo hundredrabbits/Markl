@@ -19,7 +19,10 @@ function CharacterScreen()
   {
     console.log("character",character)
     markl.fightscript.character = character;
-    markl.flow.goto("stage");
+    
+    setTimeout(() => {
+      markl.flow.goto("stage");
+    },500)
   }
 }
 

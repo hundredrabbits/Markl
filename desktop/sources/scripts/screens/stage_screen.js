@@ -31,7 +31,11 @@ function StageScreen()
   {
     const stage = stages[index];
     console.log("stage",stage)
-    markl.flow.goto("arena");
+    
+    setTimeout(() => {
+      markl.flow.goto("arena");
+    },500)
+    
   }
 }
 
