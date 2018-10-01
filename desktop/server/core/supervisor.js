@@ -8,14 +8,14 @@ function Supervisor(fightscript,fighter,stage)
 
   function play(stage)
   {
-    console.log(stage);
-
+    console.log("-------------")
     const fighter = find_next(stage)[0];
     console.log(`Play Turn: ${fighter.name}`)
 
     // Find reaction of fighter style against stage
     const triggers = stage.triggers(fighter);
     const reaction = fighter.fightscript.react(triggers);
+    fighter.enact(reaction);
 
     // TODO: 
     
@@ -56,7 +56,7 @@ function Supervisor(fightscript,fighter,stage)
   {
     const fighters = find_alive(stage);
     return fighters.sort((a, b) => {
-      return a.stamina - b.stamina;
+      return a.sp - b.sp;
     }).reverse();
   }
 

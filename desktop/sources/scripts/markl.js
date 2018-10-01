@@ -10,7 +10,7 @@ const Scenario = require('../server/core/scenario');
 // 6. supervisor.play
 // 7. stage.triggers
 // 8. fightscript.react
-// 9. fighter.act
+// 9. fighter.enact
 //10. supervisor.end
 
 function Markl()

@@ -2,6 +2,8 @@
 
 let Rune = require('./fightrune')
 
+let Wait = require('../core/actions/wait')
+
 function Fightscript(script = "")
 {
   this.host = null;
@@ -48,9 +50,11 @@ function Fightscript(script = "")
   {
     // TODO
     console.log("TRIGGERS",triggers)
+
+    return Wait;
   }
 
-  // TODO: TO CLEAN
+  // TODO: TO CLEAN v
 
   this.runes = function()
   {

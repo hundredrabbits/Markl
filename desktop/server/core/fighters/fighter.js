@@ -19,6 +19,12 @@ function Fighter(id,pos,fightscript)
 
   this.score = { hits:0, blocks:0 }
 
+  this.enact = function(Action)
+  { 
+    const action = new Action(this);
+    action.run();
+  }
+
   this.is_visible = function()
   {
     return true;

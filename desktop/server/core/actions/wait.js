@@ -12,6 +12,7 @@ function WAIT(host,attr = null,target = null)
 
   this.run = function(state,target)
   {
+    console.log(this.host.name,this.name)
     this.host.sp -= this.cost;
     this.host.status = "idle";
   }
