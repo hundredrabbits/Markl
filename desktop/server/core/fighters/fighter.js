@@ -19,8 +19,10 @@ function Fighter(id,pos,fightscript)
 
   this.score = { hits:0, blocks:0 }
 
-  this.enact = function(Action)
+  this.enact = function(Action,target)
   { 
+    // TODO
+    console.log(Action,target)
     const action = new Action(this);
     action.run();
   }

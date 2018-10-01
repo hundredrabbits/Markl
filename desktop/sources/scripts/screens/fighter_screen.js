@@ -20,7 +20,7 @@ function FighterScreen()
   {
     for(const name in fighters){
       const fightscript = new Fightscript(markl.scenario.script);
-      const response = fightscript.query("menu","fighter","name is "+name,"select")
+      const response = fightscript.find_action_in_style("menu","fighter","name is "+name,"select")
       if(response != "select"){ continue; }
       this.select(fighters[name]);
     }

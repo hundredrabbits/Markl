@@ -30,36 +30,14 @@ function Fightscript(script = "")
     return style;
   }
 
-  // 
+  // Find Action in Triggers
 
-  this.query = function(trigger,event,condition,action)
-  {
-    if(!this.style[trigger.toUpperCase()]){ return; }
-    if(!this.style[trigger.toUpperCase()][event.toUpperCase()]){ return; }
-    if(!this.style[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()]){ return; }
-
-    const actions = this.style[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()];
-
-    for(const id in actions){
-      if(action.toUpperCase() == actions[id].toUpperCase()){ return action; }
-    }
-    return;
-  }
-
-  this.find_target = function(triggers,trigger,event,condition)
-  {
-    if(!triggers[trigger]){ return; }
-    if(!triggers[trigger][event]){ return; }
-    if(!triggers[trigger][event][condition]){ return; }
-    return triggers[trigger][event][condition]
-  }
-
-  this.find_actions = function(triggers)
+  this.respond = function(triggers)
   {
     for(const trigger in this.style){
       for(const event in this.style[trigger]){
         for(const condition in this.style[trigger][event]){
-          const target = this.find_target(triggers,trigger,event,condition);
+          const target = this.find(triggers,trigger,event,condition);
           if(target){
             const actions = this.style[trigger][event][condition]
             return {target:target,trigger:trigger,event:event,condition:condition,actions:actions}; 
@@ -70,14 +48,42 @@ function Fightscript(script = "")
     return;
   }
 
-  this.react = function(triggers)
+  // Find Action in Style
+
+  this.find_action_in_style = function(trigger,event,condition,action)
+  {
+    const actions = this.find(this.style,trigger,event,condition);
+
+    if(!actions){ return; }
+
+    for(const id in actions){
+      if(action.toUpperCase() == actions[id].toUpperCase()){ return action; }
+    }
+    return;
+  }
+
+  // Find actions in style
+  // Find target in triggers
+
+  this.find = function(h,trigger,event,condition)
+  {
+    if(!h[trigger.toUpperCase()]){ return; }
+    if(!h[trigger.toUpperCase()][event.toUpperCase()]){ return; }
+    if(!h[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()]){ return; }
+    return h[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()];
+  }
+
+  this.react = function(triggers,combo = 0)
   {
     // Go through style
-    const actions = this.find_actions(triggers);
+    const response = this.respond(triggers);
 
-    console.log("!!!!!",actions);
+    if(!response){ this.host.enact(Wait); return; }
 
-    return Wait;
+    const actions = response.actions;
+    const target = response.target;
+
+    this.host.enact(actions[combo % actions.length],target)
   }
 
   // TODO: TO CLEAN v
