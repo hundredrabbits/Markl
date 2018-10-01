@@ -46,10 +46,36 @@ function Fightscript(script = "")
     return;
   }
 
+  this.find_target = function(triggers,trigger,event,condition)
+  {
+    if(!triggers[trigger]){ return; }
+    if(!triggers[trigger][event]){ return; }
+    if(!triggers[trigger][event][condition]){ return; }
+    return triggers[trigger][event][condition]
+  }
+
+  this.find_actions = function(triggers)
+  {
+    for(const trigger in this.style){
+      for(const event in this.style[trigger]){
+        for(const condition in this.style[trigger][event]){
+          const target = this.find_target(triggers,trigger,event,condition);
+          if(target){
+            const actions = this.style[trigger][event][condition]
+            return {target:target,trigger:trigger,event:event,condition:condition,actions:actions}; 
+          }
+        }
+      }
+    }
+    return;
+  }
+
   this.react = function(triggers)
   {
-    // TODO
-    console.log("TRIGGERS",triggers)
+    // Go through style
+    const actions = this.find_actions(triggers);
+
+    console.log("!!!!!",actions);
 
     return Wait;
   }
@@ -106,30 +132,6 @@ function Fightscript(script = "")
       }
     }
     return text.trim()
-  }
-
-  this.find = function(reaction,player)
-  {
-    if(!player){ return null; }
-    
-    let line = 1
-    let text = ""
-    for(let trigger in this.style){
-      line += 1
-      for(let event in this.style[trigger]){
-        line += 1
-        for(let condition in this.style[trigger][event]){
-          line += 1
-          for(let id in this.style[trigger][event][condition]){
-            let action = this.style[trigger][event][condition][id]
-            line += 1
-            line += player.tp % this.style[trigger][event][condition].length
-            if(trigger == reaction.trigger && event == reaction.event && condition == reaction.condition && action == reaction.action){ return line; }
-          }
-        }
-      }
-    }
-    return null
   }
 
   this.indexOf = function(target)
