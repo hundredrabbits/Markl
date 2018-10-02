@@ -1,10 +1,10 @@
 'use strict';
 
-const Dojo1v0    = require('../server/core/stages/dojo_1v0');
-const Gardens1v2 = require('../server/core/stages/gardens_1v2');
-const Woods1v3   = require('../server/core/stages/woods_1v3');
-const Temple1v4  = require('../server/core/stages/temple_1v4');
-const Roof1v1    = require('../server/core/stages/roof_1v1');
+const Dojo1v0    = require('../server/stages/dojo_1v0');
+const Gardens1v2 = require('../server/stages/gardens_1v2');
+const Woods1v3   = require('../server/stages/woods_1v3');
+const Temple1v4  = require('../server/stages/temple_1v4');
+const Roof1v1    = require('../server/stages/roof_1v1');
 
 function StageScreen()
 {

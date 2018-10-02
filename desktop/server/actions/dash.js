@@ -2,14 +2,14 @@
 
 const Pos = require('../units/pos.js')
 const Vector = require('../units/vector.js')
-const Action = require('../action.js')
+const Action = require('./action.js')
 
-function MOVE(host,attr)
+function DASH(host,attr)
 {
   Action.call(this,host,attr);
   
-  this.name = "move";
-  this.cost = 5;
+  this.name = "dash";
+  this.cost = 7;
 
   this.run = function(state,target)
   {
@@ -24,12 +24,14 @@ function MOVE(host,attr)
     let vector = this.find_vector(this.attr,target);
     let target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
 
-    if(this.can_move_to(target_position)){
+    while(this.can_move_to(target_position)){
       this.host.pos = {x:target_position.x,y:target_position.y};
-      this.host.status = "move";
+      this.host.status = "dash";
       this.host.vector = vector.name;
+      // Update
+      target_position = new Pos(this.host.pos.x,this.host.pos.y).add(vector);
     }
   }
 }
 
-module.exports = MOVE;
+module.exports = DASH;

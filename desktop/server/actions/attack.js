@@ -1,8 +1,8 @@
 'use strict';
 
-let Pos = require('../units/pos.js')
+const Pos = require('../units/pos.js')
 const Vector = require('../units/vector.js')
-let Action = require('../action.js')
+const Action = require('./action.js')
 
 function ATTACK(host,attr)
 {

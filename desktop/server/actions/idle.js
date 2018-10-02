@@ -1,7 +1,7 @@
 'use strict';
 
-let Pos = require('../units/pos.js')
-let Action = require('../action.js')
+const Pos = require('../units/pos.js')
+const Action = require('./action.js')
 
 function IDLE(host,attr = null)
 {

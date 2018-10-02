@@ -1,6 +1,6 @@
 'use strict';
 
-let Wait = require('../actions/wait')
+const Wait = require('../actions/wait')
 
 function Fighter(id,pos,fightscript)
 {

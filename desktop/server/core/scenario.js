@@ -1,6 +1,6 @@
 'use strict';
 
-let Supervisor = require('./supervisor')
+const Supervisor = require('./supervisor')
 
 function Scenario()
 {

@@ -1,11 +1,11 @@
 'use strict';
 
-let Fightlang = require('../server/fightlang/fightlang')
-let Fightscript = require('../server/fightlang/fightscript')
-let Fightrune = require('../server/fightlang/fightrune')
-
 function Navigator()
 {
+  let Fightlang = require('../server/fightlang/fightlang')
+  let Fightscript = require('../server/fightlang/fightscript')
+  let Fightrune = require('../server/fightlang/fightrune')
+
   this.timeline = new Timeline();
 
   this.el = document.createElement('yu');

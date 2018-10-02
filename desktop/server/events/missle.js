@@ -1,7 +1,7 @@
 'use strict';
 
-let Pos = require('./units/pos.js')
-let Vector = require('./units/vector.js')
+const Pos = require('../units/pos.js')
+const Vector = require('../units/vector.js')
 
 function Missle(host,settings)
 {

@@ -1,6 +1,6 @@
 'use strict';
 
-let Fightlang = require('./fightlang')
+const Fightlang = require('./fightlang')
 
 function Fightrune(parts = {trigger:null,event:null,condition:null,action:null})
 {

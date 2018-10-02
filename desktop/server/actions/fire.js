@@ -1,9 +1,9 @@
 'use strict';
 
-let Pos = require('../units/pos.js')
+const Pos = require('../units/pos.js')
 const Vector = require('../units/vector.js')
-let Action = require('../action.js')
-let Missle = require('../missle.js')
+const Action = require('./action.js')
+const Missle = require('../events/missle.js')
 
 function FIRE(host,attr)
 {

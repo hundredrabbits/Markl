@@ -1,13 +1,14 @@
 'use strict';
 
-const Pest = require('../server/core/fighters/pest');
-const Lancer = require('../server/core/fighters/lancer');
-const Sin = require('../server/core/fighters/sin');
-const Patience = require('../server/core/fighters/patience');
-
 function FighterScreen()
 {
   Screen.call(this,"fighter");
+
+  const Pest = require('../server/events/pest');
+  const Lancer = require('../server/events/lancer');
+  const Sin = require('../server/events/sin');
+  const Patience = require('../server/events/patience');
+  const Fightscript = require('../server/fightlang/fightscript');
 
   const fighters = {
     pest: Pest,

@@ -1,11 +1,13 @@
 'use strict';
 
-let Stage = require('./stage')
-let Fighter = require('../fighters/fighter')
-let Dummy = require('../fighters/dummy')
+const Fightscript = require('../fightlang/fightscript')
+const Stage = require('./stage')
+const Fighter = require('../events/fighter')
+const Dummy = require('../events/dummy')
 
 function Dojo1v0(c = [],f = [])
 {
+
   Stage.call(this);
 
   this.bounds = {x:4,y:4};

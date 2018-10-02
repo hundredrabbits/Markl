@@ -1,13 +1,12 @@
 'use strict';
 
-let Rune = require('./fightrune')
-
-let Move = require('../core/actions/move')
-let Attack = require('../core/actions/attack')
-let Dash = require('../core/actions/dash')
-let Fire = require('../core/actions/fire')
-let Push = require('../core/actions/push')
-let Wait = require('../core/actions/wait')
+const Rune = require('./fightrune')
+const Move = require('../actions/move')
+const Attack = require('../actions/attack')
+const Dash = require('../actions/dash')
+const Fire = require('../actions/fire')
+const Push = require('../actions/push')
+const Wait = require('../actions/wait')
 
 function Fightlang() 
 {

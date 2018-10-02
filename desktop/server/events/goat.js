@@ -1,6 +1,6 @@
 'use strict';
 
-let Fighter = require('./fighter')
+const Fighter = require('./fighter')
 
 function Goat(id,pos,fightscript)
 {
