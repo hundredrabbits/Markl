@@ -9,6 +9,7 @@ function Fightscript(script = "")
   this.host = null;
   this.script = script;
   this.style = parse(script);
+  this.specs = new Fightlang();
 
   function parse(text)
   {
@@ -75,15 +76,20 @@ function Fightscript(script = "")
 
   this.react = function(triggers,combo = 0)
   {
-    // Go through style
     const response = this.respond(triggers);
 
-    if(!response){ this.host.enact(Wait); return; }
+    if(!response){ console.warn(`No response to triggers`); return; }
 
     const actions = response.actions;
     const target = response.target;
+    const act = actions[combo % actions.length].toLowerCase();
+    const action_name = act.split(" ")[0].capitalize();
+    const action_params = act.replace(action_name,'').trim()
+    const action = this.specs.create(action_name);
+    
+    if(!action){ console.warn(`Unknown action: ${action_name}`); return; }
 
-    this.host.enact(actions[combo % actions.length],target)
+    return {action:action,params:action_params,target:target};
   }
 
   // TODO: TO CLEAN v

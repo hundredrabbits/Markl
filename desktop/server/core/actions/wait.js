@@ -10,9 +10,8 @@ function WAIT(host,attr = null,target = null)
   this.name = "wait";
   this.cost = 1;
 
-  this.run = function(state,target)
+  this.run = function()
   {
-    console.log(this.host.name,this.name)
     this.host.sp -= this.cost;
     this.host.status = "idle";
   }

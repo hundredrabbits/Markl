@@ -1,5 +1,7 @@
 'use strict';
 
+let Wait = require('../actions/wait')
+
 function Fighter(id,pos,fightscript)
 {
   this.id = id
@@ -19,12 +21,12 @@ function Fighter(id,pos,fightscript)
 
   this.score = { hits:0, blocks:0 }
 
-  this.enact = function(Action,target)
+  this.enact = function(reaction)
   { 
-    // TODO
-    console.log(Action,target)
-    const action = new Action(this);
-    action.run();
+    if(!reaction){ return new Wait(this).run(); }
+
+    const action = new reaction.action(this);
+    action.run(reaction.params);
   }
 
   this.is_visible = function()

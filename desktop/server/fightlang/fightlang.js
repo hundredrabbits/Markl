@@ -2,8 +2,24 @@
 
 let Rune = require('./fightrune')
 
+let Move = require('../core/actions/move')
+let Attack = require('../core/actions/attack')
+let Dash = require('../core/actions/dash')
+let Fire = require('../core/actions/fire')
+let Push = require('../core/actions/push')
+let Wait = require('../core/actions/wait')
+
 function Fightlang() 
 {
+  this.actions = {
+    move: Move,
+    attack: Attack,
+    dash: Dash,
+    fire: Fire,
+    push: Push,
+    wait: Wait
+  }
+
   this.spec = {
     TRIGGER : [
       "SIGHT",
@@ -66,6 +82,13 @@ function Fightlang()
       "WAIT",
       "TAUNT"
     ]
+  }
+
+  this.create = function(action_name)
+  {
+    if(!this.actions[action_name.toLowerCase()]){ return; }
+
+    return this.actions[action_name.toLowerCase()];
   }
 
   this.fragments = function()

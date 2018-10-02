@@ -15,10 +15,8 @@ function Supervisor(fightscript,fighter,stage)
     // Find reaction of fighter style against stage
     const triggers = stage.triggers(fighter);
     const reaction = fighter.fightscript.react(triggers);
-    fighter.enact(reaction);
 
-    // TODO: 
-    
+    fighter.enact(reaction);
     record(stage);
   }
 
