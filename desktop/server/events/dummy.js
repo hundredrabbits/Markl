@@ -1,13 +1,12 @@
-'use strict';
+'use strict'
 
 const Fighter = require('./fighter')
 
-function Dummy(id,pos,fightscript)
-{
-  Fighter.call(this,id,pos,fightscript);
+function Dummy (id, pos, fightscript) {
+  Fighter.call(this, id, pos, fightscript)
 
-  this.name = "dummy"
-  this.hp = 3;
+  this.name = 'dummy'
+  this.hp = 3
 }
 
-module.exports = Dummy;
+module.exports = Dummy

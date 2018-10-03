@@ -1,124 +1,114 @@
-'use strict';
+'use strict'
 
 const Rune = require('./fightrune')
 const Wait = require('../actions/wait')
 const Fightlang = require('./fightlang')
 
-function Fightscript(script = "")
-{
-  this.host = null;
-  this.script = script;
-  this.style = parse(script);
-  this.specs = new Fightlang();
+function Fightscript (script = '') {
+  this.host = null
+  this.script = script
+  this.style = parse(script)
+  this.specs = new Fightlang()
 
-  function parse(text)
-  {
-    const style = {};
-    const lines = text.toUpperCase().split("\n");
-    let trigger = null;
-    let event = null;
-    let condition = null;
-    let action = null;
-    for(let id in lines){
-      let pad = lines[id].search(/\S|$/);
-      let line = lines[id].trim();
-      if(line == "" || line.substr(0,1) == "#"){ continue; }
-      if(pad == 0){ trigger = line   ; style[line] = {}; }
-      if(pad == 2){ event = line     ; style[trigger][event] = {}; }
-      if(pad == 4){ condition = line ; style[trigger][event][condition] = []; }
-      if(pad == 6){ action = line    ; style[trigger][event][condition].push(line); }
+  function parse (text) {
+    const style = {}
+    const lines = text.toUpperCase().split('\n')
+    let trigger = null
+    let event = null
+    let condition = null
+    let action = null
+    for (let id in lines) {
+      let pad = lines[id].search(/\S|$/)
+      let line = lines[id].trim()
+      if (line == '' || line.substr(0, 1) == '#') { continue }
+      if (pad == 0) { trigger = line; style[line] = {} }
+      if (pad == 2) { event = line; style[trigger][event] = {} }
+      if (pad == 4) { condition = line; style[trigger][event][condition] = [] }
+      if (pad == 6) { action = line; style[trigger][event][condition].push(line) }
     }
-    return style;
+    return style
   }
 
   // Find Action in Triggers
 
-  this.respond = function(triggers)
-  {
-    for(const trigger in this.style){
-      for(const event in this.style[trigger]){
-        for(const condition in this.style[trigger][event]){
-          const target = this.find(triggers,trigger,event,condition);
-          if(target){
+  this.respond = function (triggers) {
+    for (const trigger in this.style) {
+      for (const event in this.style[trigger]) {
+        for (const condition in this.style[trigger][event]) {
+          const target = this.find(triggers, trigger, event, condition)
+          if (target) {
             const actions = this.style[trigger][event][condition]
-            return {target:target,trigger:trigger,event:event,condition:condition,actions:actions}; 
+            return { target: target, trigger: trigger, event: event, condition: condition, actions: actions }
           }
         }
       }
     }
-    return;
   }
 
   // Find Action in Style
 
-  this.find_action_in_style = function(trigger,event,condition,action)
-  {
-    const actions = this.find(this.style,trigger,event,condition);
+  this.find_action_in_style = function (trigger, event, condition, action) {
+    const actions = this.find(this.style, trigger, event, condition)
 
-    if(!actions){ return; }
+    if (!actions) { return }
 
-    for(const id in actions){
-      if(action.toUpperCase() == actions[id].toUpperCase()){ return action; }
+    for (const id in actions) {
+      if (action.toUpperCase() == actions[id].toUpperCase()) { return action }
     }
-    return;
   }
 
   // Find target in triggers
 
-  this.find = function(h,trigger,event,condition)
-  {
-    if(!h[trigger.toUpperCase()]){ return; }
-    if(!h[trigger.toUpperCase()][event.toUpperCase()]){ return; }
-    if(!h[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()]){ return; }
-    return h[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()];
+  this.find = function (h, trigger, event, condition) {
+    if (!h[trigger.toUpperCase()]) { return }
+    if (!h[trigger.toUpperCase()][event.toUpperCase()]) { return }
+    if (!h[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()]) { return }
+    return h[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()]
   }
 
-  this.react = function(triggers,combo = 0)
-  {
-    const response = this.respond(triggers);
+  this.react = function (triggers, combo = 0) {
+    const response = this.respond(triggers)
 
-    if(!response){ console.warn(`No response to triggers`); return; }
+    if (!response) { console.warn(`No response to triggers`); return }
 
-    const actions = response.actions;
-    const target = response.target;
-    const act = actions[combo % actions.length].toLowerCase();
-    const action_name = act.split(" ")[0].capitalize();
-    const action_params = act.replace(action_name,'').trim()
-    const action = this.specs.create(action_name);
-    
-    if(!action){ console.warn(`Unknown action: ${action_name}`); return; }
+    const actions = response.actions
+    const target = response.target
+    const act = actions[combo % actions.length].toLowerCase()
+    const action_name = act.split(' ')[0].capitalize()
+    const action_params = act.replace(action_name, '').trim()
+    const action = this.specs.create(action_name)
 
-    return {action:action,params:action_params,target:target};
+    if (!action) { console.warn(`Unknown action: ${action_name}`); return }
+
+    return { action: action, params: action_params, target: target }
   }
 
   // TODO: TO CLEAN v
 
-  this.runes = function()
-  {
-    const a = [];
-    for(const trigger in this.style){
-      for(const event in this.style[trigger]){
-        for(const condition in this.style[trigger][event]){
-          for(const id in this.style[trigger][event][condition]){
-            const action = this.style[trigger][event][condition][id];
-            a.push(new Fightrune({trigger:trigger,event:event,condition:condition,action:action}))
+  this.runes = function () {
+    const a = []
+    for (const trigger in this.style) {
+      for (const event in this.style[trigger]) {
+        for (const condition in this.style[trigger][event]) {
+          for (const id in this.style[trigger][event][condition]) {
+            const action = this.style[trigger][event][condition][id]
+            a.push(new Fightrune({ trigger: trigger, event: event, condition: condition, action: action }))
           }
         }
       }
     }
     return a
   }
-  
-  this.render = function()
-  {
-    let text = ""
-    for(const trigger in this.style){
+
+  this.render = function () {
+    let text = ''
+    for (const trigger in this.style) {
       text += `${trigger}\n`
-      for(const event in this.style[trigger]){
+      for (const event in this.style[trigger]) {
         text += `  ${event}\n`
-        for(const condition in this.style[trigger][event]){
+        for (const condition in this.style[trigger][event]) {
           text += `    ${condition}\n`
-          for(const id in this.style[trigger][event][condition]){
+          for (const id in this.style[trigger][event][condition]) {
             text += `      ${this.style[trigger][event][condition][id]}\n`
           }
         }
@@ -127,16 +117,15 @@ function Fightscript(script = "")
     return text
   }
 
-  this.toString = function()
-  {
-    let text = ""
-    for(const trigger in this.style){
-      text += trigger+' '
-      for(const event in this.style[trigger]){
-        text += event+' '
-        for(const condition in this.style[trigger][event]){
-          text += condition+' '
-          for(const id in this.style[trigger][event][condition]){
+  this.toString = function () {
+    let text = ''
+    for (const trigger in this.style) {
+      text += trigger + ' '
+      for (const event in this.style[trigger]) {
+        text += event + ' '
+        for (const condition in this.style[trigger][event]) {
+          text += condition + ' '
+          for (const id in this.style[trigger][event][condition]) {
             text += this.style[trigger][event][condition][id]
           }
         }
@@ -145,32 +134,29 @@ function Fightscript(script = "")
     return text.trim()
   }
 
-  this.indexOf = function(target)
-  {
-    const runes = this.runes();
-    for(const id in runes){
+  this.indexOf = function (target) {
+    const runes = this.runes()
+    for (const id in runes) {
       const rune = runes[id]
-      if(rune.name == target.name){ return parseInt(id); }
+      if (rune.name == target.name) { return parseInt(id) }
     }
     return -1
   }
 
-  this.copy = function()
-  {
+  this.copy = function () {
     const style = JSON.parse(JSON.stringify(this.style))
     return new FightScript(style)
   }
 
-  this.validate = function()
-  {
+  this.validate = function () {
     const runes = this.runes()
-    for(const id in runes){
-      const rune = runes[id];
-      const is_valid = rune.validate();
-      if(!is_valid){ return false; }
+    for (const id in runes) {
+      const rune = runes[id]
+      const is_valid = rune.validate()
+      if (!is_valid) { return false }
     }
-    return true;
+    return true
   }
 }
 
-module.exports = Fightscript;
+module.exports = Fightscript

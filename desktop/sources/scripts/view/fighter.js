@@ -1,7 +1,5 @@
-'use strict';
+'use strict'
 
-function Fighter_Screen()
-{
-  View.call(this);
-  
+function Fighter_Screen () {
+  View.call(this)
 }

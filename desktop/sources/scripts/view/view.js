@@ -1,6 +1,5 @@
-'use strict';
+'use strict'
 
-function View()
-{
-  this.el = document.createElement('view');
+function View () {
+  this.el = document.createElement('view')
 }

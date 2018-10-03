@@ -1,7 +1,5 @@
-'use strict';
+'use strict'
 
-function Menu_Screen()
-{
-  View.call(this);
-  
+function Menu_Screen () {
+  View.call(this)
 }

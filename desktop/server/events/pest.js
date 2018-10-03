@@ -1,13 +1,12 @@
-'use strict';
+'use strict'
 
 const Fighter = require('./fighter')
 
-function Pest(id,pos,fightscript)
-{
-  Fighter.call(this,id,pos,fightscript);
+function Pest (id, pos, fightscript) {
+  Fighter.call(this, id, pos, fightscript)
 
-  this.name = "pest"
-  this.hp = 3;
+  this.name = 'pest'
+  this.hp = 3
 }
 
-module.exports = Pest;
+module.exports = Pest

@@ -1,34 +1,29 @@
-'use strict';
+'use strict'
 
-function Renderer()
-{
-  this.el = document.createElement('yu');
-  this.el.id = "renderer";
+function Renderer () {
+  this.el = document.createElement('yu')
+  this.el.id = 'renderer'
 
-  this.screens = {menu: new Menu_Screen(),fighter:new Fighter_Screen(), arena: new World_Screen(), stage: new Stage_Screen()};
-  this.screen = null;
-  this.animator = new Animator(this.el);
+  this.screens = { menu: new Menu_Screen(), fighter: new Fighter_Screen(), arena: new World_Screen(), stage: new Stage_Screen() }
+  this.screen = null
+  this.animator = new Animator(this.el)
 
-  this.install = function(host)
-  {
-    host.appendChild(this.el);
+  this.install = function (host) {
+    host.appendChild(this.el)
   }
 
-  this.start = function()
-  {
+  this.start = function () {
     // Display first view
-    this.show(this.screens.stage);
+    this.show(this.screens.stage)
   }
 
-  this.show = function(screen)
-  {
-    this.screen = screen;
+  this.show = function (screen) {
+    this.screen = screen
     this.screen.install(this.el)
   }
 
-  this.update = function(state)
-  {
-    if(!this.screen){ return; }
-    this.screen.update(state);
+  this.update = function (state) {
+    if (!this.screen) { return }
+    this.screen.update(state)
   }
 }

@@ -1,6 +1,5 @@
-'use strict';
+'use strict'
 
-function World_Screen()
-{
-  View.call(this);  
+function World_Screen () {
+  View.call(this)
 }

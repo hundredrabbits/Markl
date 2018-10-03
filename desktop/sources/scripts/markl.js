@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-const Scenario = require('../server/core/scenario');
+const Scenario = require('../server/core/scenario')
 
 // 1. (drag-over)
 // 2. flow.splash
@@ -11,136 +11,121 @@ const Scenario = require('../server/core/scenario');
 // 7. stage.triggers
 // 8. fightscript.react
 // 9. fighter.enact
-//10. supervisor.end
+// 10. supervisor.end
 
-function Markl()
-{
-  this.el = document.createElement('div');
-  this.el.id = "app";
+function Markl () {
+  this.el = document.createElement('div')
+  this.el.id = 'app'
 
-  this.flow        = new Flow();
-  this.interface   = new Interface();
-  this.controller  = new Controller();
-  this.keyboard    = new Keyboard();
- 
-  this.supervisor  = require('../server/core/supervisor')
-  this.scenario    = null;
+  this.flow = new Flow()
+  this.interface = new Interface()
+  this.controller = new Controller()
+  this.keyboard = new Keyboard()
 
-  this.install = function(host)
-  {
-    console.log("Install");
+  this.supervisor = require('../server/core/supervisor')
+  this.scenario = null
 
-    this.flow.install(this.el);
-    this.interface.install(this.el);
+  this.install = function (host) {
+    console.log('Install')
 
-    this.keyboard.install();
-    host.appendChild(this.el);
-  }
-  
-  this.start = function()
-  {
-    console.log("Start");
+    this.flow.install(this.el)
+    this.interface.install(this.el)
 
-    this.flow.start();
+    this.keyboard.install()
+    host.appendChild(this.el)
   }
 
-  this.update = function()
-  {
-    this.el.className = `${this.navigator.is_visible ? "designer_on" : "designer_off"}`;
+  this.start = function () {
+    console.log('Start')
+
+    this.flow.start()
   }
 
-  this.load = function(script)
-  {
-    console.log("==================")
-    this.reset();
-    this.scenario.set_script(script);
-    this.run();
+  this.update = function () {
+    this.el.className = `${this.navigator.is_visible ? 'designer_on' : 'designer_off'}`
   }
 
-  this.run = function()
-  {
-    this.flow.run();
+  this.load = function (script) {
+    console.log('==================')
+    this.reset()
+    this.scenario.set_script(script)
+    this.run()
   }
 
-  this.reset = function()
-  {
-    console.log("New Scenario")
-    markl.scenario = new Scenario();
-    markl.flow.reset();
-    markl.flow.goto("splash");
+  this.run = function () {
+    this.flow.run()
+  }
+
+  this.reset = function () {
+    console.log('New Scenario')
+    markl.scenario = new Scenario()
+    markl.flow.reset()
+    markl.flow.goto('splash')
   }
 
   // Events
-  
-  window.addEventListener('dragover',function(e)
-  {
-    e.stopPropagation();
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'copy';
 
-    add_class(markl.el,"dragover");
-  });
+  window.addEventListener('dragover', function (e) {
+    e.stopPropagation()
+    e.preventDefault()
+    e.dataTransfer.dropEffect = 'copy'
 
-  window.addEventListener('drop', function(e)
-  {
-    e.stopPropagation();
-    e.preventDefault();
+    add_class(markl.el, 'dragover')
+  })
 
-    let files = e.dataTransfer.files;
+  window.addEventListener('drop', function (e) {
+    e.stopPropagation()
+    e.preventDefault()
 
-    for(let id in files){
-      let file = files[id];
-      if(!file.path){ continue;}
-      if(file.type && !file.type.match(/text.*/)) { console.log(`Skipped ${file.type} : ${file.path}`); continue; }
-      markl.load_path(file.path);
+    let files = e.dataTransfer.files
+
+    for (let id in files) {
+      let file = files[id]
+      if (!file.path) { continue }
+      if (file.type && !file.type.match(/text.*/)) { console.log(`Skipped ${file.type} : ${file.path}`); continue }
+      markl.load_path(file.path)
     }
 
-    remove_class(markl.el,"dragover");
-  });
+    remove_class(markl.el, 'dragover')
+  })
 
   // Options
 
-  this.new = function()
-  {
-    console.log("New FightStyle")
+  this.new = function () {
+    console.log('New FightStyle')
   }
 
-  this.open = function()
-  {
-    console.log("Open FightStyle")
+  this.open = function () {
+    console.log('Open FightStyle')
   }
 
-  this.load_path = function(path)
-  {
-    console.log("Loading path:",path)
+  this.load_path = function (path) {
+    console.log('Loading path:', path)
 
-    let data;
+    let data
     try {
-      data = fs.readFileSync(path, 'utf-8');
+      data = fs.readFileSync(path, 'utf-8')
     } catch (err) {
-      console.warn(`Could not load ${path}`);
-      return;
+      console.warn(`Could not load ${path}`)
+      return
     }
-    markl.load(data);
+    markl.load(data)
   }
 
   // Helpers
-  
-  function add_class(el,c)
-  {
-    if(has_class(el,c)){ return; }
-    el.className = `${el.className} ${c}`;
+
+  function add_class (el, c) {
+    if (has_class(el, c)) { return }
+    el.className = `${el.className} ${c}`
   }
 
-  function remove_class(el,c)
-  {
-    if(!has_class(el,c)){ return; }
-    el.className = `${el.className}`.replace(c,'').trim();
+  function remove_class (el, c) {
+    if (!has_class(el, c)) { return }
+    el.className = `${el.className}`.replace(c, '').trim()
   }
 
-  function has_class(el,c)
-  {
-    if(el.className.indexOf(c) < 0){ return false; }
-    return true;
+  function has_class (el, c) {
+    if (el.className.indexOf(c) < 0) { return false }
+    return true
   }
 }
