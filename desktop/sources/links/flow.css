@@ -1,9 +1,9 @@
-#flow { background:#111; width:100vw; height:100vh; position: fixed; }
+#flow { background:#efefef; width:100vw; height:100vh; position: fixed; }
 
-#flow .screen { background: red; width:100vw; height:100vh; position: fixed; transition:opacity 250ms; }
+#flow .screen { width:100vw; height:100vh; position: fixed; transition:opacity 250ms; }
 #flow .screen.hidden { opacity: 0; }
 
-#flow #splash_screen { background:blue; }
-#flow #fighter_screen { background:yellow; }
-#flow #stage_screen { background:pink; }
+#flow #splash_screen { background:#111; }
+#flow #fighter_screen { background:#333; }
+#flow #stage_screen {}
 #flow #arena_screen { background:cyan; }

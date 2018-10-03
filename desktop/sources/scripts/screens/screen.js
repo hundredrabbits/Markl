@@ -15,7 +15,6 @@ function Screen(id)
 
   this.start = function()
   {
-    this.el.textContent = `${this.id}`;
     this.hide();
   }
 
