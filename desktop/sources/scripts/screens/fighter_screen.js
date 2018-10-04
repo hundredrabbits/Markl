@@ -16,6 +16,20 @@ function FighterScreen () {
     patience: Patience
   }
 
+  this.portrait_lancer = this._create_el('portrait','lancer')
+  this.portrait_pest = this._create_el('portrait','pest')
+  this.portrait_patience = this._create_el('portrait','patience')
+  this.portrait_sin = this._create_el('portrait','sin')
+
+  this.install = function (host) {
+    this.el.appendChild(this.portrait_lancer)
+    this.el.appendChild(this.portrait_pest)
+    this.el.appendChild(this.portrait_patience)
+    this.el.appendChild(this.portrait_sin)
+
+    host.appendChild(this.el)
+  }
+
   this.run = function () {
     for (const name in fighters) {
       const fightscript = new Fightscript(markl.scenario.script)
@@ -29,7 +43,7 @@ function FighterScreen () {
     markl.scenario.set_fighter(fighter)
 
     setTimeout(() => {
-      markl.flow.goto('stage')
+      // markl.flow.goto('stage')
     }, speed)
   }
 }

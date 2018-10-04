@@ -19,14 +19,13 @@ function StageScreen () {
 
   // Elements
 
-  this.stage_garden = document.createElement('div'); this.stage_garden.className = 'stage'; this.stage_garden.id = `stage_garden`
-  this.stage_dojo = document.createElement('div'); this.stage_dojo.className = 'stage'; this.stage_dojo.id = `stage_dojo`
-  this.stage_wood = document.createElement('div'); this.stage_wood.className = 'stage'; this.stage_wood.id = `stage_wood`
-  this.stage_dungeon = document.createElement('div'); this.stage_dungeon.className = 'stage'; this.stage_dungeon.id = `stage_dungeon`
-  this.stage_rooftop = document.createElement('div'); this.stage_rooftop.className = 'stage'; this.stage_rooftop.id = `stage_rooftop`
+  this.stage_garden = this._create_el('stage','garden')
+  this.stage_dojo = this._create_el('stage','dojo')
+  this.stage_wood = this._create_el('stage','wood')
+  this.stage_dungeon = this._create_el('stage','dungeon')
+  this.stage_rooftop = this._create_el('stage','rooftop')
 
   this.install = function (host) {
-    console.log('!!')
     this.el.appendChild(this.stage_garden)
     this.el.appendChild(this.stage_dojo)
     this.el.appendChild(this.stage_wood)

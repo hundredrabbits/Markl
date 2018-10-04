@@ -49,6 +49,7 @@
 </head>
 <body>
   <script>
+    'use strict'
 
     const {dialog,app} = require('electron').remote;
     const fs = require('fs');
@@ -63,7 +64,7 @@
       camera:150 * SPEED
     }
 
-    markl = new Markl();
+    const markl = new Markl();
     markl.install(document.body);
 
     markl.controller.add("default","*","About",() => { require('electron').shell.openExternal('https://github.com/hundredrabbits/Dotgrid'); },"CmdOrCtrl+,");
