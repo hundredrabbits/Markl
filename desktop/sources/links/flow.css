@@ -4,6 +4,6 @@
 #flow .screen.hidden { opacity: 0; }
 
 #flow #splash_screen { background:#111; }
-#flow #fighter_screen { background:#333; }
+#flow #fighter_screen { background:#fff; }
 #flow #stage_screen {}
 #flow #arena_screen { background:cyan; }

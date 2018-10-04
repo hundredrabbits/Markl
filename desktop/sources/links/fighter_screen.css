@@ -1,0 +1,11 @@
+#fighter_screen { width: 100vw; height: calc(100vh * 5); position: fixed; transition: opacity 250ms, bottom 6000ms; background:white; }
+
+#fighter_screen div.portrait { display: block; width: 20vw; height: 70vh; background-size: contain; background-position: center; background-repeat: no-repeat; position: absolute; top:15vh;}
+#fighter_screen div.portrait#portrait_sin { background-image: url(../media/flow/fighter_screen/sin.png); left:20vw; margin-left:-10vw;}
+#fighter_screen div.portrait#portrait_patience { background-image: url(../media/flow/fighter_screen/patience.png);left:40vw; margin-left:-10vw;}
+#fighter_screen div.portrait#portrait_lancer { background-image: url(../media/flow/fighter_screen/lancer.png);left:60vw;  margin-left:-10vw;}
+#fighter_screen div.portrait#portrait_pest { background-image: url(../media/flow/fighter_screen/pest.png);left:80vw;  margin-left:-10vw;}
+
+#fighter_screen div.portrait > * { height:100%; width:100%; background-image: url(../media/flow/fighter_screen/frame.png); background-size: contain; background-position: center; background-repeat: no-repeat; }
+
+#fighter_screen.portrait.animate { bottom:-70vh; }

@@ -23,9 +23,13 @@ function FighterScreen () {
 
   this.install = function (host) {
     this.el.appendChild(this.portrait_lancer)
+    this.portrait_lancer.appendChild(document.createElement('div'))
     this.el.appendChild(this.portrait_pest)
+    this.portrait_pest.appendChild(document.createElement('div'))
     this.el.appendChild(this.portrait_patience)
+    this.portrait_patience.appendChild(document.createElement('div'))
     this.el.appendChild(this.portrait_sin)
+    this.portrait_sin.appendChild(document.createElement('div'))
 
     host.appendChild(this.el)
   }
