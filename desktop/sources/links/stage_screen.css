@@ -1,10 +1,14 @@
-#stage_screen { width: 100vw; height: calc(100vh * 5); position: fixed; transition: opacity 250ms, bottom 6000ms; bottom: 100px; }
+:root { 
+  --stage_height: 55vh; 
+}
 
-#stage_screen div.stage { display: block; width: 100vw; height: 40vh; background-size: contain; background-position: center; background-repeat: no-repeat; position: absolute; margin-bottom: -4.8vh;}
-#stage_screen div.stage#stage_garden { background-image: url(../media/flow/stage_screen/garden.png); bottom:0; margin-bottom: 0px}
-#stage_screen div.stage#stage_dojo { background-image: url(../media/flow/stage_screen/dojo.png);bottom: 40vh; }
-#stage_screen div.stage#stage_wood { background-image: url(../media/flow/stage_screen/wood.png); bottom: 70.5vh; }
-#stage_screen div.stage#stage_dungeon { background-image: url(../media/flow/stage_screen/dungeon.png); bottom: 98.75vh; }
-#stage_screen div.stage#stage_rooftop { background-image: url(../media/flow/stage_screen/rooftop.png); bottom: 127.5vh; }
+#stage_screen { width: 100vw; height: calc(100vh * 5); position: fixed; transition: opacity 250ms, bottom 6000ms; }
+#stage_screen .wrapper { position: relative; bottom:0px; height:100vh; transition: all 1500ms; }
+#stage_screen .wrapper div.stage { display: block; width: 100vw; height: var(--stage_height); background-size: contain; background-position: center; background-repeat: no-repeat; position: absolute; margin-bottom:20vh;}
+#stage_screen .wrapper div.stage#stage_garden { background-image: url(../media/flow/stage_screen/garden.png); bottom:0; }
+#stage_screen .wrapper div.stage#stage_dojo { background-image: url(../media/flow/stage_screen/dojo.png);bottom: calc(var(--stage_height) * 0.88); }
+#stage_screen .wrapper div.stage#stage_wood { background-image: url(../media/flow/stage_screen/wood.png); bottom: calc(var(--stage_height) * 1.64); }
+#stage_screen .wrapper div.stage#stage_dungeon { background-image: url(../media/flow/stage_screen/dungeon.png); bottom: calc(var(--stage_height) * 2.35); }
+#stage_screen .wrapper div.stage#stage_rooftop { background-image: url(../media/flow/stage_screen/rooftop.png); bottom: calc(var(--stage_height) * 3.07); }
 
-#stage_screen.stage.animate { bottom:-70vh; }
+#stage_screen.select_dojo .wrapper { bottom:-50vh; }

@@ -28,7 +28,9 @@ function Screen (id) {
   this._create_el = function (category, name, type = 'div') {
     const _el = document.createElement(type)
     _el.className = category
-    _el.id = `${category}_${name}`
+    if(name){
+      _el.id = `${category}_${name}`
+    }
     return _el
   }
   // 

@@ -6,7 +6,7 @@ const Fightlang = require('./fightlang')
 
 function Fightscript (script = '') {
   this.host = null
-  this.script = script
+  this.script = script.toUpperCase()
   this.style = parse(script)
   this.specs = new Fightlang()
 
@@ -35,7 +35,7 @@ function Fightscript (script = '') {
     for (const trigger in this.style) {
       for (const event in this.style[trigger]) {
         for (const condition in this.style[trigger][event]) {
-          const target = this.find(triggers, trigger, event, condition)
+          const target = this.find(trigger, event, condition, triggers)
           if (target) {
             const actions = this.style[trigger][event][condition]
             return { target: target, trigger: trigger, event: event, condition: condition, actions: actions }
@@ -45,24 +45,12 @@ function Fightscript (script = '') {
     }
   }
 
-  // Find Action in Style
-
-  this.find_action_in_style = function (trigger, event, condition, action) {
-    const actions = this.find(this.style, trigger, event, condition)
-
-    if (!actions) { return }
-
-    for (const id in actions) {
-      if (action.toUpperCase() == actions[id].toUpperCase()) { return action }
-    }
-  }
-
   // Find target in triggers
 
-  this.find = function (h, trigger, event, condition) {
-    if (!h[trigger.toUpperCase()]) { return }
-    if (!h[trigger.toUpperCase()][event.toUpperCase()]) { return }
-    if (!h[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()]) { return }
+  this.find = function (trigger, event, condition, h = this.style) {
+    if (!h[trigger.toUpperCase()]) { return [] }
+    if (!h[trigger.toUpperCase()][event.toUpperCase()]) { return [] }
+    if (!h[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()]) { return [] }
     return h[trigger.toUpperCase()][event.toUpperCase()][condition.toUpperCase()]
   }
 
