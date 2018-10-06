@@ -27,7 +27,7 @@ function Screen (id) {
 
   this._create_el = function (category, name, type = 'div') {
     const _el = document.createElement(type)
-    _el.className = category
+    add_class(_el,category)
     if(name){
       _el.id = `${category}_${name}`
     }
@@ -36,16 +36,36 @@ function Screen (id) {
   // 
 
   this.show = function () {
-    this.el.className = 'screen shown'
+    add_class(this.el,'shown')
+    remove_class(this.el,'hidden')
   }
 
   this.hide = function () {
-    this.el.className = 'screen hidden'
+    add_class(this.el,'hidden')
+    remove_class(this.el,'shown')
   }
 
   this.run = function () {
     console.log(`${this.id} -> Run`)
   }
+}
+
+
+// Helpers
+
+function add_class (el, c) {
+  if (has_class(el, c)) { return }
+  el.className = `${el.className} ${c}`
+}
+
+function remove_class (el, c) {
+  if (!has_class(el, c)) { return }
+  el.className = `${el.className}`.replace(c, '').trim()
+}
+
+function has_class (el, c) {
+  if (el.className.indexOf(c) < 0) { return false }
+  return true
 }
 
 module.exports = Screen

@@ -3,7 +3,7 @@
 function StageScreen () {
   Screen.call(this, 'stage')
 
-  const speed = 500
+  const speed = 1000
 
   const stages = {
     dojo_1v0: require('../server/stages/dojo_1v0'),
@@ -42,7 +42,7 @@ function StageScreen () {
     markl.scenario.set_stage(stages[name])
     this.el.className = `screen select_${name.split("_")[0]}`
 
-    setTimeout(() => { markl.flow.goto('arena') },speed)
+    setTimeout(() => { markl.flow.goto('arena') },speed * 2)
   }
 }
 

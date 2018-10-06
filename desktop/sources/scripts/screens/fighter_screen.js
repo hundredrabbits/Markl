@@ -10,7 +10,7 @@ function FighterScreen () {
   const Patience = require('../server/events/patience')
   const Fightscript = require('../server/fightlang/fightscript')
 
-  const fighters = {
+  const Fighters = {
     pest: Pest,
     lancer: Lancer,
     sin: Sin,
@@ -41,7 +41,7 @@ function FighterScreen () {
 
   this.run = function () {
     const fightscript = new Fightscript(markl.scenario.script)
-    for (const name in fighters) {
+    for (const name in Fighters) {
       const actions = fightscript.find('menu', 'fighter', 'name is ' + name)
       if(!actions[0]){ continue; }
       if(actions[0] != "SELECT"){ continue; }
@@ -52,6 +52,7 @@ function FighterScreen () {
 
   this.select = function (name) {
     console.log('select',name)
+    markl.scenario.set_fighter(Fighters[name])
     this.el.className = `screen select_${name}`
     setTimeout(() => { markl.flow.goto('stage') },speed)
   }
