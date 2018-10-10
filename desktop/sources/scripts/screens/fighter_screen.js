@@ -17,10 +17,10 @@ function FighterScreen () {
     patience: Patience
   }
 
-  this.portrait_lancer = this._create_el('portrait','lancer')
-  this.portrait_pest = this._create_el('portrait','pest')
-  this.portrait_patience = this._create_el('portrait','patience')
-  this.portrait_sin = this._create_el('portrait','sin')
+  this.portrait_lancer = this._create_el('portrait', 'lancer')
+  this.portrait_pest = this._create_el('portrait', 'pest')
+  this.portrait_patience = this._create_el('portrait', 'patience')
+  this.portrait_sin = this._create_el('portrait', 'sin')
 
   this.install = function (host) {
     this.el.appendChild(this.portrait_lancer)
@@ -43,18 +43,18 @@ function FighterScreen () {
     const fightscript = new Fightscript(markl.scenario.script)
     for (const name in Fighters) {
       const actions = fightscript.find('menu', 'fighter', 'name is ' + name)
-      if(!actions[0]){ continue; }
-      if(actions[0] != "SELECT"){ continue; }
+      if (!actions[0]) { continue }
+      if (actions[0] != 'SELECT') { continue }
 
-      setTimeout(() => { this.select(name) },speed)
+      setTimeout(() => { this.select(name) }, speed)
     }
   }
 
   this.select = function (name) {
-    console.log('select',name)
+    console.log('select', name)
     markl.scenario.set_fighter(Fighters[name])
     this.el.className = `screen select_${name}`
-    setTimeout(() => { markl.flow.goto('stage') },speed)
+    setTimeout(() => { markl.flow.goto('stage') }, speed)
   }
 }
 

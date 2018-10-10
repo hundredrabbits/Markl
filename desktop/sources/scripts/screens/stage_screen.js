@@ -15,11 +15,11 @@ function StageScreen () {
 
   // Elements
   this.wrapper = this._create_el('wrapper')
-  this.stage_garden = this._create_el('stage','garden')
-  this.stage_dojo = this._create_el('stage','dojo')
-  this.stage_wood = this._create_el('stage','wood')
-  this.stage_dungeon = this._create_el('stage','dungeon')
-  this.stage_rooftop = this._create_el('stage','rooftop')
+  this.stage_garden = this._create_el('stage', 'garden')
+  this.stage_dojo = this._create_el('stage', 'dojo')
+  this.stage_wood = this._create_el('stage', 'wood')
+  this.stage_dungeon = this._create_el('stage', 'dungeon')
+  this.stage_rooftop = this._create_el('stage', 'rooftop')
 
   this.install = function (host) {
     this.wrapper.appendChild(this.stage_garden)
@@ -38,11 +38,11 @@ function StageScreen () {
   }
 
   this.select = function (name) {
-    console.log('select',name)
+    console.log('select', name)
     markl.scenario.set_stage(stages[name])
-    this.el.className = `screen select_${name.split("_")[0]}`
+    this.el.className = `screen select_${name.split('_')[0]}`
 
-    setTimeout(() => { markl.flow.goto('arena') },speed * 2)
+    setTimeout(() => { markl.flow.goto('arena') }, speed * 2)
   }
 }
 

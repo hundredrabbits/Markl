@@ -1,6 +1,6 @@
 # FightScript Documentation
 
-FightScript is meant to be as simple as possible and allow for flexible fighting behaviours. The preceeding number of fighters on a line tells the parser what to expect.
+FightScript is meant to be as simple as possible and allow for flexible fighting behaviours. The preceeding number of fighters on a line tells the parser what to expect. The FightLang is deterministic, any fight with the same styles should always render the same.
 
 ```
 {TRIGGER}
@@ -9,6 +9,7 @@ FightScript is meant to be as simple as possible and allow for flexible fighting
 ------{ACTION}
 ```
 
+## Example
 Here's an example where the fighter will move away whenever an enemy fighter is at 2 tiles of distance:
 
 ```
@@ -26,7 +27,6 @@ SIGHT
 
 ### Triggers
 
-- `OPTION` Will trigger when an option is highlighted.
 - `MENU` Will trigger when a menu is highlighted.
 - `SIGHT` Will trigger when something is in sight.
 - `DEFAULT` Will trigger if no other trigger is found.
@@ -77,26 +77,6 @@ A fighter will automatically block if their available stamina is high enough.
 
 Waiting costs only 2 stamina points, but waiting 3 turns in a row will put you in **stasis**.
 
-### Formatting
-
-#### Comment
-
-You can comment a line with `--`.
-
-```
--- This is a comment
-```
-
-#### Break
-
-You can end the parsing of a file with `::`.
-
-```
-Code is executed.
---
-Code is not executed.
-```
-
 ## Cast
 
 The `cast` action triggers fighter abilities, costs `20sp`.
@@ -109,3 +89,37 @@ Gives `1hp` damage, and health of `1hp`.
 
 Warp to the closest enemy, attacking for `2hp`, without knockback.
 
+
+## Convenience
+
+### | Operator
+
+The `|` allows to displicate the content of a trigger.
+```
+SIGHT
+  FIGHTER
+    DISTANCE IS 4 | NAME IS PEST
+      MOVE AWAY
+```
+
+Is equivalent to:
+```
+SIGHT
+  FIGHTER
+    DISTANCE IS 4
+      MOVE AWAY
+    NAME IS PEST
+      MOVE AWAY
+```
+
+### & Operator
+
+The `&` makes sure that 2 conditions are met in a trigger.
+
+#### Comment
+
+You can comment a line with `--`.
+
+```
+-- This is a comment
+```

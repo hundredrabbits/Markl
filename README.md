@@ -8,17 +8,51 @@
 
 To run a game, the scenario needs 3 things.
 
-- Fightscript
-- Fighter
-- Stage
+- a Fightscript
+- a Fighter
+- a Stage
 
-### 
+### The screen flow is as follow
 
 ```
-markl
-  scenario
-    fightscript
-    fighter
-    stage
-  supervisor.render(stage.serialize) -> arena_screen
+Splash -> Option Screen -> Fighter Screen -> Stage Screen -> Arena Screen
+```
+
+## The Option Screen(menu)
+
+```
+MENU
+  OPTION
+    NAME IS MUSIC
+      SET OFF
+    NAME IS SFX
+      SET ON
+```
+
+## The Fighter Screen(menu)
+
+```
+MENU
+  FIGHTER
+    NAME IS SIN 
+      SELECT
+```
+
+## The Stage Screen
+
+No option is required.
+
+## The Arena Screen
+
+```
+SIGHT
+  FIGHTER
+    DISTANCE IS 4 & NAME IS PEST
+      MOVE AWAY
+    NAME IS DUMMY
+      MOVE TOWARD
+      FIRE TOWARD
+    ANY
+      MOVE TOWARD
+      ATTACK TOWARD
 ```

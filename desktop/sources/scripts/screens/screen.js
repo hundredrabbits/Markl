@@ -27,22 +27,31 @@ function Screen (id) {
 
   this._create_el = function (category, name, type = 'div') {
     const _el = document.createElement(type)
-    add_class(_el,category)
-    if(name){
+    add_class(_el, category)
+    if (name) {
       _el.id = `${category}_${name}`
     }
     return _el
   }
-  // 
+  //
 
   this.show = function () {
-    add_class(this.el,'shown')
-    remove_class(this.el,'hidden')
+    add_class(this.el, 'shown')
+    remove_class(this.el, 'hidden')
+    remove_class(this.el, 'idle')
   }
 
   this.hide = function () {
-    add_class(this.el,'hidden')
-    remove_class(this.el,'shown')
+    add_class(this.el, 'hidden')
+    remove_class(this.el, 'shown')
+
+    setTimeout(() => { this.idle() }, 1000)
+  }
+
+  this.idle = function () {
+    add_class(this.el, 'idle')
+    remove_class(this.el, 'shown')
+    remove_class(this.el, 'hidden')
   }
 
   this.run = function () {
@@ -50,17 +59,16 @@ function Screen (id) {
   }
 }
 
-
 // Helpers
 
 function add_class (el, c) {
   if (has_class(el, c)) { return }
-  el.className = `${el.className} ${c}`
+  el.className = `${el.className.trim()} ${c}`.replace(/ {2}/g, ' ').trim()
 }
 
 function remove_class (el, c) {
   if (!has_class(el, c)) { return }
-  el.className = `${el.className}`.replace(c, '').trim()
+  el.className = `${el.className.trim()}`.replace(c, '').trim()
 }
 
 function has_class (el, c) {
