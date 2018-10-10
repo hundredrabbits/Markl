@@ -24,3 +24,6 @@
 - Implement leaderboard/score.
 
 ## Create syntax highlight file
+
+- Sight distance attribute per fighter
+- Diagonal moves
