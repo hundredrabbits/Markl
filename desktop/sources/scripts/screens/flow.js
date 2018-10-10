@@ -40,10 +40,17 @@ function Flow () {
     markl.interface.update()
   }
 
-  this.goto = function (screen_id) {
+  this.goto = function (screen_id,skip = false) {
     if (!this.screens[screen_id]) { console.warn(`Unknown screen: ${screen_id}`); return }
 
-    this.screens[this.active].hide()
+    if(skip){
+      console.log(`Skipped ${this.active}`)
+      this.screens[this.active].idle()  
+    }
+    else{
+      this.screens[this.active].hide()
+    }
+    
     this.active = screen_id
     this.screens[this.active].show()
     this.run()

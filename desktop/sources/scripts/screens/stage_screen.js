@@ -4,6 +4,7 @@ function StageScreen () {
   Screen.call(this, 'stage')
 
   const speed = 1000
+  const Fightscript = require('../server/fightlang/fightscript')
 
   const stages = {
     dojo_1v0: require('../server/stages/dojo_1v0'),
@@ -33,16 +34,25 @@ function StageScreen () {
   }
 
   this.run = function () {
+    const fightscript = new Fightscript(markl.scenario.script)
+    const screen_action = fightscript.find('menu', 'stage', 'screen')[0]
+    const skip = screen_action == "SKIP"
     const name = Object.keys(stages)[markl.scenario.level]
-    setTimeout(() => { this.select(name) }, speed)
+    
+    this.select(name,skip)
   }
 
-  this.select = function (name) {
+  this.select = function (name,skip) {
     console.log('select', name)
     markl.scenario.set_stage(stages[name])
     this.el.className = `screen select_${name.split('_')[0]}`
 
-    setTimeout(() => { markl.flow.goto('arena') }, speed * 2)
+    if(skip == true){
+      markl.flow.goto('arena',true)
+    }
+    else{
+      setTimeout(() => { markl.flow.goto('arena') }, speed * 2)
+    }
   }
 }
 
