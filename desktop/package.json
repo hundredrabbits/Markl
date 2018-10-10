@@ -4,18 +4,18 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "clean"        : "rm -r ~/Desktop/Markl-darwin-x64/ ; rm -r ~/Desktop/Markl-linux-x64/ ; rm -r ~/Desktop/Markl-win32-x64/ ; echo 'cleaned build location'",
-    "build_osx"    : "electron-packager . Markl --platform=darwin --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.icns ; echo 'Built for OSX'",
-    "build_linux"  : "electron-packager . Markl --platform=linux  --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.ico ; echo 'Built for LINUX'",
-    "build_win"    : "electron-packager . Markl --platform=win32  --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.ico ; echo 'Built for WIN'",
-    "build"        : "npm run clean ; npm run build_osx ; npm run build_linux ; npm run build_win",
-    "push_osx"     : "~/butler push ~/Desktop/Markl-darwin-x64/ hundredrabbits/markl:osx-64",
-    "push_linux"   : "~/butler push ~/Desktop/Markl-linux-x64/ hundredrabbits/markl:linux-64",
-    "push_win"     : "~/butler push ~/Desktop/Markl-win32-x64/ hundredrabbits/markl:windows-64",
-    "push_status"  : "~/butler status hundredrabbits/markl",
-    "serve"        : "node index.js",
-    "scenario"     : "node index.js",
-    "push"         : "npm run build ; npm run push_osx ; npm run push_linux ; npm run push_win ; npm run clean ; npm run push_status"
+    "clean": "rm -r ~/Desktop/Markl-darwin-x64/ ; rm -r ~/Desktop/Markl-linux-x64/ ; rm -r ~/Desktop/Markl-win32-x64/ ; echo 'cleaned build location'",
+    "build_osx": "electron-packager . Markl --platform=darwin --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.icns ; echo 'Built for OSX'",
+    "build_linux": "electron-packager . Markl --platform=linux  --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.ico ; echo 'Built for LINUX'",
+    "build_win": "electron-packager . Markl --platform=win32  --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.ico ; echo 'Built for WIN'",
+    "build": "npm run clean ; npm run build_osx ; npm run build_linux ; npm run build_win",
+    "push_osx": "~/butler push ~/Desktop/Markl-darwin-x64/ hundredrabbits/markl:osx-64",
+    "push_linux": "~/butler push ~/Desktop/Markl-linux-x64/ hundredrabbits/markl:linux-64",
+    "push_win": "~/butler push ~/Desktop/Markl-win32-x64/ hundredrabbits/markl:windows-64",
+    "push_status": "~/butler status hundredrabbits/markl",
+    "serve": "node index.js",
+    "scenario": "node index.js",
+    "push": "npm run build ; npm run push_osx ; npm run push_linux ; npm run push_win ; npm run clean ; npm run push_status"
   },
   "devDependencies": {
     "electron": "^1.8.1"
