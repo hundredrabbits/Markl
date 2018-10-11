@@ -7,7 +7,7 @@ function Sprite (type, id) {
   this.el.appendChild(this.canvas)
 
   this.pos = { x: 0, y: 0 }
-  this.fighter = ''
+  this.name = ''
   this.status = ''
   this.vector = ''
 
@@ -26,7 +26,7 @@ function Sprite (type, id) {
   }
 
   this.setup = function (h) {
-    this.load(`./media/fighters/${h.fighter}.png`)
+    this.load(`./media/flow/arena_screen/fighters/${h.name}.png`)
 
     this.el.style.transition = `all ${TIMING.sprite}ms`
     this.el.style.width = `${STAGE.tile}px`
@@ -46,20 +46,26 @@ function Sprite (type, id) {
     this.to(pos)
   }
 
-  this.set_status = function (s) {
-    this.status = s
+  this.set_name = function (c) {
+    this.name = c
   }
 
-  this.set_fighter = function (c) {
-    this.fighter = c
+  this.set_status = function (s) {
+    this.status = s
   }
 
   this.set_vector = function (v) {
     this.vector = v
   }
 
-  this.update = function () {
-    this.el.className = `depth${this.pos.y} ${this.fighter} ${this.status} ${this.vector ? this.vector : ''}`
+  this.update = function (state) {
+    console.log(state)
+    this.animate_to(state.pos)
+    this.set_name(state.name)
+    this.set_status(state.status)
+    this.set_vector(state.vector)
+
+    this.el.className = `depth${this.pos.y} ${this.name} ${this.status} ${this.vector ? this.vector : ''}`
     this.draw()
   }
 
@@ -96,7 +102,7 @@ function Sprite (type, id) {
     var y = this.assoc[this.status] ? this.assoc[this.status] * (STAGE.tile * -1.5) : 0
 
     console.log(this.assoc[this.status], this.status)
-    console.log(this.status, this.fighter, this.vector, y)
+    console.log(this.status, this.name, this.vector, y)
 
     this.context().drawImage(this.spritesheet, x, y, width, height)
   }

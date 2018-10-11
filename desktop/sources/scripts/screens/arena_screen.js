@@ -9,7 +9,7 @@ function ArenaScreen () {
 
   let STAGE = { padding: { x: 15, y: 15 }, tile: 80 }
 
-  this.sprites = { players: {}, events: {}, effects: [] }
+  this.sprites = { fighters: {}, events: {}, effects: [] }
 
   this.install = function (host) {
     this.arena.appendChild(this.background)
@@ -22,52 +22,47 @@ function ArenaScreen () {
     this.arena.style.width = `${5 * STAGE.tile}px`
     this.arena.style.height = `${5 * STAGE.tile}px`
     // Center
-    this.arena.style.left = `calc(50% - ${(5 * STAGE.tile) / 2}px)`
+    this.arena.style.left = `calc(50% - ${(9 * STAGE.tile) / 2}px)`
     this.arena.style.top = `calc(55% - ${(5 * STAGE.tile) / 2}px)`
   }
 
   this.run = function () {
     const history = markl.scenario.render()
+    const state = history[0]
     add_class(this.arena,history[0].theme)
-    console.log(markl.scenario,history)
+    this.update(state)
   }
 
 
-  this.update = function (state, reaction) {
+  this.update = function (state) {
     if (!state) { return }
 
+    console.log("Update===================")
     this.remove_effects()
     this.verify_sprites(state)
     this.update_sprites(state)
     this.add_effects(state)
     this.focus(state)
 
-    this.animator.start()
-
-    markl.interface.update(state, reaction)
-    markl.navigator.update(state)
+    // this.animator.start()
   }
 
   this.verify_sprites = function (state) {
-    for (let id in state.players) {
-      let player = state.players[id]
-      if (this.sprites.players[player.id]) { continue }
-      console.log('Creating sprite for ', player.id)
-      let sprite = new Sprite('player', player.id)
-      sprite.setup(player)
-      this.sprites.players[player.id] = sprite
+    for (let id in state.fighters) {
+      let fighter = state.fighters[id]
+      if (this.sprites.fighters[fighter.id]) { continue }
+      console.log('Creating sprite for ', fighter)
+      let sprite = new Sprite('fighter', fighter.id)
+      sprite.setup(fighter)
+      this.sprites.fighters[fighter.id] = sprite
       this.arena.appendChild(sprite.el)
     }
   }
 
   this.update_sprites = function (state) {
-    for (let id in this.sprites.players) {
-      let player = this.sprites.players[id]
-      player.animate_to(state.players[id].pos)
-      player.set_status(state.players[id].status)
-      player.set_fighter(state.players[id].fighter)
-      player.set_vector(state.players[id].vector)
-      player.update()
+    for (const id in this.sprites.fighters) {
+      const sprite = this.sprites.fighters[id]
+      sprite.update(state.fighters[id])
     }
   }
 
@@ -95,10 +90,10 @@ function ArenaScreen () {
   this.center = function (state) {
     let positions = []
 
-    for (let id in state.players) {
-      let player = state.players[id]
-      if (player.hp < 1) { continue }
-      positions.push(player.pos)
+    for (let id in state.fighters) {
+      let fighter = state.fighters[id]
+      if (fighter.hp < 1) { continue }
+      positions.push(fighter.pos)
     }
 
     let sum = { x: 0, y: 0 }
