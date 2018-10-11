@@ -16,15 +16,6 @@ function Sprite (type, id) {
 
   let STAGE = { padding: { x: 15, y: 15 }, tile: 80 }
 
-  this.load = function (path) {
-    this.path = path
-    this.spritesheet.src = path
-
-    this.spritesheet.onload = function (path) {
-      console.log(`Spritesheet loaded:${path}`, this.width, this.height)
-    }
-  }
-
   this.setup = function (h) {
     this.load(`./media/flow/arena_screen/fighters/${h.name}.png`)
 
@@ -59,7 +50,6 @@ function Sprite (type, id) {
   }
 
   this.update = function (state) {
-    console.log(state)
     this.animate_to(state.pos)
     this.set_name(state.name)
     this.set_status(state.status)
@@ -70,6 +60,15 @@ function Sprite (type, id) {
   }
 
   // Canvas stuff
+
+  this.load = function (path) {
+    this.path = path
+    this.spritesheet.src = path
+
+    this.spritesheet.onload = (img) => {
+      console.log(`Spritesheet loaded:${this.path}`)
+    }
+  }
 
   this.context = function () {
     return this.canvas.getContext('2d')
@@ -100,9 +99,6 @@ function Sprite (type, id) {
     var height = parseInt(this.spritesheet.naturalHeight) * 0.5
     var x = 0
     var y = this.assoc[this.status] ? this.assoc[this.status] * (STAGE.tile * -1.5) : 0
-
-    console.log(this.assoc[this.status], this.status)
-    console.log(this.status, this.name, this.vector, y)
 
     this.context().drawImage(this.spritesheet, x, y, width, height)
   }

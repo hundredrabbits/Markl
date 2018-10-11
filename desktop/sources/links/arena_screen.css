@@ -13,6 +13,7 @@
 #arena_screen div.arena effect sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 30%;background-size: 600px;background-position: 0px 0px;left: -25%;background-image: url(../media/fighters/effects.png);z-index: 200; filter:brightness(0); }
 
 #arena_screen div.arena.dojo background { background-image: url(../media/flow/arena_screen/backgrounds/dojo.png); }
+#arena_screen div.arena.dojo3x5 background { background-image: url(../media/flow/arena_screen/backgrounds/dojo3x5.png); }
 #arena_screen div.arena.temple background { background-image: url(../media/flow/arena_screen/backgrounds/temple.png); }
 #arena_screen div.arena.garden background { background-image: url(../media/flow/arena_screen/backgrounds/garden.png); }
 #arena_screen div.arena.rooftop background { background-image: url(../media/flow/arena_screen/backgrounds/rooftop.png); }
