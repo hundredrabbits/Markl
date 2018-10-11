@@ -1,6 +1,7 @@
 'use strict'
 
-function Stage () {
+function Stage (theme) {
+  this.theme = theme
   this.bounds = { x: 4, y: 4 }
   this.fighters = []
 
@@ -78,7 +79,7 @@ function Stage () {
         score: fighter.score
       })
     }
-    return { fighters: fighters }
+    return { fighters: fighters, turn: 0, theme: this.theme }
   }
 
   function distance (a, b) {
