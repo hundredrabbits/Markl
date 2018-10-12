@@ -2,7 +2,7 @@
   --stage_height: 55vh; 
 }
 
-#stage_screen { width: 100vw; height: calc(100vh * 5); position: fixed; transition: opacity 250ms, bottom 6000ms; }
+#stage_screen { width: 100vw; height: calc(100vh * 5); position: fixed; transition: opacity 250ms, bottom 6000ms; background:#fff; }
 #stage_screen .wrapper { position: relative; bottom:0px; height:100vh; transition: all 1500ms; }
 #stage_screen .wrapper div.stage { display: block; width: 100vw; height: var(--stage_height); background-size: contain; background-position: center; background-repeat: no-repeat; position: absolute; margin-bottom:20vh;}
 #stage_screen .wrapper div.stage#stage_garden { background-image: url(../media/flow/stage_screen/garden.png); bottom:0; }

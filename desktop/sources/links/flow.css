@@ -2,7 +2,7 @@
 
 #flow .screen { width:100vw; height:100vh; position: fixed; transition:opacity 250ms; display: none }
 #flow .screen.shown { display:block; opacity: 1 }
-#flow .screen.hidden { opacity: 0; }
+#flow .screen.hidden { display:block; opacity: 0; }
 #flow .screen.idle { display:none; }
 
 #flow #splash_screen { background:#111; }

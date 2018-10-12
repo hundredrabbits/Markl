@@ -13,12 +13,7 @@ function SplashScreen () {
 
   this.run = function (speed = 250) {
     if (!markl.scenario || !markl.scenario.script) { console.log('Missing script'); return }
-
-    console.log('Found script!')
-
-    setTimeout(() => {
-      // markl.flow.goto('fighter')
-    }, speed)
+    markl.flow.goto('fighter')
   }
 }
 

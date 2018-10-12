@@ -1,24 +1,23 @@
 'use strict'
 
-function Sprite (type, id) {
+function Sprite (type, name) {
   this.canvas = document.createElement('canvas')
 
   this.el = document.createElement('sprite')
   this.el.appendChild(this.canvas)
 
   this.pos = { x: 0, y: 0 }
-  this.name = ''
+  this.type = type
+  this.name = name
   this.status = ''
   this.vector = ''
 
   this.path = null
-  this.spritesheet = new Image()
+  this.spritesheet = markl.assets.get(type,name)
 
   let STAGE = { padding: { x: 15, y: 15 }, tile: 80 }
 
   this.setup = function (h) {
-    this.load(`./media/flow/arena_screen/fighters/${h.name}.png`)
-
     this.el.style.transition = `all ${TIMING.sprite}ms`
     this.el.style.width = `${STAGE.tile}px`
     this.el.style.height = `${STAGE.tile}px`
@@ -60,15 +59,6 @@ function Sprite (type, id) {
   }
 
   // Canvas stuff
-
-  this.load = function (path) {
-    this.path = path
-    this.spritesheet.src = path
-
-    this.spritesheet.onload = (img) => {
-      console.log(`Spritesheet loaded:${this.path}`)
-    }
-  }
 
   this.context = function () {
     return this.canvas.getContext('2d')

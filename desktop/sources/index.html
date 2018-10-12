@@ -56,14 +56,16 @@
     const {dialog,app} = require('electron').remote;
     const fs = require('fs');
     
-    let SPEED = 0.75;
+    let SPEED = 1;
 
     let TIMING = {
       turn:500 * SPEED,
       sprite:500 * SPEED,
       frame:(750 * SPEED)/5,
       delayed_start:1000,
-      camera:150 * SPEED
+      camera:150 * SPEED,
+      flow: 250 * SPEED,
+      screen: 500 * SPEED
     }
 
     const markl = new Markl();

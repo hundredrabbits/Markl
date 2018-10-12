@@ -47,6 +47,7 @@ function AssetsManager () {
 
   this.get = function(type,name)
   {
-    return 
+    if(!this.cache[type][name]){ console.warn(`Missing asset: ${type}/${name}`); return; }
+    return this.cache[type][name];
   }
 }

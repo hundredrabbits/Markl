@@ -55,12 +55,8 @@ function FighterScreen () {
   this.select = function (name, skip = false) {
     console.log('select', name)
     markl.scenario.set_fighter(Fighters[name])
-    this.el.className = `screen select_${name}`
-    if (skip == true) {
-      markl.flow.goto('stage', true)
-    } else {
-      setTimeout(() => { markl.flow.goto('stage') }, speed)
-    }
+    add_class(this.el,`select_${name}`)
+    setTimeout(() => { markl.flow.goto('stage') }, TIMING.screen)
   }
 }
 

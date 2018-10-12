@@ -50,9 +50,14 @@ function Flow () {
       this.screens[this.active].hide()
     }
 
-    this.active = screen_id
-    this.screens[this.active].show()
-    this.run()
+    const previous = this.active;
+
+    setTimeout(() => {
+      this.active = screen_id
+      this.screens[previous].idle()
+      this.screens[this.active].show()
+      this.run()
+    },TIMING.flow)
   }
 
   this.reset = function () {
