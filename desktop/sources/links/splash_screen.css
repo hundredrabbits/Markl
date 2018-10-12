@@ -1,0 +1,2 @@
+#splash_screen { width: 100vw; height: calc(100vh * 5); position: fixed; transition: opacity 250ms, bottom 6000ms; background:white; }
+#splash_screen .logo { background:red; width:200px; height:200px; position: fixed; left:calc(50% - 100px); top:calc(50% - 100px); }
