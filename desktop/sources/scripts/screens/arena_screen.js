@@ -30,8 +30,19 @@ function ArenaScreen () {
     const history = markl.scenario.render()
     const state = history[0]
     add_class(this.arena, history[0].theme)
-    this.verify_sprites(state)
+    this.create_sprites(state)
     setTimeout(() => { this.update(state) }, 1000)
+  }
+
+  this.create_sprites = function (state) {
+    for (let id in state.fighters) {
+      let fighter = state.fighters[id]
+      if (this.sprites.fighters[fighter.id]) { continue }
+      let sprite = new Sprite('fighter', fighter.name)
+      sprite.setup(fighter)
+      this.sprites.fighters[fighter.id] = sprite
+      this.arena.appendChild(sprite.el)
+    }
   }
 
   this.update = function (state) {
@@ -45,18 +56,6 @@ function ArenaScreen () {
     this.focus(state)
 
     // this.animator.start()
-  }
-
-  this.verify_sprites = function (state) {
-    for (let id in state.fighters) {
-      let fighter = state.fighters[id]
-      if (this.sprites.fighters[fighter.id]) { continue }
-      console.log(`Creating sprite for #${fighter.name}:${fighter.id}`)
-      let sprite = new Sprite('fighter', fighter.id)
-      sprite.setup(fighter)
-      this.sprites.fighters[fighter.id] = sprite
-      this.arena.appendChild(sprite.el)
-    }
   }
 
   this.update_sprites = function (state) {

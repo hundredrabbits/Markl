@@ -35,7 +35,6 @@ function Flow () {
   }
 
   this.run = function () {
-    console.log(`Flow: Running screen #${this.active}`)
     this.screens[this.active].run()
     markl.interface.update()
   }
@@ -43,21 +42,17 @@ function Flow () {
   this.goto = function (screen_id, skip = false) {
     if (!this.screens[screen_id]) { console.warn(`Unknown screen: ${screen_id}`); return }
 
-    if (skip) {
-      console.log(`Skipped ${this.active}`)
-      this.screens[this.active].idle()
-    } else {
-      this.screens[this.active].hide()
-    }
+    console.log('Flow.Goto', screen_id)
+    console.log('------------------')
 
-    const previous = this.active;
+    this.screens[this.active].hide()
 
     setTimeout(() => {
+      this.screens[this.active].idle()
       this.active = screen_id
-      this.screens[previous].idle()
       this.screens[this.active].show()
       this.run()
-    },TIMING.flow)
+    }, TIMING.flow)
   }
 
   this.reset = function () {

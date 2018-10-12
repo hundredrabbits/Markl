@@ -36,22 +36,17 @@ function Screen (id) {
   //
 
   this.show = function () {
-    console.log('show', this.id)
     add_class(this.el, 'shown')
     remove_class(this.el, 'hidden')
     remove_class(this.el, 'idle')
   }
 
   this.hide = function () {
-    console.log('hide', this.id)
     add_class(this.el, 'hidden')
     remove_class(this.el, 'shown')
-
-    // setTimeout(() => { this.idle() }, 1000)
   }
 
   this.idle = function () {
-    console.log('idle', this.id)
     add_class(this.el, 'idle')
     remove_class(this.el, 'shown')
     remove_class(this.el, 'hidden')

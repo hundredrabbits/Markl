@@ -2,9 +2,10 @@
   --stage_height: 55vh; 
 }
 
+#arena_screen { background:#ccc; }
 #arena_screen div.arena { display:block; position:absolute; transition:all 500ms; }
 #arena_screen div.arena background { display: block;position: absolute;transition: all 150ms;width: 515px;height: 800px;background-size: contain;background-repeat: no-repeat;left: -55px;top: -250px;}
-#arena_screen div.arena sprite { display: block; position:absolute; transition:all 150ms; background:red;}
+#arena_screen div.arena sprite { display: block; position:absolute; transition:all 150ms; }
 #arena_screen div.arena sprite sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 35%;background-size: 600px;background-position: 0px -360px;left: -25%; transition: opacity 1s, bottom 1s; z-index: 900}
 #arena_screen div.arena sprite shade { display: block;width: 150%;height: 150%;position: absolute;background-size: 600px;background-position: 0px 0px;background-image: url(../media/fighters/effects.png);opacity: 0.5;left: -25%;top: -80%; transition: opacity 3s}
 #arena_screen div.arena sprite marker { display: none;width: 50px;height: 50px;z-index: 900;position: absolute;top: -80px;left: 50%;margin-left: -25px; background-size:50%; background-position: center center; background-repeat: no-repeat; }
@@ -12,9 +13,9 @@
 #arena_screen div.arena effect { display: block; position:absolute; transition:all 150ms; }
 #arena_screen div.arena effect sheet { display: block;width: 150%;height: 150%;position: absolute;bottom: 30%;background-size: 600px;background-position: 0px 0px;left: -25%;background-image: url(../media/fighters/effects.png);z-index: 200; filter:brightness(0); }
 
-#arena_screen div.arena.dojo background { background-image: url(../media/flow/arena_screen/backgrounds/dojo.png); }
-#arena_screen div.arena.dojo3x5 background { background-image: url(../media/flow/arena_screen/backgrounds/dojo3x5.png); }
-#arena_screen div.arena.temple background { background-image: url(../media/flow/arena_screen/backgrounds/temple.png); }
-#arena_screen div.arena.garden background { background-image: url(../media/flow/arena_screen/backgrounds/garden.png); }
-#arena_screen div.arena.rooftop background { background-image: url(../media/flow/arena_screen/backgrounds/rooftop.png); }
-#arena_screen div.arena.wood background { background-image: url(../media/flow/arena_screen/backgrounds/wood.png); }
+#arena_screen div.arena.dojo background { background-image: url(../media/assets/arena/dojo.png); }
+#arena_screen div.arena.dojo3x5 background { background-image: url(../media/assets/arena/dojo3x5.png); }
+#arena_screen div.arena.temple background { background-image: url(../media/assets/arena/temple.png); }
+#arena_screen div.arena.garden background { background-image: url(../media/assets/arena/garden.png); }
+#arena_screen div.arena.rooftop background { background-image: url(../media/assets/arena/rooftop.png); }
+#arena_screen div.arena.wood background { background-image: url(../media/assets/arena/wood.png); }

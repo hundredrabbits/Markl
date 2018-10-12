@@ -13,7 +13,7 @@ function Sprite (type, name) {
   this.vector = ''
 
   this.path = null
-  this.spritesheet = markl.assets.get(type,name)
+  this.spritesheet = markl.assets.get(type, name)
 
   let STAGE = { padding: { x: 15, y: 15 }, tile: 80 }
 

@@ -45,9 +45,9 @@ function StageScreen () {
   this.select = function (name, skip) {
     console.log('select', name)
     markl.scenario.set_stage(stages[name])
-    add_class(this.el,`select_${name.split('_')[0]}`)
 
-    setTimeout(() => { markl.flow.goto('arena') }, TIMING.screen*2)
+    setTimeout(() => { add_class(this.el, `select_${name.split('_')[0]}`) }, TIMING.screen * 0.5)
+    setTimeout(() => { markl.flow.goto('arena') }, TIMING.screen * 3)
   }
 }
 

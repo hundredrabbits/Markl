@@ -12,7 +12,7 @@ function SplashScreen () {
   }
 
   this.run = function (speed = 250) {
-    if (!markl.scenario || !markl.scenario.script) { console.log('Missing script'); return }
+    if (!markl.scenario || !markl.scenario.script) { return }
     markl.flow.goto('fighter')
   }
 }

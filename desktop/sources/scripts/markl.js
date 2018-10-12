@@ -27,7 +27,7 @@ function Markl () {
   this.scenario = null
 
   this.install = function (host) {
-    console.log('Install')
+    console.log('Markl.Install')
 
     this.flow.install(this.el)
     this.interface.install(this.el)
@@ -36,17 +36,19 @@ function Markl () {
     host.appendChild(this.el)
   }
 
-  this.setup = function()
-  {
+  this.setup = function () {
+    console.log('Markl.Setup')
+    console.log('==================')
     this.assets.load({
-      "interface":["logo"],
-      "arena":["dojo3x5"],
-      "fighter":["sin","pest","patience","lancer"]
-    },this.start)
+      'interface': ['logo'],
+      'arena': ['dojo3x5'],
+      'fighter': ['sin', 'pest', 'patience', 'lancer', 'dummy']
+    }, this.start)
   }
 
   this.start = function () {
-    console.log('Start')
+    console.log('Markl.Start')
+    console.log('==================')
 
     this.flow.start()
   }
@@ -56,21 +58,18 @@ function Markl () {
   }
 
   this.load = function (script) {
-    console.log('==================')
     this.reset()
     this.scenario.set_script(script)
     this.run()
   }
 
   this.run = function () {
-    this.flow.run()
+    markl.flow.goto('splash')
   }
 
   this.reset = function () {
-    console.log('New Scenario')
     markl.scenario = new Scenario()
     markl.flow.reset()
-    markl.flow.goto('splash')
   }
 
   // Events
@@ -119,6 +118,7 @@ function Markl () {
       console.warn(`Could not load ${path}`)
       return
     }
+
     markl.load(data)
   }
 }
