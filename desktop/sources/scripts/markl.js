@@ -39,6 +39,7 @@ function Markl () {
   this.setup = function()
   {
     this.assets.load({
+      "interface":["logo"],
       "arena":["dojo3x5"],
       "fighter":["sin","pest","patience","lancer"]
     },this.start)
