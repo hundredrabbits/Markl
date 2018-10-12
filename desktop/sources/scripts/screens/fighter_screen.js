@@ -42,25 +42,24 @@ function FighterScreen () {
   this.run = function () {
     const fightscript = new Fightscript(markl.scenario.script)
     const screen_action = fightscript.find('menu', 'stage', 'screen')[0]
-    const skip = screen_action == "SKIP"
+    const skip = screen_action == 'SKIP'
     // Skip
     for (const name in Fighters) {
       const actions = fightscript.find('menu', 'fighter', 'name is ' + name)
       if (!actions[0]) { continue }
       if (actions[0] != 'SELECT') { continue }
-      this.select(name,skip)
+      this.select(name, skip)
     }
   }
 
-  this.select = function (name,skip = false) {
+  this.select = function (name, skip = false) {
     console.log('select', name)
     markl.scenario.set_fighter(Fighters[name])
     this.el.className = `screen select_${name}`
-    if(skip == true){
-      markl.flow.goto('stage',true)
-    }
-    else{
-      setTimeout(() => { markl.flow.goto('stage') }, speed)  
+    if (skip == true) {
+      markl.flow.goto('stage', true)
+    } else {
+      setTimeout(() => { markl.flow.goto('stage') }, speed)
     }
   }
 }

@@ -17,6 +17,7 @@ function Markl () {
   this.el = document.createElement('div')
   this.el.id = 'app'
 
+  this.assets = new AssetsManager()
   this.flow = new Flow()
   this.interface = new Interface()
   this.controller = new Controller()
@@ -33,6 +34,14 @@ function Markl () {
 
     this.keyboard.install()
     host.appendChild(this.el)
+  }
+
+  this.setup = function()
+  {
+    this.assets.load({
+      "arena":["dojo3x5"],
+      "fighter":["sin","pest","patience","lancer"]
+    },this.start)
   }
 
   this.start = function () {

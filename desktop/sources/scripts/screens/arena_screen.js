@@ -29,7 +29,7 @@ function ArenaScreen () {
   this.run = function () {
     const history = markl.scenario.render()
     const state = history[0]
-    add_class(this.arena,history[0].theme)
+    add_class(this.arena, history[0].theme)
     this.verify_sprites(state)
     setTimeout(() => { this.update(state) }, 1000)
   }
@@ -37,9 +37,9 @@ function ArenaScreen () {
   this.update = function (state) {
     if (!state) { return }
 
-    console.log("Update===================")
+    console.log('Update===================')
     this.remove_effects()
-    
+
     this.update_sprites(state)
     this.add_effects(state)
     this.focus(state)
@@ -116,12 +116,7 @@ function ArenaScreen () {
     this.arena.style.transform = `translate(${-parseInt(center.x)}px, ${-parseInt(center.y)}px)`
   }
 
-
-
   // KEEP
-
-
-
 }
 
 module.exports = ArenaScreen

@@ -6,7 +6,7 @@ const Fighter = require('../events/fighter')
 const Dummy = require('../events/dummy')
 
 function Dojo1v0 (c = [], f = []) {
-  Stage.call(this,"dojo3x5")
+  Stage.call(this, 'dojo3x5')
 
   this.bounds = { x: 4, y: 4 }
 
