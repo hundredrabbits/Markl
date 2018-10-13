@@ -57,13 +57,13 @@ function Timeline () {
   }
 
   this.show = function () {
-    if(has_class(this._el,'shown')) { return }
-    add_class(this._el,'shown') 
+    if (has_class(this._el, 'shown')) { return }
+    add_class(this._el, 'shown')
   }
 
   this.hide = function () {
-    if (has_class(this._el,'hidden')) { return }
-    add_class(this._el,'hidden')
+    if (has_class(this._el, 'hidden')) { return }
+    add_class(this._el, 'hidden')
   }
 
   this.toggle = function (show) {

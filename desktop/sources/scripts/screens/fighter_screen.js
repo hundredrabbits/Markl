@@ -56,7 +56,7 @@ function FighterScreen () {
     console.log('select', name)
     markl.scenario.set_fighter(Fighters[name])
     markl.interface.navigator.update()
-    
+
     setTimeout(() => { add_class(this.el, `select_${name}`) }, TIMING.screen * 0.5)
     setTimeout(() => { markl.flow.goto('stage') }, TIMING.screen * 2)
   }

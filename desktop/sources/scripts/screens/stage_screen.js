@@ -33,8 +33,7 @@ function StageScreen () {
     host.appendChild(this.el)
   }
 
-  this.name = function()
-  {
+  this.name = function () {
     return Object.keys(stages)[markl.scenario.level]
   }
 
@@ -44,7 +43,6 @@ function StageScreen () {
     const skip = screen_action == 'SKIP'
     this.select(this.name(), skip)
   }
-
 
   this.select = function (name, skip) {
     console.log('select', name)

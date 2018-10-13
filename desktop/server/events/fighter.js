@@ -6,7 +6,7 @@ function Fighter (id, pos, fightscript) {
   this.id = id
   this.pos = pos
   this.fightscript = fightscript
-  if(this.fightscript){
+  if (this.fightscript) {
     this.fightscript.host = this
   }
 
