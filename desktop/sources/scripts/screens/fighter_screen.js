@@ -41,7 +41,7 @@ function FighterScreen () {
 
   this.run = function () {
     const fightscript = new Fightscript(markl.scenario.script)
-    const screen_action = fightscript.find('menu', 'stage', 'screen')[0]
+    const screen_action = fightscript.find('menu', 'fighter', 'screen')[0]
     const skip = screen_action == 'SKIP'
     // Skip
     for (const name in Fighters) {
@@ -57,8 +57,13 @@ function FighterScreen () {
     markl.scenario.set_fighter(Fighters[name])
     markl.interface.navigator.update()
 
-    setTimeout(() => { add_class(this.el, `select_${name}`) }, TIMING.screen * 0.5)
-    setTimeout(() => { markl.flow.goto('stage') }, TIMING.screen * 2)
+    if (skip) {
+      console.log('skip')
+      markl.flow.goto('stage', true)
+    } else {
+      setTimeout(() => { add_class(this.el, `select_${name}`) }, TIMING.screen * 0.5)
+      setTimeout(() => { markl.flow.goto('stage') }, TIMING.screen * 2)
+    }
   }
 }
 

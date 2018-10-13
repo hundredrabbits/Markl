@@ -49,8 +49,13 @@ function StageScreen () {
     markl.scenario.set_stage(stages[name])
     markl.interface.navigator.update()
 
-    setTimeout(() => { add_class(this.el, `select_${name.split('_')[0]}`) }, TIMING.screen * 0.5)
-    setTimeout(() => { markl.flow.goto('arena') }, TIMING.screen * 3)
+    if (skip) {
+      console.log('skip')
+      markl.flow.goto('arena', true)
+    } else {
+      setTimeout(() => { add_class(this.el, `select_${name.split('_')[0]}`) }, TIMING.screen * 0.5)
+      setTimeout(() => { markl.flow.goto('arena') }, TIMING.screen * 3)
+    }
   }
 }
 

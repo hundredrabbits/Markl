@@ -52,7 +52,7 @@ function Flow () {
       this.active = screen_id
       this.screens[this.active].show()
       this.run()
-    }, TIMING.flow)
+    }, skip ? 17 : TIMING.flow)
   }
 
   this.reset = function () {

@@ -144,34 +144,26 @@ function Navigator () {
     if (!this.history || !this.history[this.index]) { console.warn('No history'); return }
     if (this.index >= this.history.length - 1) { console.warn('Reached the End'); return }
 
-    this.index++
-    this.goto(this.index)
+    this.goto(this.index + 1)
   }
 
   this.prev = function () {
     if (!this.history || !this.history[this.index]) { console.warn('No history'); return }
     if (this.index < 1) { console.warn('Reached the beginning'); return }
 
-    this.index--
-    this.goto(this.index)
+    this.goto(this.index - 1)
   }
 
   this.first = function () {
-    if (!this.history || !this.history[this.index]) { console.warn('No history'); this.pause(); return }
+    if (!this.history) { console.warn('No history'); return }
 
-    this.index = 0
-    markl.renderer.update(this.history[this.index].state)
+    this.goto(0)
   }
 
   this.last = function () {
-    if (!this.history || !this.history[this.index]) { console.warn('No history'); this.pause(); return }
+    if (!this.history) { console.warn('No history'); return }
 
-    this.index = this.history.length - 1
-    markl.renderer.update(this.history[this.index].state)
-  }
-
-  this.should_skip = function () {
-    return !!(this.history[this.index] && this.history[this.index - 1] && this.history[this.index].action == 'WAIT' && this.history[this.index - 1].action == 'WAIT')
+    this.goto(this.history.length - 1)
   }
 
   // Display

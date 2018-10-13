@@ -27,3 +27,4 @@
 
 - Sight distance attribute per fighter
 - Diagonal moves
+- Implement arena size limits and centering
