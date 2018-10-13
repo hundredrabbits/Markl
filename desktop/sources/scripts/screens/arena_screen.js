@@ -14,15 +14,12 @@ function ArenaScreen () {
   this.install = function (host) {
     this.arena.appendChild(this.background)
     this.el.appendChild(this.arena)
-
     host.appendChild(this.el)
 
     this.arena.style.transition = `all ${TIMING.camera}ms`
-    // Resize
     this.arena.style.width = `${5 * STAGE.tile}px`
     this.arena.style.height = `${5 * STAGE.tile}px`
-    // Center
-    this.arena.style.left = `calc(50% - ${(9 * STAGE.tile) / 2}px)`
+    this.arena.style.left = `calc(50% - ${(6 * STAGE.tile) / 2}px)`
     this.arena.style.top = `calc(55% - ${(5 * STAGE.tile) / 2}px)`
   }
 
@@ -31,7 +28,7 @@ function ArenaScreen () {
     const state = history[0]
     add_class(this.arena, history[0].theme)
     this.create_sprites(state)
-    setTimeout(() => { this.update(state) }, 1000)
+    this.update(state)
   }
 
   this.create_sprites = function (state) {
@@ -48,7 +45,9 @@ function ArenaScreen () {
   this.update = function (state) {
     if (!state) { return }
 
-    console.log('Update===================')
+    console.log('Update')
+    console.log('::::::::::::::::::')
+
     this.remove_effects()
 
     this.update_sprites(state)

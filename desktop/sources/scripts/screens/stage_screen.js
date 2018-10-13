@@ -33,18 +33,23 @@ function StageScreen () {
     host.appendChild(this.el)
   }
 
+  this.name = function()
+  {
+    return Object.keys(stages)[markl.scenario.level]
+  }
+
   this.run = function () {
     const fightscript = new Fightscript(markl.scenario.script)
     const screen_action = fightscript.find('menu', 'stage', 'screen')[0]
     const skip = screen_action == 'SKIP'
-    const name = Object.keys(stages)[markl.scenario.level]
-
-    this.select(name, skip)
+    this.select(this.name(), skip)
   }
+
 
   this.select = function (name, skip) {
     console.log('select', name)
     markl.scenario.set_stage(stages[name])
+    markl.interface.navigator.update()
 
     setTimeout(() => { add_class(this.el, `select_${name.split('_')[0]}`) }, TIMING.screen * 0.5)
     setTimeout(() => { markl.flow.goto('arena') }, TIMING.screen * 3)

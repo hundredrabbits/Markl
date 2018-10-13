@@ -52,16 +52,18 @@
 #interface #navigator button.pause icon { background-image:url(../media/navigator/menu/pause.png); }
 #interface #navigator button.stop icon { background-image:url(../media/navigator/menu/stop.png); }
 
+#interface #navigator div.label { line-height: 45px; padding: 0px 25px; }
+
 /* Timeline */
 
 #interface #timeline { background: #444;width: calc(100% - 90px);height: 3px;border-radius: 5px;position: absolute;top: 22px;left: 25px; }
 #interface #timeline .bar { background:white; border-radius: 5px; background-color:white; width:0px; height:100%; transition: width 250ms; min-width: 3px }
 #interface #timeline .events {}
 #interface #timeline .events .event { width: 3px;height: 3px;position: absolute;margin-top: -5px;border-radius: 10px;background: #111;border: 2px solid white; }
+#interface #timeline.hidden { display: none; }
 
 /* Mods */
 
-#interface #navigator.hide { right: -420px; }
 #interface #navigator #menu button { display: none }
 
 #interface #navigator.running #menu button.export { display: none; }

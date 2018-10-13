@@ -56,7 +56,6 @@ function Fightscript (script = '') {
 
   this.react = function (triggers, combo = 0) {
     const response = this.respond(triggers)
-
     if (!response) { return }
 
     const actions = response.actions

@@ -7,11 +7,11 @@ function Navigator () {
 
   this.timeline = new Timeline()
 
-  this.el = document.createElement('yu')
+  this.el = document.createElement('div')
   this.el.id = 'navigator'
 
-  // Menu
-
+  this._label = document.createElement('div')
+  this._label.className = 'label'
   this.run_button = document.createElement('button')
   this.run_button.className = 'run'
   this.run_button.onclick = () => { this.toggle() }
@@ -24,36 +24,52 @@ function Navigator () {
 
   this.install = function (host) {
     this.el.appendChild(this.run_button)
+    this.el.appendChild(this._label)
 
     this.timeline.install(this.el)
 
     host.appendChild(this.el)
 
+    this.start()
     this.update()
   }
 
   this.start = function () {
     this.timeline.start()
-
     this.update()
   }
 
   this.update = function () {
+    if(!this[`${markl.flow.active}_update`]){ this.default_update(); return; }
+
+    this[`${markl.flow.active}_update`]()
     this.toggle(markl.scenario && markl.scenario.script)
-    this.timeline.update()
+  }
 
-    // Status
-    // if(this.history && this.history.length > 0 && this.index > 0){
-    //   let rune = new Fightrune(this.history[this.index].reaction)
-    //   console.log(`Playing: Player ${this.history[this.index].player.id}`,rune.toString())
-    // }
+  this.default_update = function()
+  {
+    this._label.textContent = markl.flow.active
+  }
 
-    // this.el.className = `${this.mode} ${this.is_running ? 'running' : ''}`
+  this.splash_update = function()
+  {
+   
+  }
 
-    // let state = this.history && this.history.length > 0 && this.index > 0 ? this.history[this.index] : null;
+  this.fighter_update = function()
+  {
+    // TODO: Display line ID for trigger
+    if(markl.scenario.fighter){
+      this._label.textContent = `${markl.flow.active} > ${new markl.scenario.fighter().name}`  
+    }
+    else{
+      this._label.textContent = `${markl.flow.active}`  
+    }
+  }
 
-    // // Menu
-    // this.run_button.className = this.fightscript.runes().length < 1 ? "disabled run" : "run"
+  this.stage_update = function()
+  {
+    this._label.textContent = `${markl.flow.active}`  
   }
 
   this.run = function () {

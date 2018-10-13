@@ -35,8 +35,8 @@ function Flow () {
   }
 
   this.run = function () {
+    markl.interface.navigator.update()
     this.screens[this.active].run()
-    markl.interface.update()
   }
 
   this.goto = function (screen_id, skip = false) {

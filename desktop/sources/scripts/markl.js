@@ -41,7 +41,7 @@ function Markl () {
     console.log('==================')
     this.assets.load({
       'interface': ['logo'],
-      'arena': ['dojo3x5'],
+      'arena': ['dojo5x5'],
       'fighter': ['sin', 'pest', 'patience', 'lancer', 'dummy']
     }, this.start)
   }

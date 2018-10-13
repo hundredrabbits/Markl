@@ -6,7 +6,9 @@ function Fighter (id, pos, fightscript) {
   this.id = id
   this.pos = pos
   this.fightscript = fightscript
-  this.fightscript.host = this
+  if(this.fightscript){
+    this.fightscript.host = this
+  }
 
   // Fighter Overrides
   this.name = 'unknown'
