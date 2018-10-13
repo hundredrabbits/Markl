@@ -37,6 +37,7 @@ function ArenaScreen () {
 
     this.remove_effects()
 
+    markl.interface.navigator.update()
     this.update_sprites(state)
     this.add_effects(state)
     this.focus(state)

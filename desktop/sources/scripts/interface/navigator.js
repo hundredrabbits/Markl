@@ -68,7 +68,7 @@ function Navigator () {
   }
 
   this.arena_update = function () {
-    this._label.textContent = `${markl.flow.active}!`
+    this._label.textContent = this.history ? `${markl.flow.active}!(${this.index}/${this.history.length})` : '-'
   }
 
   //
