@@ -19,16 +19,27 @@ function ArenaScreen () {
     this.arena.style.transition = `all ${TIMING.camera}ms`
     this.arena.style.width = `${5 * STAGE.tile}px`
     this.arena.style.height = `${5 * STAGE.tile}px`
-    this.arena.style.left = `calc(50% - ${(6 * STAGE.tile) / 2}px)`
+    this.arena.style.left = `calc(50% - ${(5 * STAGE.tile) / 2}px)`
     this.arena.style.top = `calc(55% - ${(5 * STAGE.tile) / 2}px)`
   }
 
   this.run = function () {
     const history = markl.scenario.render()
+    markl.interface.navigator.load(history)
+
     const state = history[0]
-    add_class(this.arena, history[0].theme)
+    add_class(this.arena, state.theme)
     this.create_sprites(state)
-    this.update(state)
+  }
+
+  this.play = function (state) {
+    if (!state) { return }
+
+    this.remove_effects()
+
+    this.update_sprites(state)
+    this.add_effects(state)
+    this.focus(state)
   }
 
   this.create_sprites = function (state) {
@@ -42,19 +53,7 @@ function ArenaScreen () {
     }
   }
 
-  this.update = function (state) {
-    if (!state) { return }
-
-    console.log('Update')
-    console.log('::::::::::::::::::')
-
-    this.remove_effects()
-
-    this.update_sprites(state)
-    this.add_effects(state)
-    this.focus(state)
-
-    // this.animator.start()
+  this.update = function () {
   }
 
   this.update_sprites = function (state) {

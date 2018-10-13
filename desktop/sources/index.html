@@ -90,16 +90,16 @@
     markl.controller.add_role("default","Edit","delete");
     markl.controller.add_role("default","Edit","selectall");
     
-    markl.controller.add("default","Navigator","Play",() => { markl.navigator.play(); },"CmdOrCtrl+R");
-    markl.controller.add("default","Navigator","Pause/Resume",() => { markl.navigator.pause(); },"CmdOrCtrl+P");
-    markl.controller.add("default","Navigator","Stop",() => { markl.navigator.stop(); },"CmdOrCtrl+W");
-    markl.controller.add("default","Navigator","Next Turn",() => { markl.navigator.next(); },"CmdOrCtrl+Right");
-    markl.controller.add("default","Navigator","Prev Turn",() => { markl.navigator.prev(); },"CmdOrCtrl+Left");
-    markl.controller.add("default","Navigator","Last Turn",() => { markl.navigator.last(); },"CmdOrCtrl+Shift+Right");
-    markl.controller.add("default","Navigator","First Turn",() => { markl.navigator.first(); },"CmdOrCtrl+Shift+Left");
-    markl.controller.add("default","Navigator","Toggle View",() => { markl.navigator.toggle(); },"CmdOrCtrl+D");
-    markl.controller.add("default","Navigator","Save",() => { markl.navigator.save(); },"CmdOrCtrl+S");
-    markl.controller.add("default","Navigator","Export",() => { markl.navigator.export(); },"CmdOrCtrl+E");
+    markl.controller.add("default","Navigator","Play",() => { markl.interface.navigator.play(); },"CmdOrCtrl+R");
+    markl.controller.add("default","Navigator","Pause/Resume",() => { markl.interface.navigator.pause(); },"CmdOrCtrl+P");
+    markl.controller.add("default","Navigator","Stop",() => { markl.interface.navigator.stop(); },"CmdOrCtrl+W");
+    markl.controller.add("default","Navigator","Next Turn",() => { markl.interface.navigator.next(); },"CmdOrCtrl+Right");
+    markl.controller.add("default","Navigator","Prev Turn",() => { markl.interface.navigator.prev(); },"CmdOrCtrl+Left");
+    markl.controller.add("default","Navigator","Last Turn",() => { markl.interface.navigator.last(); },"CmdOrCtrl+Shift+Right");
+    markl.controller.add("default","Navigator","First Turn",() => { markl.interface.navigator.first(); },"CmdOrCtrl+Shift+Left");
+    markl.controller.add("default","Navigator","Toggle View",() => { markl.interface.navigator.toggle(); },"CmdOrCtrl+D");
+    markl.controller.add("default","Navigator","Save",() => { markl.interface.navigator.save(); },"CmdOrCtrl+S");
+    markl.controller.add("default","Navigator","Export",() => { markl.interface.navigator.export(); },"CmdOrCtrl+E");
 
     markl.controller.commit();
 
