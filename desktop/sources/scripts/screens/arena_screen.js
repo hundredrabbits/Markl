@@ -30,6 +30,7 @@ function ArenaScreen () {
     const state = history[0]
     add_class(this.arena, state.theme)
     this.create_sprites(state)
+    this.play(state)
   }
 
   this.play = function (state) {
