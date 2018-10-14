@@ -14,12 +14,13 @@ function Supervisor (fightscript, fighter, stage) {
     const triggers = stage.triggers(fighter)
     const reaction = fighter.fightscript.react(triggers)
 
+    // TODO: Connect reaction to stage/state
     fighter.enact(reaction)
-    record(stage)
+    record(stage,reaction)
   }
 
-  function record (stage) {
-    history.push(stage.serialize())
+  function record (stage,reaction = null) {
+    history.push({stage:stage.serialize(),reaction:reaction})
   }
 
   function render (f, c, s) {

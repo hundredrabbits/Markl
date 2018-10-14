@@ -27,14 +27,18 @@ function ArenaScreen () {
     const history = markl.scenario.render()
     markl.interface.navigator.load(history)
 
-    const state = history[0]
+    const state = history[0].stage
+    const reaction = history[0].reaction
+
     add_class(this.arena, state.theme)
     this.create_sprites(state)
-    this.play(state)
+    this.play(state,reaction)
   }
 
-  this.play = function (state) {
+  this.play = function (state,reaction) {
     if (!state) { return }
+
+    console.log(reaction)
 
     this.remove_effects()
 
@@ -59,6 +63,7 @@ function ArenaScreen () {
   }
 
   this.update_sprites = function (state) {
+    console.log(state)
     for (const id in this.sprites.fighters) {
       const sprite = this.sprites.fighters[id]
       sprite.update(state.fighters[id])

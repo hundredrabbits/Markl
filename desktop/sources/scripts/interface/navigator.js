@@ -87,8 +87,10 @@ function Navigator () {
     this.index = index
 
     const state = this.history[this.index]
+    const stage = state.stage
+    const reaction = state.reaction
 
-    markl.flow.screens.arena.play(state)
+    markl.flow.screens.arena.play(stage,reaction)
   }
 
   this.play = function (delay = 0) {
