@@ -15,9 +15,9 @@ function Control () {
 
   this.update = function () {
     if (this.isPlaying === true) {
-      this.el.innerHTML = `playing: ${this.index}/${this.stash.length}`
+      this.el.innerHTML = `playing: ${this.index}/${this.stash.length} = ${this.stash[this.index]}`
     } else if (this.isRecording === true) {
-      this.el.innerHTML = `recording: ${this.stash.length} moves`
+      this.el.innerHTML = this.stash.length > 0 ? `recording: ${this.stash[this.stash.length - 1]} ${this.stash.length} moves` : 'Starting to record..'
     } else {
       this.el.innerHTML = `Idle`
     }
