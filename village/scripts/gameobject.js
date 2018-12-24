@@ -1,13 +1,18 @@
 'use strict'
 
-function GameObject (id, type = 'div') {
+function GameObject (id, type) {
   this.id = id
-  this.el = document.createElement(type)
-  this.el.id = id
+  if(type){
+    this.el = document.createElement(type)
+    this.el.id = id  
+  }
+  
 
   this.install = function (host = document.body) {
     console.log(this.id, 'Install')
-    host.appendChild(this.el)
+    if(this.el){
+      host.appendChild(this.el)
+    }
     this.setup()
   }
 

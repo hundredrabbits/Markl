@@ -1,7 +1,7 @@
 'use strict'
 
 function Markl () {
-  GameObject.call(this, 'markl')
+  GameObject.call(this, 'markl','div')
 
   this.stage = new Stage()
   this.stage.install(this.el)

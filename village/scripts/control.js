@@ -1,7 +1,7 @@
 'use strict'
 
 function Control () {
-  GameObject.call(this, 'control')
+  GameObject.call(this, 'control','div')
 
   this.index = 0
   this.stash = []
