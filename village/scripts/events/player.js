@@ -11,7 +11,7 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
   this.el.id = 'player'
 
   this.run = function () {
-    if (this.control.stack.length < 1) { console.warn('Nothing to play..'); return }
+    if (this.control.stack.length < 1) { console.warn('Nothing to play..'); this.control.isPlaying = false; return }
 
     // Act
     const key = this.control.index % this.control.stack.length

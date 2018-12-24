@@ -28,7 +28,7 @@ function Markl () {
     this.stage.start()
     this.control.start()
 
-    this.timer = setInterval(() => { this.run() }, 500)
+    this.timer = setInterval(() => { this.run() }, 150)
   }
 
   this.stop = function () {
