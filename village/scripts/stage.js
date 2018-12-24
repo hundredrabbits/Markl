@@ -4,7 +4,7 @@ function Stage () {
   GameObject.call(this, 'stage', 'canvas')
 
   this.events = []
-  this.player = new Player()
+  this.player = new Player({ x: 0, y: 0 })
   this.focus = { x: 0, y: 0 }
 
   this.setup = function () {
@@ -18,6 +18,7 @@ function Stage () {
   this.start = function () {
     console.log(this.id, 'Start')
     this.addEvent(this.player)
+    this.addEvent(new Blocker({ x: 0, y: 2 }))
     this.update()
   }
 

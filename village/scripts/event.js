@@ -1,9 +1,9 @@
 'use strict'
 
-function Event () {
+function Event (id, pos = { x: 0, y: 0 }) {
   GameObject.call(this, 'event')
 
-  this.pos = { x: 0, y: 0 }
+  this.pos = pos
   this.sprite = new Sprite(this)
 
   this.start = function () {
