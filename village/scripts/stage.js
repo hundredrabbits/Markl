@@ -21,8 +21,8 @@ function Stage (markl) {
   this.start = function () {
     console.log(this.id, 'Start')
     this.addEvent(this.player)
-    this.addEvent(new Blocker({ x: 0, y: -2 }))
-    this.addEvent(new RotateTile({ x: 2, y: -2 }))
+    this.addEvent(new Blocker({ x: 0, y: -2, z: 0 }))
+    this.addEvent(new RotateTile({ x: 2, y: -2, z: -1 }))
     this.update()
   }
 
@@ -40,6 +40,7 @@ function Stage (markl) {
   }
 
   this.addEvent = function (event) {
+    event.stage = this
     this.events.push(event)
   }
 
@@ -65,5 +66,15 @@ function Stage (markl) {
 
     ctx.fillStyle = clr
     ctx.fillRect(rect.x, rect.y, rect.w, rect.h)
+  }
+
+  this.tileAt = function (pos) {
+    for (const id in this.events) {
+      const event = this.events[id]
+      if (event.pos.z !== -1) { continue }
+      if (!event.hasPos(pos)) { continue }
+      return event
+    }
+    return null
   }
 }

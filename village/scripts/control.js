@@ -15,11 +15,11 @@ function Control () {
 
   this.update = function () {
     if (this.isPlaying === true) {
-      this.el.innerHTML = `playing: ${this.index % this.stack.length}/${this.stack.length} = ${this.stack[this.index % this.stack.length]}`
+      this.el.innerHTML = `playing: ${this.index % this.stack.length}/${this.stack.length} [${this.stack.reduce((acc, el, key) => { return acc + ' ' + (key === this.index % this.stack.length ? '(' + el + ')' : el) }, '')}]`
     } else if (this.isRecording === true) {
       this.el.innerHTML = this.stack.length > 0 ? `recording: ${this.stack[this.stack.length - 1]} ${this.stack.length} moves` : 'Starting to record..'
     } else {
-      this.el.innerHTML = `Idle`
+      this.el.innerHTML = `Idle(Press Enter to record)`
     }
   }
 

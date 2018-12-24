@@ -2,6 +2,7 @@
 
 function GameObject (id, type) {
   this.id = id
+
   if (type) {
     this.el = document.createElement(type)
     this.el.id = id

@@ -6,10 +6,10 @@ const RENDER = {
 }
 
 const INPUT = {
-  up: 0,
-  down: 1,
-  left: 2,
-  right: 3
+  up: 'up',
+  down: 'down',
+  left: 'left',
+  right: 'right'
 }
 
 function Markl () {
