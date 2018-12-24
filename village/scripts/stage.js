@@ -29,6 +29,12 @@ function Stage (markl) {
     this.addEvent(new MirrorXTile({ x: 2, y: -7, z: -1 }))
     this.addEvent(new OverrideTile({ x: -2, y: -11, z: -1 }, [INPUT.up]))
     this.addEvent(new SaveTile({ x: -2, y: 0, z: -1 }, [INPUT.up]))
+    this.addEvent(new Blocker({ x: 2, y: 0, z: 0 }))
+    this.addEvent(new Blocker({ x: -3, y: 1, z: 0 }))
+    this.addEvent(new Blocker({ x: -1, y: 0, z: 0 }))
+    this.addEvent(new Blocker({ x: -1, y: -1, z: 0 }))
+    this.addEvent(new Blocker({ x: -5, y: -1, z: 0 }))
+    this.addEvent(new SaveTile({ x: -6, y: -2, z: -1 }, [INPUT.up]))
     this.update()
   }
 
