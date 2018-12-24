@@ -1,4 +1,5 @@
 body {  padding:30px; font-family: courier; font-size:12px;}
-canvas { border: 1px solid black;margin:0px auto;display: block; border-radius:3px; overflow: hidden;}
+canvas { border: 1px solid black;display: block; border-radius:3px; overflow: hidden; margin-bottom:30px;}
 
-#control { position: fixed;background:black;color:white;padding:20px 30px;bottom:15px;left:45px;width:calc(100vw - 160px) }
+#control { margin-bottom: 30px }
+#control b { color:pink; }

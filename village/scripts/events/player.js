@@ -7,6 +7,9 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
 
   this.sprite.color = 'black'
 
+  this.el = document.createElement('div')
+  this.el.id = 'player'
+
   this.run = function () {
     if (this.control.stack.length < 1) { console.warn('Nothing to play..'); return }
 
@@ -25,17 +28,18 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
 
   this.act = function (cmd) {
     if (cmd === INPUT.up) {
-      this.move(0, 1)
+      this.move({ x: 0, y: 1 })
     } else if (cmd === INPUT.down) {
-      this.move(0, -1)
+      this.move({ x: 0, y: -1 })
     } else if (cmd === INPUT.left) {
-      this.move(-1, 0)
+      this.move({ x: -1, y: 0 })
     } else if (cmd === INPUT.right) {
-      this.move(1, 0)
+      this.move({ x: 1, y: 0 })
     }
   }
 
-  this.move = function (x, y) {
-    this.pos = { x: this.pos.x + x, y: this.pos.y + y }
+  this.update = function () {
+    const tile = this.stage.tileAt(this.pos)
+    this.el.innerHTML = tile ? `${tile.id}` : this.pos.effect ? `${this.pos.effect.x},${this.pos.effect.y}` : ''
   }
 }

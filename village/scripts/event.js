@@ -17,6 +17,19 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
 
   }
 
+  this.move = function (pos) {
+    const mod = this.mod(pos, this.effect)
+    this.pos.x += mod.x
+    this.pos.y += mod.y
+  }
+
+  this.mod = function (pos, effect = this.pos.effect) {
+    if (!effect) { return pos }
+    pos.x = pos.x * effect.x
+    pos.y = pos.y * effect.y
+    return pos
+  }
+
   this.onStep = function (e) {
 
   }

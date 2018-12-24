@@ -6,11 +6,13 @@ function Stage (markl) {
   this.camera = new Camera(this)
 
   this.player = new Player({ x: 0, y: 0 })
-  this.player.control = markl.control
 
   this.events = []
 
   this.setup = function () {
+    this.player.control = markl.control
+    this.player.install(markl.el)
+
     this.el.width = RENDER.viewport.w
     this.el.height = RENDER.viewport.h
     this.context = this.el.getContext('2d')
@@ -22,7 +24,7 @@ function Stage (markl) {
     console.log(this.id, 'Start')
     this.addEvent(this.player)
     this.addEvent(new Blocker({ x: 0, y: -2, z: 0 }))
-    this.addEvent(new RotateTile({ x: 2, y: -2, z: -1 }))
+    this.addEvent(new MirrorXTile({ x: 2, y: -2, z: -1 }))
     this.update()
   }
 
@@ -35,6 +37,7 @@ function Stage (markl) {
 
   this.update = function () {
     markl.control.update()
+    this.player.update()
     this.camera.update()
     this.draw()
   }
