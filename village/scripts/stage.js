@@ -90,4 +90,15 @@ function Stage (markl) {
     }
     return null
   }
+
+  this.colliderAt = function (pos, z = 0, skip = null) {
+    for (const id in this.events) {
+      const event = this.events[id]
+      if (event.pos.z !== z) { continue }
+      if (event.id === skip.id) { continue }
+      if (!event.hasPos(pos)) { continue }
+      return event
+    }
+    return null
+  }
 }

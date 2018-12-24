@@ -8,6 +8,8 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
   this.pos = pos
   this.sprite = new Sprite(this)
 
+  this.isBlocker = false
+
   this.start = function () {
     console.log(this.id, 'Start')
     this.update()
@@ -19,8 +21,16 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
 
   this.move = function (pos) {
     const mod = this.mod(pos, this.effect)
-    this.pos.x += mod.x
-    this.pos.y += mod.y
+    const collider = this.stage.colliderAt({ x: this.pos.x + mod.x, y: this.pos.y + mod.y }, this.pos.z, this)
+
+    if (collider) {
+      collider.onCollision(this)
+    }
+
+    if (!collider || collider.isBlocker !== true) {
+      this.pos.x += mod.x
+      this.pos.y += mod.y
+    }
   }
 
   this.mod = function (pos, effect = this.pos.effect) {
@@ -31,6 +41,10 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
   }
 
   this.onStep = function (e) {
+
+  }
+
+  this.onCollision = function (e) {
 
   }
 
