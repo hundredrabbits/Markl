@@ -1,7 +1,12 @@
 'use strict'
 
+const RENDER = {
+  tile: { w: 60, h: 60 },
+  viewport: { w: 640, h: 320 }
+}
+
 function Markl () {
-  GameObject.call(this, 'markl','div')
+  GameObject.call(this, 'markl', 'div')
 
   this.stage = new Stage()
   this.stage.install(this.el)

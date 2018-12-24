@@ -2,15 +2,14 @@
 
 function GameObject (id, type) {
   this.id = id
-  if(type){
+  if (type) {
     this.el = document.createElement(type)
-    this.el.id = id  
+    this.el.id = id
   }
-  
 
   this.install = function (host = document.body) {
     console.log(this.id, 'Install')
-    if(this.el){
+    if (this.el) {
       host.appendChild(this.el)
     }
     this.setup()
