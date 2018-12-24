@@ -4,6 +4,7 @@ function Stage (markl) {
   GameObject.call(this, 'stage', 'canvas')
 
   this.camera = new Camera(this)
+  this.dialog = new Dialog(this)
 
   this.player = new Player({ x: 0, y: 0 })
 
@@ -12,6 +13,7 @@ function Stage (markl) {
   this.setup = function () {
     this.player.control = markl.control
     this.player.install(markl.el)
+    this.dialog.install(markl.el)
 
     this.el.width = RENDER.viewport.w
     this.el.height = RENDER.viewport.h
@@ -35,6 +37,7 @@ function Stage (markl) {
     this.addEvent(new Blocker({ x: -1, y: -1, z: 0 }))
     this.addEvent(new Blocker({ x: -5, y: -1, z: 0 }))
     this.addEvent(new SaveTile({ x: -6, y: -2, z: -1 }, [INPUT.up]))
+    this.addEvent(new ChatTile({ x: 0, y: 2, z: 0 }))
     this.update()
   }
 

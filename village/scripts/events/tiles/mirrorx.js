@@ -1,7 +1,7 @@
 'use strict'
 
 function MirrorXTile (pos = { x: 0, y: 0, z: -1 }) {
-  Event.call(this, 'rotate', pos)
+  Event.call(this, 'mirrorx', pos)
 
   this.sprite.color = 'pink'
 

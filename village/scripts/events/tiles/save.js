@@ -1,7 +1,7 @@
 'use strict'
 
 function SaveTile (pos = { x: 0, y: 0, z: -1 }, stack = []) {
-  Event.call(this, 'rotate', pos)
+  Event.call(this, 'save', pos)
 
   this.sprite.color = 'red'
 

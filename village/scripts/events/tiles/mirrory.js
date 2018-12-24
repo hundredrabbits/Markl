@@ -1,7 +1,7 @@
 'use strict'
 
 function MirrorYTile (pos = { x: 0, y: 0, z: -1 }) {
-  Event.call(this, 'rotate', pos)
+  Event.call(this, 'mirrory', pos)
 
   this.sprite.color = 'yellow'
 
