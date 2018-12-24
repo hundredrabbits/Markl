@@ -1,7 +1,7 @@
 'use strict'
 
 const RENDER = {
-  tile: { w: 60, h: 60 },
+  tile: { w: 30, h: 30 },
   viewport: { w: 640, h: 320 }
 }
 

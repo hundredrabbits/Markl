@@ -22,6 +22,7 @@ function Stage (markl) {
     console.log(this.id, 'Start')
     this.addEvent(this.player)
     this.addEvent(new Blocker({ x: 0, y: -2 }))
+    this.addEvent(new RotateTile({ x: 2, y: -2 }))
     this.update()
   }
 
