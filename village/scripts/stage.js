@@ -6,7 +6,7 @@ function Stage (markl) {
   this.camera = new Camera(this)
   this.dialog = new Dialog(this)
 
-  this.player = new Player({ x: 0, y: 0 })
+  this.player = new Player({ x: 0, y: 0, z: 0 })
 
   this.events = []
 
@@ -25,19 +25,27 @@ function Stage (markl) {
   this.start = function () {
     console.log(this.id, 'Start')
     this.addEvent(this.player)
+    this.addEvent(new SaveTile({ x: 0, y: 0, z: -1 }))
     this.addEvent(new Blocker({ x: 0, y: -2, z: 0 }))
     this.addEvent(new MirrorXTile({ x: 2, y: -2, z: -1 }))
-    this.addEvent(new MirrorXTile({ x: 0, y: -5, z: -1 }))
+    this.addEvent(new SaveTile({ x: 0, y: -4, z: -1 }))
     this.addEvent(new MirrorXTile({ x: 2, y: -7, z: -1 }))
     this.addEvent(new OverrideTile({ x: -2, y: -11, z: -1 }, [INPUT.up]))
-    this.addEvent(new SaveTile({ x: -2, y: 0, z: -1 }, [INPUT.up]))
-    this.addEvent(new Blocker({ x: 2, y: 0, z: 0 }))
-    this.addEvent(new Blocker({ x: -3, y: 1, z: 0 }))
-    this.addEvent(new Blocker({ x: -1, y: 0, z: 0 }))
-    this.addEvent(new Blocker({ x: -1, y: -1, z: 0 }))
-    this.addEvent(new Blocker({ x: -5, y: -1, z: 0 }))
-    this.addEvent(new SaveTile({ x: -6, y: -2, z: -1 }, [INPUT.up]))
-    this.addEvent(new ChatTile({ x: 0, y: 2, z: 0 }))
+    this.addEvent(new SaveTile({ x: -6, y: -2, z: -1 }))
+
+    // NPC section
+    this.addEvent(new Blocker({ x: 0, y: 2, z: 0 }))
+    this.addEvent(new Blocker({ x: -1, y: 1, z: 0 }))
+    this.addEvent(new Blocker({ x: 1, y: 1, z: 0 }))
+    this.addEvent(new ChatTile({ x: 0, y: 1, z: 0 }, 'Hello Traveler!'))
+
+    // Loop
+    this.addEvent(new Blocker({ x: -1, y: -4, z: 0 }))
+    this.addEvent(new SaveTile({ x: -4, y: -4, z: -1 }, [INPUT.up]))
+    this.addEvent(new Blocker({ x: -3, y: -4, z: 0 }))
+    this.addEvent(new Blocker({ x: -2, y: -5, z: 0 }))
+    this.addEvent(new ChatTile({ x: -5, y: -4, z: 0 }, 'You made it.'))
+
     this.update()
   }
 
@@ -66,11 +74,13 @@ function Stage (markl) {
 
   this.draw = function () {
     this.clear()
-    this.drawSprites()
+    this.drawSprites(-1)
+    this.drawSprites(0)
   }
 
-  this.drawSprites = function () {
+  this.drawSprites = function (z = 0) {
     for (const id in this.events) {
+      if (this.events[id].pos.z !== z) { continue }
       this.drawSprite(this.events[id].sprite)
     }
   }

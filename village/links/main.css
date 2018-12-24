@@ -1,7 +1,9 @@
 body {  padding:30px; font-family: courier; font-size:12px;}
 canvas { border: 1px solid black;display: block; border-radius:3px; overflow: hidden; margin-bottom:5px;}
 
-#control { margin-bottom: 30px }
+#control { margin-bottom: 5px }
 #control b { color:pink; }
 
 #player { background: black;color:white;display: inline-block;line-height: 20px;padding:0px 10px;border-radius: 3px;}
+
+#dialog { position: absolute;background:black;color:white;top:60px;line-height: 20px;padding:0px 10px }
