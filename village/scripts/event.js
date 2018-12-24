@@ -10,4 +10,8 @@ function Event (id, pos = { x: 0, y: 0 }) {
     console.log(this.id, 'Start')
     this.update()
   }
+
+  this.run = function () {
+
+  }
 }

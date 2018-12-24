@@ -4,7 +4,7 @@ function Control () {
   GameObject.call(this, 'control', 'div')
 
   this.index = 0
-  this.stash = []
+  this.stack = []
   this.isRecording = false
   this.isPlaying = false
 
@@ -15,16 +15,16 @@ function Control () {
 
   this.update = function () {
     if (this.isPlaying === true) {
-      this.el.innerHTML = `playing: ${this.index}/${this.stash.length} = ${this.stash[this.index]}`
+      this.el.innerHTML = `playing: ${this.index % this.stack.length}/${this.stack.length} = ${this.stack[this.index % this.stack.length]}`
     } else if (this.isRecording === true) {
-      this.el.innerHTML = this.stash.length > 0 ? `recording: ${this.stash[this.stash.length - 1]} ${this.stash.length} moves` : 'Starting to record..'
+      this.el.innerHTML = this.stack.length > 0 ? `recording: ${this.stack[this.stack.length - 1]} ${this.stack.length} moves` : 'Starting to record..'
     } else {
       this.el.innerHTML = `Idle`
     }
   }
 
   this.clear = function () {
-    this.stash = []
+    this.stack = []
     this.update()
   }
 
@@ -45,25 +45,27 @@ function Control () {
 
     console.log(`Recording: ${key}`)
     this.isPlaying = false
-    this.stash.push(key)
+    this.stack.push(key)
     this.update()
   }
 
   this.onKeyDown = function (e) {
     if (e.key === 'Escape') {
       this.clear()
-      return
-    }
-    if (e.key === 'Enter') {
+    } else if (e.key === 'Enter') {
       this.toggleRecord()
-      return
-    }
-    if (this.isRecording === true) {
-      if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-        this.record(e.key)
-        return
+    } else if (this.isRecording === true) {
+      if (e.key === 'ArrowUp') {
+        this.record(INPUT.up)
+      } else if (e.key === 'ArrowDown') {
+        this.record(INPUT.down)
+      } else if (e.key === 'ArrowLeft') {
+        this.record(INPUT.left)
+      } else if (e.key === 'ArrowRight') {
+        this.record(INPUT.right)
+      } else {
+        console.warn(`Unknown: ${e.key}`)
       }
-      console.warn(`Unknown: ${e.key}`)
     }
   }
 

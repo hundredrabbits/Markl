@@ -5,10 +5,10 @@ function Sprite (host) {
 
   this.color = host.color
 
-  this.rect = function (offset = { x: 0, y: 0 }) {
+  this.rect = function (camera) {
     return {
-      x: offset.x - (RENDER.tile.w / 2) + (host.pos.x * RENDER.tile.w),
-      y: offset.y - (RENDER.tile.h / 2) + (host.pos.y * RENDER.tile.h),
+      x: camera.pos.x + (host.pos.x * RENDER.tile.w),
+      y: camera.pos.y + (-host.pos.y * RENDER.tile.h),
       w: RENDER.tile.w,
       h: RENDER.tile.h
     }

@@ -1,11 +1,14 @@
 'use strict'
 
-function Stage () {
+function Stage (markl) {
   GameObject.call(this, 'stage', 'canvas')
 
-  this.events = []
+  this.camera = new Camera(this)
+
   this.player = new Player({ x: 0, y: 0 })
-  this.focus = { x: 0, y: 0 }
+  this.player.control = markl.control
+
+  this.events = []
 
   this.setup = function () {
     this.el.width = RENDER.viewport.w
@@ -18,8 +21,21 @@ function Stage () {
   this.start = function () {
     console.log(this.id, 'Start')
     this.addEvent(this.player)
-    this.addEvent(new Blocker({ x: 0, y: 2 }))
+    this.addEvent(new Blocker({ x: 0, y: -2 }))
     this.update()
+  }
+
+  this.run = function () {
+    for (const id in this.events) {
+      this.events[id].run()
+    }
+    this.update()
+  }
+
+  this.update = function () {
+    markl.control.update()
+    this.camera.update()
+    this.draw()
   }
 
   this.addEvent = function (event) {
@@ -43,14 +59,10 @@ function Stage () {
 
   this.drawSprite = function (sprite) {
     const ctx = this.context
-    const rect = sprite.rect(this.focus)
+    const rect = sprite.rect(this.camera)
     const clr = sprite.color
 
     ctx.fillStyle = clr
     ctx.fillRect(rect.x, rect.y, rect.w, rect.h)
-  }
-
-  this.update = function () {
-    this.draw()
   }
 }
