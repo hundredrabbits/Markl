@@ -15,15 +15,7 @@ function Control () {
   }
 
   this.update = function () {
-    if (this.isPaused === true) {
-      this.el.innerHTML = 'Paused'
-    } else if (this.isPlaying === true) {
-      this.el.innerHTML = `playing: [${this.stack.reduce((acc, el, key) => { return acc + ' ' + (key === this.index % this.stack.length ? '<b>' + el + '</b>' : el) }, '').trim()}]`
-    } else if (this.isRecording === true) {
-      this.el.innerHTML = this.stack.length > 0 ? `recording: ${this.stack[this.stack.length - 1]} ${this.stack.length} moves` : 'Starting to record..'
-    } else {
-      this.el.innerHTML = `Idle(Press Enter to record)`
-    }
+    this.el.innerHTML = this._ui()
   }
 
   this.clear = function () {
@@ -51,8 +43,9 @@ function Control () {
   this.record = function (key) {
     if (!key) { return }
     if (this.isRecording !== true) { return }
+    if(this.stack.length >= markl.stage.player.stats.moves.max){ console.warn('No moves available.'); return }
 
-    console.log(`Recording: ${key}`)
+    console.log(`Recording: ${key}(${this.stack.length}/${markl.stage.player.stats.moves.max})`)
 
     markl.stage.camera.focus()
     this.isPlaying = false
@@ -83,6 +76,24 @@ function Control () {
   }
 
   this.onKeyUp = function (e) {
+  }
+
+  this._ui = function()
+  {
+    if (this.isPaused === true) {
+      return 'Paused'
+    } else if (this.isPlaying === true) {
+      return `Playing: [${this.stack.reduce((acc, el, key) => { return acc + ' ' + (key === this.index % this.stack.length ? '<b>' + el + '</b>' : el) }, '').trim()}]`
+    } else if (this.isRecording === true) {
+      if(this.stack.length > 0){
+        return `Recording: Added ${this.stack[this.stack.length - 1]}, ${this.stack.length - markl.stage.player.stats.moves.max} moves left.`
+      }
+      else{
+        return 'Starting to record..'
+      }
+    } 
+    return `Idle(Press Enter to record)`
+
   }
 
   function toInput (key) {

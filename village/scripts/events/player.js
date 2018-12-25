@@ -8,6 +8,10 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
   this.last = { level: 'lobby', pos: { x: 0, y: 0 } }
   this.sprite.color = 'black'
 
+  this.stats = {
+    stamina: { val: 10, max: 10 },
+    moves: { val: 0, max: 4 }
+  }
   this.el = document.createElement('div')
   this.el.id = 'player'
 
@@ -37,18 +41,28 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
     } else if (cmd === INPUT.right) {
       this.move({ x: 1, y: 0 })
     }
+
+    this.stats.stamina.val--
   }
 
   this.update = function () {
-    if (!this.stage) { return }
-    const tile = this.stage.tileAt(this.pos)
-    let html = tile ? `${tile.id}` : this.pos.effect ? `${this.pos.effect.x},${this.pos.effect.y}` : ''
-    this.el.innerHTML = `${html}[${this.stage.level.name}]`
+    this.el.innerHTML = this._ui()
   }
 
   this.respawn = function () {
     this.stage.enter(this.last.level)
     this.moveTo(this.last.pos)
+  }
+
+  this._ui = function () {
+    if (!this.stage) { return }
+
+    let html = ''
+    // Stats
+    html += `stam:${this.stats.stamina.val}/${this.stats.stamina.max} moves:${this.stats.moves.val}/${this.stats.moves.max} `
+    // Location
+    html += `[${this.stage.level.name}::${this.stage.tileAt(this.pos)}] ${this.pos.x},${this.pos.y},${this.pos.z}`
+    return html
   }
 
   this.toString = function () {

@@ -9,7 +9,6 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
   this.isBlocker = false
 
   this.start = function () {
-    console.log(this.id, 'Start')
     this.stage = markl.stage
   }
 

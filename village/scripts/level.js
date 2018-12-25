@@ -7,6 +7,7 @@ function Level (name, size, events) {
 
   this.start = function () {
     for (const id in this.events) {
+      this.events[id].level = this
       this.events[id].start()
     }
   }

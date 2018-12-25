@@ -54,6 +54,7 @@ function Stage (markl) {
     this.level.start()
 
     this.player.moveTo(pos)
+    this.camera.moveTo(pos)
   }
 
   this.clear = function () {
