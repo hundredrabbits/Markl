@@ -33,6 +33,10 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
     }
   }
 
+  this.moveTo = function (pos) {
+    this.pos = pos
+  }
+
   this.mod = function (pos, effect = this.pos.effect) {
     if (!effect) { return pos }
     pos.x = pos.x * effect.x
@@ -50,5 +54,9 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
 
   this.hasPos = function (pos) {
     return pos.x === this.pos.x && pos.y === this.pos.y
+  }
+
+  this.toString = function () {
+    return `${this.id}`
   }
 }

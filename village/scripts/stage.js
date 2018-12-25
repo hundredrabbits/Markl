@@ -3,6 +3,7 @@
 function Stage (markl) {
   GameObject.call(this, 'stage', 'canvas')
 
+  this.world = new World(this)
   this.camera = new Camera(this)
   this.dialog = new Dialog(this)
 
@@ -24,28 +25,7 @@ function Stage (markl) {
 
   this.start = function () {
     console.log(this.id, 'Start')
-    this.addEvent(this.player)
-    this.addEvent(new SaveTile({ x: 0, y: 0, z: -1 }))
-    this.addEvent(new Blocker({ x: 0, y: -2, z: 0 }))
-    this.addEvent(new MirrorXTile({ x: 2, y: -2, z: -1 }))
-    this.addEvent(new SaveTile({ x: 0, y: -4, z: -1 }))
-    this.addEvent(new MirrorXTile({ x: 2, y: -7, z: -1 }))
-    this.addEvent(new OverrideTile({ x: -2, y: -11, z: -1 }, [INPUT.up]))
-    this.addEvent(new SaveTile({ x: -6, y: -2, z: -1 }))
-
-    // NPC section
-    this.addEvent(new Blocker({ x: 0, y: 2, z: 0 }))
-    this.addEvent(new Blocker({ x: -1, y: 1, z: 0 }))
-    this.addEvent(new Blocker({ x: 1, y: 1, z: 0 }))
-    this.addEvent(new Chat({ x: 0, y: 1, z: 0 }, 'Hello Traveler!'))
-
-    // Loop
-    this.addEvent(new Blocker({ x: -1, y: -4, z: 0 }))
-    this.addEvent(new SaveTile({ x: -4, y: -4, z: -1 }, [INPUT.up]))
-    this.addEvent(new Blocker({ x: -3, y: -4, z: 0 }))
-    this.addEvent(new Blocker({ x: -2, y: -5, z: 0 }))
-    this.addEvent(new Chat({ x: -5, y: -4, z: 0 }, 'You made it.'))
-
+    this.world.enter('lobby')
     this.camera.moveTo(this.player.pos)
     this.update()
   }
@@ -53,6 +33,7 @@ function Stage (markl) {
   this.run = function () {
     this.camera.focus()
     for (const id in this.events) {
+      if (!this.events[id]) { continue }
       this.events[id].run()
     }
     this.update()
@@ -99,6 +80,7 @@ function Stage (markl) {
     } else {
       this.drawCircle(rect, sprite.color)
     }
+    this.drawText(rect, `${sprite.host}`, 'black')
   }
 
   this.drawCircle = function (rect, style) {
@@ -112,6 +94,12 @@ function Stage (markl) {
   this.drawRect = function (rect, style) {
     this.context.fillStyle = style
     this.context.fillRect(parseInt(rect.x), parseInt(rect.y), parseInt(rect.w), parseInt(rect.h))
+  }
+
+  this.drawText = function (rect, text, style) {
+    this.context.font = '20px Georgia'
+    this.context.fillStyle = style
+    this.context.fillText(text, rect.x, rect.y)
   }
 
   this.tileAt = function (pos) {
