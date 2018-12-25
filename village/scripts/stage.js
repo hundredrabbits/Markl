@@ -46,10 +46,12 @@ function Stage (markl) {
     this.addEvent(new Blocker({ x: -2, y: -5, z: 0 }))
     this.addEvent(new ChatTile({ x: -5, y: -4, z: 0 }, 'You made it.'))
 
+    this.camera.focus(this.player.pos)
     this.update()
   }
 
   this.run = function () {
+    this.camera.focus(this.player.pos)
     for (const id in this.events) {
       this.events[id].run()
     }
@@ -59,7 +61,6 @@ function Stage (markl) {
   this.update = function () {
     markl.control.update()
     this.player.update()
-    this.camera.update()
     this.draw()
   }
 

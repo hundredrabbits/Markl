@@ -41,6 +41,7 @@ function Control () {
   }
 
   this.record = function (key) {
+    if (!key) { return }
     if (this.isRecording !== true) { return }
 
     console.log(`Recording: ${key}`)
@@ -50,26 +51,34 @@ function Control () {
   }
 
   this.onKeyDown = function (e) {
-    if (e.key === 'Escape') {
+    if (e.shiftKey) {
+      markl.stage.camera.move(toVector(e.key))
+    } else if (e.key === 'Escape') {
       this.clear()
     } else if (e.key === 'Enter') {
       this.toggleRecord()
     } else if (this.isRecording === true) {
-      if (e.key === 'ArrowUp') {
-        this.record(INPUT.up)
-      } else if (e.key === 'ArrowDown') {
-        this.record(INPUT.down)
-      } else if (e.key === 'ArrowLeft') {
-        this.record(INPUT.left)
-      } else if (e.key === 'ArrowRight') {
-        this.record(INPUT.right)
-      } else {
-        console.warn(`Unknown: ${e.key}`)
-      }
+      this.record(toInput(e.key))
     }
   }
 
   this.onKeyUp = function (e) {
+  }
+
+  function toInput (key) {
+    if (key === 'ArrowUp') { return INPUT.up }
+    if (key === 'ArrowDown') { return INPUT.down }
+    if (key === 'ArrowLeft') { return INPUT.left }
+    if (key === 'ArrowRight') { return INPUT.right }
+    return null
+  }
+
+  function toVector (key) {
+    if (key === 'ArrowUp') { return { x: 0, y: 1 } }
+    if (key === 'ArrowDown') { return { x: 0, y: -1 } }
+    if (key === 'ArrowLeft') { return { x: -1, y: 0 } }
+    if (key === 'ArrowRight') { return { x: 1, y: 0 } }
+    return null
   }
 
   document.onkeydown = (e) => { this.onKeyDown(e) }

@@ -21,6 +21,7 @@ function Markl () {
   this.stage.install(this.el)
 
   this.timer = null
+  this.drawer = null
 
   this.start = function () {
     console.log(this.id, 'Start')
@@ -29,6 +30,7 @@ function Markl () {
     this.control.start()
 
     this.timer = setInterval(() => { this.run() }, 150)
+    this.drawer = setInterval(() => { this.stage.camera.update() }, 50)
   }
 
   this.stop = function () {
