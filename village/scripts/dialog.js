@@ -9,13 +9,13 @@ function Dialog (host) {
   }
 
   this.clear = function () {
-    if (this.el.textContent === '') { return }
+    if (this.isActive() === false) { return }
     this.el.textContent = ''
     this.update()
   }
 
   this.update = function () {
-    if (this.el.textContent === '') { this.hide() } else { this.show() }
+    if (this.isActive()) { this.show() } else { this.hide() }
   }
 
   this.hide = function () {
@@ -24,5 +24,9 @@ function Dialog (host) {
 
   this.show = function () {
     this.removeClass('hidden')
+  }
+
+  this.isActive = function () {
+    return this.el.textContent !== ''
   }
 }

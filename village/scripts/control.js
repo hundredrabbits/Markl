@@ -66,6 +66,11 @@ function Control () {
       e.preventDefault()
       return
     }
+    if (markl.stage.dialog.isActive() === true) {
+      markl.stage.dialog.clear()
+      e.preventDefault()
+      return
+    }
     if (e.shiftKey) {
       markl.stage.camera.move(toVector(e.key))
     } else if (e.key === 'Escape') {
