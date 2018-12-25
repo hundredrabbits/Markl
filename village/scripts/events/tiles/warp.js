@@ -1,7 +1,7 @@
 'use strict'
 
 function WarpTile (pos = { x: 0, y: 0, z: -1 }, targetName, targetPos) {
-  Event.call(this, 'save', pos)
+  Event.call(this, 'warp', pos)
 
   this.sprite.color = '#f00'
 
@@ -12,6 +12,6 @@ function WarpTile (pos = { x: 0, y: 0, z: -1 }, targetName, targetPos) {
   }
 
   this.toString = function () {
-    return `${this.id}->${targetName}`
+    return `to->${targetName}`
   }
 }

@@ -1,7 +1,7 @@
 'use strict'
 
-function SaveTile (pos = { x: 0, y: 0, z: -1 }, stack = []) {
-  Event.call(this, 'save', pos)
+function SafeTile (pos = { x: 0, y: 0, z: -1 }, stack = []) {
+  Event.call(this, 'safe', pos)
 
   this.sprite.color = '#72dec2'
 

@@ -6,4 +6,8 @@ function Blocker (pos = { x: 0, y: 0, z: 0 }) {
   this.sprite.color = 'grey'
 
   this.isBlocker = true
+
+  this.toString = function () {
+    return ''
+  }
 }

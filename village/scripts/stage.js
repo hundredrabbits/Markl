@@ -25,7 +25,7 @@ function Stage (markl) {
 
   this.start = function () {
     console.log(this.id, 'Start')
-    this.enter('lobby', { x: 0, y: 0, z: 0 })
+    this.enter('lobby', { x: 8, y: -4, z: 0 })
     this.camera.moveTo(this.player.pos)
     this.update()
   }
@@ -65,8 +65,19 @@ function Stage (markl) {
 
   this.draw = function () {
     this.clear()
+    this.drawFloor()
     this.drawSprites(-1)
     this.drawSprites(0)
+  }
+
+  this.drawFloor = function () {
+    const rect = {
+      x: this.camera.pos.x,
+      y: this.camera.pos.y,
+      w: this.level.size.w * RENDER.tile.w,
+      h: this.level.size.h * RENDER.tile.h
+    }
+    this.drawRect(rect, '#ccc')
   }
 
   this.drawSprites = function (z = 0) {
