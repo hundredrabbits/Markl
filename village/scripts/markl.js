@@ -6,7 +6,7 @@ const SPEED = {
 }
 
 const RENDER = {
-  tile: { w: 40, h: 60 },
+  tile: { w: 30, h: 50 },
   viewport: { w: 720, h: 380 }
 }
 

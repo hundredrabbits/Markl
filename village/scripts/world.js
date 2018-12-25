@@ -11,7 +11,8 @@ function World (stage) {
       new MirrorXTile({ x: 10, y: -6, z: -1 }),
       new MirrorXTile({ x: 6, y: -6, z: -1 }),
       new OverrideTile({ x: 6, y: -2, z: -1 }, [INPUT.up]),
-      new WarpTile({ x: 10, y: -4, z: -1 }, 'forest', { x: 1, y: 0, z: 0 }),
+      new WarpTile({ x: 10, y: -4, z: -1 }, 'forest', { x: 0, y: 0, z: 0 }),
+      new WarpTile({ x: 10, y: -8, z: -1 }, 'sewers', { x: 0, y: 0, z: 0 }),
       // Events
       new Chat({ x: 8, y: -3, z: 0 }, 'Hello Traveler'),
       new Blocker({ x: 8, y: -6, z: 0 })
@@ -25,8 +26,16 @@ function World (stage) {
     ])
   }
 
+  function _sewers () {
+    return new Level('sewers', { w: 8, h: 5 }, [
+      new WarpTile({ x: 0, y: 0, z: -1 }, 'lobby', { x: 10, y: -8, z: 0 }),
+      new SafeTile({ x: 1, y: 0, z: -1 })
+    ])
+  }
+
   this.storage = {
     lobby: _lobby(),
-    forest: _forest()
+    forest: _forest(),
+    sewers: _sewers()
   }
 }

@@ -85,12 +85,20 @@ function Control () {
       return `Playing: [${this.stack.reduce((acc, el, key) => { return acc + ' ' + (key === this.index % this.stack.length ? '<b>' + el + '</b>' : el) }, '').trim()}]`
     } else if (this.isRecording === true) {
       if (this.stack.length > 0) {
-        return `Recording: Added ${this.stack[this.stack.length - 1]}, ${this.stack.length - markl.stage.player.stats.moves.max} moves left.`
+        return `Recording: Added ${this.stack[this.stack.length - 1]}, ${this.stack.length - markl.stage.player.stats.moves.max} moves left. ${this.stack.reduce((acc, el, key) => { return acc + ' ' + (key === this.stack.length - 1 ? '<b>' + toIcons(el) + '</b>' : toIcons(el)) }, '').trim()}`
       } else {
         return 'Starting to record..'
       }
     }
     return `Idle(Press Enter to record)`
+  }
+
+  function toIcons (key) {
+    if (key === INPUT.up) { return '↑' }
+    if (key === INPUT.down) { return '↓' }
+    if (key === INPUT.left) { return '←' }
+    if (key === INPUT.right) { return '→' }
+    return null
   }
 
   function toInput (key) {
