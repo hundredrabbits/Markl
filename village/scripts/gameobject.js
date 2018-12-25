@@ -23,4 +23,28 @@ function GameObject (id, type) {
   this.start = function () {
     console.log(this.id, 'Start')
   }
+
+  // Dom
+
+  this.setClass = function (c) {
+    this.el.className = `${c.toLowerCase()}`
+  }
+
+  this.addClass = function (c) {
+    if (!c || this.hasClass(c)) { return }
+
+    this.el.className = `${this.el.className} ${c.toLowerCase()}`.trim()
+  }
+
+  this.removeClass = function (c) {
+    if (!c || !this.hasClass(c)) { return }
+
+    this.el.className = this.el.className.replace(c.toLowerCase(), '').trim()
+  }
+
+  this.hasClass = function (c) {
+    if (!c) { return }
+
+    return this.el.className.indexOf(c.toLowerCase()) > -1
+  }
 }

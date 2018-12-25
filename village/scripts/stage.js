@@ -52,6 +52,7 @@ function Stage (markl) {
 
   this.run = function () {
     this.camera.focus()
+    this.dialog.clear()
     for (const id in this.events) {
       this.events[id].run()
     }
@@ -60,6 +61,7 @@ function Stage (markl) {
 
   this.update = function () {
     markl.control.update()
+    this.dialog.update()
     this.player.update()
     this.draw()
   }
@@ -92,7 +94,7 @@ function Stage (markl) {
     const clr = sprite.color
 
     ctx.fillStyle = clr
-    ctx.fillRect(rect.x, rect.y, rect.w, rect.h)
+    ctx.fillRect(parseInt(rect.x), parseInt(rect.y), parseInt(rect.w), parseInt(rect.h))
   }
 
   this.tileAt = function (pos) {

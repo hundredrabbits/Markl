@@ -1,8 +1,8 @@
 'use strict'
 
 const RENDER = {
-  tile: { w: 30, h: 30 },
-  viewport: { w: 640, h: 320 }
+  tile: { w: 50, h: 50 },
+  viewport: { w: 720, h: 380 }
 }
 
 const INPUT = {
@@ -22,6 +22,12 @@ function Markl () {
 
   this.timer = null
   this.drawer = null
+
+  this.setup = function () {
+    console.log('!!')
+    this.el.style.width = `${RENDER.viewport.w}px`
+    this.el.style.height = `${RENDER.viewport.h}px`
+  }
 
   this.start = function () {
     console.log(this.id, 'Start')
