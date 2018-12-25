@@ -22,10 +22,10 @@ function Camera (stage) {
   }
 
   this.update = function () {
-    if (this.isFocused()) { return }
+    // if (this.isFocused()) { return }
 
-    this.pos.x += Math.floor((this.target.x - this.pos.x) / 2)
-    this.pos.y += Math.floor((this.target.y - this.pos.y) / 2)
+    this.pos.x += Math.floor((this.target.x - this.pos.x) / 5)
+    this.pos.y += Math.floor((this.target.y - this.pos.y) / 5)
     stage.draw()
   }
 

@@ -4,6 +4,7 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
   GameObject.call(this, id)
 
   this.pos = pos
+  this.pos.prev = pos
   this.sprite = new Sprite(this)
 
   this.isBlocker = false
@@ -25,9 +26,14 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
     }
 
     if (!collider || collider.isBlocker !== true) {
+      if (mod) { this.pos.prev = { x: this.pos.x, y: this.pos.y } }
       this.pos.x += mod.x
       this.pos.y += mod.y
     }
+  }
+
+  this.animateTo = function () {
+
   }
 
   this.moveTo = function (pos) {

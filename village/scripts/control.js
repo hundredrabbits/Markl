@@ -43,7 +43,7 @@ function Control () {
   this.record = function (key) {
     if (!key) { return }
     if (this.isRecording !== true) { return }
-    if(this.stack.length >= markl.stage.player.stats.moves.max){ console.warn('No moves available.'); return }
+    if (this.stack.length >= markl.stage.player.stats.moves.max) { console.warn('No moves available.'); return }
 
     console.log(`Recording: ${key}(${this.stack.length}/${markl.stage.player.stats.moves.max})`)
 
@@ -78,22 +78,19 @@ function Control () {
   this.onKeyUp = function (e) {
   }
 
-  this._ui = function()
-  {
+  this._ui = function () {
     if (this.isPaused === true) {
       return 'Paused'
     } else if (this.isPlaying === true) {
       return `Playing: [${this.stack.reduce((acc, el, key) => { return acc + ' ' + (key === this.index % this.stack.length ? '<b>' + el + '</b>' : el) }, '').trim()}]`
     } else if (this.isRecording === true) {
-      if(this.stack.length > 0){
+      if (this.stack.length > 0) {
         return `Recording: Added ${this.stack[this.stack.length - 1]}, ${this.stack.length - markl.stage.player.stats.moves.max} moves left.`
-      }
-      else{
+      } else {
         return 'Starting to record..'
       }
-    } 
+    }
     return `Idle(Press Enter to record)`
-
   }
 
   function toInput (key) {

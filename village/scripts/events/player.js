@@ -16,7 +16,12 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
   this.el.id = 'player'
 
   this.run = function () {
-    if (this.control.stack.length < 1) { console.warn('Nothing to play..'); this.control.isPlaying = false; return }
+    // End
+    if (this.control.stack.length < 1) {
+      this.control.isPlaying = false
+      this.pos.prev = this.pos
+      return
+    }
 
     // Act
     const key = this.control.index % this.control.stack.length
@@ -61,7 +66,7 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
     // Stats
     html += `stam:${this.stats.stamina.val}/${this.stats.stamina.max} moves:${this.stats.moves.val}/${this.stats.moves.max} `
     // Location
-    html += `[${this.stage.level.name}::${this.stage.tileAt(this.pos)}] ${this.pos.x},${this.pos.y},${this.pos.z}`
+    html += `[${this.stage.level.name}::${this.stage.tileAt(this.pos)}] ${this.pos.x},${this.pos.y},${this.pos.z}(${this.pos.effect ? `${this.pos.effect.x},${this.pos.effect.y}` : ''})`
     return html
   }
 

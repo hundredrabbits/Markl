@@ -32,7 +32,7 @@ function Stage (markl) {
   }
 
   this.run = function () {
-    this.camera.focus()
+    this.camera.focus(this.player.sprite.pos())
     for (const id in this.level.events) {
       if (!this.level.events[id]) { continue }
       this.level.events[id].run()

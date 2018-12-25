@@ -1,7 +1,12 @@
 'use strict'
 
+const SPEED = {
+  camera: 50,
+  turn: 250
+}
+
 const RENDER = {
-  tile: { w: 30, h: 50 },
+  tile: { w: 40, h: 60 },
   viewport: { w: 720, h: 380 }
 }
 
@@ -20,6 +25,7 @@ function Markl () {
   this.stage = new Stage(this)
   this.stage.install(this.el)
 
+  this.offset = new Date().getTime()
   this.timer = null
   this.drawer = null
 
@@ -34,8 +40,8 @@ function Markl () {
     this.stage.start()
     this.control.start()
 
-    this.timer = setInterval(() => { this.run() }, 250)
-    this.drawer = setInterval(() => { this.stage.camera.update() }, 50)
+    this.timer = setInterval(() => { this.run() }, SPEED.turn)
+    this.drawer = setInterval(() => { this.stage.camera.update() }, SPEED.camera)
   }
 
   this.stop = function () {
@@ -46,6 +52,11 @@ function Markl () {
     if (this.control.isPlaying !== true) { return }
     if (this.control.isPaused !== false) { return }
 
+    this.offset = new Date().getTime()
     this.stage.run()
+  }
+
+  this.elapsed = function () {
+    return new Date().getTime() - this.offset
   }
 }
