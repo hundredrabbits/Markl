@@ -92,12 +92,26 @@ function Stage (markl) {
   }
 
   this.drawSprite = function (sprite) {
-    const ctx = this.context
     const rect = sprite.rect(this.camera)
-    const clr = sprite.color
 
-    ctx.fillStyle = clr
-    ctx.fillRect(parseInt(rect.x), parseInt(rect.y), parseInt(rect.w), parseInt(rect.h))
+    if (sprite.host.pos.z === -1) {
+      this.drawRect(rect, sprite.color)
+    } else {
+      this.drawCircle(rect, sprite.color)
+    }
+  }
+
+  this.drawCircle = function (rect, style) {
+    this.context.beginPath()
+    this.context.fillStyle = style
+    this.context.arc(rect.x + (rect.w / 2), rect.y + (rect.h / 2), rect.w / 2, 0, 2 * Math.PI, false)
+    this.context.fill()
+    this.context.closePath()
+  }
+
+  this.drawRect = function (rect, style) {
+    this.context.fillStyle = style
+    this.context.fillRect(parseInt(rect.x), parseInt(rect.y), parseInt(rect.w), parseInt(rect.h))
   }
 
   this.tileAt = function (pos) {

@@ -3,6 +3,7 @@
 function Sprite (host) {
   GameObject.call(this, 'sprite')
 
+  this.host = host
   this.color = host.color
 
   this.rect = function (camera) {
