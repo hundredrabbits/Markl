@@ -45,6 +45,8 @@ function Control () {
     if (this.isRecording !== true) { return }
 
     console.log(`Recording: ${key}`)
+
+    markl.stage.camera.focus()
     this.isPlaying = false
     this.stack.push(key)
     this.update()

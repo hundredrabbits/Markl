@@ -6,20 +6,31 @@ function Camera (stage) {
   this.pos = { x: 0, y: 0 }
   this.target = { x: 0, y: 0 }
 
-  this.focus = function (target) {
+  this.focus = function (target = stage.player.pos) {
     this.target = posToPixel(target)
+  }
+
+  this.moveTo = function (target) {
+    this.target = posToPixel(target)
+    this.pos = posToPixel(target)
   }
 
   this.move = function (vector) {
     if (!vector) { return }
-    this.target.x = this.pos.x + vector.x
-    this.target.y = this.pos.y + vector.y
+    this.target.x = this.pos.x - (vector.x * RENDER.tile.w)
+    this.target.y = this.pos.y + (vector.y * RENDER.tile.h)
   }
 
   this.update = function () {
-    this.pos.x += parseInt((this.target.x - this.pos.x) / 2)
-    this.pos.y += parseInt((this.target.y - this.pos.y) / 2)
+    if (this.isFocused()) { return }
+
+    this.pos.x += Math.floor((this.target.x - this.pos.x) / 2)
+    this.pos.y += Math.floor((this.target.y - this.pos.y) / 2)
     stage.draw()
+  }
+
+  this.isFocused = function () {
+    return Math.abs(this.pos.x - this.target.x) < 5 && Math.abs(this.pos.y - this.target.y) < 5
   }
 
   function posToPixel (pos) {

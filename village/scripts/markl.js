@@ -29,7 +29,7 @@ function Markl () {
     this.stage.start()
     this.control.start()
 
-    this.timer = setInterval(() => { this.run() }, 150)
+    this.timer = setInterval(() => { this.run() }, 250)
     this.drawer = setInterval(() => { this.stage.camera.update() }, 50)
   }
 
