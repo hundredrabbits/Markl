@@ -8,6 +8,7 @@ function Stage (markl) {
   this.dialog = new Dialog(this)
 
   this.player = new Player({ x: 0, y: 0, z: 0 })
+  this.player.stage = this
 
   this.level = null
 
@@ -36,6 +37,7 @@ function Stage (markl) {
       if (!this.level.events[id]) { continue }
       this.level.events[id].run()
     }
+    this.player.run()
     this.update()
   }
 
@@ -49,7 +51,6 @@ function Stage (markl) {
   this.enter = function (id, pos = { x: 0, y: 0, z: 0 }) {
     console.info(this.id, `Entering ${id}`)
     this.level = this.world.storage[id]
-    this.level.addEvent(this.player)
     this.level.start()
 
     this.player.moveTo(pos)
@@ -84,6 +85,9 @@ function Stage (markl) {
     for (const id in this.level.events) {
       if (this.level.events[id].pos.z !== z) { continue }
       this.drawSprite(this.level.events[id].sprite)
+    }
+    if (this.player.pos.z === z) {
+      this.drawSprite(this.player.sprite)
     }
   }
 
