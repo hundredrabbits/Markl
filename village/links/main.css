@@ -4,6 +4,6 @@ body {  padding:30px 0px; font-family: courier; font-size:12px; background:#000;
 #markl canvas { display: block; }
 #markl #control { position: absolute;z-index: 9;background:#000;padding:0px 10px;line-height: 30px;border-radius: 3px;margin:2px }
 #markl #control b { color:pink; }
-#markl #player { position: absolute;z-index: 9;background: #f00;padding: 0px 10px;line-height: 30px;border-radius: 3px;margin: 2px;top: 0px;right: 0px}
+#markl #player { position: absolute;z-index: 9;background: #000;padding: 0px 10px;line-height: 30px;border-radius: 3px;margin: 2px;top: 0px;right: 0px}
 #markl #dialog {position: absolute;z-index: 9;background: #000;padding: 10px 20px;line-height: 30px;border-radius: 3px;margin: 2px;bottom: 0px;left: 0px;width:calc(100% - 44px)}
 #markl #dialog.hidden { opacity: 0 }

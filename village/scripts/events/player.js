@@ -5,6 +5,7 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
 
   this.control = null // sent from stage
 
+  this.last = { level: 'lobby', pos: { x: 0, y: 0 } }
   this.sprite.color = 'black'
 
   this.el = document.createElement('div')
@@ -18,7 +19,7 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
     const cmd = this.act(this.control.stack[key])
 
     // onStep
-    const tile = this.stage.tileAt(this.pos)
+    const tile = markl.stage.tileAt(this.pos)
     if (tile) {
       tile.onStep(this)
     }
@@ -39,7 +40,18 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
   }
 
   this.update = function () {
+    if (!this.stage) { return }
     const tile = this.stage.tileAt(this.pos)
-    this.el.innerHTML = tile ? `${tile.id}` : this.pos.effect ? `${this.pos.effect.x},${this.pos.effect.y}` : ''
+    let html = tile ? `${tile.id}` : this.pos.effect ? `${this.pos.effect.x},${this.pos.effect.y}` : ''
+    this.el.innerHTML = `${html}[${this.stage.level.name}]`
+  }
+
+  this.respawn = function () {
+    this.stage.enter(this.last.level)
+    this.moveTo(this.last.pos)
+  }
+
+  this.toString = function () {
+    return '@'
   }
 }

@@ -3,8 +3,6 @@
 function Event (id, pos = { x: 0, y: 0, z: 0 }) {
   GameObject.call(this, id)
 
-  this.stage = null // stage.addEvent
-
   this.pos = pos
   this.sprite = new Sprite(this)
 
@@ -12,7 +10,7 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
 
   this.start = function () {
     console.log(this.id, 'Start')
-    this.update()
+    this.stage = markl.stage
   }
 
   this.run = function () {
@@ -52,7 +50,7 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
 
   }
 
-  this.hasPos = function (pos) {
+  this.hasPos = function (pos, depth = false) {
     return pos.x === this.pos.x && pos.y === this.pos.y
   }
 

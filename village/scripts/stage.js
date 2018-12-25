@@ -9,7 +9,7 @@ function Stage (markl) {
 
   this.player = new Player({ x: 0, y: 0, z: 0 })
 
-  this.events = []
+  this.level = null
 
   this.setup = function () {
     this.player.control = markl.control
@@ -25,16 +25,16 @@ function Stage (markl) {
 
   this.start = function () {
     console.log(this.id, 'Start')
-    this.world.enter('lobby')
+    this.enter('lobby', { x: 0, y: 0, z: 0 })
     this.camera.moveTo(this.player.pos)
     this.update()
   }
 
   this.run = function () {
     this.camera.focus()
-    for (const id in this.events) {
-      if (!this.events[id]) { continue }
-      this.events[id].run()
+    for (const id in this.level.events) {
+      if (!this.level.events[id]) { continue }
+      this.level.events[id].run()
     }
     this.update()
   }
@@ -46,9 +46,13 @@ function Stage (markl) {
     this.draw()
   }
 
-  this.addEvent = function (event) {
-    event.stage = this
-    this.events.push(event)
+  this.enter = function (id, pos = { x: 0, y: 0, z: 0 }) {
+    console.info(this.id, `Entering ${id}`)
+    this.level = this.world.storage[id]
+    this.level.addEvent(this.player)
+    this.level.start()
+
+    this.player.moveTo(pos)
   }
 
   this.clear = function () {
@@ -66,9 +70,9 @@ function Stage (markl) {
   }
 
   this.drawSprites = function (z = 0) {
-    for (const id in this.events) {
-      if (this.events[id].pos.z !== z) { continue }
-      this.drawSprite(this.events[id].sprite)
+    for (const id in this.level.events) {
+      if (this.level.events[id].pos.z !== z) { continue }
+      this.drawSprite(this.level.events[id].sprite)
     }
   }
 
@@ -103,8 +107,8 @@ function Stage (markl) {
   }
 
   this.tileAt = function (pos) {
-    for (const id in this.events) {
-      const event = this.events[id]
+    for (const id in this.level.events) {
+      const event = this.level.events[id]
       if (event.pos.z !== -1) { continue }
       if (!event.hasPos(pos)) { continue }
       return event
@@ -113,8 +117,8 @@ function Stage (markl) {
   }
 
   this.colliderAt = function (pos, z = 0, skip = null) {
-    for (const id in this.events) {
-      const event = this.events[id]
+    for (const id in this.level.events) {
+      const event = this.level.events[id]
       if (event.pos.z !== z) { continue }
       if (event.id === skip.id) { continue }
       if (!event.hasPos(pos)) { continue }
