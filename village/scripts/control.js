@@ -7,6 +7,7 @@ function Control () {
   this.stack = []
   this.isRecording = false
   this.isPlaying = false
+  this.isPaused = false
 
   this.start = function () {
     console.log(this.id, 'Start')
@@ -14,7 +15,9 @@ function Control () {
   }
 
   this.update = function () {
-    if (this.isPlaying === true) {
+    if (this.isPaused === true) {
+      this.el.innerHTML = 'Paused'
+    } else if (this.isPlaying === true) {
       this.el.innerHTML = `playing: [${this.stack.reduce((acc, el, key) => { return acc + ' ' + (key === this.index % this.stack.length ? '<b>' + el + '</b>' : el) }, '').trim()}]`
     } else if (this.isRecording === true) {
       this.el.innerHTML = this.stack.length > 0 ? `recording: ${this.stack[this.stack.length - 1]} ${this.stack.length} moves` : 'Starting to record..'
@@ -38,6 +41,11 @@ function Control () {
 
   this.togglePlay = function (force = false) {
     this.isPlaying = force === true ? true : !this.isPlaying
+    markl.stage.dialog.clear()
+  }
+
+  this.togglePause = function (force = false) {
+    this.isPaused = force === true ? true : !this.isPlaying
   }
 
   this.record = function (key) {
@@ -53,6 +61,11 @@ function Control () {
   }
 
   this.onKeyDown = function (e) {
+    if (this.isPaused === true) {
+      this.isPaused = false
+      e.preventDefault()
+      return
+    }
     if (e.shiftKey) {
       markl.stage.camera.move(toVector(e.key))
     } else if (e.key === 'Escape') {

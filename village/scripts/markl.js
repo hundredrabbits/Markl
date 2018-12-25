@@ -24,7 +24,6 @@ function Markl () {
   this.drawer = null
 
   this.setup = function () {
-    console.log('!!')
     this.el.style.width = `${RENDER.viewport.w}px`
     this.el.style.height = `${RENDER.viewport.h}px`
   }
@@ -45,6 +44,7 @@ function Markl () {
 
   this.run = function () {
     if (this.control.isPlaying !== true) { return }
+    if (this.control.isPaused !== false) { return }
 
     this.stage.run()
   }

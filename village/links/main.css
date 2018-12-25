@@ -1,4 +1,4 @@
-body {  padding:30px; font-family: courier; font-size:12px; background:#000; color:white;}
+body {  padding:30px 0px; font-family: courier; font-size:12px; background:#000; color:white;}
 
 #markl { border-radius:3px; overflow: hidden; background:white; margin:0px auto; position: relative;}
 #markl canvas { display: block; }

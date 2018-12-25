@@ -37,14 +37,14 @@ function Stage (markl) {
     this.addEvent(new Blocker({ x: 0, y: 2, z: 0 }))
     this.addEvent(new Blocker({ x: -1, y: 1, z: 0 }))
     this.addEvent(new Blocker({ x: 1, y: 1, z: 0 }))
-    this.addEvent(new ChatTile({ x: 0, y: 1, z: 0 }, 'Hello Traveler!'))
+    this.addEvent(new Chat({ x: 0, y: 1, z: 0 }, 'Hello Traveler!'))
 
     // Loop
     this.addEvent(new Blocker({ x: -1, y: -4, z: 0 }))
     this.addEvent(new SaveTile({ x: -4, y: -4, z: -1 }, [INPUT.up]))
     this.addEvent(new Blocker({ x: -3, y: -4, z: 0 }))
     this.addEvent(new Blocker({ x: -2, y: -5, z: 0 }))
-    this.addEvent(new ChatTile({ x: -5, y: -4, z: 0 }, 'You made it.'))
+    this.addEvent(new Chat({ x: -5, y: -4, z: 0 }, 'You made it.'))
 
     this.camera.moveTo(this.player.pos)
     this.update()
@@ -52,7 +52,6 @@ function Stage (markl) {
 
   this.run = function () {
     this.camera.focus()
-    this.dialog.clear()
     for (const id in this.events) {
       this.events[id].run()
     }
@@ -73,6 +72,10 @@ function Stage (markl) {
 
   this.clear = function () {
     this.context.clearRect(0, 0, this.el.width, this.el.height)
+  }
+
+  this.undo = function () {
+    console.log('undo')
   }
 
   this.draw = function () {
