@@ -1,7 +1,7 @@
 'use strict'
 
 const SPEED = {
-  camera: 100,
+  camera: 50,
   turn: 250
 }
 
@@ -14,7 +14,8 @@ const INPUT = {
   up: 'up',
   down: 'down',
   left: 'left',
-  right: 'right'
+  right: 'right',
+  special: 'special'
 }
 
 function Markl () {

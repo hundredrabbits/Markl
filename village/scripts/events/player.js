@@ -45,9 +45,17 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
       this.move({ x: -1, y: 0 })
     } else if (cmd === INPUT.right) {
       this.move({ x: 1, y: 0 })
+    } else if (cmd === INPUT.special) {
+      this.special()
+    } else {
+      console.warn('unknown action', cmd)
     }
 
     this.stats.stamina.val--
+  }
+
+  this.special = function () {
+    console.log('!!')
   }
 
   this.update = function () {

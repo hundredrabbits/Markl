@@ -137,12 +137,13 @@ function Stage (markl) {
     this.drawLine(vertices)
   }
 
-  this.drawLine = function (vertices = []) {
+  this.drawLine = function (vertices = [], style = '#f00') {
     this.context.beginPath()
     this.context.moveTo(vertices[0].x, vertices[0].y)
     for (const id in vertices) {
       this.context.lineTo(vertices[id].x, vertices[id].y)
     }
+    this.context.strokeStyle = style
     this.context.stroke()
   }
 
@@ -202,6 +203,7 @@ function Stage (markl) {
     if (key === INPUT.down) { return { x: 0, y: -1, z: 0 } }
     if (key === INPUT.left) { return { x: -1, y: 0, z: 0 } }
     if (key === INPUT.right) { return { x: 1, y: 0, z: 0 } }
+    if (key === INPUT.special) { return { x: 0, y: 0, z: 0 } }
     return null
   }
 }
