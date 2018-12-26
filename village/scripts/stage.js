@@ -7,7 +7,7 @@ function Stage (markl) {
   this.camera = new Camera(this)
   this.dialog = new Dialog(this)
 
-  this.player = new Player({ x: 0, y: 0, z: 0 })
+  this.player = new Player({ x: 8, y: -4, z: 0 })
   this.player.stage = this
 
   this.level = null
@@ -50,7 +50,7 @@ function Stage (markl) {
 
   this.enter = function (id, pos = { x: 0, y: 0, z: 0 }) {
     if (!this.world.storage[id]) { console.warn(`Unknown level: ${id}`); return }
-    console.info(this.id, `Entering ${id}`)
+    console.info(this.id, `Entering ${id} ${pos.x},${pos.y}`)
     this.level = this.world.storage[id]
     this.level.start()
 
@@ -192,6 +192,10 @@ function Stage (markl) {
       x: (pos.x * RENDER.tile.w) + this.camera.pos.x + (RENDER.tile.w / 2),
       y: (-pos.y * RENDER.tile.h) + this.camera.pos.y + (RENDER.tile.h / 2)
     }
+  }
+
+  this.inBounds = function (pos) {
+    return pos.x < this.level.size.w && pos.x >= 0 && -pos.y < this.level.size.h && -pos.y >= 0
   }
 
   function addPos (a, b) {

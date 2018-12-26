@@ -5,7 +5,7 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
 
   this.control = null // sent from stage
 
-  this.last = { level: 'lobby', pos: { x: 0, y: 0 } }
+  this.last = { level: 'lobby', pos: { x: 8, y: -4, z: 0 } }
   this.sprite.color = 'black'
 
   this.stats = {
@@ -21,6 +21,9 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
       this.control.isPlaying = false
       this.pos.prev = this.pos
       return
+    }
+    if (this.stats.stamina.val < 1) {
+      this.respawn()
     }
 
     // Act
@@ -63,7 +66,8 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
   }
 
   this.respawn = function () {
-    this.stage.enter(this.last.level)
+    markl.control.clear()
+    this.stage.enter(this.last.level, this.last.pos)
     this.moveTo(this.last.pos)
   }
 

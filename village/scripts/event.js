@@ -19,16 +19,19 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
 
   this.move = function (pos) {
     const mod = this.mod(pos, this.effect)
-    const collider = this.stage.colliderAt({ x: this.pos.x + mod.x, y: this.pos.y + mod.y }, this.pos.z, this)
+    const destination = { x: this.pos.x + mod.x, y: this.pos.y + mod.y }
+    const collider = this.stage.colliderAt(destination, this.pos.z, this)
 
     if (collider) {
       collider.onCollision(this)
     }
 
-    if (!collider || collider.isBlocker !== true) {
+    if ((!collider || collider.isBlocker === false) && this.stage.inBounds(destination) === true) {
       if (mod) { this.pos.prev = { x: this.pos.x, y: this.pos.y } }
-      this.pos.x += mod.x
-      this.pos.y += mod.y
+      this.pos.x = destination.x
+      this.pos.y = destination.y
+    } else {
+      this.pos.prev = { x: this.pos.x, y: this.pos.y }
     }
   }
 
