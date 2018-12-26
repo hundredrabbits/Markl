@@ -4,7 +4,7 @@ function World (stage) {
   GameObject.call(this, 'world')
 
   function _lobby () {
-    return new Level('lobby', { x: 0, y: 0, w: 16, h: 12 }, [
+    return new Level('lobby', { x: 0, y: 0, w: 16, h: 10 }, [
       // Tiles
       new SafeTile({ x: 8, y: -4, z: -1 }),
       new SafeTile({ x: 8, y: -8, z: -1 }),
@@ -25,7 +25,7 @@ function World (stage) {
   }
 
   function _forest () {
-    return new Level('forest', { w: 5, h: 5 }, [
+    return new Level('forest', { w: 8, h: 3 }, [
       new HoleTile({ x: 4, y: 0, z: -1 }),
       new SafeTile({ x: 1, y: 0, z: -1 }),
       new WarpTile({ x: 0, y: 0, z: -1 }, 'lobby', { x: 8, y: -4, z: 0 })

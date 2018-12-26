@@ -34,7 +34,7 @@ function Renderer (markl) {
       w: markl.stage.level.size.w * RENDER.tile.w,
       h: markl.stage.level.size.h * RENDER.tile.h
     }
-    this.drawRect(rect, '#ccc')
+    this.strokeRect(rect, '#000')
   }
 
   this.drawSprites = function (z = 0) {
@@ -51,7 +51,7 @@ function Renderer (markl) {
     const rect = sprite.rect(markl.stage.camera)
 
     if (sprite.host.pos.z === -1) {
-      this.drawRect(rect, sprite.color)
+      this.strokeRect(rect, sprite.color)
     } else {
       this.drawCircle(rect, sprite.color)
     }
@@ -109,6 +109,11 @@ function Renderer (markl) {
   this.drawRect = function (rect, style) {
     this.context.fillStyle = style
     this.context.fillRect(parseInt(rect.x), parseInt(rect.y), parseInt(rect.w), parseInt(rect.h))
+  }
+
+  this.strokeRect = function (rect, style) {
+    this.context.strokeStyle = style
+    this.context.strokeRect(parseInt(rect.x), parseInt(rect.y), parseInt(rect.w), parseInt(rect.h))
   }
 
   this.drawText = function (rect, text, style) {
