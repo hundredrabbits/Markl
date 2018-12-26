@@ -66,6 +66,7 @@ function Control () {
       e.preventDefault()
       return
     }
+
     if (e.shiftKey) {
       markl.stage.camera.move(toVector(e.key))
     } else if (e.key === 'Escape') {
@@ -75,6 +76,7 @@ function Control () {
     } else if (this.isRecording === true) {
       this.record(toInput(e.key))
     }
+    markl.stage.update()
   }
 
   this.onKeyUp = function (e) {

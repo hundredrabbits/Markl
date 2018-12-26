@@ -64,7 +64,7 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
 
     let html = ''
     // Stats
-    html += `stam:${this.stats.stamina.val}/${this.stats.stamina.max} moves:${this.stats.moves.val}/${this.stats.moves.max} `
+    html += `stam:${this.stats.stamina.val}/${this.stats.stamina.max} moves:${this.stats.moves.max}max `
     // Location
     html += `[${this.stage.level.name}::${this.stage.tileAt(this.pos)}] ${this.pos.x},${this.pos.y},${this.pos.z}(${this.pos.effect ? `${this.pos.effect.x},${this.pos.effect.y}` : ''})`
     return html

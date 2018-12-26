@@ -29,6 +29,10 @@ function Camera (stage) {
     stage.draw()
   }
 
+  this.offset = function (pos) {
+    return posToPixel(pos)
+  }
+
   this.isFocused = function () {
     return Math.abs(this.pos.x - this.target.x) < 5 && Math.abs(this.pos.y - this.target.y) < 5
   }

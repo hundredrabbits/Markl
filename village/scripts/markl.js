@@ -1,7 +1,7 @@
 'use strict'
 
 const SPEED = {
-  camera: 50,
+  camera: 100,
   turn: 250
 }
 
