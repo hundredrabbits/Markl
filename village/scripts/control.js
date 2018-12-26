@@ -20,6 +20,7 @@ function Control () {
 
   this.clear = function () {
     this.stack = []
+    this.index = 0
     this.update()
   }
 
@@ -33,6 +34,7 @@ function Control () {
 
   this.togglePlay = function (force = false) {
     this.isPlaying = force === true ? true : !this.isPlaying
+    this.index = 0
     markl.stage.dialog.clear()
   }
 
@@ -78,14 +80,26 @@ function Control () {
   this.onKeyUp = function (e) {
   }
 
+  this._arrows = function () {
+    const key = this.index % this.stack.length
+    return `
+    <div id='arrows'>
+      <div class='arrow ${key === 0 && this.isPlaying === true ? 'active' : ''} icon_${markl.stage.player.stats.moves.max > 0 ? this.stack[0] + ' enabled' : 'disabled'} ${this.stack[0] ? 'used' : ''}'>${this.stack[0] ? toIcons(this.stack[0]) : ''}</div>
+      <div class='arrow ${key === 1 && this.isPlaying === true ? 'active' : ''} icon_${markl.stage.player.stats.moves.max > 1 ? this.stack[1] + ' enabled' : 'disabled'} ${this.stack[1] ? 'used' : ''}'>${this.stack[1] ? toIcons(this.stack[1]) : ''}</div>
+      <div class='arrow ${key === 2 && this.isPlaying === true ? 'active' : ''} icon_${markl.stage.player.stats.moves.max > 2 ? this.stack[2] + ' enabled' : 'disabled'} ${this.stack[2] ? 'used' : ''}'>${this.stack[2] ? toIcons(this.stack[2]) : ''}</div>
+      <div class='arrow ${key === 3 && this.isPlaying === true ? 'active' : ''} icon_${markl.stage.player.stats.moves.max > 3 ? this.stack[3] + ' enabled' : 'disabled'} ${this.stack[3] ? 'used' : ''}'>${this.stack[3] ? toIcons(this.stack[3]) : ''}</div>
+      <div class='arrow ${key === 4 && this.isPlaying === true ? 'active' : ''} icon_${markl.stage.player.stats.moves.max > 4 ? this.stack[4] + ' enabled' : 'disabled'} ${this.stack[4] ? 'used' : ''}'>${this.stack[4] ? toIcons(this.stack[4]) : ''}</div>
+    </div>`
+  }
+
   this._ui = function () {
     if (this.isPaused === true) {
       return 'Paused'
     } else if (this.isPlaying === true) {
-      return `Playing: [${this.stack.reduce((acc, el, key) => { return acc + ' ' + (key === this.index % this.stack.length ? '<b>' + el + '</b>' : el) }, '').trim()}]`
+      return `${this._arrows()}`
     } else if (this.isRecording === true) {
       if (this.stack.length > 0) {
-        return `Recording: Added ${this.stack[this.stack.length - 1]}, ${this.stack.length - markl.stage.player.stats.moves.max} moves left. ${this.stack.reduce((acc, el, key) => { return acc + ' ' + (key === this.stack.length - 1 ? '<b>' + toIcons(el) + '</b>' : toIcons(el)) }, '').trim()}`
+        return `${this._arrows()}`
       } else {
         return 'Starting to record..'
       }

@@ -4,6 +4,11 @@ body {  padding:30px 0px; font-family: courier; font-size:11px; background:#000;
 #markl canvas { display: block; }
 #markl #player { position: absolute;z-index: 9;background: #000;padding: 0px 10px;line-height: 25px;top: 0px;left: 0px}
 #markl #control { position: absolute;z-index: 9;background:#000;padding:0px 10px;line-height: 25px;top:25px; }
-#markl #control b { color:pink; }
+#markl #control #arrows { position:absolute;background:#000; font-size:20px; padding:0px; color:#777; left:0px;top:0px; width:200px;}
+#markl #control #arrows .arrow { display: block;width: 25px;height: 25px;float: left; margin-right:1px; text-align: center; vertical-align: middle; line-height: 25px }
+#markl #control #arrows .arrow.enabled { background:#333; }
+#markl #control #arrows .arrow.used { background:#666; color:white; }
+#markl #control #arrows .arrow.active { background:#f00 !important; color:white;}
+#markl #control #arrows b { color:white; }
 #markl #dialog {position: absolute;z-index: 9;background: #000;padding: 10px 20px;line-height: 30px;border-radius: 3px;margin: 2px;bottom: 0px;left: 0px;width:calc(100% - 44px)}
 #markl #dialog.hidden { opacity: 0 }

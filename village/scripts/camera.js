@@ -17,8 +17,8 @@ function Camera (stage) {
 
   this.move = function (vector) {
     if (!vector) { return }
-    this.target.x = this.pos.x - (vector.x * RENDER.tile.w)
-    this.target.y = this.pos.y + (vector.y * RENDER.tile.h)
+    this.target.x = this.pos.x - (vector.x * (RENDER.tile.w * 2))
+    this.target.y = this.pos.y + (vector.y * (RENDER.tile.h * 2))
   }
 
   this.update = function () {
