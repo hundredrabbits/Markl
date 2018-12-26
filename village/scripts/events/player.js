@@ -10,7 +10,7 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
 
   this.stats = {
     stamina: { val: 10, max: 10 },
-    moves: { val: 0, max: 4 }
+    moves: { val: 0, max: 3 }
   }
   this.el = document.createElement('div')
   this.el.id = 'player'

@@ -25,6 +25,8 @@ function Markl () {
   this.control.install(this.el)
   this.stage = new Stage(this)
   this.stage.install(this.el)
+  this.renderer = new Renderer(this)
+  this.renderer.install(this.el)
 
   this.offset = new Date().getTime()
   this.timer = null
