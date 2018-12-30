@@ -11,6 +11,8 @@ function Control () {
 
   this.start = function () {
     console.log(this.id, 'Start')
+    document.onkeydown = (e) => { this.onKeyDown(e) }
+    document.onkeyup = (e) => { this.onKeyUp(e) }
     this.update()
   }
 
@@ -143,7 +145,4 @@ function Control () {
     if (key === 'ArrowRight') { return { x: 1, y: 0 } }
     return null
   }
-
-  document.onkeydown = (e) => { this.onKeyDown(e) }
-  document.onkeyup = (e) => { this.onKeyUp(e) }
 }

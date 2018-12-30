@@ -49,6 +49,7 @@ function Renderer (markl) {
 
   this.drawSprite = function (sprite) {
     const rect = sprite.rect(markl.stage.camera)
+    sprite.draw(this.context, markl.stage.camera)
 
     if (sprite.host.pos.z === -1) {
       this.strokeRect(rect, sprite.color)

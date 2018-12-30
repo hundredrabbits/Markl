@@ -27,6 +27,7 @@ function Markl () {
   this.stage.install(this.el)
   this.renderer = new Renderer(this)
   this.renderer.install(this.el)
+  this.assets = new Assets(this)
 
   this.offset = new Date().getTime()
   this.timer = null
@@ -35,6 +36,7 @@ function Markl () {
   this.setup = function () {
     this.el.style.width = `${RENDER.viewport.w}px`
     this.el.style.height = `${RENDER.viewport.h}px`
+    this.assets.setup(['level/garden/floor/1', 'level/garden/floor/2'], markl.start)
   }
 
   this.start = function () {

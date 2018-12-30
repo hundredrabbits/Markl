@@ -36,5 +36,10 @@ function Sprite (host) {
     return clamp(markl.elapsed() / SPEED.turn, 0, 1)
   }
 
+  this.draw = function (context, camera) {
+    const rect = this.rect(camera)
+    context.drawImage(markl.assets.get('level/garden/floor/2'), rect.x, rect.y, rect.w, rect.h)
+  }
+
   function clamp (v, min, max) { return v < min ? min : v > max ? max : v }
 }
