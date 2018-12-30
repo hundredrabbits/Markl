@@ -7,7 +7,7 @@ function Stage (markl) {
   this.camera = new Camera(this)
   this.dialog = new Dialog(this)
 
-  this.player = new Player({ x: 8, y: -4, z: 0 })
+  this.player = new Player({ x: 0, y: 0, z: 0 })
   this.player.stage = this
 
   this.level = null
@@ -22,7 +22,7 @@ function Stage (markl) {
 
   this.start = function () {
     console.log(this.id, 'Start')
-    this.enter('lobby', { x: 8, y: -4, z: 0 })
+    this.enter('lobby', { x: 0, y: 0, z: 0 })
     this.camera.moveTo(this.player.pos)
     this.update()
   }

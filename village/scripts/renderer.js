@@ -19,22 +19,11 @@ function Renderer (markl) {
 
   this.draw = function () {
     this.clear()
-    this.drawFloor()
     this.drawSprites(-1)
     this.drawSprites(0)
     if (markl.control.isPlaying === false) {
       this.drawGuide()
     }
-  }
-
-  this.drawFloor = function () {
-    const rect = {
-      x: markl.stage.camera.pos.x,
-      y: markl.stage.camera.pos.y,
-      w: markl.stage.level.size.w * RENDER.tile.w,
-      h: markl.stage.level.size.h * RENDER.tile.h
-    }
-    this.strokeRect(rect, '#000')
   }
 
   this.drawSprites = function (z = 0) {
@@ -48,15 +37,7 @@ function Renderer (markl) {
   }
 
   this.drawSprite = function (sprite) {
-    const rect = sprite.rect(markl.stage.camera)
     sprite.draw(this.context, markl.stage.camera)
-
-    if (sprite.host.pos.z === -1) {
-      this.strokeRect(rect, sprite.color)
-    } else {
-      this.drawCircle(rect, sprite.color)
-    }
-    this.drawText(rect, `${sprite.host}`, 'black')
   }
 
   this.drawGuide = function () {

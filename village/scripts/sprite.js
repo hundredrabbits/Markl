@@ -1,20 +1,22 @@
 'use strict'
 
-function Sprite (host) {
+function Sprite (host, asset = 'level/garden/floor/2') {
   GameObject.call(this, 'sprite')
 
+  this.offset = { x: 0, y: 0 }
+  this.asset = asset
   this.host = host
   this.color = host.color
+  this.ratio = 855 / 800
 
   this.rect = function (camera) {
     const transPos = this.pos()
-
-    const pad = host.pos.z === 0 ? 10 : 0
+    const vert = transPos.y * ((RENDER.tile.h - RENDER.tile.w) * 1.5)
     return {
-      x: camera.pos.x + (transPos.x * RENDER.tile.w) + (pad / 2),
-      y: camera.pos.y + (-transPos.y * RENDER.tile.h) + (pad / 2),
-      w: RENDER.tile.w - pad,
-      h: RENDER.tile.h - pad
+      x: camera.pos.x + (transPos.x * RENDER.tile.w) + this.offset.x,
+      y: camera.pos.y + (-transPos.y * RENDER.tile.h) + vert + this.offset.y,
+      w: RENDER.tile.w,
+      h: RENDER.tile.w * this.ratio
     }
   }
 
@@ -38,7 +40,9 @@ function Sprite (host) {
 
   this.draw = function (context, camera) {
     const rect = this.rect(camera)
-    context.drawImage(markl.assets.get('level/garden/floor/2'), rect.x, rect.y, rect.w, rect.h)
+    const img = markl.assets.get(this.asset)
+    if (!img) { return }
+    context.drawImage(img, rect.x, rect.y, rect.w, rect.h)
   }
 
   function clamp (v, min, max) { return v < min ? min : v > max ? max : v }

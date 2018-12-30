@@ -1,12 +1,12 @@
 'use strict'
 
 const SPEED = {
-  camera: 50,
+  camera: 35,
   turn: 250
 }
 
 const RENDER = {
-  tile: { w: 30, h: 50 },
+  tile: { w: 80, h: 85 },
   viewport: { w: 720, h: 380 }
 }
 
@@ -36,7 +36,12 @@ function Markl () {
   this.setup = function () {
     this.el.style.width = `${RENDER.viewport.w}px`
     this.el.style.height = `${RENDER.viewport.h}px`
-    this.assets.setup(['level/garden/floor/1', 'level/garden/floor/2'], markl.start)
+    this.assets.setup([
+      'level/garden/floor/1',
+      'level/garden/floor/2',
+      'level/garden/floor/3',
+      'character/lancer/default'
+    ], markl.start)
   }
 
   this.start = function () {
