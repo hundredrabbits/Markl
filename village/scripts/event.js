@@ -26,6 +26,9 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
       collider.onCollision(this)
     }
 
+    if (this.stage.inBounds(destination) === false) {
+      console.warn('stage bounds', destination)
+    }
     if ((!collider || collider.isBlocker === false) && this.stage.inBounds(destination) === true) {
       if (mod) { this.pos.prev = { x: this.pos.x, y: this.pos.y } }
       this.pos.x = destination.x
@@ -58,8 +61,8 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
 
   }
 
-  this.hasPos = function (pos, depth = false) {
-    return pos.x === this.pos.x && pos.y === this.pos.y
+  this.hasPos = function (pos) {
+    return pos.x === this.pos.x && pos.y === this.pos.y && pos.z === this.pos.z
   }
 
   this.toString = function () {

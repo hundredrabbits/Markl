@@ -58,10 +58,9 @@ function Stage (markl) {
     console.log('undo')
   }
 
-  this.tileAt = function (pos) {
+  this.eventAt = function (pos) {
     for (const id in this.level.events) {
       const event = this.level.events[id]
-      if (event.pos.z !== -1) { continue }
       if (!event.hasPos(pos)) { continue }
       return event
     }

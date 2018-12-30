@@ -1,9 +1,10 @@
 'use strict'
 
-function WarpTile (pos = { x: 0, y: 0, z: -1 }, targetName, targetPos) {
-  Event.call(this, 'warp', pos)
+function Warp (targetName, targetPos) {
+  Event.call(this, 'warp')
 
   this.sprite.color = '#f00'
+  this.sprite.asset = `level/garden/floor/warp`
 
   this.onStep = function (e) {
     markl.stage.enter(targetName, targetPos)

@@ -2,21 +2,25 @@
 
 function Level (name, events) {
   this.name = name
-  this.size = { w: events[0].length, h: events.length }
+  this.size = { w: events[0][0].length, h: events[0].length }
   this.events = []
 
   this.start = function () {
     // Locate
-    for (const y in events) {
-      const row = events[y]
-      for (const x in events[y]) {
-        const event = events[y][x]
-        event.pos = { x: x, y: -y, z: -1 }
-        event.level = this
-        this.events.push(event)
+    for (const _z in events) {
+      const z = parseInt(_z)
+      for (const _y in events[z]) {
+        const y = parseInt(_y)
+        const row = events[z][y]
+        for (const _x in events[z][y]) {
+          const x = parseInt(_x)
+          const event = events[z][y][x]
+          event.pos = { x: x, y: -y, z: z - 1 }
+          event.level = this
+          this.events.push(event)
+        }
       }
     }
-    // console.log(this.events)
     // Start
     for (const id in this.events) {
       this.events[id].start()

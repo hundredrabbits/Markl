@@ -33,7 +33,7 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
     const cmd = this.act(this.control.stack[key])
 
     // onStep
-    const tile = markl.stage.tileAt(this.pos)
+    const tile = markl.stage.eventAt({ x: this.pos.x, y: this.pos.y, z: this.pos.z - 1 })
     if (tile) {
       tile.onStep(this)
     }
@@ -80,7 +80,7 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
     // Stats
     html += `stam:${this.stats.stamina.val}/${this.stats.stamina.max} moves:${this.stats.moves.max}max `
     // Location
-    html += `[${this.stage.level.name}::${this.stage.tileAt(this.pos)}] ${this.pos.x},${this.pos.y},${this.pos.z}(${this.pos.effect ? `${this.pos.effect.x},${this.pos.effect.y}` : ''})`
+    html += `[${this.stage.level.name}] ${this.pos.x},${this.pos.y},${this.pos.z}(${this.pos.effect ? `${this.pos.effect.x},${this.pos.effect.y}` : ''})`
     return html
   }
 

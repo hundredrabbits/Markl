@@ -1,10 +1,13 @@
 function _lobby () {
   return new Level('lobby',
     [
-      [new Floor(1), new Floor(1), new Floor(3), new Floor(1)],
-      [new Floor(3), new Floor(3), new Floor(2), new Floor(1)],
-      [new Floor(1), new Floor(2), new Floor(2), new Floor(1)],
-      [new Floor(2), new Floor(1), new Floor(1), new Floor(1)]
+      // -1
+      [
+        [new Floor(1), new Floor(1), new Warp('forest', { x: 0, y: 0 }), new Floor(1)],
+        [new Floor(3), new Floor(3), new Floor(2), new Floor(1)],
+        [new Floor(1), new Floor(2), new Floor(2), new Floor(1)],
+        [new Floor(2), new Floor(1), new Floor(1), new Floor(1)]
+      ]
     ]
   )
 }
