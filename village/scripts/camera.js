@@ -7,6 +7,7 @@ function Camera (stage) {
   this.target = { x: 0, y: 0 }
 
   this.focus = function (target = stage.player.pos) {
+    console.log('focus on:', target)
     this.target = posToPixel(target)
   }
 
@@ -17,8 +18,8 @@ function Camera (stage) {
 
   this.move = function (vector) {
     if (!vector) { return }
-    this.target.x = this.pos.x - (vector.x * (RENDER.tile.w * 2))
-    this.target.y = this.pos.y + (vector.y * (RENDER.tile.h * 2))
+    this.target.x = this.pos.x - (vector.x * (RENDER.tile.w * 1))
+    this.target.y = this.pos.y + (vector.y * (RENDER.tile.h * 1))
   }
 
   this.update = function () {

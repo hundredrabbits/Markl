@@ -7,6 +7,7 @@ function Warp (targetName, targetPos) {
   this.sprite.asset = `level/garden/floor/warp`
 
   this.onStep = function (e) {
+    console.log('stepping on warp')
     markl.stage.enter(targetName, targetPos)
   }
 

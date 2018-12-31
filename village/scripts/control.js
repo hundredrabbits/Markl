@@ -42,6 +42,7 @@ function Control () {
 
   this.togglePause = function (force = false) {
     this.isPaused = force === true ? true : !this.isPlaying
+    console.log(this.isPaused ? 'paused' : 'unpaused')
   }
 
   this.record = function (key) {

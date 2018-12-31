@@ -3,20 +3,21 @@
 function Sprite (host, asset = 'level/garden/floor/2') {
   GameObject.call(this, 'sprite')
 
+  this.size = { w: 1, h: 1 }
   this.offset = { x: 0, y: 0 }
   this.asset = asset
   this.host = host
   this.color = host.color
   this.ratio = 855 / 800
 
-  this.rect = function (camera) {
+  this.rect = function (camera, absolute = false) {
     const transPos = this.pos()
     const vert = transPos.y * ((RENDER.tile.h - RENDER.tile.w) * 1.5)
     return {
-      x: camera.pos.x + (transPos.x * RENDER.tile.w) + this.offset.x,
-      y: camera.pos.y + (-transPos.y * RENDER.tile.h) + vert + this.offset.y,
-      w: RENDER.tile.w,
-      h: RENDER.tile.w * this.ratio
+      x: camera.pos.x + (transPos.x * RENDER.tile.w) + (!absolute ? this.offset.x * RENDER.tile.w : 0),
+      y: camera.pos.y + (-transPos.y * RENDER.tile.h) + vert + (!absolute ? this.offset.y * RENDER.tile.w : 0),
+      w: RENDER.tile.w * (!absolute ? this.size.w : 1),
+      h: RENDER.tile.w * (!absolute ? this.size.h : 1) * this.ratio
     }
   }
 
@@ -43,6 +44,19 @@ function Sprite (host, asset = 'level/garden/floor/2') {
     const img = markl.assets.get(this.asset)
     if (!img) { return }
     context.drawImage(img, rect.x, rect.y, rect.w, rect.h)
+    this.debug(context, camera)
+  }
+
+  this.debug = function (context, camera) {
+    let rect = this.rect(camera)
+
+    context.strokeStyle = 'red'
+    context.strokeRect(parseInt(rect.x), parseInt(rect.y), parseInt(rect.w), parseInt(rect.h))
+
+    rect = this.rect(camera, true)
+
+    context.strokeStyle = 'blue'
+    context.strokeRect(parseInt(rect.x), parseInt(rect.y), parseInt(rect.w), parseInt(rect.h))
   }
 
   function clamp (v, min, max) { return v < min ? min : v > max ? max : v }

@@ -1,6 +1,6 @@
 'use strict'
 
-function SafeTile () {
+function Safe () {
   Event.call(this, 'safe')
 
   this.sprite.color = '#f00'
@@ -11,6 +11,7 @@ function SafeTile () {
     this.stage.player.pos.effect = { x: 1, y: 1 }
     this.stage.player.last = { level: this.level.name, pos: { x: this.pos.x, y: this.pos.y, z: 0 } }
     this.stage.player.stats.stamina.val = this.stage.player.stats.stamina.max
+    this.stage.camera.focus()
   }
 
   this.toString = function () {

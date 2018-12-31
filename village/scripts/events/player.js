@@ -8,7 +8,7 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
   this.last = { level: 'lobby', pos: { x: 0, y: 0, z: 0 } }
   this.sprite.color = 'black'
   this.sprite.asset = `character/lancer/default`
-  this.sprite.offset = { x: 0, y: RENDER.tile.w * -0.5 }
+  this.sprite.offset = { x: 0, y: -0.5 }
 
   this.stats = {
     stamina: { val: 10, max: 10 },
@@ -28,20 +28,21 @@ function Player (pos = { x: 0, y: 0, z: 0 }) {
       this.respawn()
     }
 
+    // onStep
+    const tile = markl.stage.eventAt({ x: this.pos.x, y: this.pos.y, z: this.pos.z - 1 })
+    if (tile && markl.control.index > 0) {
+      tile.onStep(this)
+    }
+
     // Act
     const key = this.control.index % this.control.stack.length
     const cmd = this.act(this.control.stack[key])
-
-    // onStep
-    const tile = markl.stage.eventAt({ x: this.pos.x, y: this.pos.y, z: this.pos.z - 1 })
-    if (tile) {
-      tile.onStep(this)
-    }
 
     this.control.index++
   }
 
   this.act = function (cmd) {
+    if (!cmd) { return }
     if (cmd === INPUT.up) {
       this.move({ x: 0, y: 1 })
     } else if (cmd === INPUT.down) {

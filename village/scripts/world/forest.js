@@ -1,16 +1,20 @@
 function _forest () {
-  return new Level('lobby',
+  const level = new Level('lobby',
     [
       // -1
       [
-        [new Floor(1), new Floor(1), new SafeTile(1), new Floor(1), new Floor(1)],
-        [new Floor(3), new Floor(3), new Floor(2), new Floor(1), new Floor(1)],
-        [new Warp('lobby', { x: 0, y: 0 }), new Floor(2), null, new Floor(1), new Floor(1)],
+        [new Floor(1), new Floor(1), new Floor(1), new Floor(1), new Floor(1)],
+        [new Floor(3), new Floor(3), new Safe(), new Floor(1), new Floor(1)],
+        [new Warp('lobby', { x: 0, y: 0 }), new Floor(2), new Floor(3), new Floor(1), new Floor(1)],
         [new Floor(2), new Floor(1), new Floor(1), new Floor(1), new Floor(1)],
         [new Floor(2), new Floor(1), new Floor(1), new Floor(1), new Floor(1)]
       ]
-    ]
-  )
+    ])
+
+  //
+  const npc = new ActionNPC({ x: 2, y: 0, z: 0 })
+  level.events.push(npc)
+  return level
 }
 
 // new SafeTile({ x: 8, y: -4, z: -1 }),

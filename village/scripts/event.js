@@ -27,15 +27,19 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
     }
 
     if (this.stage.inBounds(destination) === false) {
-      console.warn('stage bounds', destination)
-    }
-    if ((!collider || collider.isBlocker === false) && this.stage.inBounds(destination) === true) {
-      if (mod) { this.pos.prev = { x: this.pos.x, y: this.pos.y } }
-      this.pos.x = destination.x
-      this.pos.y = destination.y
-    } else {
       this.pos.prev = { x: this.pos.x, y: this.pos.y }
+      return
     }
+
+    if (collider && collider.isBlocker === true) {
+      this.pos.prev = { x: this.pos.x, y: this.pos.y }
+      return
+    }
+
+    console.log('Moving to', destination)
+    this.pos.prev = { x: this.pos.x, y: this.pos.y }
+    this.pos.x = destination.x
+    this.pos.y = destination.y
   }
 
   this.animateTo = function () {

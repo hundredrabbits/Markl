@@ -2,7 +2,7 @@
 
 const SPEED = {
   camera: 35,
-  turn: 250
+  turn: 400
 }
 
 const RENDER = {
@@ -42,6 +42,7 @@ function Markl () {
       'level/garden/floor/1',
       'level/garden/floor/2',
       'level/garden/floor/3',
+      'npc/favo',
       'character/lancer/default'
     ], markl.start)
   }

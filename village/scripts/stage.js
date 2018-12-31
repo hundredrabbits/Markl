@@ -22,19 +22,19 @@ function Stage (markl) {
 
   this.start = function () {
     console.log(this.id, 'Start')
-    this.enter('lobby', { x: 0, y: 0, z: 0 })
+    this.enter('lobby', { x: 2, y: -2, z: 0 })
     this.camera.moveTo(this.player.pos)
     this.update()
   }
 
   this.run = function () {
-    this.camera.focus(this.player.sprite.pos())
     for (const id in this.level.events) {
       if (!this.level.events[id]) { continue }
       this.level.events[id].run()
     }
     this.player.run()
     this.update()
+    this.camera.focus(this.player.sprite.pos())
   }
 
   this.update = function () {
@@ -49,6 +49,9 @@ function Stage (markl) {
     console.info(this.id, `Entering ${id} ${pos.x},${pos.y}`)
     this.level = this.world.storage[id]
     this.level.start()
+
+    // markl.control.togglePause(true)
+    // setTimeout(() => { markl.control.togglePause()}, 500 )
 
     this.player.moveTo(pos)
     this.camera.moveTo(pos)
