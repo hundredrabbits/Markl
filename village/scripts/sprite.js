@@ -43,18 +43,15 @@ function Sprite (host, asset = 'level/garden/floor/2') {
     const rect = this.rect(camera)
     const img = markl.assets.get(this.asset)
     if (!img) { return }
-    context.drawImage(img, rect.x, rect.y, rect.w, rect.h)
     this.debug(context, camera)
+    context.drawImage(img, rect.x, rect.y, rect.w, rect.h)
   }
 
   this.debug = function (context, camera) {
     let rect = this.rect(camera)
-
     context.strokeStyle = 'red'
     context.strokeRect(parseInt(rect.x), parseInt(rect.y), parseInt(rect.w), parseInt(rect.h))
-
     rect = this.rect(camera, true)
-
     context.strokeStyle = 'blue'
     context.strokeRect(parseInt(rect.x), parseInt(rect.y), parseInt(rect.w), parseInt(rect.h))
   }

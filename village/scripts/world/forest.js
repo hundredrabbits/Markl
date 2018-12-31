@@ -5,7 +5,7 @@ function _forest () {
       [
         [new Floor(1), new Floor(1), new Floor(1), new Floor(1), new Floor(1)],
         [new Floor(3), new Floor(3), new Safe(), new Floor(1), new Floor(1)],
-        [new Warp('lobby', { x: 0, y: 0 }), new Floor(2), new Floor(3), new Floor(1), new Floor(1)],
+        [new Warp('lobby', { x: 4, y: -2, z: 0 }), new Floor(2), new Floor(3), new Floor(1), new Floor(1)],
         [new Floor(2), new Floor(1), new Floor(1), new Floor(1), new Floor(1)],
         [new Floor(2), new Floor(1), new Floor(1), new Floor(1), new Floor(1)]
       ]

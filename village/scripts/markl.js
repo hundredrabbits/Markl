@@ -39,6 +39,8 @@ function Markl () {
     this.assets.setup([
       'level/garden/floor/warp',
       'level/garden/floor/safe',
+      'level/garden/floor/flip',
+      'level/garden/floor/spin',
       'level/garden/floor/1',
       'level/garden/floor/2',
       'level/garden/floor/3',
