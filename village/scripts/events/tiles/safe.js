@@ -1,9 +1,10 @@
 'use strict'
 
-function SafeTile (pos = { x: 0, y: 0, z: -1 }, stack = []) {
-  Event.call(this, 'safe', pos)
+function SafeTile () {
+  Event.call(this, 'safe')
 
-  this.sprite.color = '#72dec2'
+  this.sprite.color = '#f00'
+  this.sprite.asset = `level/garden/floor/safe`
 
   this.onStep = function (e) {
     this.stage.player.control.clear()
@@ -13,6 +14,6 @@ function SafeTile (pos = { x: 0, y: 0, z: -1 }, stack = []) {
   }
 
   this.toString = function () {
-    return ''
+    return `safe`
   }
 }

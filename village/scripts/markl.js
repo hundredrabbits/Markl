@@ -38,6 +38,7 @@ function Markl () {
     this.el.style.height = `${RENDER.viewport.h}px`
     this.assets.setup([
       'level/garden/floor/warp',
+      'level/garden/floor/safe',
       'level/garden/floor/1',
       'level/garden/floor/2',
       'level/garden/floor/3',

@@ -15,6 +15,7 @@ function Level (name, events) {
         for (const _x in events[z][y]) {
           const x = parseInt(_x)
           const event = events[z][y][x]
+          if (!event) { continue }
           event.pos = { x: x, y: -y, z: z - 1 }
           event.level = this
           this.events.push(event)

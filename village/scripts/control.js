@@ -70,10 +70,10 @@ function Control () {
     }
 
     if (e.key === '1') {
-      markl.stage.enter('lobby', { x: 8, y: -4, z: 0 })
+      markl.stage.enter('lobby', { x: 0, y: 0, z: 0 })
     }
     if (e.key === '2') {
-      markl.stage.enter('forest', { x: 1, y: 0, z: 0 })
+      markl.stage.enter('forest', { x: 0, y: -2, z: 0 })
     }
     if (e.key === '3') {
       markl.stage.enter('sewers', { x: 1, y: 0, z: 0 })
