@@ -7,9 +7,7 @@ function Spin (clockwise = true) {
   this.sprite.asset = `level/garden/floor/spin`
 
   this.onStep = function (e) {
-    console.log(e.control.stack)
     e.control.stack = e.control.stack.map(this.rotate)
-    console.log(e.control.stack)
   }
 
   this.rotate = function (action) {

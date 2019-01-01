@@ -36,7 +36,6 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
       return
     }
 
-    console.log('Moving to', destination)
     this.pos.prev = { x: this.pos.x, y: this.pos.y }
     this.pos.x = destination.x
     this.pos.y = destination.y

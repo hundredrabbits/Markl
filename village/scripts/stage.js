@@ -34,7 +34,7 @@ function Stage (markl) {
     }
     this.player.run()
     this.update()
-    this.camera.focus(this.player.sprite.pos())
+    // this.camera.focus(this.player.sprite.pos())
   }
 
   this.update = function () {
@@ -49,9 +49,6 @@ function Stage (markl) {
     console.info(this.id, `Entering ${id} ${pos.x},${pos.y}`)
     this.level = this.world.storage[id]
     this.level.start()
-
-    // markl.control.togglePause(true)
-    // setTimeout(() => { markl.control.togglePause()}, 500 )
 
     this.player.moveTo(pos)
     this.camera.moveTo(pos)
