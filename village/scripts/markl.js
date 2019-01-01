@@ -18,6 +18,10 @@ const INPUT = {
   special: 'special'
 }
 
+const DEBUG = {
+  bounds: true
+}
+
 function Markl () {
   GameObject.call(this, 'markl', 'div')
 
@@ -41,6 +45,7 @@ function Markl () {
       'level/garden/floor/safe',
       'level/garden/floor/flip',
       'level/garden/floor/spin',
+      'events/blockers/stairs',
       'level/garden/floor/1',
       'level/garden/floor/2',
       'level/garden/floor/3',

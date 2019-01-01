@@ -43,7 +43,9 @@ function Sprite (host, asset = 'level/garden/floor/2') {
     const rect = this.rect(camera)
     const img = markl.assets.get(this.asset)
     if (!img) { return }
-    this.debug(context, camera)
+    if (DEBUG.bounds) {
+      this.debug(context, camera)
+    }
     context.drawImage(img, rect.x, rect.y, rect.w, rect.h)
   }
 

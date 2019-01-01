@@ -10,9 +10,5 @@ function _tower () {
         [new Floor(2), new Floor(1), new Floor(1), new Floor(1), new Floor(1)]
       ]
     ])
-
-  //
-  const npc = new ActionNPC({ x: 2, y: 0, z: 0 })
-  level.events.push(npc)
   return level
 }
