@@ -9,8 +9,8 @@ function _lobby () {
         [new Floor(2), new Floor(1), new Floor(1), new Floor(1), new Floor(1)],
         [new Floor(2), new Floor(1), new Floor(1), new Floor(1), new Floor(1)]
       ],[
-        new Floor(2), new Floor(1),
-        new Floor(3), new Floor(3),
+        [new Floor(2), new Floor(1)],
+        [new Floor(3), new Floor(3)]
       ]
       // 0
     ]

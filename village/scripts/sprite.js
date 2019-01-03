@@ -54,7 +54,7 @@ function Sprite (host, asset = 'level/garden/floor/2') {
     context.strokeStyle = 'red'
     context.strokeRect(parseInt(rect.x), parseInt(rect.y), parseInt(rect.w), parseInt(rect.h))
     rect = this.rect(camera, true)
-    context.strokeStyle = 'blue'
+    context.strokeStyle = this.host.pos.z === 1 ? 'yellow' : 'blue'
     context.strokeRect(parseInt(rect.x), parseInt(rect.y), parseInt(rect.w), parseInt(rect.h))
   }
 

@@ -9,7 +9,18 @@ function Event (id, pos = { x: 0, y: 0, z: 0 }) {
 
   this.isBlocker = false
 
-  this.start = function () {
+  this.install = function (level,pos) {
+    this.level = level
+    this.pos = pos
+    this.align()
+  }
+
+  this.align = function()
+  {
+
+  }
+
+  this.start = function(){
     this.stage = markl.stage
   }
 

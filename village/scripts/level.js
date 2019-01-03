@@ -16,8 +16,7 @@ function Level (name, events) {
           const x = parseInt(_x)
           const event = events[z][y][x]
           if (!event) { continue }
-          event.pos = { x: x, y: -y, z: z - 1 }
-          event.level = this
+          event.install(this,{ x: x, y: -y, z: z - 1 })
           this.events.push(event)
         }
       }
