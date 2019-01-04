@@ -1,5 +1,5 @@
 function _lobby () {
-  const level =  new Level('lobby',
+  const level = new Level('lobby',
     [
       // -1
       [

@@ -37,28 +37,24 @@ function Renderer (markl) {
     // }
   }
 
-  this.viewport = function()
-  {
-    const sight = {w:20,h:12}
-    const tile = {w:RENDER.tile.w/5,h:RENDER.tile.h/5}
-    const viewport = {x:10,y:10,w:tile.w * sight.w,h:tile.h * sight.h}
-    const pad = 4
-    const y_ = sight.w
+  this.viewport = function () {
+    const sight = { w: 20, h: 10 }
+    const tile = { w: RENDER.tile.w / 3, h: RENDER.tile.h / 3 }
+    const viewport = { x: 10, y: 10, w: tile.w * sight.w, h: tile.h * sight.h }
 
     const cam = markl.stage.camera.pos
 
-    for (let _y = 0; _y < y_; _y++) {
-      for (let _x = 0; _x <= sight.w; _x++) {
-        const id = parseInt(cam.x/viewport.w) + _x
-        const x = Math.abs(((_x * tile.w) + cam.x) % (viewport.w))
-        const y = _y * tile.h
-
-        this.drawRect({x:x,y:y,w:tile.w-1,h:tile.h-1},_x % 5 === 0 && _y % 5 === 0 ? 'red' : 'pink')
-        this.drawText({x:x,y:y+10},`${id}`,'purple')
-      } 
+    for (let _y = 0; _y < sight.h; _y++) {
+      for (let _x = 0; _x < sight.w; _x++) {
+        let x = ((_x * tile.w) + Math.abs(cam.x)) % viewport.w
+        let y = ((_y * tile.h) + Math.abs(cam.y)) % viewport.h
+        const id = { x: (sight.w - _x), y: (sight.h - _y) }
+        this.drawRect({ x: x, y: y, w: tile.w - 1, h: tile.h - 1 }, id.x % 5 === 0 && id.y % 5 === 0 ? 'red' : 'transparent')
+        this.drawText({ x: x, y: y }, `${id.x + id.y}`, 'purple')
+      }
     }
 
-    this.strokeRect(viewport,"blue")
+    this.strokeRect(viewport, 'blue')
   }
 
   this.drawSprite = function (sprite) {
