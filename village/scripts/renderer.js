@@ -50,11 +50,11 @@ function Renderer (markl) {
         let y = ((_y * tile.h) + Math.abs(cam.y)) % viewport.h
         const id = { x: (sight.w - _x), y: (sight.h - _y) }
         this.drawRect({ x: x, y: y, w: tile.w - 1, h: tile.h - 1 }, id.x % 5 === 0 && id.y % 5 === 0 ? 'red' : 'transparent')
-        this.drawText({ x: x, y: y }, `${id.x + id.y}`, 'purple')
+        this.drawText({ x: x, y: y }, `${id.x + id.y}`, 'black')
       }
     }
 
-    this.strokeRect(viewport, 'blue')
+    this.strokeRect(viewport, 'white')
   }
 
   this.drawSprite = function (sprite) {
