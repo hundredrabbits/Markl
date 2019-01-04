@@ -27,13 +27,37 @@ function Renderer (markl) {
   }
 
   this.drawSprites = function (z = 0) {
-    for (const id in markl.stage.level.events) {
-      if (markl.stage.level.events[id].pos.z !== z) { continue }
-      this.drawSprite(markl.stage.level.events[id].sprite)
+    this.viewport()
+    // for (const id in markl.stage.level.events) {
+    //   if (markl.stage.level.events[id].pos.z !== z) { continue }
+    //   this.drawSprite(markl.stage.level.events[id].sprite)
+    // }
+    // if (markl.stage.player.pos.z === z) {
+    //   this.drawSprite(markl.stage.player.sprite)
+    // }
+  }
+
+  this.viewport = function()
+  {
+    const sight = {w:20,h:12}
+    const tile = {w:RENDER.tile.w/5,h:RENDER.tile.h/5}
+    const viewport = {x:10,y:10,w:tile.w * sight.w,h:tile.h * sight.h}
+    const pad = 4
+    const y_ = sight.w
+    const x_ = 40
+
+    const horOffset = markl.stage.camera.pos.x
+
+    for (let _y = 0; _y < y_; _y++) {
+      for (let _x = 0; _x < x_; _x++) {
+        const x = Math.abs(((_x * tile.w) + horOffset) % (viewport.w + (tile.w))) - (pad)
+        const y = _y * tile.h
+
+        this.drawRect({x:x,y:y,w:tile.w-1,h:tile.h-1},_x % 5 === 0 && _y % 5 === 0 ? 'red' : 'pink')
+      } 
     }
-    if (markl.stage.player.pos.z === z) {
-      this.drawSprite(markl.stage.player.sprite)
-    }
+
+    this.strokeRect(viewport,"blue")
   }
 
   this.drawSprite = function (sprite) {
@@ -109,5 +133,9 @@ function Renderer (markl) {
       x: (pos.x * RENDER.tile.w) + markl.stage.camera.pos.x + (RENDER.tile.w / 2),
       y: (-pos.y * RENDER.tile.h) + markl.stage.camera.pos.y + (RENDER.tile.h / 2)
     }
+  }
+
+  function clamp (v, min, max) {
+    return v < min ? min : v > max ? max : v
   }
 }
