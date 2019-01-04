@@ -44,16 +44,17 @@ function Renderer (markl) {
     const viewport = {x:10,y:10,w:tile.w * sight.w,h:tile.h * sight.h}
     const pad = 4
     const y_ = sight.w
-    const x_ = 40
 
-    const horOffset = markl.stage.camera.pos.x
+    const cam = markl.stage.camera.pos
 
     for (let _y = 0; _y < y_; _y++) {
-      for (let _x = 0; _x < x_; _x++) {
-        const x = Math.abs(((_x * tile.w) + horOffset) % (viewport.w + (tile.w))) - (pad)
+      for (let _x = 0; _x <= sight.w; _x++) {
+        const id = parseInt(cam.x/viewport.w) + _x
+        const x = Math.abs(((_x * tile.w) + cam.x) % (viewport.w))
         const y = _y * tile.h
 
         this.drawRect({x:x,y:y,w:tile.w-1,h:tile.h-1},_x % 5 === 0 && _y % 5 === 0 ? 'red' : 'pink')
+        this.drawText({x:x,y:y+10},`${id}`,'purple')
       } 
     }
 
@@ -123,7 +124,7 @@ function Renderer (markl) {
   }
 
   this.drawText = function (rect, text, style) {
-    this.context.font = '20px Georgia'
+    this.context.font = '11px Courier'
     this.context.fillStyle = style
     this.context.fillText(text, rect.x, rect.y)
   }
