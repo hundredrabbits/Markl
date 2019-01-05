@@ -29,44 +29,27 @@ function Renderer (markl) {
   this.drawSprites = function (z = 0) {
     this.viewport()
     this.drawText({ x: 10, y: 20 }, `${markl.stage.camera.pos.x},${markl.stage.camera.pos.y}`)
-    // for (const id in markl.stage.level.events) {
-    //   if (markl.stage.level.events[id].pos.z !== z) { continue }
-    //   this.drawSprite(markl.stage.level.events[id].sprite)
-    // }
-    // if (markl.stage.player.pos.z === z) {
-    //   this.drawSprite(markl.stage.player.sprite)
-    // }
   }
 
   this.viewport = function () {
     const cam = markl.stage.camera.viewport
-    const area = { w: 10, h: 10, pad: 5 }
-    const offset = { x: -cam.x + (RENDER.size.w/2), y: -cam.y - (RENDER.size.h/2) }
-    const focus = {
-      x: cam.x + offset.x,
-      y: -cam.y - offset.y
-    }
-
-    for (let _y = -area.pad; _y < area.h + (area.pad); _y++) {
-      for (let _x = -area.pad; _x < area.w + (area.pad); _x++) {
-        let isReal = _y >= 0 && _y < area.h && _x >= 0 && _x < area.w
-        let inSight = this.inSight({ x: _x, y: _y }, cam)
-        let x = (_x * TILE.w)
-        let y = (_y * TILE.h)
-        if (inSight) {
-          this.drawRect({ x: x + offset.x, y: y - offset.y, w: TILE.w - 1, h: TILE.h - 1 }, 'pink')
-        }
-        this.strokeRect({ x: x + offset.x, y: y - offset.y, w: TILE.w - 1, h: TILE.h - 1 }, isReal ? 'black' : '#999')
+    const offset = { x: cam.x + (RENDER.size.w / 2), y: -cam.y - (RENDER.size.h / 2) }
+    for (let _y = -LEVEL.pad; _y < LEVEL.size.h + (LEVEL.pad); _y++) {
+      for (let _x = -LEVEL.pad; _x < LEVEL.size.w + (LEVEL.pad); _x++) {
+        if (!this.inSight({ x: _x, y: _y }, cam)) { continue }
+        const isReal = _y >= 0 && _y < LEVEL.size.h && _x >= 0 && _x < LEVEL.size.w
+        const rect = { x: (_x * TILE.w) + offset.x, y: (_y * TILE.h) - offset.y, w: TILE.w - 1, h: TILE.h - 1 }
+        this.strokeRect(rect, isReal ? 'black' : '#999')
+        const x = _x
+        const y = 0
+        this.drawText(rect, `${x},${y}`, 'red')
       }
     }
-
-    this.drawTarget(focus, 'red')
   }
 
   this.inSight = function (pos) {
     const sight = { w: 6, h: 4 }
-    const center = { w: 10, h: 10 }
-    const cam = { x: (markl.stage.camera.pos.x / TILE.w) % center.w, y: -(markl.stage.camera.pos.y / TILE.h) % center.h }
+    const cam = { x: -(markl.stage.camera.pos.x / TILE.w) % LEVEL.size.w, y: -(markl.stage.camera.pos.y / TILE.h) % LEVEL.size.h }
     if (pos.x < cam.x - sight.w) { return false }
     if (pos.x > cam.x + sight.w) { return false }
     if (pos.y < cam.y - sight.h) { return false }

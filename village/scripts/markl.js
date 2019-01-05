@@ -6,8 +6,13 @@ const SPEED = {
 }
 
 const TILE = {
-  w: 80, 
+  w: 80,
   h: 85
+}
+
+const LEVEL = {
+  size: { w: 8, h: 8 },
+  pad: 5
 }
 
 const RENDER = {
