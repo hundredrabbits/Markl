@@ -7,7 +7,7 @@ const SPEED = {
 
 const RENDER = {
   tile: { w: 80, h: 85 },
-  viewport: { w: 720, h: 380 }
+  viewport: { w: 80 * 9, h: 85 * 5 }
 }
 
 const INPUT = {
