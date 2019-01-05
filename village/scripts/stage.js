@@ -23,7 +23,7 @@ function Stage (markl) {
   this.start = function () {
     console.log(this.id, 'Start')
     this.enter('lobby', { x: 2, y: -2, z: 0 })
-    this.camera.moveTo(this.player.pos)
+    // this.camera.moveTo(this.player.pos)
     this.update()
   }
 
@@ -51,7 +51,7 @@ function Stage (markl) {
     this.level.start()
 
     this.player.moveTo(pos)
-    this.camera.moveTo(pos)
+    // this.camera.moveTo(pos)
   }
 
   this.undo = function () {

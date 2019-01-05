@@ -28,6 +28,7 @@ function Renderer (markl) {
 
   this.drawSprites = function (z = 0) {
     this.viewport()
+    this.drawText({ x: 10, y: 20 }, `${markl.stage.camera.pos.x},${markl.stage.camera.pos.y}`)
     // for (const id in markl.stage.level.events) {
     //   if (markl.stage.level.events[id].pos.z !== z) { continue }
     //   this.drawSprite(markl.stage.level.events[id].sprite)
@@ -38,16 +39,56 @@ function Renderer (markl) {
   }
 
   this.viewport = function () {
+    const tile = { w: RENDER.tile.w / 5, h: RENDER.tile.h / 5 }
+    const center = { w: 10, h: 10 }
+    const pad = { w: 4, h: 4 }
+    const offset = { x: tile.w * pad.w + 30, y: -tile.h * pad.h - 30 }
+
+    const cam = markl.stage.camera.pos
+    const focus = {
+      x: (cam.x % (tile.w * center.w)) + offset.x,
+      y: (-cam.y % (tile.h * center.h)) - offset.y
+    }
+
+    for (let _y = -pad.h; _y < center.h + (pad.h); _y++) {
+      for (let _x = -pad.w; _x < center.w + (pad.w); _x++) {
+        let isReal = _y >= 0 && _y < center.h && _x >= 0 && _x < center.w
+        let inSight = this.inSight({ x: _x, y: _y }, cam)
+        let x = (_x * tile.w)
+        let y = (_y * tile.h)
+        if (inSight) {
+          this.drawRect({ x: x + offset.x, y: y - offset.y, w: tile.w - 1, h: tile.h - 1 }, 'pink')
+        }
+        this.strokeRect({ x: x + offset.x, y: y - offset.y, w: tile.w - 1, h: tile.h - 1 }, isReal ? 'black' : '#999')
+      }
+    }
+
+    this.drawTarget(focus, 'red')
+  }
+
+  this.inSight = function (pos) {
+    const sight = { w: 5, h: 3 }
+    const center = { w: 10, h: 10 }
+    const tile = { w: RENDER.tile.w / 5, h: RENDER.tile.h / 5 }
+    const cam = { x: (markl.stage.camera.pos.x / tile.w) % center.w, y: -(markl.stage.camera.pos.y / tile.h) % center.h }
+    if (pos.x < cam.x - sight.w) { return false }
+    if (pos.x > cam.x + sight.w) { return false }
+    if (pos.y < cam.y - sight.h) { return false }
+    if (pos.y > cam.y + sight.h) { return false }
+    return true
+  }
+
+  this.viewport_old = function () {
     const sight = { w: 10, h: 6 }
-    const tile = { w: RENDER.tile.w, h: RENDER.tile.h }
+    const tile = { w: RENDER.tile.w / 5, h: RENDER.tile.h / 5 }
     const viewport = { x: 0, y: 0, w: tile.w * sight.w, h: tile.h * sight.h }
     const cam = markl.stage.camera.pos
-    const offset = {x:tile.h,y:tile.h}
+    const offset = { x: tile.h - 200, y: tile.h - 200 }
 
     for (let _y = 0; _y < sight.h; _y++) {
       for (let _x = 0; _x < sight.w; _x++) {
-        let x = ((_x * tile.w) + Math.abs(cam.x)) % viewport.w
-        let y = ((_y * tile.h) + Math.abs(cam.y)) % viewport.h
+        let x = ((_x * tile.w) + (cam.x)) % viewport.w
+        let y = ((_y * tile.h) + (cam.y)) % viewport.h
         const id = { x: (sight.w - _x), y: (sight.h - _y) }
         this.strokeRect({ x: x - offset.x, y: y - offset.y, w: tile.w - 1, h: tile.h - 1 }, id.x % 5 === 0 && id.y % 5 === 0 ? 'red' : 'blue')
         this.drawText({ x: x - offset.x, y: y - offset.y }, `${id.x + id.y}`, 'black')
@@ -121,6 +162,11 @@ function Renderer (markl) {
     this.context.font = '11px Courier'
     this.context.fillStyle = style
     this.context.fillText(text, rect.x, rect.y)
+  }
+
+  this.drawTarget = function (rect, style, size = 5) {
+    this.context.fillStyle = style
+    this.context.fillRect(parseInt(rect.x - (size / 2)), parseInt(rect.y - (size / 2)), size, size)
   }
 
   this.posToPixel = function (pos) {

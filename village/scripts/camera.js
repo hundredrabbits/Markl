@@ -12,14 +12,15 @@ function Camera (stage) {
   }
 
   this.moveTo = function (target) {
+    console.log('!!')
     this.target = posToPixel(target)
     this.pos = posToPixel(target)
   }
 
   this.move = function (vector) {
     if (!vector) { return }
-    this.target.x = this.pos.x - (vector.x * (RENDER.tile.w * 1))
-    this.target.y = this.pos.y + (vector.y * (RENDER.tile.h * 1))
+    this.target.x = this.pos.x - (vector.x * (RENDER.tile.w * 0.25))
+    this.target.y = this.pos.y + (vector.y * (RENDER.tile.h * 0.25))
   }
 
   this.update = function () {

@@ -52,7 +52,7 @@ function Control () {
 
     console.log(`Recording: ${key}(${this.stack.length}/${markl.stage.player.stats.moves.max})`)
 
-    markl.stage.camera.focus()
+    // markl.stage.camera.focus()
     this.isPlaying = false
     this.stack.push(key)
     this.update()
