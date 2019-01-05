@@ -5,7 +5,7 @@ function Camera (stage) {
 
   this.pos = { x: 0, y: 0 }
   this.target = { x: 0, y: 0 }
-  this.viewport = { x: 0, y: 0 }
+  this.viewport = { x: 0, y: 0, sector: { x: 0, y: 0 } }
 
   this.focus = function (target = stage.player.pos) {
     console.log('focus on:', target)
@@ -32,6 +32,8 @@ function Camera (stage) {
 
     this.viewport.x = (this.pos.x % (LEVEL.size.w * TILE.w))
     this.viewport.y = (this.pos.y % (LEVEL.size.h * TILE.h))
+    this.viewport.sector.x = Math.floor(Math.abs(this.pos.x) / (LEVEL.size.w * TILE.w)) * LEVEL.size.w
+    this.viewport.sector.y = Math.floor(Math.abs(this.pos.y) / (LEVEL.size.h * TILE.h)) * LEVEL.size.h
     markl.renderer.draw()
   }
 

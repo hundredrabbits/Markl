@@ -11,12 +11,12 @@ const TILE = {
 }
 
 const LEVEL = {
-  size: { w: 8, h: 8 },
+  size: { w: 10, h: 10 },
   pad: 5
 }
 
 const RENDER = {
-  size: { w: TILE.w * 9, h: TILE.h * 5 }
+  size: { w: TILE.w * LEVEL.size.w, h: TILE.h * (LEVEL.size.h - 3) }
 }
 
 const INPUT = {

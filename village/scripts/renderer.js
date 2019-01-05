@@ -39,9 +39,9 @@ function Renderer (markl) {
         if (!this.inSight({ x: _x, y: _y }, cam)) { continue }
         const isReal = _y >= 0 && _y < LEVEL.size.h && _x >= 0 && _x < LEVEL.size.w
         const rect = { x: (_x * TILE.w) + offset.x, y: (_y * TILE.h) - offset.y, w: TILE.w - 1, h: TILE.h - 1 }
-        this.strokeRect(rect, isReal ? 'black' : '#999')
-        const x = _x
-        const y = 0
+        const x = _x + cam.sector.x
+        const y = _y + cam.sector.y
+        this.strokeRect(rect, x % 5 === 0 && y % 5 === 0 ? 'red' : isReal ? 'black' : '#999')
         this.drawText(rect, `${x},${y}`, 'red')
       }
     }
