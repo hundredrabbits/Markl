@@ -5,9 +5,13 @@ const SPEED = {
   turn: 400
 }
 
+const TILE = {
+  w: 80, 
+  h: 85
+}
+
 const RENDER = {
-  tile: { w: 80, h: 85 },
-  viewport: { w: 80 * 9, h: 85 * 5 }
+  size: { w: TILE.w * 9, h: TILE.h * 5 }
 }
 
 const INPUT = {
@@ -38,8 +42,8 @@ function Markl () {
   this.drawer = null
 
   this.setup = function () {
-    this.el.style.width = `${RENDER.viewport.w}px`
-    this.el.style.height = `${RENDER.viewport.h}px`
+    this.el.style.width = `${RENDER.size.w}px`
+    this.el.style.height = `${RENDER.size.h}px`
     this.assets.setup([
       'level/garden/floor/warp',
       'level/garden/floor/safe',

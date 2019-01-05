@@ -4,8 +4,8 @@ function Renderer (markl) {
   GameObject.call(this, 'renderer', 'canvas')
 
   this.setup = function () {
-    this.el.width = RENDER.viewport.w
-    this.el.height = RENDER.viewport.h
+    this.el.width = RENDER.size.w
+    this.el.height = RENDER.size.h
     this.context = this.el.getContext('2d')
   }
 
@@ -39,27 +39,24 @@ function Renderer (markl) {
   }
 
   this.viewport = function () {
-    const tile = { w: RENDER.tile.w / 5, h: RENDER.tile.h / 5 }
-    const center = { w: 10, h: 10 }
-    const pad = { w: 4, h: 4 }
-    const offset = { x: tile.w * pad.w + 30, y: -tile.h * pad.h - 30 }
-
-    const cam = markl.stage.camera.pos
+    const cam = markl.stage.camera.viewport
+    const area = { w: 10, h: 10, pad: 5 }
+    const offset = { x: -cam.x + (RENDER.size.w/2), y: -cam.y - (RENDER.size.h/2) }
     const focus = {
-      x: (cam.x % (tile.w * center.w)) + offset.x,
-      y: (-cam.y % (tile.h * center.h)) - offset.y
+      x: cam.x + offset.x,
+      y: -cam.y - offset.y
     }
 
-    for (let _y = -pad.h; _y < center.h + (pad.h); _y++) {
-      for (let _x = -pad.w; _x < center.w + (pad.w); _x++) {
-        let isReal = _y >= 0 && _y < center.h && _x >= 0 && _x < center.w
+    for (let _y = -area.pad; _y < area.h + (area.pad); _y++) {
+      for (let _x = -area.pad; _x < area.w + (area.pad); _x++) {
+        let isReal = _y >= 0 && _y < area.h && _x >= 0 && _x < area.w
         let inSight = this.inSight({ x: _x, y: _y }, cam)
-        let x = (_x * tile.w)
-        let y = (_y * tile.h)
+        let x = (_x * TILE.w)
+        let y = (_y * TILE.h)
         if (inSight) {
-          this.drawRect({ x: x + offset.x, y: y - offset.y, w: tile.w - 1, h: tile.h - 1 }, 'pink')
+          this.drawRect({ x: x + offset.x, y: y - offset.y, w: TILE.w - 1, h: TILE.h - 1 }, 'pink')
         }
-        this.strokeRect({ x: x + offset.x, y: y - offset.y, w: tile.w - 1, h: tile.h - 1 }, isReal ? 'black' : '#999')
+        this.strokeRect({ x: x + offset.x, y: y - offset.y, w: TILE.w - 1, h: TILE.h - 1 }, isReal ? 'black' : '#999')
       }
     }
 
@@ -67,33 +64,14 @@ function Renderer (markl) {
   }
 
   this.inSight = function (pos) {
-    const sight = { w: 5, h: 3 }
+    const sight = { w: 6, h: 4 }
     const center = { w: 10, h: 10 }
-    const tile = { w: RENDER.tile.w / 5, h: RENDER.tile.h / 5 }
-    const cam = { x: (markl.stage.camera.pos.x / tile.w) % center.w, y: -(markl.stage.camera.pos.y / tile.h) % center.h }
+    const cam = { x: (markl.stage.camera.pos.x / TILE.w) % center.w, y: -(markl.stage.camera.pos.y / TILE.h) % center.h }
     if (pos.x < cam.x - sight.w) { return false }
     if (pos.x > cam.x + sight.w) { return false }
     if (pos.y < cam.y - sight.h) { return false }
     if (pos.y > cam.y + sight.h) { return false }
     return true
-  }
-
-  this.viewport_old = function () {
-    const sight = { w: 10, h: 6 }
-    const tile = { w: RENDER.tile.w / 5, h: RENDER.tile.h / 5 }
-    const viewport = { x: 0, y: 0, w: tile.w * sight.w, h: tile.h * sight.h }
-    const cam = markl.stage.camera.pos
-    const offset = { x: tile.h - 200, y: tile.h - 200 }
-
-    for (let _y = 0; _y < sight.h; _y++) {
-      for (let _x = 0; _x < sight.w; _x++) {
-        let x = ((_x * tile.w) + (cam.x)) % viewport.w
-        let y = ((_y * tile.h) + (cam.y)) % viewport.h
-        const id = { x: (sight.w - _x), y: (sight.h - _y) }
-        this.strokeRect({ x: x - offset.x, y: y - offset.y, w: tile.w - 1, h: tile.h - 1 }, id.x % 5 === 0 && id.y % 5 === 0 ? 'red' : 'blue')
-        this.drawText({ x: x - offset.x, y: y - offset.y }, `${id.x + id.y}`, 'black')
-      }
-    }
   }
 
   this.drawSprite = function (sprite) {
@@ -171,8 +149,8 @@ function Renderer (markl) {
 
   this.posToPixel = function (pos) {
     return {
-      x: (pos.x * RENDER.tile.w) + markl.stage.camera.pos.x + (RENDER.tile.w / 2),
-      y: (-pos.y * RENDER.tile.h) + markl.stage.camera.pos.y + (RENDER.tile.h / 2)
+      x: (pos.x * TILE.w) + markl.stage.camera.pos.x + (TILE.w / 2),
+      y: (-pos.y * TILE.h) + markl.stage.camera.pos.y + (TILE.h / 2)
     }
   }
 

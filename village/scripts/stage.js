@@ -17,7 +17,7 @@ function Stage (markl) {
     this.player.install(markl.el)
     this.dialog.install(markl.el)
 
-    this.focus = { x: RENDER.viewport.w / 2, y: RENDER.viewport.h / 2 }
+    this.focus = { x: RENDER.size.w / 2, y: RENDER.size.h / 2 }
   }
 
   this.start = function () {

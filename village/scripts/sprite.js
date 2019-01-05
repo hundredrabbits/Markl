@@ -12,12 +12,12 @@ function Sprite (host, asset = 'level/garden/floor/2') {
 
   this.rect = function (camera, absolute = false) {
     const transPos = this.pos()
-    const vert = transPos.y * ((RENDER.tile.h - RENDER.tile.w) * 1.5)
+    const vert = transPos.y * ((TILE.h - TILE.w) * 1.5)
     return {
-      x: camera.pos.x + (transPos.x * RENDER.tile.w) + (!absolute ? this.offset.x * RENDER.tile.w : 0),
-      y: camera.pos.y + (-transPos.y * RENDER.tile.h) + vert + (!absolute ? this.offset.y * RENDER.tile.w : 0),
-      w: RENDER.tile.w * (!absolute ? this.size.w : 1),
-      h: RENDER.tile.w * (!absolute ? this.size.h : 1) * this.ratio
+      x: camera.pos.x + (transPos.x * TILE.w) + (!absolute ? this.offset.x * TILE.w : 0),
+      y: camera.pos.y + (-transPos.y * TILE.h) + vert + (!absolute ? this.offset.y * TILE.w : 0),
+      w: TILE.w * (!absolute ? this.size.w : 1),
+      h: TILE.w * (!absolute ? this.size.h : 1) * this.ratio
     }
   }
 
