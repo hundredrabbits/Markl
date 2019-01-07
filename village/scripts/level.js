@@ -1,9 +1,10 @@
 'use strict'
 
-function Level (name, events) {
+function Level (name, events, floor) {
   this.name = name
   this.size = { w: events[0][0].length, h: events[0].length }
   this.events = []
+  this.floor = floor
 
   this.start = function () {
     // Locate

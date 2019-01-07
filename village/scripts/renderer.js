@@ -19,19 +19,38 @@ function Renderer (markl) {
 
   this.draw = function () {
     this.clear()
-    this.drawSprites(-1)
-    this.drawSprites(0)
+    this.drawFloor()
+    // this.drawSprites(-1)
+    // this.drawSprites(0)
     if (markl.control.isPlaying === false) {
       this.drawGuide()
     }
   }
 
+  this.drawFloor = function (z = 0) {
+    const sight = this.viewport()
+    for(const id in sight){
+      const loc = sight[id]
+      const rect = loc.rect
+      if(loc.real.x % 7 === 0 && loc.real.y % 3 === 0){
+        this.context.drawImage(markl.assets.get(loc.real.x % 5 === 0 && loc.real.y % 5 === 0 ? 'level/sand/floor/4' :'level/sand/floor/6'), rect.x, rect.y, rect.w, rect.h)  
+      }
+      else if(loc.real.x % 3 === 0 && loc.real.y % 5 === 0){
+        this.context.drawImage(markl.assets.get(loc.real.x % 5 === 0 && loc.real.y % 5 === 0 ? 'level/sand/floor/2' :'level/sand/floor/3'), rect.x, rect.y, rect.w, rect.h)  
+      }
+    }
+  }
+
   this.drawSprites = function (z = 0) {
-    this.viewport()
+    const sight = this.viewport()
+    for(const id in sight){
+      const loc = sight[id]
+    }
     this.drawText({ x: 10, y: 20 }, `${markl.stage.camera.pos.x},${markl.stage.camera.pos.y}`)
   }
 
   this.viewport = function () {
+    const tiles = []
     const cam = markl.stage.camera.viewport
     const offset = { x: cam.x + (RENDER.size.w / 2), y: -cam.y - (RENDER.size.h / 2) }
     for (let _y = -LEVEL.pad; _y < LEVEL.size.h + (LEVEL.pad); _y++) {
@@ -41,10 +60,10 @@ function Renderer (markl) {
         const rect = { x: (_x * TILE.w) + offset.x, y: (_y * TILE.h) - offset.y, w: TILE.w - 1, h: TILE.h - 1 }
         const x = _x + cam.sector.x
         const y = _y + cam.sector.y
-        this.strokeRect(rect, x % 5 === 0 && y % 5 === 0 ? 'red' : isReal ? 'black' : '#999')
-        this.drawText(rect, `${x},${y}`, 'red')
+        tiles.push({rect:rect,real:{x:x,y:y,is:isReal}})
       }
     }
+    return tiles
   }
 
   this.inSight = function (pos) {

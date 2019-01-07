@@ -67,6 +67,11 @@ function Stage (markl) {
     return null
   }
 
+  this.floorAt = function(x,y)
+  {
+    return 
+  }
+
   this.colliderAt = function (pos, z = 0, skip = null) {
     for (const id in this.level.events) {
       const event = this.level.events[id]

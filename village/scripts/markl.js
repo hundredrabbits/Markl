@@ -16,7 +16,7 @@ const LEVEL = {
 }
 
 const RENDER = {
-  size: { w: TILE.w * LEVEL.size.w, h: TILE.h * (LEVEL.size.h - 3) }
+  size: { w: TILE.w * LEVEL.size.w, h: TILE.h * (LEVEL.size.h - 5) }
 }
 
 const INPUT = {
@@ -58,6 +58,10 @@ function Markl () {
       'level/garden/floor/1',
       'level/garden/floor/2',
       'level/garden/floor/3',
+      'level/sand/floor/2',
+      'level/sand/floor/3',
+      'level/sand/floor/4',
+      'level/sand/floor/6',
       'npc/favo',
       'character/lancer/default'
     ], markl.start)
