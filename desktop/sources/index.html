@@ -55,7 +55,7 @@
 
     const {dialog,app} = require('electron').remote;
     const fs = require('fs');
-    
+
     let SPEED = 1;
 
     let TIMING = {
@@ -71,7 +71,7 @@
     const markl = new Markl();
     markl.install(document.body);
 
-    markl.controller.add("default","*","About",() => { require('electron').shell.openExternal('https://github.com/hundredrabbits/Dotgrid'); },"CmdOrCtrl+,");
+    markl.controller.add("default","*","About",() => { require('electron').shell.openExternal('https://github.com/hundredrabbits/Markl'); },"CmdOrCtrl+,");
     markl.controller.add("default","*","Fullscreen",() => { app.toggle_fullscreen(); },"CmdOrCtrl+Enter");
     markl.controller.add("default","*","Hide",() => { app.toggle_visible(); },"CmdOrCtrl+H");
     markl.controller.add("default","*","Inspect",() => { app.inspect(); },"CmdOrCtrl+.");
@@ -89,7 +89,7 @@
     markl.controller.add_role("default","Edit","paste");
     markl.controller.add_role("default","Edit","delete");
     markl.controller.add_role("default","Edit","selectall");
-    
+
     markl.controller.add("default","Navigator","Play",() => { markl.interface.navigator.play(); },"CmdOrCtrl+R");
     markl.controller.add("default","Navigator","Pause/Resume",() => { markl.interface.navigator.pause(); },"CmdOrCtrl+P");
     markl.controller.add("default","Navigator","Stop",() => { markl.interface.navigator.stop(); },"CmdOrCtrl+W");
